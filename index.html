@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মোঃ ওমর হাওলাদার | পোর্টফোলিও ও ইসলামিক ব্লগ</title>
+    
+    <!-- গুগল ফন্ট এবং ফন্টঅসাম আইকন প্যাক সাপোর্ট -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        /* আপনার দেওয়া কাস্টম কালার ও ডিজাইন রুলস */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F8F9FA; /* Off-White ব্যাকগ্রাউন্ড */
+            color: #212529; /* চোখে আরামদায়ক ডার্ক টেক্সট */
+            overflow-x: hidden;
+        }
+        
+        /* নেভিগেশন বার */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 100;
+            padding: 15px 20px;
+        }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0F5132;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            margin-left: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #212529;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #0F5132;
+        }
+
+        /* কমন সেকশন লেআউট (পর্যাপ্ত Whitespace মার্জিন সহ) */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px; /* সুন্দর জ্যামিতিক মার্জিন ও প্যাডিং */
+        }
+
+        /* হোম / হিরো সেকশন */
+        .hero-container {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .hero-container {
+                display: grid;
+                grid-template-columns: 7fr 5fr;
+            }
+        }
+        .hero-text h1 {
+            font-size: 32px;
+            line-height: 1.3;
+            color: #1A252C;
+            margin-bottom: 15px;
+        }
+        .hero-text h1 span {
+            color: #0F5132;
+        }
+        .badge {
+            background-color: #0F5132;
+            color: #D4AF37; /* সফট গোল্ডেন হাইলাইট */
+            display: inline-block;
+            padding: 6px 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0F5132;
+            color: white;
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .btn:hover {
+            background-color: #0d452b;
+            border-color: #D4AF37;
+        }
+        .profile-frame {
+            width: 240px;
+            height: 280px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* সিভি সেকশন */
+        .cv-bg { background-color: white; border-top: 1px solid #edf2f7; border-bottom: 1px solid #edf2f7; }
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            color: #1A252C;
+            margin-bottom: 45px;
+        }
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        @media (min-width: 768px) { .cv-grid { grid-template-columns: 1fr 1fr; gap: 60px; } }
+        .sub-title {
+            font-size: 18px;
+            color: #0F5132;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        .timeline {
+            border-left: 2px solid #0F5132;
+            padding-left: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0F5132;
+        }
+        .timeline-item h4 { font-size: 16px; color: #212529; }
+        .timeline-item p { font-size: 14px; color: #4a5568; margin-top: 2px; }
+        .timeline-item .meta { font-size: 12px; color: #a0aec0; margin-top: 2px; }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .skill-tag {
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a5568;
+            border-radius: 6px;
+        }
+
+        /* ব্লগ গ্রিড (৩-কলাম লেআউট) */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+        .blog-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .blog-body { padding: 20px; }
+        .tag-container { display: flex; gap: 6px; margin-bottom: 12px; }
+        .tag-group { background: #0F5132; color: white; font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .tag-cat { background: #fffbeb; color: #92400e; border: 1px solid #fef3c7; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 4px; }
+        .blog-body h3 { font-size: 16px; color: #1A252C; margin-bottom: 10px; }
+        .blog-body p { font-size: 13px; color: #718096; line-height: 1.6; }
+        .blog-footer { background: #f8fafc; padding: 12px 20px; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; font-size: 11px; color: #a0aec0; }
+        .read-more { color: #0F5132; font-weight: 700; text-decoration: none; }
+
+        /* যোগাযোগ ও ফর্ম */
+        .contact-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        @media (min-width: 768px) { .contact-box { grid-template-columns: 7fr 5fr; padding: 40px; } }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 700; color: #4a5568; margin-bottom: 6px; text-transform: uppercase; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 14px; outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: #0F5132; }
+        .w-full { width: 100%; text-align: center; cursor: pointer; border: none; }
+        
+        .social-section { display: flex; flex-direction: column; justify-content: space-between; }
+        .email-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #212529; word-break: break-all; }
+        .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+        .social-btn { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 5px; text-align: center; text-decoration: none; color: #4a5568; font-size: 11px; font-weight: 600; }
+        .social-btn:hover { border-color: #0F5132; color: #0F5132; }
+
+        footer { background: #1A252C; color: #a0aec0; padding: 30px 20px; text-align: center; font-size: 12px; }
+        footer .title { color: white; font-weight: 700; margin-bottom: 5px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- 📌 ১. নেভিগেশন বার -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">OMAR.</a>
+            <div class="nav-links">
+                <a href="#home">হোম</a>
+                <a href="#cv">সিভি</a>
+                <a href="#blog">ব্লগ</a>
+                <a href="#contact">যোগাযোগ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 📌 ২. হোম / হিরো সেকশন -->
+    <section id="home">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>আসসালামু আলাইকুম,<br>আমি <span> মো:ওমর হাওলাদার</span></h1>
+                <div class="badge">সিএসই ছাত্র, লেখক এবং দ্বীনের গবেষক</div>
