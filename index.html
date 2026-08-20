@@ -192,68 +192,177 @@
     </style>
 </head>
 <body>
+<body>
 
-    <!-- হেডার বার (এখানে আপনার নতুন Omar 52Hub লোগোটি থাকবে) -->
-    <header class="main-header">
+    <!-- হেডার বার (সবুজ ব্র্যান্ডিং ও মডার্ন লুক) -->
+    <header class="main-header" style="background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); border-b: 1px solid #f3f4f6;">
         <div class="logo-container">
-            <!-- লোগো ছবির নাম নিচে 'logo.png' এর জায়গায় পরিবর্তন করে নিতে পারেন -->
-            <img src="https://ibb.co.com/1ffmrGNC" alt="Omar 52Hub">
+            <span style="font-size: 20px; font-weight: 700; background: linear-gradient(to right, #059669, #0f766e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.5px;">
+                Omar 52Hub
+            </span>
         </div>
-        <button class="menu-toggle" id="menuOpenBtn">
-            <svg viewBox="0 0 24 24">
+        <button class="menu-toggle" id="menuOpenBtn" style="background: none; border: none; cursor: pointer; padding: 8px;">
+            <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #374151;">
                 <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
             </svg>
         </button>
     </header>
 
-    <!-- ডানপাশ থেকে স্লাইড হয়ে আসা মেনুবার -->
-    <div class="sidebar-menu" id="sidebarMenu">
-        <button class="close-btn" id="menuCloseBtn">&times;</button>
+    <!-- ডানপাশ থেকে স্লাইড হয়ে আসা প্রিমিয়াম ডার্ক মেনুবার -->
+    <div class="sidebar-menu" id="sidebarMenu" style="background: #111112; box-shadow: -10px 0 30px rgba(0,0,0,0.5);">
+        <button class="close-btn" id="menuCloseBtn" style="color: #9ca3af; font-size: 32px; background: none; border: none; cursor: pointer;">&times;</button>
         
         <nav class="nav-links">
-            <a href="#">হোম</a>
-            <a href="#">আমার সম্পর্কে</a>
-            <a href="#">সিভি</a>
+            <a href="#" class="nav-item">হোম</a>
+            <a href="#about" class="nav-item">আমার সম্পর্কে</a>
+            <a href="#services" class="nav-item">সেবাসমূহ</a>
+            <a href="#portfolio" class="nav-item">পোর্টফোলিও</a>
+            <a href="#cv" class="nav-item">সিভি</a>
             
-            <!-- ইসলামিক ব্লগ ড্রপডাউন -->
+            <!-- নতুন স্টাইলিশ ইসলামিক ব্লগ ড্রপডাউন (Accordion) -->
             <div class="dropdown">
-                <button class="dropdown-btn">
-                    <span>ইসলামিক ব্লগ</span>
-                    <span class="arrow">▼</span>
+                <button class="dropdown-btn" style="background: none; border: none; width: 100%; display: flex; justify-content: space-between; align-items: center; color: #e5e7eb; font-size: 16px; font-weight: 500; padding: 12px 0; border-b: 1px solid #27272a; cursor: pointer;">
+                    <span>ব্লগ</span>
+                    <span class="arrow" style="font-size: 12px; transition: transform 0.3s; color: #9ca3af;">▼</span>
                 </button>
-                <div class="dropdown-container">
-                    <a href="#">ইসলামিক জীবন বিধান</a>
-                    <a href="#">আল্লাহ দেয়া আইন বাস্তবায়ন (খিলাফত)</a>
-                    <a href="#">কুরআনের আলো</a>
-                    <a href="#">নфসের ফিতনা</a>
-                    <a href="#">হাদিস</a>
-                    <a href="#">সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন</a>
-                    <a href="#">মুসলিম রাষ্ট্রের ইতিহাস</a>
-                    <a href="#">খিলাফতসমূহ</a>
-                    <a href="#">আঞ্চলিক সাম্রাজ্য</a>
-                    <a href="#">ইসলামি রাষ্ট্রব্যবস্থা(খিলাফত)</a>
-                    <a href="#">মুসলিম সমর নেতাদের তালিকা</a>
-                    <a href="#">সুন্নি রাজবংশের তালিকা</a>
-                    <a href="#">মাসনুন দোয়া</a>
+                <div class="dropdown-container" style="display: none; max-height: 400px; overflow-y: auto; padding-left: 15px; border-left: 2px solid #059669; margin-top: 5px;">
+                    <a href="#quran-light" class="sub-item">কুরআনের আলো</a>
+                    <a href="#hadith" class="sub-item">হাদিস</a>
+                    <a href="#islamic-lifestyle" class="sub-item">ইসলামিক জীবন বিধান</a>
+                    <a href="#islamic-state" class="sub-item">ইসলামি রাষ্ট্রব্যবস্থা (খিলাফত)</a>
+                    <a href="#muslim-history" class="sub-item">মুসলিম রাষ্ট্রের ইতিহাস</a>
+                    <a href="#muslim-leaders" class="sub-item">মুসলিম সমর নেতাদের তালিকা</a>
+                    <a href="#regional-empires" class="sub-item">আঞ্চলিক সাম্রাজ্য</a>
+                    <a href="#sunni-dynasty" class="sub-item">সুন্নি রাজবংশের তালিকা</a>
+                    <a href="#khilafah" class="sub-item">খিলাফতসমূহ</a>
+                    <a href="#companions" class="sub-item">সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন</a>
+                    <a href="#fitnah-nafs" class="sub-item">নফসের ফিতনা</a>
+                    <a href="#masnoon-dua" class="sub-item">মাসনুন দোয়া</a>
                 </div>
             </div>
             
-            <a href="#">যোগাযোগ</a>
+            <a href="#contact" class="nav-item">যোগাযোগ</a>
         </nav>
     </div>
 
     <!-- ব্লার ওভারলে ব্যাকগ্রাউন্ড -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- মেইন কন্টেন্ট বডি (লোগো ১ বার করার জন্য ভেতরের ডাবল লোগোটি বাদ দেওয়া হয়েছে) -->
+    <!-- মেইন কন্টেন্ট বডি -->
     <main class="hero-section">
         <h1>আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার</h1>
         <div class="info-bar">
-            কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, লেখক এবং দ্বীনের গবেষক
+            কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।
         </div>
     </main>
+        <!-- যুক্ত করুন: বাটন এবং নতুন সেকশনসমূহ -->
+    <div style="margin-top: 25px; display: flex; gap: 12px; padding: 0 5%; max-width: 600px;">
+        <a href="#portfolio" style="flex: 1; text-align: center; background: #059669; color: white; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);">আমার কাজ দেখুন</a>
+        <a href="#contact" style="flex: 1; text-align: center; background: white; color: #374151; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; border: 1px solid #d1d5db;">যোগাযোগ করুন</a>
+    </div>
 
-    <!-- জাভাস্ক্রিপ্ট কোড (মেনু সচল করার জন্য) -->
+    <!-- সেবাসমূহ (Services Section) -->
+    <section id="services" style="padding: 60px 5%; background: #f9fafb; margin-top: 60px;">
+        <h2 style="font-size: 22px; color: #1f2937; margin-bottom: 25px; text-align: center; font-weight: 700; font-family: sans-serif;">আমার সেবাসমূহ</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto;">
+            
+            <!-- সার্ভিসカード ১ -->
+            <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
+                <div style="color: #059669; font-size: 24px; margin-bottom: 10px;">🌐</div>
+                <h3 style="font-size: 18px; color: #111827; margin-bottom: 8px; font-weight: 600; font-family: sans-serif;">ওয়েবসাইট ডেভেলপমেন্ট</h3>
+                <p style="color: #4b5563; font-size: 14px; line-height: 1.6; font-family: sans-serif;">এইচটিএমএল, সিএসএস, জাভাস্ক্রিপ্ট অথবা রিয়্যাক্ট ব্যবহার করে আধুনিক, দ্রুতগতির এবং মোবাইল-রেসপনসিভ ওয়েবসাইট তৈরি করে থাকি।</p>
+            </div>
+
+            <!-- সার্ভিস কার্ড ২ -->
+            <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
+                <div style="color: #059669; font-size: 24px; margin-bottom: 10px;">📈</div>
+                <h3 style="font-size: 18px; color: #111827; margin-bottom: 8px; font-weight: 600; font-family: sans-serif;">ডিজিটাল মার্কেটিং</h3>
+                <p style="color: #4b5563; font-size: 14px; line-height: 1.6; font-family: sans-serif;">অনলাইন ব্যবসার প্রচার, সোশ্যাল মিডিয়া মার্কেটিং এবং টার্গেটেড কাস্টমারের কাছে পৌঁছানোর জন্য প্রফেশনাল স্ট্র্যাটেজি তৈরি করি।</p>
+            </div>
+
+            <!-- সার্ভিস কার্ড ৩ -->
+            <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
+                <div style="color: #059669; font-size: 24px; margin-bottom: 10px;">🛠️</div>
+                <h3 style="font-size: 18px; color: #111827; margin-bottom: 8px; font-weight: 600; font-family: sans-serif;">পেজ ম্যানেজমেন্ট ও দেখাশোনা</h3>
+                <p style="color: #4b5563; font-size: 14px; line-height: 1.6; font-family: sans-serif;">আপনার ব্যবসায়িক ফেসবুক বা ইনস্টাগ্রাম পেজের কন্টেন্ট প্ল্যানিং, কাস্টমার মেসেজ রিপ্লাই এবং দৈনন্দিন পোস্ট ডিজাইন ও মডারেশন করি।</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- পোর্টফোলিও (Portfolio Section) -->
+    <section id="portfolio" style="padding: 60px 5%; background: white;">
+        <h2 style="font-size: 22px; color: #1f2937; margin-bottom: 10px; text-align: center; font-weight: 700; font-family: sans-serif;">আমার সাম্প্রতিক কাজ</h2>
+        <p style="color: #6b7280; font-size: 14px; text-align: center; margin-bottom: 30px; font-family: sans-serif;">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto;">
+            
+            <!-- প্রজেক্ট ১ -->
+            <div style="background: #f9fafb; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;">
+                <div style="background: #e5e7eb; height: 160px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-family: sans-serif;">
+                   <span>[এখানে আপনার কাজের স্ক্রিনশট দিতে পারেন]</span>
+                </div>
+                <div style="padding: 20px;">
+                    <h3 style="font-size: 16px; color: #111827; margin-bottom: 6px; font-weight: 600; font-family: sans-serif;">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
+                    <p style="color: #6b7280; font-size: 13px; margin-bottom: 12px; font-family: sans-serif;">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
+                    <a href="#" style="color: #059669; font-size: 14px; font-weight: 500; text-decoration: none; font-family: sans-serif;">লাইভ প্রজেক্ট দেখুন &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- যোগাযোগ সেকশন (Contact Section) -->
+    <section id="contact" style="padding: 60px 5%; background: #f9fafb; font-family: sans-serif; margin-top: 40px;">
+        <h2 style="font-size: 22px; color: #1f2937; margin-bottom: 10px; text-align: center; font-weight: 700;">যোগাযোগ করুন</h2>
+        <p style="color: #6b7280; font-size: 14px; text-align: center; margin-bottom: 35px;">যেকোনো প্রজেক্ট বা আলোচনার জন্য বার্তা পাঠান</p>
+
+        <div style="max-w: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+            
+            <!-- ক্লিন ও মিনিমাল কন্টাক্ট ফর্ম -->
+            <form style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                    <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;">আপনার নাম</label>
+                    <input type="text" placeholder="নাম লিখুন" required style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;">ইমেইল এড্রেস</label>
+                    <input type="email" placeholder="example@gmail.com" required style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none;">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;">আপনার বার্তা</label>
+                    <textarea rows="4" placeholder="এখানে আপনার মেসেজটি লিখুন..." required style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" style="background: #059669; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s;">বার্তা পাঠান</button>
+            </form>
+
+            <!-- ডিরেক্ট ইমেইল ও সোশ্যাল মিডিয়া লিংক -->
+            <div style="text-align: center; background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                <h4 style="font-size: 15px; color: #374151; margin-bottom: 8px; font-weight: 600;">সরাসরি ইমেইল করুন</h4>
+                
+                <!-- কপি বাটনসহ ইমেইল এড্রেস -->
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: #f3f4f6; padding: 8px 12px; border-radius: 6px; margin-bottom: 25px;">
+                    <span id="userEmail" style="font-size: 13px; color: #4b5563; font-weight: 500; word-break: break-all;">omarhowladercse210226@gmail.com</span>
+                    <button onclick="copyEmailText()" type="button" style="background: none; border: none; color: #059669; cursor: pointer; font-size: 13px; font-weight: 600; padding: 2px 4px;">Copy</button>
+                </div>
+
+                <h4 style="font-size: 15px; color: #374151; margin-bottom: 15px; font-weight: 600;">সোশ্যাল মিডিয়া প্রোফাইল</h4>
+                
+                <!-- ফ্ল্যাট মডার্ন সোশ্যাল আইকন গ্রিড -->
+                <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://www.linkedin.com/in/md-omar-howlader-70213a42b" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #0077b5; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="LinkedIn">💼</a>
+                    <a href="https://x.com/OmarHowlader52" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #000000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="X (Twitter)">❌</a>
+                    <a href="https://www.facebook.com/0marhowlader5258" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #1877f2; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Facebook">👥</a>
+                    <a href="https://youtube.com/@omarhowlader-zi9bf?si=a4YKJlmTDCm0Ud3e" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #ff0000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="YouTube">🎥</a>
+                    <a href="https://www.tiktok.com/@codexomar5?_r=1&_t=ZS-98z1R4jBa59" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #010101; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="TikTok">🎵</a>
+                    <a href="https://www.instagram.com/omar.howlader?igsh=Z2dndjNmdzI3c3Z6" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e1306c; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Instagram">📸</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- নতুন ও উন্নত জাভাস্ক্রিপ্ট কোড -->
     <script>
         const menuOpenBtn = document.getElementById('menuOpenBtn');
         const menuCloseBtn = document.getElementById('menuCloseBtn');
@@ -281,17 +390,64 @@
             menuOverlay.classList.remove('active');
         });
 
-        // ইসলামিক ব্লগ ড্রপডাউন টগল (Accordion)
+        // ইসলামিক ব্লগ ড্রপডাউন টগল (Smooth Accordion)
         dropdownBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            arrow.classList.toggle('rotate');
-            if (dropdownContainer.style.display === "block") {
-                dropdownContainer.style.display = "none";
-            } else {
+            if (dropdownContainer.style.display === "none" || dropdownContainer.style.display === "") {
                 dropdownContainer.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+                arrow.style.color = "#34d399";
+            } else {
+                dropdownContainer.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+                arrow.style.color = "#9ca3af";
             }
+        });
+
+        // সাব-মেনুর কোনো লিংকে ক্লিক করলে যেন মেনু বন্ধ হয়ে যায়
+        const allLinks = document.querySelectorAll('.sidebar-menu a');
+        allLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebarMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
         });
     </script>
 
+    <!-- নতুন আইটেমগুলোর জন্য ছোট একটু কাস্টম স্টাইল (CSS) -->
+    <style>
+        .nav-item {
+            display: block;
+            color: #d1d5db;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 0;
+            border-b: 1px solid #27272a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-item:hover {
+            color: #34d399;
+        }
+        .sub-item {
+            display: block;
+            color: #a1a1aa;
+            font-size: 14px;
+            padding: 8px 0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .sub-item:hover {
+            color: #34d399;
+        }
+        /* সাব-মেনুর লম্বা লিস্টে স্ক্রোলবার সুন্দর করার জন্য */
+        .dropdown-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .dropdown-container::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 2px;
+        }
+    </style>
 </body>
 </html>
