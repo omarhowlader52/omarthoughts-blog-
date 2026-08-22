@@ -258,7 +258,7 @@
         <!-- যুক্ত করুন: বাটন এবং নতুন সেকশনসমূহ -->
     <div style="margin-top: 25px; display: flex; gap: 12px; padding: 0 5%; max-width: 600px;">
         <a href="#portfolio" style="flex: 1; text-align: center; background: #059669; color: white; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);">আমার কাজ দেখুন</a>
-        <a href="#contact" style="flex: 1; text-align: center; background: white; color: #374151; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; border: 1px solid #d1d5db;">যোগাযোগ করুন</a>
+        <a href="javascript:void(0)" onclick="openContactModal()" style="flex: 1; text-align: center; background: white; color: #374151; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; border: 1px solid #d1d5db;">যোগাযোগ করুন</a>
     </div>
 
     <!-- সেবাসমূহ (Services Section) -->
@@ -292,166 +292,217 @@
 
     <!-- পোর্টফোলিও (Portfolio Section) -->
     <section id="portfolio" style="padding: 60px 5%; background: white;">
-        <h2 style="font-size: 22px; color: #1f2937; margin-bottom: 10px; text-align: center; font-weight: 700; font-family: sans-serif;">আমার সাম্প্রতিক কাজ</h2>
-        <p style="color: #6b7280; font-size: 14px; text-align: center; margin-bottom: 30px; font-family: sans-serif;">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
-        
-        <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto;">
-            
-            <!-- প্রজেক্ট ১ -->
-            <div style="background: #f9fafb; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;">
-                <div style="background: #e5e7eb; height: 160px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-family: sans-serif;">
-                   <span>[এখানে আপনার কাজের স্ক্রিনশট দিতে পারেন]</span>
-                </div>
-                <div style="padding: 20px;">
-                    <h3 style="font-size: 16px; color: #111827; margin-bottom: 6px; font-weight: 600; font-family: sans-serif;">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
-                    <p style="color: #6b7280; font-size: 13px; margin-bottom: 12px; font-family: sans-serif;">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
-                    <a href="#" style="color: #059669; font-size: 14px; font-weight: 500; text-decoration: none; font-family: sans-serif;">লাইভ প্রজেক্ট দেখুন &rarr;</a>
-                </div>
-            </div>
+        <!-- প্রজেক্ট সেকশন শুরু -->
+<div style="text-align: center; margin-top: 25px;">
+  <h2 style="font-size: 20px; color: #0f172a; margin-bottom: 5px;">আমার সাম্প্রতিক কাজ</h2>
+  <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
+</div>
 
-        </div>
+<!-- প্রজেক্ট কার্ডের মূল বক্স -->
+<div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; font-family: system-ui, -apple-system, sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin: 0 10px 20px 10px;">
+  
+  <!-- ব্রাউজার হেডার অংশ -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #f1f5f9; margin-bottom: 15px;">
+    <div style="display: flex; gap: 5px;">
+      <span style="width: 9px; height: 9px; background-color: #ff5f56; border-radius: 50%;"></span>
+      <span style="width: 9px; height: 9px; background-color: #ffbd2e; border-radius: 50%;"></span>
+      <span style="width: 9px; height: 9px; background-color: #27c93f; border-radius: 50%;"></span>
+    </div>
+    <span style="font-size: 11px; color: #94a3b8; font-weight: 500;">omar-52hub.vercel.app</span>
+    <span style="font-size: 10px; color: #22c55e; font-weight: bold;">● LIVE</span>
+  </div>
+
+  <!-- শপের লোগো ও কার্ট -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <h4 style="margin: 0; font-size: 15px; color: #0f172a; font-weight: 700;">🛒 Omar 52Hub Shop</h4>
+    <span style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 3px 10px; border-radius: 20px; font-size: 11px; color: #475569; font-weight: 600;">🛍️ Cart: 0</span>
+  </div>
+
+  <!-- ক্যাটাগরি ট্যাব -->
+  <div style="display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 4px;">
+    <span style="background: #0f172a; color: white; padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; white-space: nowrap;">All</span>
+    <span style="background: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; white-space: nowrap;">Gadgets</span>
+    <span style="background: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; white-space: nowrap;">Trending</span>
+  </div>
+
+  <!-- ডেমো প্রোডাক্ট কার্ড -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+    <div style="background: #fafafa; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px; text-align: center;">
+      <div style="height: 65px; background: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: inset 0 0 4px rgba(0,0,0,0.02);">🎧</div>
+      <p style="margin: 5px 0 2px 0; font-size: 12px; font-weight: 600; color: #1e293b;">Headphone</p>
+      <p style="margin: 0; font-size: 11px; color: #22c55e; font-weight: 700;">$49.00</p>
+    </div>
+    <div style="background: #fafafa; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px; text-align: center;">
+      <div style="height: 65px; background: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: inset 0 0 4px rgba(0,0,0,0.02);">⌚</div>
+      <p style="margin: 5px 0 2px 0; font-size: 12px; font-weight: 600; color: #1e293b;">Smart Watch</p>
+      <p style="margin: 0; font-size: 11px; color: #22c55e; font-weight: 700;">$79.00</p>
+    </div>
+  </div>
+
+  <!-- নিচের টেক্সট এবং লাইভ ফুল-স্ক্রিন লিংক -->
+  <div style="border-top: 1px solid #f1f5f9; padding-top: 15px;">
+    <h3 style="margin: 0 0 5px 0; font-size: 16px; color: #0f172a;">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
+    <p style="margin: 0 0 15px 0; font-size: 13px; color: #64748b; line-height: 1.5;">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
+    
+    <!-- এই লিংকে ক্লিক করলে ফুল স্ক্রিন ওপেন হবে -->
+    <a href="https://vercel.app" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block;">
+        লাইভ প্রজেক্ট দেখুন →
+    </a>
+  </div>
+
+</div>
+<!-- প্রজেক্ট সেকশন শেষ -->
+
     </section>
     <!-- যোগাযোগ সেকশন (Contact Section) -->
-    <section id="contact" style="padding: 60px 5%; background: #f9fafb; font-family: sans-serif; margin-top: 40px;">
-        <h2 style="font-size: 22px; color: #1f2937; margin-bottom: 10px; text-align: center; font-weight: 700;">যোগাযোগ করুন</h2>
-        <p style="color: #6b7280; font-size: 14px; text-align: center; margin-bottom: 35px;">যেকোনো প্রজেক্ট বা আলোচনার জন্য বার্তা পাঠান</p>
+<!-- কন্টাক্ট মোডাল পপ-আপ (লুকানো থাকবে) -->
+<div id="contactModal" style="display: none; position: fixed; inset: 0; z-index: 9999; justify-content: center; align-items: center; padding: 16px;">
+  <!-- পিছনের ব্যাকগ্রাউন্ড আবছা করার লেয়ার -->
+  <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);" onclick="closeContactModal()"></div>
+  
+  <!-- মূল পপ-আপ ফর্ম বক্স -->
+    <div style="position: relative; width: 100%; max-width: 450px; background: white; padding: 24px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; z-index: 10; font-family: sans-serif;">
+    <!-- বন্ধ করার ক্রস বাটন -->
+    <button onclick="closeContactModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; font-weight: bold; color: #9ca3af; cursor: pointer;">✕</button>
 
-        <div style="max-w: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
-            
-            <!-- ক্লিন ও মিনিমাল কন্টাক্ট ফর্ম -->
-            <form style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 16px;">
-                <div>
-                    <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;">আপনার নাম</label>
-                    <input type="text" placeholder="নাম লিখুন" required style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
-                </div>
-                <div>
-                    <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;">ইমেইল এড্রেস</label>
-                    <input type="email" placeholder="example@gmail.com" required style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none;">
-                </div>
-                <div>
-                    <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;">আপনার বার্তা</label>
-                    <textarea rows="4" placeholder="এখানে আপনার মেসেজটি লিখুন..." required style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
-                </div>
-                <button type="submit" style="background: #059669; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s;">বার্তা পাঠান</button>
-            </form>
+    <h3 style="font-size: 20px; font-weight: bold; text-align: center; color: #1f2937; margin-bottom: 4px; margin-top: 0;">যোগাযোগ করুন</h3>
+    <p style="font-size: 13px; text-align: center; color: #6b7280; margin-bottom: 20px;">যেকোনো প্রজেক্ট বা আলোচনার জন্য বার্তা পাঠান</p>
 
-            <!-- ডিরেক্ট ইমেইল ও সোশ্যাল মিডিয়া লিংক -->
-            <div style="text-align: center; background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
-                <h4 style="font-size: 15px; color: #374151; margin-bottom: 8px; font-weight: 600;">সরাসরি ইমেইল করুন</h4>
-                
-                <!-- কপি বাটনসহ ইমেইল এড্রেস -->
-                <div style="display: inline-flex; align-items: center; gap: 8px; background: #f3f4f6; padding: 8px 12px; border-radius: 6px; margin-bottom: 25px;">
-                    <span id="userEmail" style="font-size: 13px; color: #4b5563; font-weight: 500; word-break: break-all;">omarhowladercse210226@gmail.com</span>
-                    <button onclick="copyEmailText()" type="button" style="background: none; border: none; color: #059669; cursor: pointer; font-size: 13px; font-weight: 600; padding: 2px 4px;">Copy</button>
-                </div>
+    <!-- ফরম -->
+    <!-- ফরম সাবমিশন (আপনার Formspree আইডিসহ) -->
+    <form style="display: flex; flex-direction: column; gap: 16px;">
+      <div>
+        <label style="display: block; font-size: 13px; font-weight: 600; color: #4b5563; margin-bottom: 4px;">আপনার নাম</label>
+        <input type="text"id="waName" name="name" placeholder="নাম লিখুন" style="width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; font-size: 13px; box-sizing: border-box; outline: none; background: #f9fafb;" required>
+      </div>
+      <div>
+        <label style="display: block; font-size: 13px; font-weight: 600; color: #4b5563; margin-bottom: 4px;">ইমেইল এড্রেস</label>
+        <input type="email"id="waEmail" name="email" placeholder="example@gmail.com" style="width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; font-size: 13px; box-sizing: border-box; outline: none; background: #f9fafb;" required>
+      </div>
 
-                <h4 style="font-size: 15px; color: #374151; margin-bottom: 15px; font-weight: 600;">সোশ্যাল মিডিয়া প্রোফাইল</h4>
-                
-                <!-- ফ্ল্যাট মডার্ন সোশ্যাল আইকন গ্রিড -->
-                <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <a href="https://www.linkedin.com/in/md-omar-howlader-70213a42b" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #0077b5; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="LinkedIn">💼</a>
-                    <a href="https://x.com/OmarHowlader52" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #000000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="X (Twitter)">❌</a>
-                    <a href="https://www.facebook.com/0marhowlader5258" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #1877f2; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Facebook">👥</a>
-                    <a href="https://youtube.com/@omarhowlader-zi9bf?si=a4YKJlmTDCm0Ud3e" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #ff0000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="YouTube">🎥</a>
-                    <a href="https://www.tiktok.com/@codexomar5?_r=1&_t=ZS-98z1R4jBa59" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #010101; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="TikTok">🎵</a>
-                    <a href="https://www.instagram.com/omar.howlader?igsh=Z2dndjNmdzI3c3Z6" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e1306c; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Instagram">📸</a>
-                </div>
-            </div>
+      <div>
+        <label style="display: block; font-size: 13px; font-weight: 600; color: #4b5563; margin-bottom: 4px;">আপনার বার্তা</label>
+        <textarea id="waMessage" name="message" rows="3" placeholder="এখানে আপনার মেসেজটি লিখুন . . ." style="width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; font-size: 13px; box-sizing: border-box; outline: none; background: #f9fafb; resize: vertical;" required></textarea>
+      </div>
 
-        </div>
-    </section>
+      <button type="submit" style="width: 100%; background: #059669; color: white; padding: 10px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;">বার্তা পাঠান</button>
+    </form>
 
+    <!-- সরাসরি ইমেইল -->
+    <div style="margin-top: 20px; border-top: 1px solid #f3f4f6; padding-top: 16px; text-align: center;">
+      <span style="font-size: 10px; font-weight: bold; color: #9ca3af; display: block; margin-bottom: 8px; text-transform: uppercase;">সরাসরি ইমেইল করুন</span>
+      <div style="display: flex; align-items: center; justify-content: space-between; background: #f9fafb; padding: 8px 12px; border-radius: 8px; border: 1px solid #e5e7eb; gap: 8px;">
+        <span id="userEmail" style="font-size: 12px; color: #4b5563; word-break: break-all; font-family: monospace;">omarhowladercse210226@gmail.com</span>
+        <button type="button" onclick="copyEmailText()" style="font-size: 11px; background: white; color: #059669; border: 1px solid #a7f3d0; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-weight: 500;">Copy</button>
+      </div>
+    </div>
 
+    <!-- সোশ্যাল মিডিয়া প্রোফাইল সেকশন -->
+    <h4 style="font-size: 14px; color: #374151; margin-top: 16px; margin-bottom: 12px; font-weight: 600; text-align: center; font-family: sans-serif;">সোশ্যাল মিডিয়া প্রোফাইল</h4>
+
+    <!-- ফ্ল্যাট মডার্ন সোশ্যাল আইকন গ্রিড -->
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;">
+        <a href="https://linkedin.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #0077b5; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="LinkedIn">💼</a>
+        <a href="https://x.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #000000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="X (Twitter)">❌</a>
+        <a href="https://facebook.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #1877f2; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Facebook">👥</a>
+        <a href="https://youtube.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #ff0000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="YouTube">🎥</a>
+        <a href="https://tiktok.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #010101; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="TikTok">🎵</a>
+        <a href="https://instagram.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e1306c; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Instagram">📸</a>
+    </div>
+  </div>
+</div>
     <!-- নতুন ও উন্নত জাভাস্ক্রিপ্ট কোড -->
-  <script>
+<script>
+    // কন্টাক্ট মোডাল খোলার ফাংশন
+function openContactModal() {
+  const modal = document.getElementById('contactModal');
+  modal.style.display = 'flex';
+}
+// ইমেইল কপি করার ফাংশন
+function copyEmailText() {
+  const emailText = document.getElementById('userEmail').innerText;
+  navigator.clipboard.writeText(emailText).then(() => {
+    alert('ইমেইল অ্যাড্রেসটি কপি করা হয়েছে!');
+  }).catch(err => {
+    console.error('কপি করা যায়নি: ', err);
+  });
+}
+// কন্টাক্ট মোডাল বন্ধ করার ফাংশন
+function closeContactModal() {
+  const modal = document.getElementById('contactModal');
+  modal.style.display = 'none';
+}
+// ১. মোবাইল মেনু এবং ড্রপডাউন কন্ট্রোল করার ফাংশন
+function toggleMenu(action) {
+    const sidebarMenu = document.getElementById('sidebarMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (!sidebarMenu || !menuOverlay) return;
+
+    if (action === 'open') {
+        sidebarMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+    } else {
+        sidebarMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+    }
+}
+
+function toggleDropdown(e) {
+    e.preventDefault();
+    const dropdownContainer = document.querySelector('.dropdown-container');
+    const arrow = document.querySelector('.arrow');
+    if (!dropdownContainer || !arrow) return;
+
+    if (dropdownContainer.style.display === "none" || dropdownContainer.style.display === "") {
+        dropdownContainer.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+        arrow.style.color = "#34d399";
+    } else {
+        dropdownContainer.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+        arrow.style.color = "#9ca3af";
+    }
+}
+ // ২. হোয়াটসঅ্যাপে মেসেজ পাঠানোর ফাংশন
+function sendToWhatsApp(event) {
+    event.preventDefault();
+
+    let name = document.getElementById('waName').value;
+    let email = document.getElementById('waEmail').value;
+    let message = document.getElementById('waMessage').value;
+
+    let phoneNumber = "8801604639318";
+
+    let text = `*নতুন মেসেজ পোর্টফোলিও থেকে:*\n\n` +
+               `*নাম:* ${name}\n` +
+               `*ইমেইল:* ${email}\n` +
+               `*মেসেজ:* ${message}`;
+
+    let whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text);
+        window.location.href = whatsappURL;
+}
+
+// ৩. পেজ লোড হওয়ার পর বাটনগুলোর সাথে ফাংশন কানেক্ট করা
 document.addEventListener("DOMContentLoaded", function () {
     const menuOpenBtn = document.getElementById('menuOpenBtn');
     const menuCloseBtn = document.getElementById('menuCloseBtn');
-    const sidebarMenu = document.getElementById('sidebarMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     const dropdownBtn = document.querySelector('.dropdown-btn');
-    const dropdownContainer = document.querySelector('.dropdown-container');
-    const arrow = document.querySelector('.arrow');
-
-    if (menuOpenBtn) {
-        menuOpenBtn.addEventListener('click', () => {
-            sidebarMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-        });
-    }
-
-    if (menuCloseBtn) {
-        menuCloseBtn.addEventListener('click', () => {
-            sidebarMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-    }
-
-    if (menuOverlay) {
-        menuOverlay.addEventListener('click', () => {
-            sidebarMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-    }
-
-    if (dropdownBtn) {
-        dropdownBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (dropdownContainer.style.display === "none" || dropdownContainer.style.display === "") {
-                dropdownContainer.style.display = "block";
-                arrow.style.transform = "rotate(180deg)";
-                arrow.style.color = "#34d399";
-            } else {
-                dropdownContainer.style.display = "none";
-                arrow.style.transform = "rotate(0deg)";
-                arrow.style.color = "#9ca3af";
-            }
-        });
-    }
-
     const allLinks = document.querySelectorAll('.sidebar-menu a');
+    const form = document.querySelector("form");
+
+    if (menuOpenBtn) menuOpenBtn.addEventListener('click', () => toggleMenu('open'));
+    if (menuCloseBtn) menuCloseBtn.addEventListener('click', () => toggleMenu('close'));
+    if (menuOverlay) menuOverlay.addEventListener('click', () => toggleMenu('close'));
+    if (dropdownBtn) dropdownBtn.addEventListener('click', toggleDropdown);
+    if (form) form.addEventListener("submit", sendToWhatsApp);
     allLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            sidebarMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-    });
+    if(!link.classList.contains('dropdown-btn') && !link.closest('.dropdown-container')) {
+        link.addEventListener('click', () => toggleMenu('close'));
+    }
+});
 });
 </script>
     <!-- নতুন আইটেমগুলোর জন্য ছোট একটু কাস্টম স্টাইল (CSS) -->
-    <style>
-        .nav-item {
-            display: block;
-            color: #d1d5db;
-            font-size: 16px;
-            font-weight: 500;
-            padding: 12px 0;
-            border-b: 1px solid #27272a;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .nav-item:hover {
-            color: #34d399;
-        }
-        .sub-item {
-            display: block;
-            color: #a1a1aa;
-            font-size: 14px;
-            padding: 8px 0;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .sub-item:hover {
-            color: #34d399;
-        }
-        /* সাব-মেনুর লম্বা লিস্টে স্ক্রোলবার সুন্দর করার জন্য */
-        .dropdown-container::-webkit-scrollbar {
-            width: 4px;
-        }
-        .dropdown-container::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 2px;
-        }
-    </style>
 </body>
 </html>
