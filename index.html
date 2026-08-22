@@ -364,77 +364,60 @@
 
     <!-- নতুন ও উন্নত জাভাস্ক্রিপ্ট কোড -->
   <script>
-// ১. মোবাইল মেনু এবং ড্রপডাউন কন্ট্রোল করার ফাংশন
-function toggleMenu(action) {
-    const sidebarMenu = document.getElementById('sidebarMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    if (!sidebarMenu || !menuOverlay) return;
-
-    if (action === 'open') {
-        sidebarMenu.classList.add('active');
-        menuOverlay.classList.add('active');
-    } else {
-        sidebarMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-    }
-}
-
-function toggleDropdown(e) {
-    e.preventDefault();
-    const dropdownContainer = document.querySelector('.dropdown-container');
-    const arrow = document.querySelector('.arrow');
-    if (!dropdownContainer || !arrow) return;
-
-    if (dropdownContainer.style.display === "none" || dropdownContainer.style.display === "") {
-        dropdownContainer.style.display = "block";
-        arrow.style.transform = "rotate(180deg)";
-        arrow.style.color = "#34d399";
-    } else {
-        dropdownContainer.style.display = "none";
-        arrow.style.transform = "rotate(0deg)";
-        arrow.style.color = "#9ca3af";
-    }
-}
-
-// ২. হোয়াটসঅ্যাপে মেসেজ পাঠানোর ফাংশন
-function sendToWhatsApp(event) {
-    event.preventDefault();
-    const form = event.target;
-    
-    let name = form.querySelector('input[placeholder="নাম লিখুন"]').value;
-    let email = form.querySelector('input[placeholder="example@gmail.com"]').value;
-    let message = form.querySelector('textarea').value;
-    
-    let phoneNumber = "8801604639318"; 
-    
-    let text = `*নতুন মেসেজ পোর্টফোলিও থেকে:*\n\n` +
-               `*নাম:* ${name}\n` +
-               `*ইমেইল:* ${email}\n` +
-               `*মেসেজ:* ${message}`;
-     let whatsappURL = "https://wa.me" + phoneNumber + "?text=" + encodeURIComponent(text);
-        window.open(whatsappURL, '_blank');
-}
-
-// ৩. পেজ লোড হওয়ার পর বাটনগুলোর সাথে ফাংশন কানেক্ট করা
 document.addEventListener("DOMContentLoaded", function () {
     const menuOpenBtn = document.getElementById('menuOpenBtn');
     const menuCloseBtn = document.getElementById('menuCloseBtn');
+    const sidebarMenu = document.getElementById('sidebarMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     const dropdownBtn = document.querySelector('.dropdown-btn');
-    const allLinks = document.querySelectorAll('.sidebar-menu a');
-    const form = document.querySelector("form");
+    const dropdownContainer = document.querySelector('.dropdown-container');
+    const arrow = document.querySelector('.arrow');
 
-    if (menuOpenBtn) menuOpenBtn.addEventListener('click', () => toggleMenu('open'));
-    if (menuCloseBtn) menuCloseBtn.addEventListener('click', () => toggleMenu('close'));
-    if (menuOverlay) menuOverlay.addEventListener('click', () => toggleMenu('close'));
-    if (dropdownBtn) dropdownBtn.addEventListener('click', toggleDropdown);
-    if (form) form.addEventListener("submit", sendToWhatsApp);
-    
+    if (menuOpenBtn) {
+        menuOpenBtn.addEventListener('click', () => {
+            sidebarMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+        });
+    }
+
+    if (menuCloseBtn) {
+        menuCloseBtn.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+    }
+
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+    }
+
+    if (dropdownBtn) {
+        dropdownBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (dropdownContainer.style.display === "none" || dropdownContainer.style.display === "") {
+                dropdownContainer.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+                arrow.style.color = "#34d399";
+            } else {
+                dropdownContainer.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+                arrow.style.color = "#9ca3af";
+            }
+        });
+    }
+
+    const allLinks = document.querySelectorAll('.sidebar-menu a');
     allLinks.forEach(link => {
-        link.addEventListener('click', () => toggleMenu('close'));
+        link.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
     });
 });
-  </script>
+</script>
     <!-- নতুন আইটেমগুলোর জন্য ছোট একটু কাস্টম স্টাইল (CSS) -->
     <style>
         .nav-item {
