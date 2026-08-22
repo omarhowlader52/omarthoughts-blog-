@@ -411,9 +411,8 @@ function sendToWhatsApp(event) {
                `*নাম:* ${name}\n` +
                `*ইমেইল:* ${email}\n` +
                `*মেসেজ:* ${message}`;
-               
-    let whatsappURL = `https://wa.me{phoneNumber}?text=${encodeURIComponent(text)}`;
-    window.open(whatsappURL, '_blank');
+     let whatsappURL = "https://wa.me" + phoneNumber + "?text=" + encodeURIComponent(text);
+        window.open(whatsappURL, '_blank');
 }
 
 // ৩. পেজ লোড হওয়ার পর বাটনগুলোর সাথে ফাংশন কানেক্ট করা
