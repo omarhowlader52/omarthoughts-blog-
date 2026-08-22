@@ -7,7 +7,7 @@
     
     <!-- গুগল ফন্ট -->
     <link href="https://googleapis.com" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         /* বেসিক রিসেট */
         * {
@@ -396,18 +396,31 @@
         <button type="button" onclick="copyEmailText()" style="font-size: 11px; background: white; color: #059669; border: 1px solid #a7f3d0; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-weight: 500;">Copy</button>
       </div>
     </div>
-
+    
     <!-- সোশ্যাল মিডিয়া প্রোফাইল সেকশন -->
     <h4 style="font-size: 14px; color: #374151; margin-top: 16px; margin-bottom: 12px; font-weight: 600; text-align: center; font-family: sans-serif;">সোশ্যাল মিডিয়া প্রোফাইল</h4>
 
     <!-- ফ্ল্যাট মডার্ন সোশ্যাল আইকন গ্রিড -->
     <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;">
-        <a href="https://linkedin.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #0077b5; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="LinkedIn">💼</a>
-        <a href="https://x.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #000000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="X (Twitter)">❌</a>
-        <a href="https://facebook.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #1877f2; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Facebook">👥</a>
-        <a href="https://youtube.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #ff0000; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="YouTube">🎥</a>
-        <a href="https://tiktok.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #010101; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="TikTok">🎵</a>
-        <a href="https://instagram.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e1306c; color: white; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 14px;" title="Instagram">📸</a>
+         <!-- অফলাইন প্রফেশনাল সোশ্যাল আইকন গ্রিড (কোনো ইন্টারনেট লাগবে না) -->
+              <a href="https://m.me" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #1877f2; border-radius: 50%; text-decoration: none;" title="Facebook">
+            <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+        </a>
+        <a href="https://x.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #000000; border-radius: 50%; text-decoration: none;" title="X (Twitter)">
+            <svg style="width: 16px; height: 16px; fill: white;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #ff0000; border-radius: 50%; text-decoration: none;" title="YouTube">
+            <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://tiktok.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #010101; border-radius: 50%; text-decoration: none;" title="TikTok">
+            <svg style="width: 16px; height: 16px; fill: white;" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.15 1.13 1.18 2.68 1.83 4.3 1.94v3.93c-1.8-.07-3.55-.76-4.9-1.95-.12-.1-.23-.2-.35-.31v5.77c.01 1.93-.53 3.84-1.57 5.4-1.51 2.14-4 3.42-6.63 3.42-1.9 0-3.77-.66-5.25-1.85-2.5-1.94-3.66-5.32-2.9-8.43.52-2.2 1.84-4.14 3.7-5.36 1.7-1.12 3.76-1.53 5.77-1.15V7.4c-1.34-.38-2.8-.13-3.96.66-.96.65-1.62 1.68-1.83 2.83-.34 1.74.45 3.58 1.94 4.54.97.64 2.13.9 3.28.73 1.2-.15 2.29-.86 2.87-1.93.37-.66.54-1.4.52-2.16V.02z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e1306c; border-radius: 50%; text-decoration: none;" title="Instagram">
+            <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #0077b5; border-radius: 50%; text-decoration: none;" title="LinkedIn">
+            <svg style="width: 16px; height: 16px; fill: white;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+  </a>
     </div>
   </div>
 </div>
