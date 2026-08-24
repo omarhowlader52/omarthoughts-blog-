@@ -9,40 +9,55 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-.profile-section { padding: 40px 15px; background-color: #f9fbfd; font-family: sans-serif; color: #333; transition: all 0.4s ease; }
-.profile-container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; align-items: center; text-align: center; }
-.profile-image-area { max-width: 250px; }
-.profile-img { width: 100%; border-radius: 50%; box-shadow: 0 8px 25px rgba(0,0,0,0.1); object-fit: cover; }
-.profile-content h1 { font-size: 2rem; margin-bottom: 5px; }
+/* --- প্রোফাইল পপআপ (Modal) মেইন সিএসএস --- */
+.profile-modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+.profile-modal-content { background-color: #f9fbfd; margin: 5% auto; padding: 30px; border-radius: 16px; width: 90%; max-width: 850px; position: relative; max-height: 85vh; overflow-y: auto; color: #333; font-family: sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.close-profile-modal { position: absolute; right: 20px; top: 15px; color: #aaa; font-size: 35px; font-weight: bold; cursor: pointer; transition: color 0.2s; }
+.close-profile-modal:hover { color: #f44336; }
+
+/* --- ভেতরের লেআউট --- */
+.profile-container { display: flex; flex-direction: column; gap: 20px; align-items: center; text-align: center; margin-top: 20px; }
+.profile-image-area { max-width: 200px; }
+.profile-img { width: 100%; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover; }
+.profile-content h1 { font-size: 1.8rem; margin-bottom: 5px; }
 .profile-content .highlight { color: #0066cc; }
-.subtitle { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
-.description { font-size: 1rem; line-height: 1.6; margin-bottom: 15px; color: #444; text-align: left; }
+.subtitle { font-size: 1rem; color: #555; margin-bottom: 15px; }
+.description { font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; color: #444; text-align: left; }
 .profile-content strong { color: #0066cc; font-weight: bold; background: rgba(0,102,204,0.05); padding: 0 4px; }
-.services-block, .philosophy-block, .cta-block { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); margin-top: 20px; text-align: left; width: 100%; box-sizing: border-box; transition: background 0.4s; }
-.services-block h2, .philosophy-block h2 { font-size: 1.2rem; color: #2d3748; }
-.services-block ul { padding-left: 20px; }
-.services-block ul li { margin-bottom: 10px; }
-.cta-text { font-weight: bold; color: #0066cc; font-size: 1.2rem; }
+.services-block, .philosophy-block, .cta-block { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); margin-top: 15px; text-align: left; width: 100%; box-sizing: border-box; }
+.services-block h2, .philosophy-block h2 { font-size: 1.1rem; color: #2d3748; }
+.services-block ul { padding-left: 20px; margin: 5px 0; }
+.services-block ul li { margin-bottom: 8px; font-size: 0.95rem; }
+.cta-text { font-weight: bold; color: #0066cc; font-size: 1.1rem; }
 .cta-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
-.btn { padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: transform 0.2s; }
+.btn { padding: 10px 20px; border: none; font-size: 0.95rem; border-radius: 5px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
 .btn:hover { transform: translateY(-2px); }
 .btn-primary { background: #0066cc; color: #fff; }
 .btn-secondary { background: #edf2f7; color: #4a5568; }
-.theme-toggle-area { width: 100%; max-width: 1000px; margin: 0 auto 15px auto; display: flex; justify-content: flex-end; }
-.theme-btn { padding: 8px 15px; border: none; background: #edf2f7; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: background 0.3s; }
+
+/* --- ডার্ক মোড সিএসএস --- */
+.theme-toggle-area { display: flex; justify-content: flex-end; margin-bottom: 10px; padding-right: 25px; }
+.theme-btn { padding: 6px 12px; border: none; background: #edf2f7; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
 .dark-theme { background-color: #1a202c !important; color: #f7fafc !important; }
 .dark-theme .theme-btn { background: #2d3748; color: #fff; }
-.dark-theme .services-block, .dark-theme .philosophy-block, .dark-theme .cta-block { background: #2d3748 !important; color: #fff; box-shadow: none; }
+.dark-theme .services-block, .dark-theme .philosophy-block, .dark-theme .cta-block { background: #2d3748 !important; color: #fff; }
 .dark-theme .services-block h2, .dark-theme .philosophy-block h2, .dark-theme .subtitle { color: #e2e8f0; }
 .dark-theme .description { color: #cbd5e0; }
 .dark-theme .profile-content .highlight { color: #63b3ed; }
 .dark-theme .profile-content strong { color: #63b3ed; background: rgba(99,179,237,0.1); }
 .dark-theme .btn-secondary { background: #4a5568; color: #fff; }
-.animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-.animate-slide-up { animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
-@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@media (min-width: 768px) { .profile-container { flex-direction: row; text-align: left; align-items: flex-start; } .profile-image-area { max-width: 300px; } .profile-img { border-radius: 15px; } .cta-buttons { justify-content: flex-start; } }
+
+/* --- পপআপ অ্যানিমেশন --- */
+.animate-zoom-in { animation: zoomIn 0.3s ease-out; }
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* বড় স্ক্রিনের লেআউট */
+@media (min-width: 768px) {
+    .profile-container { flex-direction: row; text-align: left; align-items: flex-start; }
+    .profile-image-area { max-width: 250px; }
+    .profile-img { border-radius: 15px; }
+    .cta-buttons { justify-content: flex-start; }
+}
         /* বেসিক রিসেট */
         * {
             margin: 0;
