@@ -1,4 +1,4 @@
-// profile-component.js - নতুন পপআপ সিস্টেম কোড
+// profile-component.js - মোবাইল ফ্রেন্ডলি ও ফিক্সড বাটন লিংক কোড
 const profilePopupHTML = `
 <div id="customProfileModal" class="profile-modal">
     <div class="profile-modal-content animate-zoom-in">
@@ -11,6 +11,7 @@ const profilePopupHTML = `
         </div>
 
         <div class="profile-container">
+            <!-- ছবিকে সব ডিভাইসের জন্য উপরে ও সেন্টারে রাখা হলো -->
             <div class="profile-image-area">
                 <img src="omar52hub.png" alt="ওমর হাওলাদার" class="profile-img">
             </div>
@@ -18,7 +19,7 @@ const profilePopupHTML = `
             <div class="profile-content">
                 <h1>হ্যালো, আমি <span class="highlight">ওমর হাওলাদার</span> 👋</h1>
                 <p class="subtitle">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং টেকনিক্যাল পার্টনার</p>
-                <p class="description">আমি একজন প্রফেশনাল <strong>ওয়েব ডেভেলপার</strong>, <strong>ডিজিটাল মার্কেটার</strong> এবং <strong>অনলাইন সリューション এক্সপার্ট</strong>। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফলভাবে প্রতিষ্ঠিত ও পরিচালনা করতে সাহায্য করে আসছি।</p>
+                <p class="description">আমি একজন প্রফেশনাল <strong>ওয়েব ডেভেলপার</strong>, <strong>ডিজিটাল মার্কেটার</strong> এবং <strong>অনলাইন সলিউশন এক্সপার্ট</strong>। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফলভাবে প্রতিষ্ঠিত ও পরিচালনা করতে সাহায্য করে আসছি।</p>
                 <p class="description">একটি সাধারণ আইডিয়াকে একটি পূর্ণাঙ্গ ডিজিটাল ব্র্যান্ডে রূপান্তর করাই আমার মূল কাজ। ওয়েবসাইট তৈরি করা থেকে শুরু করে সেটি সঠিক অডিয়েন্সের কাছে পৌঁছে দেওয়া পর্যন্ত প্রতিটি ধাপে আমি আপনাকে প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।</p>
                 
                 <div class="services-block">
@@ -26,7 +27,7 @@ const profilePopupHTML = `
                     <ul>
                         <li><strong>আধুনিক ওয়েব ডেভেলপমেন্ট:</strong> আপনার ব্যবসার জন্য দৃষ্টিনন্দন, দ্রুতগতির এবং মোবাইল-ফ্রেন্ডলি ওয়েবসাইট তৈরি।</li>
                         <li><strong>স্মার্ট ডিজিটাল মার্কেটিং:</strong> ফেসবুক ও অন্যান্য সোশ্যাল মিডিয়া পেজ ফুল-টাইম দেখাশোনা এবং নিখুঁত অডিয়েন্স টার্গেটিংয়ের মাধ্যমে <strong>পেজ বুস্টিং</strong>।</li>
-                        <li><strong>অনলাইন ও পেমেন্ট সリューション:</strong> ফ্রিল্যান্সিং বা বিজনেস পেমেন্টের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।</li>
+                        <li><strong>অনলাইন ও পেমেন্ট সলিউশন:</strong> ফ্রিল্যান্সিং বা বিজনেস পেমেন্টের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।</li>
                     </ul>
                 </div>
                 
@@ -62,8 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const themeBtn = document.getElementById("themeToggleBtn");
     const profileModalContent = document.querySelector(".profile-modal-content");
 
-    // ১ নং ছবির সমাধান: মেনুর "আমার সম্পর্কে" বাটনে ক্লিক করলে পপআপ খুলবে
-    // আপনার মেনুর "আমার সম্পর্কে" বাটনে href এর জায়গায় বা আইডিতে 'about-link' যোগ করতে পারেন অথবা নিচের লজিক কাজ করবে
+    // মেনুর "আমার সম্পর্কে" বাটনে ক্লিক করলে পপআপ খুলবে
     const aboutLinks = document.querySelectorAll('a[href*="about"], a[href*="সম্পর্কে"]');
     aboutLinks.forEach(link => {
         link.addEventListener("click", function(e) {
@@ -73,26 +73,42 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // পপআপ বন্ধ করার লজিক
-    if(closeBtn) {
-        closeBtn.addEventListener("click", function() {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        });
+    // পপআপ বন্ধ করার ফাংশন
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
     }
 
-    // ২ নং ছবির সমাধান: সেবাসমূহ বাটনে ক্লিক করলে পপআপ বন্ধ হয়ে মেইন পেজের সেবাসমূহ অপশনে নিয়ে যাবে
+    if(closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
+
+    // ২ নং ছবির সমাধান: সেবাসমূহ বাটনে ক্লিক করলে স্ক্রল করে মেইন পেজের সেবাসমূহে নিয়ে যাবে
     document.getElementById("modalServicesBtn").addEventListener("click", function() {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-        window.location.hash = "#services"; // মেনুর 'সেবাসমূহ' এর আইডি অনুযায়ী লিংক
+        closeModal();
+        setTimeout(() => {
+            // স্ক্রিনশটে আপনার সেবাসমূহ সেকশনের আইডি খোঁজ করে এটি স্ক্রল করবে
+            const servicesSection = document.getElementById("services") || document.querySelector('[id*="service"]');
+            if (servicesSection) {
+                servicesSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+                window.location.hash = "#services";
+            }
+        }, 300);
     });
 
-    // ৩ নং ছবির সমাধান: যোগাযোগ করুন বাটনে ক্লিক করলে মেইন পেজের যোগাযোগ বাটনের জায়গায় নিয়ে যাবে
+    // ৩ নং ছবির সমাধান: যোগাযোগ করুন বাটনে ক্লিক করলে মেইন পেজের যোগাযোগে নিয়ে যাবে
     document.getElementById("modalContactBtn").addEventListener("click", function() {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-        window.location.hash = "#contact"; // মেইন পেজের 'যোগাযোগ' এর আইডি অনুযায়ী লিংক
+        closeModal();
+        setTimeout(() => {
+            // স্ক্রিনশট ও ইউআরএল দেখে নিশ্চিত যে আপনার কন্টাক্ট আইডি '#contact'
+            const contactSection = document.getElementById("contact") || document.querySelector('[id*="contact"]');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+                window.location.hash = "#contact";
+            }
+        }, 300);
     });
 
     // ডার্ক মোড লজিক
@@ -101,14 +117,16 @@ document.addEventListener("DOMContentLoaded", function() {
         themeBtn.innerHTML = "☀️ লাইট মোড";
     }
 
-    themeBtn.addEventListener("click", function() {
-        profileModalContent.classList.toggle("dark-theme");
-        if (profileModalContent.classList.contains("dark-theme")) {
-            localStorage.setItem("profile-theme", "dark");
-            themeBtn.innerHTML = "☀️ লাইট মোড";
-        } else {
-            localStorage.setItem("profile-theme", "light");
-            themeBtn.innerHTML = "🌙 ডার্ক মোড";
-        }
-    });
+    if(themeBtn) {
+        themeBtn.addEventListener("click", function() {
+            profileModalContent.classList.toggle("dark-theme");
+            if (profileModalContent.classList.contains("dark-theme")) {
+                localStorage.setItem("profile-theme", "dark");
+                themeBtn.innerHTML = "☀️ লাইট মোড";
+            } else {
+                localStorage.setItem("profile-theme", "light");
+                themeBtn.innerHTML = "🌙 ডার্ক মোড";
+            }
+        });
+    }
 });
