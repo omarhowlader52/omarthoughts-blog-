@@ -1,4 +1,4 @@
-// profile-component.js - মেনুবার ওপেন এবং যোগাযোগ বাটন অটো-ক্লিক লজিক
+// profile-component.js - রেসপন্সিভ লেআউট এবং লিংক ফিক্সড কোড
 const profilePopupHTML = `
 <div id="customProfileModal" class="profile-modal">
     <div class="profile-modal-content animate-zoom-in">
@@ -9,10 +9,12 @@ const profilePopupHTML = `
         </div>
 
         <div class="profile-container">
+            <!-- ছবিটি মোবাইলে উপরে এবং ডেক্সটপে বামে সুন্দরভাবে বসবে -->
             <div class="profile-image-area">
                 <img src="omar52hub.png" alt="ওমর হাওলাদার" class="profile-img">
             </div>
             
+            <!-- লেখার অংশটি যাতে ভেঙে না যায় তার জন্য প্রফেশনাল ব্লক -->
             <div class="profile-content">
                 <h1>হ্যালো, আমি <span class="highlight">ওমর হাওলাদার</span> 👋</h1>
                 <p class="subtitle">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং টেকনিক্যাল পার্টনার</p>
@@ -36,8 +38,9 @@ const profilePopupHTML = `
                 <div class="cta-block">
                     <p class="cta-text">🚀 চলুন একসাথে কাজ শুরু করি!</p>
                     <div class="cta-buttons">
-                        <button id="modalServicesBtn" class="btn btn-secondary">সেবাসমূহ</button>
-                        <button id="modalContactBtn" class="btn btn-primary">যোগাযোগ করুন</button>
+                        <!-- সরাসরি আপনার মেইন সাইটের সেবাসমূহ এবং কন্টাক্ট লিংক -->
+                        <a href="https://vercel.app" id="modalServicesBtn" class="btn btn-secondary">সেবাসমূহ</a>
+                        <a href="https://vercel.app" id="modalContactBtn" class="btn btn-primary">যোগাযোগ করুন</a>
                     </div>
                 </div>
             </div>
@@ -76,29 +79,9 @@ document.addEventListener("DOMContentLoaded", function() {
         closeBtn.addEventListener("click", closeModal);
     }
 
-    // ১. সেবাসমূহ বাটনে চাপ দিলে সরাসরি মেইন মেনুবার ওপেন হবে
-    document.getElementById("modalServicesBtn").addEventListener("click", function() {
-        closeModal();
-        setTimeout(() => {
-            const menuIcon = document.querySelector('.menu-icon, .toggle-menu, #menu-toggle') || document.querySelector('header i, header svg');
-            if (menuIcon) {
-                menuIcon.click();
-            }
-        }, 300);
-    });
-
-    // ২. যোগাযোগ করুন বাটনে চাপ দিলে মেইন পেজের সাদা "যোগাযোগ করুন" বাটনটি অটো-ক্লিক হয়ে খুলে যাবে
-    document.getElementById("modalContactBtn").addEventListener("click", function() {
-        closeModal();
-        setTimeout(() => {
-            // মেইন পেজের সাদা বাটনটির ক্লাস বা লিংকের ওপর অটো-ক্লিক ট্রিগার করা
-            const mainPageContactBtn = document.querySelector('a[href*="contact"].btn') || document.querySelector('.hero-buttons a:last-child') || document.querySelector('a[href="#contact"]');
-            if (mainPageContactBtn) {
-                mainPageContactBtn.scrollIntoView({ behavior: "smooth", block: "center" });
-                mainPageContactBtn.click(); // বাটনটি অটোমেটিক ওপেন করে দেবে!
-            }
-        }, 300);
-    });
+    // বাটনে ক্লিক করলে আগে পপআপ বন্ধ হবে, তারপর লিংকে নিয়ে যাবে
+    document.getElementById("modalServicesBtn").addEventListener("click", closeModal);
+    document.getElementById("modalContactBtn").addEventListener("click", closeModal);
 
     // ডার্ক মোড লজিক
     if (localStorage.getItem("profile-theme") === "dark") {
