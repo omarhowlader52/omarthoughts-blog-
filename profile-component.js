@@ -1,75 +1,114 @@
-// profile-component.js 
-const profileHTML = `
-<section class="profile-section" id="profileSection">
-    <!-- ডার্ক মোড বাটন -->
-    <div class="theme-toggle-area">
-        <button id="themeToggleBtn" class="theme-btn">🌙 ডার্ক মোড</button>
-    </div>
-
-    <div class="profile-container">
-        <!-- অ্যানিমেশনের জন্য class="animate-fade-in" যোগ করা হয়েছে -->
-        <div class="profile-image-area animate-fade-in">
-            <img src="image_SQlyF7.png" alt="ওমর হাওলাদার" class="profile-img">
-        </div>
+// profile-component.js - নতুন পপআপ সিস্টেম কোড
+const profilePopupHTML = `
+<div id="customProfileModal" class="profile-modal">
+    <div class="profile-modal-content animate-zoom-in">
+        <!-- বন্ধ করার ক্রস বাটন -->
+        <span class="close-profile-modal">&times;</span>
         
-        <div class="profile-content animate-slide-up">
-            <h1>হ্যালো, আমি <span class="highlight">ওমর হাওলাদার</span> 👋</h1>
-            <p class="subtitle">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং টেকনিক্যাল পার্টনার</p>
-            <p class="description">আমি একজন প্রফেশনাল <strong>ওয়েব ডেভেলপার</strong>, <strong>ডিজিটাল মার্কেটার</strong> এবং <strong>অনলাইন সলিউশন এক্সপার্ট</strong>। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফলভাবে প্রতিষ্ঠিত ও পরিচালনা করতে সাহায্য করে আসছি।</p>
-            <p class="description">একটি সাধারণ আইডিয়াকে একটি পূর্ণাঙ্গ ডিজিটাল ব্র্যান্ডে রূপান্তর করাই আমার মূল কাজ। ওয়েবসাইট তৈরি করা থেকে শুরু করে সেটি সঠিক অডিয়েন্সের কাছে পৌঁছে দেওয়া পর্যন্ত প্রতিটি ধাপে আমি আপনাকে প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।</p>
-            
-            <div class="services-block animate-slide-up">
-                <h2>💡 আমি আপনাকে যেভাবে সাহায্য করতে পারি:</h2>
-                <ul>
-                    <li><strong>আধুনিক ওয়েব ডেভেলপমেন্ট:</strong> আপনার ব্যবসার জন্য দৃষ্টিনন্দন, দ্রুতগতির এবং মোবাইল-ফ্রেন্ডলি ওয়েবসাইট তৈরি।</li>
-                    <li><strong>স্মার্ট ডিজিটাল মার্কেটিং:</strong> ফেসবুক ও অন্যান্য সোশ্যাল মিডিয়া পেজ ফুল-টাইম দেখাশোনা এবং নিখুঁত অডিয়েন্স টার্গেটিংয়ের মাধ্যমে <strong>পেজ বুস্টিং</strong>।</li>
-                    <li><strong>অনলাইন ও পেমেন্ট সলিউশন:</strong> ফ্রিল্যান্সিং বা বিজনেস পেমেন্টের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।</li>
-                </ul>
+        <!-- ডার্ক মোড বাটন -->
+        <div class="theme-toggle-area">
+            <button id="themeToggleBtn" class="theme-btn">🌙 ডার্ক মোড</button>
+        </div>
+
+        <div class="profile-container">
+            <div class="profile-image-area">
+                <img src="omar52hub.png" alt="ওমর হাওলাদার" class="profile-img">
             </div>
             
-            <div class="philosophy-block animate-slide-up">
-                <h2>🎯 কাজের দর্শন (My Work Philosophy):</h2>
-                <p>আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের ব্যবসার দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
-            </div>
-            
-            <div class="cta-block animate-slide-up">
-                <p class="cta-text">🚀 চলুন একসাথে কাজ শুরু করি!</p>
-                <div class="cta-buttons">
-                    <a href="#services" class="btn btn-secondary">সেবাসমূহ</a>
-                    <a href="#contact" class="btn btn-primary">যোগাযোগ করুন</a>
+            <div class="profile-content">
+                <h1>হ্যালো, আমি <span class="highlight">ওমর হাওলাদার</span> 👋</h1>
+                <p class="subtitle">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং টেকনিক্যাল পার্টনার</p>
+                <p class="description">আমি একজন প্রফেশনাল <strong>ওয়েব ডেভেলপার</strong>, <strong>ডিজিটাল মার্কেটার</strong> এবং <strong>অনলাইন সリューション এক্সপার্ট</strong>। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফলভাবে প্রতিষ্ঠিত ও পরিচালনা করতে সাহায্য করে আসছি।</p>
+                <p class="description">একটি সাধারণ আইডিয়াকে একটি পূর্ণাঙ্গ ডিজিটাল ব্র্যান্ডে রূপান্তর করাই আমার মূল কাজ। ওয়েবসাইট তৈরি করা থেকে শুরু করে সেটি সঠিক অডিয়েন্সের কাছে পৌঁছে দেওয়া পর্যন্ত প্রতিটি ধাপে আমি আপনাকে প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।</p>
+                
+                <div class="services-block">
+                    <h2>💡 আমি আপনাকে যেভাবে সাহায্য করতে পারি:</h2>
+                    <ul>
+                        <li><strong>আধুনিক ওয়েব ডেভেলপমেন্ট:</strong> আপনার ব্যবসার জন্য দৃষ্টিনন্দন, দ্রুতগতির এবং মোবাইল-ফ্রেন্ডলি ওয়েবসাইট তৈরি।</li>
+                        <li><strong>স্মার্ট ডিজিটাল মার্কেটিং:</strong> ফেসবুক ও অন্যান্য সোশ্যাল মিডিয়া পেজ ফুল-টাইম দেখাশোনা এবং নিখুঁত অডিয়েন্স টার্গেটিংয়ের মাধ্যমে <strong>পেজ বুস্টিং</strong>।</li>
+                        <li><strong>অনলাইন ও পেমেন্ট সリューション:</strong> ফ্রিল্যান্সিং বা বিজনেস পেমেন্টের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।</li>
+                    </ul>
+                </div>
+                
+                <div class="philosophy-block">
+                    <h2>🎯 কাজের দর্শন (My Work Philosophy):</h2>
+                    <p>আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের ব্যবসার দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
+                </div>
+                
+                <div class="cta-block">
+                    <p class="cta-text">🚀 চলুন একসাথে কাজ শুরু করি!</p>
+                    <div class="cta-buttons">
+                        <!-- ২ নং ছবির লিংক (সেবাসমূহ) -->
+                        <button id="modalServicesBtn" class="btn btn-secondary">সেবাসমূহ</button>
+                        <!-- ৩ নং ছবির লিংক (যোগাযোগ করুন) -->
+                        <button id="modalContactBtn" class="btn btn-primary">যোগাযোগ করুন</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 `;
 
-// মূল HTML ফাইলে লোড করার লজিক
 document.addEventListener("DOMContentLoaded", function() {
+    // বডিতে পপআপের কোড যুক্ত করা
     const targetElement = document.getElementById("my-profile-section");
     if(targetElement) {
-        targetElement.innerHTML = profileHTML;
-        
-        // ডার্ক মোড ফাংশনালিটি
-        const themeBtn = document.getElementById("themeToggleBtn");
-        const profileSection = document.getElementById("profileSection");
-        
-        // আগে থেকে ইউজারের ডার্ক মোড চয়েস সেভ করা আছে কিনা চেক করা
-        if (localStorage.getItem("profile-theme") === "dark") {
-            profileSection.classList.add("dark-theme");
-            themeBtn.innerHTML = "☀️ লাইট মোড";
-        }
+        targetElement.innerHTML = profilePopupHTML;
+    }
 
-        themeBtn.addEventListener("click", function() {
-            profileSection.classList.toggle("dark-theme");
-            
-            if (profileSection.classList.contains("dark-theme")) {
-                localStorage.setItem("profile-theme", "dark");
-                themeBtn.innerHTML = "☀️ লাইট মোড";
-            } else {
-                localStorage.setItem("profile-theme", "light");
-                themeBtn.innerHTML = "🌙 ডার্ক মোড";
-            }
+    const modal = document.getElementById("customProfileModal");
+    const closeBtn = document.querySelector(".close-profile-modal");
+    const themeBtn = document.getElementById("themeToggleBtn");
+    const profileModalContent = document.querySelector(".profile-modal-content");
+
+    // ১ নং ছবির সমাধান: মেনুর "আমার সম্পর্কে" বাটনে ক্লিক করলে পপআপ খুলবে
+    // আপনার মেনুর "আমার সম্পর্কে" বাটনে href এর জায়গায় বা আইডিতে 'about-link' যোগ করতে পারেন অথবা নিচের লজিক কাজ করবে
+    const aboutLinks = document.querySelectorAll('a[href*="about"], a[href*="সম্পর্কে"]');
+    aboutLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // ব্যাকগ্রাউন্ড স্ক্রল বন্ধ রাখবে
+        });
+    });
+
+    // পপআপ বন্ধ করার লজিক
+    if(closeBtn) {
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
         });
     }
+
+    // ২ নং ছবির সমাধান: সেবাসমূহ বাটনে ক্লিক করলে পপআপ বন্ধ হয়ে মেইন পেজের সেবাসমূহ অপশনে নিয়ে যাবে
+    document.getElementById("modalServicesBtn").addEventListener("click", function() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        window.location.hash = "#services"; // মেনুর 'সেবাসমূহ' এর আইডি অনুযায়ী লিংক
+    });
+
+    // ৩ নং ছবির সমাধান: যোগাযোগ করুন বাটনে ক্লিক করলে মেইন পেজের যোগাযোগ বাটনের জায়গায় নিয়ে যাবে
+    document.getElementById("modalContactBtn").addEventListener("click", function() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        window.location.hash = "#contact"; // মেইন পেজের 'যোগাযোগ' এর আইডি অনুযায়ী লিংক
+    });
+
+    // ডার্ক মোড লজিক
+    if (localStorage.getItem("profile-theme") === "dark") {
+        profileModalContent.classList.add("dark-theme");
+        themeBtn.innerHTML = "☀️ লাইট মোড";
+    }
+
+    themeBtn.addEventListener("click", function() {
+        profileModalContent.classList.toggle("dark-theme");
+        if (profileModalContent.classList.contains("dark-theme")) {
+            localStorage.setItem("profile-theme", "dark");
+            themeBtn.innerHTML = "☀️ লাইট মোড";
+        } else {
+            localStorage.setItem("profile-theme", "light");
+            themeBtn.innerHTML = "🌙 ডার্ক মোড";
+        }
+    });
 });
