@@ -65,6 +65,30 @@
         top: 0;
         z-index: 900;
     }
+    /* লোগো এখন হেডারের ভেতরে আবদ্ধ না থেকে একটি ফ্লোটিং ব্যাজ হিসেবে হিরো সেকশনের ওপর ভেসে থাকে */
+    .logo-badge {
+        position: absolute;
+        left: 20px;
+        top: 100%;
+        transform: translateY(-62%);
+        z-index: 950;
+        background: var(--surface);
+        padding: 8px;
+        border-radius: 20px;
+        box-shadow: 0 12px 28px -6px rgba(0,0,0,0.28), 0 4px 12px rgba(0,0,0,0.12);
+        border: 1px solid var(--border);
+        animation: logoFloat 4.5s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+        0%, 100% { transform: translateY(-62%); }
+        50% { transform: translateY(-68%); }
+    }
+    .logo-img {
+        height: 76px;
+        width: auto;
+        display: block;
+        border-radius: 14px;
+    }
     .logo-text {
         font-size: 20px;
         font-weight: 700;
@@ -73,7 +97,7 @@
         -webkit-text-fill-color: transparent;
         letter-spacing: 0.5px;
     }
-    .header-controls { display: flex; align-items: center; gap: 6px; }
+    .header-controls { display: flex; align-items: center; gap: 6px; margin-left: auto; }
     .icon-btn {
         background: none;
         border: 1px solid var(--border);
@@ -376,10 +400,17 @@
         .hero-section, .btn-row, .services-grid, .cv-wrap, .blog-wrap, .footer-inner, .demo-card { max-width: 1040px; }
     }
 
+    @media (max-width: 480px) {
+        .logo-badge { left: 14px; padding: 6px; border-radius: 16px; }
+        .logo-img { height: 60px; border-radius: 12px; }
+    }
+
     @media (max-width: 380px) {
         .sidebar-menu { width: min(300px, 88vw); right: -100%; }
         .header-controls { gap: 4px; }
         .icon-btn { padding: 6px 8px; font-size: 12px; }
+        .logo-badge { left: 10px; padding: 5px; }
+        .logo-img { height: 52px; }
     }
 </style>
 </head>
@@ -387,7 +418,9 @@
 
 <!-- হেডার -->
 <header class="main-header">
-    <img src="omar52hub.png" alt="Omar 52Hub" class="logo-img" style="height:60px;width:auto;display:block;">
+    <div class="logo-badge">
+        <img src="omar52hub.png" alt="Omar 52Hub" class="logo-img">
+    </div>
     <div class="header-controls">
         <button class="icon-btn" id="langBtn" onclick="setLanguage(currentLang === 'bn' ? 'en' : 'bn')">EN/BN</button>
         <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
