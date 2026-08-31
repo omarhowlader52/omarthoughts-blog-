@@ -1,486 +1,905 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মোঃ ওমর হাওলাদার | পোর্টফোলিও</title>
-    
-    <!-- গুগল ফন্ট -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        /* বেসিক রিসেট */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            /* যুক্তাক্ষর ও বানান ভাঙা রোধ করার জন্য স্পেশাল CSS */
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মোঃ ওমর হাওলাদার | পোর্টফোলিও</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS: শুধুমাত্র "আমার সম্পর্কে" সেকশনের ভেতরের বিস্তারিত কনটেন্ট সাজাতে ব্যবহৃত হয়েছে -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* ===== রিসেট ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ১. মেইন হেডার (টপ বার) */
-        .main-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 20px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 900;
-        }
-        
-        /* নতুন লোগোর সাইজ ও স্টাইল */
-        .logo-container img {
-            height: 45px; /* লোগোটি সুন্দর দেখানোর সাইজ */
-            width: auto;
-            display: block;
-        }
+    /* ===== থিম ভেরিয়েবল ===== */
+    :root {
+        --bg: #f8f9fa;
+        --surface: #ffffff;
+        --surface-alt: #f9fafb;
+        --text-main: #111827;
+        --text-sub: #6b7280;
+        --text-body: #4b5563;
+        --accent: #059669;
+        --accent-dark: #0f766e;
+        --border: #e5e7eb;
+        --header-bg: #ffffff;
+        --shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    [data-theme="dark"] {
+        --bg: #0e1116;
+        --surface: #171b22;
+        --surface-alt: #1c212a;
+        --text-main: #f3f4f6;
+        --text-sub: #9ca3af;
+        --text-body: #cbd5e1;
+        --accent: #34d399;
+        --accent-dark: #10b981;
+        --border: #2a2f3a;
+        --header-bg: #12151b;
+        --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
 
-        .menu-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .menu-toggle svg {
-            width: 28px;
-            height: 28px;
-            fill: #0b462e;
-        }
+    body {
+        font-family: 'Hind Siliguri', 'Inter', sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    [data-lang="en"] body { font-family: 'Inter', sans-serif; }
 
-        /* ২. স্লাইড মেনু (ডার্ক প্রিমিয়াম থিম) */
-        .sidebar-menu {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 300px;
-            height: 100%;
-            background-color: #1a1a1a;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.4);
-            z-index: 1000;
-            transition: transform 0.4s cubic-bezier(0.1, 0.8, 0.25, 1), right 0.4s ease;
-            padding: 24px;
-            overflow-y: auto;
-        }
-        .sidebar-menu.active {
-            right: 0;
-        }
+    a { color: inherit; }
 
-        /* বন্ধ করার এক্স (X) বাটন */
-        .close-btn {
-            position: absolute;
-            top: 18px;
-            right: 24px;
-            font-size: 36px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            line-height: 1;
-        }
+    /* ===== হেডার ===== */
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background-color: var(--header-bg);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 900;
+    }
+    .logo-text {
+        font-size: 20px;
+        font-weight: 700;
+        background: linear-gradient(to right, #059669, #0f766e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.5px;
+    }
+    .header-controls { display: flex; align-items: center; gap: 6px; }
+    .icon-btn {
+        background: none;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        padding: 7px 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-body);
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .menu-toggle { background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle svg { width: 24px; height: 24px; fill: var(--text-body); }
 
-        /* মেনুর লিংকগুলোর স্টাইল */
-        .nav-links {
-            margin-top: 60px;
-            display: flex;
-            flex-direction: column;
-        }
-        .nav-links a, .dropdown-btn {
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            color: #dddddd;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: none;
-            border-left: none; border-right: none; border-top: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s ease;
-        }
-        .nav-links a:hover, .dropdown-btn:hover {
-            color: #00ff87;
-            background-color: #252525;
-            padding-left: 20px;
-        }
+    /* ===== ট্যাব সুইচার ===== */
+    .tab-switcher {
+        display: flex;
+        justify-content: center;
+        padding: 16px 12px 0 12px;
+        background-color: var(--bg);
+        position: sticky;
+        top: 57px;
+        z-index: 800;
+    }
+    .tab-track {
+        display: flex;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 4px;
+        box-shadow: var(--shadow);
+        gap: 4px;
+    }
+    .tab-btn {
+        border: none;
+        background: none;
+        padding: 9px 22px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--text-sub);
+        font-family: inherit;
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+    .tab-btn.active {
+        background: linear-gradient(to right, var(--accent), var(--accent-dark));
+        color: #ffffff;
+    }
 
-        /* ড্রপডাউন সাব-মেনু */
-        .dropdown-btn {
-            justify-content: space-between;
-        }
-        .dropdown-container {
-            display: none;
-            background-color: #111111;
-            padding-left: 15px;
-            border-radius: 4px;
-            margin: 5px 0;
-        }
-        .dropdown-container a {
-            font-size: 14px;
-            color: #aaaaaa;
-            border-bottom: 1px solid #1f1f1f;
-        }
-        .dropdown-container a:hover {
-            color: #ffd700;
-        }
+    /* ===== সাইডবার মেনু ===== */
+    .sidebar-menu {
+        position: fixed;
+        top: 0; right: -320px;
+        width: 300px; height: 100%;
+        background-color: #111112;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        z-index: 1000;
+        transition: right 0.4s cubic-bezier(0.1,0.8,0.25,1);
+        padding: 24px;
+        overflow-y: auto;
+    }
+    .sidebar-menu.active { right: 0; }
+    .close-btn {
+        position: absolute; top: 18px; right: 24px;
+        font-size: 32px; background: none; border: none;
+        color: #9ca3af; cursor: pointer; line-height: 1;
+    }
+    .nav-links { margin-top: 60px; display: flex; flex-direction: column; }
+    .nav-links a, .dropdown-btn {
+        padding: 14px 16px; text-decoration: none; font-size: 16px;
+        color: #dddddd; border-bottom: 1px solid #2a2a2a;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 12px; background: none; border-left: none; border-right: none; border-top: none;
+        width: 100%; text-align: left; cursor: pointer; font-family: inherit;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover, .dropdown-btn:hover { color: #34d399; background-color: #1b1b1b; padding-left: 20px; }
+    .dropdown-container {
+        display: none; background-color: #0c0c0c; padding-left: 15px;
+        border-left: 2px solid #059669; border-radius: 4px; margin: 5px 0;
+    }
+    .dropdown-container a { font-size: 13.5px; color: #aaaaaa; border-bottom: 1px solid #1f1f1f; }
+    .dropdown-container a:hover { color: #ffd700; padding-left: 24px; }
+    .arrow { font-size: 12px; transition: transform 0.3s ease; color: #9ca3af; }
+    .arrow.rotate { transform: rotate(180deg); color: #34d399; }
 
-        /* ড্রপডাউন তীর চিহ্নের অ্যানিমেশন */
-        .arrow {
-            font-size: 12px;
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-        .arrow.rotate {
-            transform: rotate(180deg);
-        }
+    .menu-overlay {
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+        z-index: 999; display: none; opacity: 0; transition: opacity 0.3s ease;
+    }
+    .menu-overlay.active { display: block; opacity: 1; }
 
-        /* ব্যাকগ্রাউন্ড ঝাপসা করার ওভারলে */
-        .menu-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
+    /* ===== ট্যাব প্যানেল ===== */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
-        /* ৩. কন্টেন্ট এরিয়া */
-        .hero-section {
-            max-width: 600px;
-            margin: 60px auto;
-            padding: 0 20px;
-            text-align: left;
-        }
-        .hero-section h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #0b462e;
-            line-height: 1.4;
-            margin-bottom: 20px;
-        }
-        .info-bar {
-            background-color: #0b462e;
-            color: #ffffff;
-            padding: 12px 16px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 6px;
-            line-height: 1.6;
-        }
-    </style>
+    /* ===== হিরো ===== */
+    .hero-section { max-width: 620px; margin: 44px auto 0; padding: 0 20px; text-align: left; }
+    .hero-section h1 { font-size: 30px; font-weight: 700; color: var(--text-main); line-height: 1.4; margin-bottom: 14px; }
+    .typewriter-wrap { min-height: 30px; margin-bottom: 18px; }
+    .typewriter-text {
+        font-size: 16px; font-weight: 600; color: var(--accent);
+        border-right: 2px solid var(--accent);
+        padding-right: 4px; white-space: nowrap; overflow: hidden; display: inline-block;
+    }
+    .info-bar {
+        background-color: var(--accent-dark); color: #ffffff; padding: 12px 16px;
+        font-size: 15px; font-weight: 500; border-radius: 8px; line-height: 1.6;
+    }
+    .btn-row { margin-top: 22px; display: flex; gap: 12px; padding: 0 20px; max-width: 620px; margin-left: auto; margin-right: auto; }
+    .btn-primary, .btn-secondary {
+        flex: 1; text-align: center; padding: 12px 20px; border-radius: 8px;
+        font-weight: 600; text-decoration: none; font-size: 14.5px; cursor: pointer; border: none; font-family: inherit;
+    }
+    .btn-primary {
+        background: var(--accent); color: white;
+        box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);
+    }
+    .btn-secondary {
+        background: var(--surface); color: var(--text-body); border: 1px solid var(--border);
+        position: relative;
+        animation: pulseGlow 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.35); }
+        50% { box-shadow: 0 0 0 8px rgba(5,150,105,0); }
+    }
+
+    /* ===== সেবাসমূহ ===== */
+    .services-section { padding: 56px 5%; background: var(--surface-alt); margin-top: 50px; }
+    .section-heading { font-size: 21px; color: var(--text-main); margin-bottom: 24px; text-align: center; font-weight: 700; }
+    .services-grid { display: flex; flex-direction: column; gap: 18px; max-width: 620px; margin: 0 auto; }
+    .service-card {
+        background: var(--surface); padding: 22px; border-radius: 12px;
+        box-shadow: var(--shadow); border: 1px solid var(--border);
+    }
+    .service-icon { color: var(--accent); font-size: 22px; margin-bottom: 8px; }
+    .service-title { font-size: 17px; color: var(--text-main); margin-bottom: 6px; font-weight: 600; }
+    .service-desc { color: var(--text-body); font-size: 13.5px; line-height: 1.6; margin-bottom: 12px; }
+    .service-charge {
+        display: inline-block; font-size: 12.5px; font-weight: 600; color: var(--accent-dark);
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        padding: 6px 12px; border-radius: 6px; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+
+    /* ===== পোর্টফোলিও ===== */
+    .portfolio-section { padding: 56px 5%; background: var(--bg); }
+    .portfolio-sub { text-align: center; font-size: 13px; color: var(--text-sub); margin-bottom: 20px; }
+    .demo-card {
+        background-color: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+        padding: 15px; box-shadow: var(--shadow); margin: 0 auto 20px auto; max-width: 480px;
+    }
+    .demo-card-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 15px; }
+    .demo-card-body h4 { margin: 0; font-size: 15px; color: var(--text-main); font-weight: 700; }
+    .demo-tabs { display: flex; gap: 8px; margin: 14px 0; }
+    .demo-tab { background: var(--surface-alt); color: var(--text-sub); padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; }
+    .demo-tab.active { background: var(--text-main); color: var(--bg); }
+    .demo-products { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .demo-product { background: var(--surface-alt); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+    .demo-product-icon { height: 60px; background: var(--surface); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .demo-product p { margin: 5px 0 2px 0; font-size: 12px; font-weight: 600; color: var(--text-main); }
+    .demo-price { color: var(--accent); font-weight: 700; font-size: 11px; }
+    .demo-card-footer { border-top: 1px solid var(--border); padding-top: 14px; }
+    .demo-card-footer h3 { margin: 0 0 5px 0; font-size: 16px; color: var(--text-main); }
+    .demo-card-footer p { margin: 0 0 14px 0; font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+    .demo-link { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 14px; }
+
+    /* ===== CV ট্যাব ===== */
+    .cv-wrap { max-width: 620px; margin: 40px auto; padding: 0 20px 40px; }
+    .cv-name { font-size: 24px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .cv-role { font-size: 14px; color: var(--text-sub); margin-bottom: 28px; }
+    .cv-box {
+        background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+        padding: 20px; margin-bottom: 18px; box-shadow: var(--shadow);
+    }
+    .cv-box-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
+    .cv-box ul, .cv-box ol { padding-left: 18px; margin: 0; }
+    .cv-box li { font-size: 13.5px; line-height: 1.7; color: var(--text-body); margin-bottom: 10px; }
+    .cv-box li strong { color: var(--accent-dark); }
+    .cv-box p { font-size: 13.5px; line-height: 1.7; color: var(--text-body); }
+
+    /* ===== ব্লগ ট্যাব ===== */
+    .blog-wrap { max-width: 620px; margin: 40px auto; padding: 0 20px 40px; }
+    .blog-heading { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .blog-sub { font-size: 13px; color: var(--text-sub); margin-bottom: 24px; }
+    .blog-grid { display: flex; flex-direction: column; gap: 10px; }
+    .blog-item {
+        background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+        padding: 15px 18px; font-size: 14.5px; font-weight: 600; color: var(--text-main);
+        cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+        transition: border-color 0.2s ease;
+    }
+    .blog-item:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+    /* ===== অ্যাবাউট মোডাল (গ্লাসমরফিজম) ===== */
+    .about-modal-overlay {
+        position: fixed; inset: 0; z-index: 1100; display: none;
+        align-items: center; justify-content: center; padding: 20px;
+        background: radial-gradient(circle at top, #1b2e26 0%, #0a0f0c 100%);
+    }
+    .about-modal-overlay.active { display: flex; }
+    .about-modal-close {
+        position: absolute; top: 20px; right: 24px; background: none; border: none;
+        color: #ffffff; font-size: 30px; cursor: pointer; z-index: 5;
+    }
+    .glass-card {
+        position: relative; max-width: 440px; width: 100%; max-height: 88vh; overflow-y: auto;
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 20px; padding: 32px 26px; color: #f1f5f2;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        animation: floatCard 5s ease-in-out infinite;
+    }
+    @keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .about-avatar {
+        width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+        border: 2px solid rgba(52,211,153,0.6); display: block; margin: 0 auto 16px auto;
+    }
+    .about-modal-title { font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 4px; color: #ffffff; }
+    .about-modal-sub { font-size: 13px; text-align: center; color: #9ecfba; margin-bottom: 20px; }
+    .about-modal-body p { font-size: 13.5px; line-height: 1.7; color: #e2e8e5; margin-bottom: 14px; }
+
+    /* ===== কন্টাক্ট মোডাল ===== */
+    .contact-modal-overlay {
+        display: none; position: fixed; inset: 0; z-index: 1200;
+        justify-content: center; align-items: center; padding: 16px;
+    }
+    .contact-modal-overlay.active { display: flex; }
+    .contact-modal-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }
+    .contact-modal-box {
+        position: relative; width: 100%; max-width: 450px; background: var(--surface);
+        padding: 24px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25);
+        max-height: 90vh; overflow-y: auto; z-index: 10;
+    }
+    .contact-modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; font-weight: bold; color: var(--text-sub); cursor: pointer; }
+    .contact-modal-box h3 { font-size: 20px; font-weight: bold; text-align: center; color: var(--text-main); margin-bottom: 4px; }
+    .contact-modal-box > p { font-size: 13px; text-align: center; color: var(--text-sub); margin-bottom: 20px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form label { display: block; font-size: 13px; font-weight: 600; color: var(--text-body); margin-bottom: 4px; }
+    .contact-form input, .contact-form textarea {
+        width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 10px;
+        font-size: 13px; box-sizing: border-box; outline: none; background: var(--surface-alt);
+        color: var(--text-main); font-family: inherit;
+    }
+    .contact-submit { width: 100%; background: var(--accent); color: white; padding: 10px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .email-row { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; text-align: center; }
+    .email-label { font-size: 10px; font-weight: bold; color: var(--text-sub); display: block; margin-bottom: 8px; text-transform: uppercase; }
+    .email-box { display: flex; align-items: center; justify-content: space-between; background: var(--surface-alt); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); gap: 8px; }
+    .email-box span { font-size: 12px; color: var(--text-body); word-break: break-all; font-family: monospace; }
+    .copy-btn { font-size: 11px; background: var(--surface); color: var(--accent-dark); border: 1px solid var(--accent); padding: 4px 8px; border-radius: 6px; cursor: pointer; font-weight: 500; }
+    .social-title { font-size: 14px; color: var(--text-body); margin-top: 16px; margin-bottom: 12px; font-weight: 600; text-align: center; }
+    .social-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+    .social-grid a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; text-decoration: none; }
+
+    /* ===== ফুটার ===== */
+    .site-footer { background: var(--header-bg); border-top: 1px solid var(--border); padding: 32px 5% 24px; margin-top: 40px; }
+    .footer-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .footer-logo { height: 34px; width: auto; margin: 0 auto 10px auto; display: block; }
+    .footer-tagline { font-size: 13px; color: var(--text-sub); margin-bottom: 16px; }
+    .footer-social { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; }
+    .footer-social a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; text-decoration: none; }
+    .footer-copy { font-size: 12px; color: var(--text-sub); }
+
+    /* ===== রেসপন্সিভ ব্রেকপয়েন্ট (sm / md / lg) ===== */
+    html { -webkit-text-size-adjust: 100%; }
+    p, li, h1, h2, h3, h4 { overflow-wrap: break-word; }
+
+    @media (min-width: 640px) {
+        .hero-section h1 { font-size: clamp(28px, 4vw, 34px); }
+        .btn-row, .hero-section { max-width: 640px; }
+    }
+
+    @media (min-width: 768px) {
+        .hero-section, .btn-row, .services-grid, .cv-wrap, .blog-wrap, .footer-inner { max-width: 700px; }
+        .hero-section h1 { font-size: clamp(30px, 3.6vw, 38px); }
+        .section-heading { font-size: 24px; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .blog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .demo-card { max-width: 560px; }
+        .sidebar-menu { width: 340px; }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-section, .btn-row, .services-grid, .cv-wrap, .blog-wrap, .footer-inner, .demo-card { max-width: 880px; }
+        .hero-section h1 { font-size: clamp(34px, 3vw, 44px); }
+        .services-grid { grid-template-columns: repeat(3, 1fr); }
+        .blog-grid { grid-template-columns: repeat(3, 1fr); }
+        .cv-wrap { padding-left: 0; padding-right: 0; }
+        .demo-card { max-width: 640px; }
+    }
+
+    @media (min-width: 1440px) {
+        .hero-section, .btn-row, .services-grid, .cv-wrap, .blog-wrap, .footer-inner, .demo-card { max-width: 1040px; }
+    }
+
+    @media (max-width: 380px) {
+        .sidebar-menu { width: min(300px, 88vw); right: -100%; }
+        .header-controls { gap: 4px; }
+        .icon-btn { padding: 6px 8px; font-size: 12px; }
+    }
+</style>
 </head>
 <body>
-<body>
 
-    <!-- হেডার বার (সবুজ ব্র্যান্ডিং ও মডার্ন লুক) -->
-    <header class="main-header" style="background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); border-b: 1px solid #f3f4f6;">
-        <div class="logo-container">
-            <span style="font-size: 20px; font-weight: 700; background: linear-gradient(to right, #059669, #0f766e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.5px;">
-                Omar 52Hub
-            </span>
-        </div>
-        <button class="menu-toggle" id="menuOpenBtn" style="background: none; border: none; cursor: pointer; padding: 8px;">
-            <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #374151;">
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </svg>
+<!-- হেডার -->
+<header class="main-header">
+    <img src="omar52hub.png" alt="Omar 52Hub" class="logo-img" style="height:38px;width:auto;display:block;">
+    <div class="header-controls">
+        <button class="icon-btn" id="langBtn" onclick="setLanguage(currentLang === 'bn' ? 'en' : 'bn')">EN/BN</button>
+        <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+        <button class="menu-toggle" id="menuOpenBtn">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
         </button>
-    </header>
+    </div>
 </header>
-<div id="my-profile-section"></div>
-    <!-- ডানপাশ থেকে স্লাইড হয়ে আসা প্রিমিয়াম ডার্ক মেনুবার -->
-    <div class="sidebar-menu" id="sidebarMenu" style="background: #111112; box-shadow: -10px 0 30px rgba(0,0,0,0.5);">
-        <button class="close-btn" id="menuCloseBtn" style="color: #9ca3af; font-size: 32px; background: none; border: none; cursor: pointer;">&times;</button>
-        
-        <nav class="nav-links">
-            <a href="#" class="nav-item">হোম</a>
-            <a href="#" class="nav-item" onclick="showAboutComponent(); return false;">আমার সম্পর্কে</a>
-            <a href="#services" class="nav-item">সেবাসমূহ</a>
-            <a href="#portfolio" class="nav-item">পোর্টফোলিও</a>
-            <a href="#cv" class="nav-item">সিভি</a>
-            
-            <!-- নতুন স্টাইলিশ ইসলামিক ব্লগ ড্রপডাউন (Accordion) -->
-            <div class="dropdown">
-                <button class="dropdown-btn" style="background: none; border: none; width: 100%; display: flex; justify-content: space-between; align-items: center; color: #e5e7eb; font-size: 16px; font-weight: 500; padding: 12px 0; border-b: 1px solid #27272a; cursor: pointer;">
-                    <span>ব্লগ</span>
-                    <span class="arrow" style="font-size: 12px; transition: transform 0.3s; color: #9ca3af;">▼</span>
-                </button>
-                <div class="dropdown-container" style="display: none; max-height: 400px; overflow-y: auto; padding-left: 15px; border-left: 2px solid #059669; margin-top: 5px;">
-                    <a href="#quran-light" class="sub-item">কুরআনের আলো</a>
-                    <a href="#hadith" class="sub-item">হাদিস</a>
-                    <a href="#islamic-lifestyle" class="sub-item">ইসলামিক জীবন বিধান</a>
-                    <a href="#islamic-state" class="sub-item">ইসলামি রাষ্ট্রব্যবস্থা (খিলাফত)</a>
-                    <a href="#muslim-history" class="sub-item">মুসলিম রাষ্ট্রের ইতিহাস</a>
-                    <a href="#muslim-leaders" class="sub-item">মুসলিম সমর নেতাদের তালিকা</a>
-                    <a href="#regional-empires" class="sub-item">আঞ্চলিক সাম্রাজ্য</a>
-                    <a href="#sunni-dynasty" class="sub-item">সুন্নি রাজবংশের তালিকা</a>
-                    <a href="#khilafah" class="sub-item">খিলাফতসমূহ</a>
-                    <a href="#companions" class="sub-item">সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন</a>
-                    <a href="#fitnah-nafs" class="sub-item">নফসের ফিতনা</a>
-                    <a href="#masnoon-dua" class="sub-item">মাসনুন দোয়া</a>
+
+<!-- সাইডবার মেনু -->
+<div class="sidebar-menu" id="sidebarMenu">
+    <button class="close-btn" id="menuCloseBtn">&times;</button>
+    <nav class="nav-links">
+        <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
+        <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
+        <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close'); scrollToServices()" data-i18n="navServices">সেবাসমূহ</a>
+        <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close'); scrollToPortfolio()" data-i18n="navPortfolio">পোর্টফোলিও</a>
+        <a href="javascript:void(0)" onclick="switchTab('cv'); toggleMenu('close')" data-i18n="navCV">সিভি</a>
+        <div class="dropdown">
+            <button class="dropdown-btn" id="blogDropdownBtn">
+                <span data-i18n="navBlog">ব্লগ</span>
+                <span class="arrow" id="blogArrow">▼</span>
+            </button>
+            <div class="dropdown-container" id="blogDropdownContainer">
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog1">কুরআনের আলো</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog2">হাদিস</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog3">ইসলামিক জীবন বিধান</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog4">ইসলামি রাষ্ট্রব্যবস্থা (খিলাফত)</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog5">মুসলিম রাষ্ট্রের ইতিহাস</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog6">মুসলিম সমর নেতাদের তালিকা</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog7">আঞ্চলিক সাম্রাজ্য</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog8">সুন্নি রাজবংশের তালিকা</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog9">খিলাফতসমূহ</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog10">সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog11">নফসের ফিতনা</a>
+                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog12">মাসনুন দোয়া</a>
+            </div>
+        </div>
+        <a href="javascript:void(0)" onclick="openContactModal(); toggleMenu('close')" data-i18n="navContact">যোগাযোগ</a>
+    </nav>
+</div>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ট্যাব সুইচার -->
+<div class="tab-switcher">
+    <div class="tab-track">
+        <button class="tab-btn active" id="tabBtnHome" onclick="switchTab('home')">Home</button>
+        <button class="tab-btn" id="tabBtnCV" onclick="switchTab('cv')">CV</button>
+        <button class="tab-btn" id="tabBtnBlog" onclick="switchTab('blog')">Blog</button>
+    </div>
+</div>
+
+<!-- ============ হোম ট্যাব ============ -->
+<div class="tab-panel active" id="tabHome">
+    <main class="hero-section">
+        <h1 data-i18n="heroGreeting">আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার</h1>
+        <div class="typewriter-wrap"><span class="typewriter-text" id="typewriter"></span></div>
+        <div class="info-bar" data-i18n="heroSubtitle">কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।</div>
+    </main>
+
+    <div class="btn-row">
+        <a href="javascript:void(0)" class="btn-primary" onclick="switchTab('home'); scrollToPortfolio()" data-i18n="btnPortfolio">আমার কাজ দেখুন</a>
+        <a href="javascript:void(0)" class="btn-secondary" onclick="openContactModal()" data-i18n="btnContact">যোগাযোগ করুন</a>
+    </div>
+
+    <section class="services-section" id="services">
+        <h2 class="section-heading" data-i18n="servicesTitle">আমার সেবাসমূহ</h2>
+        <div class="services-grid" id="servicesGrid"></div>
+    </section>
+
+    <section class="portfolio-section" id="portfolio">
+        <div style="text-align:center; margin-bottom: 6px;">
+            <h2 class="section-heading" style="margin-bottom:5px;" data-i18n="portfolioTitle">আমার সাম্প্রতিক কাজ</h2>
+            <p class="portfolio-sub" data-i18n="portfolioSub">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
+        </div>
+        <div class="demo-card">
+            <div class="demo-card-header">
+                <div style="display:flex; gap:5px;">
+                    <span style="width:9px;height:9px;background:#ff5f56;border-radius:50%;"></span>
+                    <span style="width:9px;height:9px;background:#ffbd2e;border-radius:50%;"></span>
+                    <span style="width:9px;height:9px;background:#27c93f;border-radius:50%;"></span>
+                </div>
+                <span style="font-size:11px; color: var(--text-sub); font-weight:500;">omar-52hub.vercel.app</span>
+                <span style="font-size:10px; color:#22c55e; font-weight:bold;">● LIVE</span>
+            </div>
+            <div class="demo-card-body">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h4>🛒 Omar 52Hub Shop</h4>
+                    <span style="background: var(--surface-alt); border:1px solid var(--border); padding:3px 10px; border-radius:20px; font-size:11px; color: var(--text-sub); font-weight:600;">🛍️ Cart: 0</span>
+                </div>
+                <div class="demo-tabs">
+                    <span class="demo-tab active">All</span>
+                    <span class="demo-tab">Gadgets</span>
+                    <span class="demo-tab">Trending</span>
+                </div>
+                <div class="demo-products">
+                    <div class="demo-product"><div class="demo-product-icon">🎧</div><p>Headphone</p><span class="demo-price">$49.00</span></div>
+                    <div class="demo-product"><div class="demo-product-icon">⌚</div><p>Smart Watch</p><span class="demo-price">$79.00</span></div>
                 </div>
             </div>
-            
-            <a href="#contact" class="nav-item">যোগাযোগ</a>
-        </nav>
-    </div>
-
-    <!-- ব্লার ওভারলে ব্যাকগ্রাউন্ড -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- মেইন কন্টেন্ট বডি -->
-    <main class="hero-section">
-        <h1>আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার</h1>
-        <div class="info-bar">
-            কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।
-        </div>
-    </main>
-        <!-- যুক্ত করুন: বাটন এবং নতুন সেকশনসমূহ -->
-    <div style="margin-top: 25px; display: flex; gap: 12px; padding: 0 5%; max-width: 600px;">
-        <a href="#portfolio" style="flex: 1; text-align: center; background: #059669; color: white; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);">আমার কাজ দেখুন</a>
-        <a href="javascript:void(0)" onclick="openContactModal()" style="flex: 1; text-align: center; background: white; color: #374151; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; border: 1px solid #d1d5db;">যোগাযোগ করুন</a>
-    </div>
-
-    <!-- সেবাসমূহ (Services Section) -->
-    <section id="services" style="padding: 60px 5%; background: #f9fafb; margin-top: 60px;">
-        <h2 style="font-size: 22px; color: #1f2937; margin-bottom: 25px; text-align: center; font-weight: 700; font-family: sans-serif;">আমার সেবাসমূহ</h2>
-        <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto;">
-            
-            <!-- সার্ভিসカード ১ -->
-            <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
-                <div style="color: #059669; font-size: 24px; margin-bottom: 10px;">🌐</div>
-                <h3 style="font-size: 18px; color: #111827; margin-bottom: 8px; font-weight: 600; font-family: sans-serif;">ওয়েবসাইট ডেভেলপমেন্ট</h3>
-                <p style="color: #4b5563; font-size: 14px; line-height: 1.6; font-family: sans-serif;">এইচটিএমএল, সিএসএস, জাভাস্ক্রিপ্ট অথবা রিয়্যাক্ট ব্যবহার করে আধুনিক, দ্রুতগতির এবং মোবাইল-রেসপনসিভ ওয়েবসাইট তৈরি করে থাকি।</p>
+            <div class="demo-card-footer">
+                <h3 data-i18n="demoTitle">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
+                <p data-i18n="demoDesc">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
+                <a href="https://omar-52hub.vercel.app" target="_blank" rel="noopener" class="demo-link" data-i18n="demoLink">লাইভ প্রজেক্ট দেখুন →</a>
             </div>
-
-            <!-- সার্ভিস কার্ড ২ -->
-            <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
-                <div style="color: #059669; font-size: 24px; margin-bottom: 10px;">📈</div>
-                <h3 style="font-size: 18px; color: #111827; margin-bottom: 8px; font-weight: 600; font-family: sans-serif;">ডিজিটাল মার্কেটিং</h3>
-                <p style="color: #4b5563; font-size: 14px; line-height: 1.6; font-family: sans-serif;">অনলাইন ব্যবসার প্রচার, সোশ্যাল মিডিয়া মার্কেটিং এবং টার্গেটেড কাস্টমারের কাছে পৌঁছানোর জন্য প্রফেশনাল স্ট্র্যাটেজি তৈরি করি।</p>
-            </div>
-
-            <!-- সার্ভিস কার্ড ৩ -->
-            <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
-                <div style="color: #059669; font-size: 24px; margin-bottom: 10px;">🛠️</div>
-                <h3 style="font-size: 18px; color: #111827; margin-bottom: 8px; font-weight: 600; font-family: sans-serif;">পেজ ম্যানেজমেন্ট ও দেখাশোনা</h3>
-                <p style="color: #4b5563; font-size: 14px; line-height: 1.6; font-family: sans-serif;">আপনার ব্যবসায়িক ফেসবুক বা ইনস্টাগ্রাম পেজের কন্টেন্ট প্ল্যানিং, কাস্টমার মেসেজ রিপ্লাই এবং দৈনন্দিন পোস্ট ডিজাইন ও মডারেশন করি।</p>
-            </div>
-
         </div>
     </section>
-
-    <!-- পোর্টফোলিও (Portfolio Section) -->
-    <section id="portfolio" style="padding: 60px 5%; background: white;">
-        <!-- প্রজেক্ট সেকশন শুরু -->
-<div style="text-align: center; margin-top: 25px;">
-  <h2 style="font-size: 20px; color: #0f172a; margin-bottom: 5px;">আমার সাম্প্রতিক কাজ</h2>
-  <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
 </div>
 
-<!-- প্রজেক্ট কার্ডের মূল বক্স -->
-<div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; font-family: system-ui, -apple-system, sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin: 0 10px 20px 10px;">
-  
-  <!-- ব্রাউজার হেডার অংশ -->
-  <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #f1f5f9; margin-bottom: 15px;">
-    <div style="display: flex; gap: 5px;">
-      <span style="width: 9px; height: 9px; background-color: #ff5f56; border-radius: 50%;"></span>
-      <span style="width: 9px; height: 9px; background-color: #ffbd2e; border-radius: 50%;"></span>
-      <span style="width: 9px; height: 9px; background-color: #27c93f; border-radius: 50%;"></span>
-    </div>
-    <span style="font-size: 11px; color: #94a3b8; font-weight: 500;">omar-52hub.vercel.app</span>
-    <span style="font-size: 10px; color: #22c55e; font-weight: bold;">● LIVE</span>
-  </div>
+<!-- ============ CV ট্যাব ============ -->
+<section class="tab-panel" id="tabCV">
+    <div class="cv-wrap">
+        <div class="cv-name">মোঃ ওমর হাওলাদার</div>
+        <div class="cv-role" data-i18n="cvRole">ওয়েব ডেভেলপার • ডিজিটাল মার্কেটার • অনলাইন সলিউশন এক্সপার্ট</div>
 
-  <!-- শপের লোগো ও কার্ট -->
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-    <h4 style="margin: 0; font-size: 15px; color: #0f172a; font-weight: 700;">🛒 Omar 52Hub Shop</h4>
-    <span style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 3px 10px; border-radius: 20px; font-size: 11px; color: #475569; font-weight: 600;">🛍️ Cart: 0</span>
-  </div>
-
-  <!-- ক্যাটাগরি ট্যাব -->
-  <div style="display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 4px;">
-    <span style="background: #0f172a; color: white; padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; white-space: nowrap;">All</span>
-    <span style="background: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; white-space: nowrap;">Gadgets</span>
-    <span style="background: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 15px; font-size: 11px; font-weight: 500; white-space: nowrap;">Trending</span>
-  </div>
-
-  <!-- ডেমো প্রোডাক্ট কার্ড -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-    <div style="background: #fafafa; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px; text-align: center;">
-      <div style="height: 65px; background: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: inset 0 0 4px rgba(0,0,0,0.02);">🎧</div>
-      <p style="margin: 5px 0 2px 0; font-size: 12px; font-weight: 600; color: #1e293b;">Headphone</p>
-      <p style="margin: 0; font-size: 11px; color: #22c55e; font-weight: 700;">$49.00</p>
-    </div>
-    <div style="background: #fafafa; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px; text-align: center;">
-      <div style="height: 65px; background: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: inset 0 0 4px rgba(0,0,0,0.02);">⌚</div>
-      <p style="margin: 5px 0 2px 0; font-size: 12px; font-weight: 600; color: #1e293b;">Smart Watch</p>
-      <p style="margin: 0; font-size: 11px; color: #22c55e; font-weight: 700;">$79.00</p>
-    </div>
-  </div>
-
-  <!-- নিচের টেক্সট এবং লাইভ ফুল-স্ক্রিন লিংক -->
-  <div style="border-top: 1px solid #f1f5f9; padding-top: 15px;">
-    <h3 style="margin: 0 0 5px 0; font-size: 16px; color: #0f172a;">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
-    <p style="margin: 0 0 15px 0; font-size: 13px; color: #64748b; line-height: 1.5;">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
-    
-    <!-- এই লিংকে ক্লিক করলে ফুল স্ক্রিন ওপেন হবে -->
-    <a href="https://vercel.app" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block;">
-        লাইভ প্রজেক্ট দেখুন →
-    </a>
-  </div>
-
-</div>
-<!-- প্রজেক্ট সেকশন শেষ -->
-
-    </section>
-<!-- আমার পরিচিতি (About Me) সেকশন শুরু -->
-<section style="padding: 60px 20px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-    <div style="display: flex; align-items: center; justify-content: center; max-width: 1100px; margin: 0 auto; gap: 40px; flex-wrap: wrap;">
-        
-        <!-- বাম পাশে লাইভ ফটো -->
-        <div style="flex: 1; max-width: 320px; width: 100%; min-width: 260px;">
-            <!-- একই ডিরেক্টরিতে থাকায় শুধু ফাইলের নাম দিলেই চলবে -->
-            <img src="omar52hub-profile.jpg" alt="Omar Portrait" style="width: 100%; height: auto; max-height: 420px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 4px solid #f8f9fa;">
-        </div>
-        
-        <!-- ডান পাশে পরিচিতি টেক্সট -->
-        <div style="flex: 1.2; min-width: 280px;">
-            <span style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #007bff; font-weight: bold; display: block; margin-bottom: 10px;">আমার সম্পর্কে</span>
-            <h2 style="font-size: 32px; color: #222; margin-bottom: 15px; margin-top: 0;">স্বাগতম, আমি ওমর</h2>
-            <p style="font-size: 16px; color: #555; line-height: 1.7; margin-bottom: 20px;">আমি <strong>omar52hub</strong>-এর প্রতিষ্ঠাতা। টেকনোলজি এবং ওয়েব ডেভেলপমেন্টের প্রতি আমার গভীর আগ্রহ রয়েছে। আমি সবসময় নতুন নতুন প্রযুক্তির মাধ্যমে দারুণ সব প্রোজেক্ট তৈরি করতে ভালোবাসি।</p>
-            
-            <ul style="list-style: none; padding: 0; margin-bottom: 25px;">
-                <li style="font-size: 16px; color: #444; margin-bottom: 8px;"><strong>নাম:</strong> মোঃ ওমর</li>
-                <li style="font-size: 16px; color: #444; margin-bottom: 8px;"><strong>ওয়েবসাইট:</strong> omar52hub.com</li>
-                <li style="font-size: 16px; color: #444; margin-bottom: 8px;"><strong>পেশা:</strong> ওয়েব ডেভেলপার</li>
-            </ul>
-
-            <a href="#contactModal" onclick="openContactModal()" style="display: inline-block; padding: 12px 28px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 30px; font-weight: 600; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">যোগাযোগ করুন</a>
+        <div class="cv-box">
+            <div class="cv-box-title" data-i18n="cvWhyTitle">🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</div>
+            <ul id="cvWhyList"></ul>
         </div>
 
+        <div class="cv-box">
+            <div class="cv-box-title" data-i18n="cvProcessTitle">⚙️ আমার কাজের প্রক্রিয়া:</div>
+            <ol id="cvProcessList"></ol>
+        </div>
+
+        <div class="cv-box">
+            <div class="cv-box-title" data-i18n="cvPhilosophyTitle">🎯 কাজের দর্শন (My Work Philosophy):</div>
+            <p data-i18n="cvPhilosophyText">আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
+        </div>
     </div>
 </section>
-<!-- আমার পরিচিতি (About Me) সেকশন শেষ -->
 
-    <!-- যোগাযোগ সেকশন (Contact Section) -->
-<!-- কন্টাক্ট মোডাল পপ-আপ (লুকানো থাকবে) -->
-<div id="contactModal" style="display: none; position: fixed; inset: 0; z-index: 9999; justify-content: center; align-items: center; padding: 16px;">
-  <!-- পিছনের ব্যাকগ্রাউন্ড আবছা করার লেয়ার -->
-  <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);" onclick="closeContactModal()"></div>
-  
-  <!-- মূল পপ-আপ ফর্ম বক্স -->
-    <div style="position: relative; width: 100%; max-width: 450px; background: white; padding: 24px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; z-index: 10; font-family: sans-serif;">
-    <!-- বন্ধ করার ক্রস বাটন -->
-    <button onclick="closeContactModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; font-weight: bold; color: #9ca3af; cursor: pointer;">✕</button>
-
-    <h3 style="font-size: 20px; font-weight: bold; text-align: center; color: #1f2937; margin-bottom: 4px; margin-top: 0;">যোগাযোগ করুন</h3>
-    <p style="font-size: 13px; text-align: center; color: #6b7280; margin-bottom: 20px;">যেকোনো প্রজেক্ট বা আলোচনার জন্য বার্তা পাঠান</p>
-
-    <!-- ফরম -->
-    <!-- ফরম সাবমিশন (আপনার Formspree আইডিসহ) -->
-    <form style="display: flex; flex-direction: column; gap: 16px;">
-      <div>
-        <label style="display: block; font-size: 13px; font-weight: 600; color: #4b5563; margin-bottom: 4px;">আপনার নাম</label>
-        <input type="text"id="waName" name="name" placeholder="নাম লিখুন" style="width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; font-size: 13px; box-sizing: border-box; outline: none; background: #f9fafb;" required>
-      </div>
-      <div>
-        <label style="display: block; font-size: 13px; font-weight: 600; color: #4b5563; margin-bottom: 4px;">ইমেইল এড্রেস</label>
-        <input type="email"id="waEmail" name="email" placeholder="example@gmail.com" style="width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; font-size: 13px; box-sizing: border-box; outline: none; background: #f9fafb;" required>
-      </div>
-
-      <div>
-        <label style="display: block; font-size: 13px; font-weight: 600; color: #4b5563; margin-bottom: 4px;">আপনার বার্তা</label>
-        <textarea id="waMessage" name="message" rows="3" placeholder="এখানে আপনার মেসেজটি লিখুন . . ." style="width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; font-size: 13px; box-sizing: border-box; outline: none; background: #f9fafb; resize: vertical;" required></textarea>
-      </div>
-
-      <button type="submit" style="width: 100%; background: #059669; color: white; padding: 10px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;">বার্তা পাঠান</button>
-    </form>
-
-    <!-- সরাসরি ইমেইল -->
-    <div style="margin-top: 20px; border-top: 1px solid #f3f4f6; padding-top: 16px; text-align: center;">
-      <span style="font-size: 10px; font-weight: bold; color: #9ca3af; display: block; margin-bottom: 8px; text-transform: uppercase;">সরাসরি ইমেইল করুন</span>
-      <div style="display: flex; align-items: center; justify-content: space-between; background: #f9fafb; padding: 8px 12px; border-radius: 8px; border: 1px solid #e5e7eb; gap: 8px;">
-        <span id="userEmail" style="font-size: 12px; color: #4b5563; word-break: break-all; font-family: monospace;">omarhowladercse210226@gmail.com</span>
-        <button type="button" onclick="copyEmailText()" style="font-size: 11px; background: white; color: #059669; border: 1px solid #a7f3d0; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-weight: 500;">Copy</button>
-      </div>
+<!-- ============ ব্লগ ট্যাব ============ -->
+<section class="tab-panel" id="tabBlog">
+    <div class="blog-wrap">
+        <h2 class="blog-heading" data-i18n="blogTitle">ব্লগ</h2>
+        <p class="blog-sub" data-i18n="blogSub">দ্বীন সম্পর্কিত লেখাগুলো নিচে দেওয়া হলো</p>
+        <div class="blog-grid" id="blogGrid"></div>
     </div>
-    
-    <!-- সোশ্যাল মিডিয়া প্রোফাইল সেকশন -->
-    <h4 style="font-size: 14px; color: #374151; margin-top: 16px; margin-bottom: 12px; font-weight: 600; text-align: center; font-family: sans-serif;">সোশ্যাল মিডিয়া প্রোফাইল</h4>
+</section>
 
-    <!-- ফ্ল্যাট মডার্ন সোশ্যাল আইকন গ্রিড -->
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;">
-         <!-- অফলাইন প্রফেশনাল সোশ্যাল আইকন গ্রিড (কোনো ইন্টারনেট লাগবে না) -->
-              <a href="https://m.me" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #1877f2; border-radius: 50%; text-decoration: none;" title="Facebook">
-            <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
-        </a>
-        <a href="https://x.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #000000; border-radius: 50%; text-decoration: none;" title="X (Twitter)">
-            <svg style="width: 16px; height: 16px; fill: white;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a href="https://youtube.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #ff0000; border-radius: 50%; text-decoration: none;" title="YouTube">
-            <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="https://tiktok.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #010101; border-radius: 50%; text-decoration: none;" title="TikTok">
-            <svg style="width: 16px; height: 16px; fill: white;" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.15 1.13 1.18 2.68 1.83 4.3 1.94v3.93c-1.8-.07-3.55-.76-4.9-1.95-.12-.1-.23-.2-.35-.31v5.77c.01 1.93-.53 3.84-1.57 5.4-1.51 2.14-4 3.42-6.63 3.42-1.9 0-3.77-.66-5.25-1.85-2.5-1.94-3.66-5.32-2.9-8.43.52-2.2 1.84-4.14 3.7-5.36 1.7-1.12 3.76-1.53 5.77-1.15V7.4c-1.34-.38-2.8-.13-3.96.66-.96.65-1.62 1.68-1.83 2.83-.34 1.74.45 3.58 1.94 4.54.97.64 2.13.9 3.28.73 1.2-.15 2.29-.86 2.87-1.93.37-.66.54-1.4.52-2.16V.02z"/></svg>
-        </a>
-        <a href="https://instagram.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e1306c; border-radius: 50%; text-decoration: none;" title="Instagram">
-            <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-        </a>
-        <a href="https://linkedin.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #0077b5; border-radius: 50%; text-decoration: none;" title="LinkedIn">
-            <svg style="width: 16px; height: 16px; fill: white;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-  </a>
+<!-- ============ অ্যাবাউট মোডাল (গ্লাসমরফিজম + Tailwind) ============ -->
+<div class="about-modal-overlay" id="aboutModal">
+    <button class="about-modal-close" onclick="closeAboutModal()">&times;</button>
+    <div class="glass-card w-full max-w-lg mx-auto overflow-y-auto max-h-[88vh] rounded-3xl p-6 sm:p-8">
+        <img src="omar52hub-profile.jpg" alt="মো: ওমর হাওলাদার" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 mx-auto mb-4" style="border-color: rgba(52,211,153,0.6);">
+        <h2 class="text-xl sm:text-2xl font-bold text-center mb-1" style="color:#ffffff;" data-i18n="aboutGreeting">হ্যালো, আমি মো: ওমর হাওলাদার 👋</h2>
+        <p class="text-sm text-center mb-6" style="color:#9ecfba;" data-i18n="aboutHeadline">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার</p>
+
+        <div class="space-y-4 mb-6">
+            <p class="text-sm leading-relaxed" style="color:#e2e8e5;" data-i18n="aboutBio1">আমি একজন প্রফেশনাল ওয়েব ডেভেলপার, ডিজিটাল মার্কেটার এবং মাল্টিপারপাস অনলাইন সলিউশন এক্সপার্ট। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফল করার পাশাপাশি সাধারণ মানুষকে জটিল সব অনলাইন ও আইটি সেবা খুব সহজে প্রদান করে আসছি।</p>
+            <p class="text-sm leading-relaxed" style="color:#e2e8e5;" data-i18n="aboutBio2">একটি সাধারণ আইডিয়াকে ডিজিটাল ব্র্যান্ডে রূপান্তর করা থেকে শুরু করে যেকোনো জরুরি অনলাইন অ্যাপ্লিকেশন — প্রতিটি ধাপে আমি আপনাকে শতভাগ নির্ভুল ও প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।</p>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutHelpTitle">💡 আমি আপনাকে যেভাবে সাহায্য করতে পারি:</h3>
+            <ul class="space-y-2.5 list-disc pl-4" id="aboutHelpList" style="color:#dcece4;"></ul>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutWhyTitle">🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</h3>
+            <ul class="space-y-2.5 list-disc pl-4" id="aboutWhyList" style="color:#dcece4;"></ul>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutProcessTitle">⚙️ আমার কাজের প্রক্রিয়া:</h3>
+            <ol class="space-y-2.5 list-decimal pl-4" id="aboutProcessList" style="color:#dcece4;"></ol>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-6" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-2" style="color:#ffffff;" data-i18n="aboutPhilosophyTitle">🎯 কাজের দর্শন (My Work Philosophy):</h3>
+            <p class="text-sm leading-relaxed" style="color:#dcece4;" data-i18n="aboutPhilosophyText">আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
+        </div>
+
+        <button onclick="closeAboutModal(); openContactModal();" class="w-full rounded-xl py-3 text-sm font-bold text-white transition" style="background: linear-gradient(to right, #059669, #0f766e);" data-i18n="aboutCTA">💬 চলুন আপনার প্রজেক্ট নিয়ে আলোচনা করি</button>
     </div>
-  </div>
 </div>
-    <!-- নতুন ও উন্নত জাভাস্ক্রিপ্ট কোড -->
+
+<!-- ============ কন্টাক্ট মোডাল ============ -->
+<div class="contact-modal-overlay" id="contactModal">
+    <div class="contact-modal-bg" onclick="closeContactModal()"></div>
+    <div class="contact-modal-box">
+        <button class="contact-modal-close" onclick="closeContactModal()">✕</button>
+        <h3 data-i18n="navContact">যোগাযোগ করুন</h3>
+        <p data-i18n="contactSub">যেকোনো প্রজেক্ট বা আলোচনার জন্য বার্তা পাঠান</p>
+        <form class="contact-form">
+            <div>
+                <label data-i18n="contactNameLabel">আপনার নাম</label>
+                <input type="text" id="waName" name="name" data-i18n-placeholder="contactNamePh" placeholder="নাম লিখুন" required>
+            </div>
+            <div>
+                <label data-i18n="contactEmailLabel">ইমেইল এড্রেস</label>
+                <input type="email" id="waEmail" name="email" placeholder="example@gmail.com" required>
+            </div>
+            <div>
+                <label data-i18n="contactMsgLabel">আপনার বার্তা</label>
+                <textarea id="waMessage" name="message" rows="3" data-i18n-placeholder="contactMsgPh" placeholder="এখানে আপনার মেসেজটি লিখুন . . ." required></textarea>
+            </div>
+            <button type="submit" class="contact-submit" data-i18n="contactSend">বার্তা পাঠান</button>
+        </form>
+        <div class="email-row">
+            <span class="email-label" data-i18n="contactDirectEmail">সরাসরি ইমেইল করুন</span>
+            <div class="email-box">
+                <span id="userEmail">omarhowladercse210226@gmail.com</span>
+                <button type="button" class="copy-btn" onclick="copyEmailText()">Copy</button>
+            </div>
+        </div>
+        <h4 class="social-title" data-i18n="contactSocial">সোশ্যাল মিডিয়া প্রোফাইল</h4>
+        <div class="social-grid">
+            <a href="https://facebook.com" target="_blank" rel="noopener" style="background:#1877f2;" title="Facebook"><svg style="width:18px;height:18px;fill:white;" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+            <a href="https://x.com" target="_blank" style="background:#000;" title="X (Twitter)"><svg style="width:16px;height:16px;fill:white;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" style="background:#ff0000;" title="YouTube"><svg style="width:18px;height:18px;fill:white;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://tiktok.com" target="_blank" style="background:#010101;" title="TikTok"><svg style="width:16px;height:16px;fill:white;" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.15 1.13 1.18 2.68 1.83 4.3 1.94v3.93c-1.8-.07-3.55-.76-4.9-1.95-.12-.1-.23-.2-.35-.31v5.77c.01 1.93-.53 3.84-1.57 5.4-1.51 2.14-4 3.42-6.63 3.42-1.9 0-3.77-.66-5.25-1.85-2.5-1.94-3.66-5.32-2.9-8.43.52-2.2 1.84-4.14 3.7-5.36 1.7-1.12 3.76-1.53 5.77-1.15V7.4c-1.34-.38-2.8-.13-3.96.66-.96.65-1.62 1.68-1.83 2.83-.34 1.74.45 3.58 1.94 4.54.97.64 2.13.9 3.28.73 1.2-.15 2.29-.86 2.87-1.93.37-.66.54-1.4.52-2.16V.02z"/></svg></a>
+            <a href="https://instagram.com" target="_blank" style="background:#e1306c;" title="Instagram"><svg style="width:18px;height:18px;fill:white;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" style="background:#0077b5;" title="LinkedIn"><svg style="width:16px;height:16px;fill:white;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+    </div>
+</div>
+
+<!-- ============ ফুটার ============ -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <img src="omar52hub.png" alt="Omar 52Hub" class="footer-logo">
+        <p class="footer-tagline" data-i18n="footerTagline">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার</p>
+        <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" style="background:#1877f2;" title="Facebook"><svg style="width:17px;height:17px;fill:white;" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" style="background:#0077b5;" title="LinkedIn"><svg style="width:15px;height:15px;fill:white;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" style="background:#ff0000;" title="YouTube"><svg style="width:17px;height:17px;fill:white;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+        <p class="footer-copy" data-i18n="footerCopy">© ২০২৬ Omar 52Hub — সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+</footer>
+
 <script>
-    // কন্টাক্ট মোডাল খোলার ফাংশন
-function openContactModal() {
-  const modal = document.getElementById('contactModal');
-  modal.style.display = 'flex';
+/* ============ ভাষা ডেটা (BN/EN) ============ */
+const LANG = {
+    bn: {
+        navHome: "হোম", navAbout: "আমার সম্পর্কে", navServices: "সেবাসমূহ", navPortfolio: "পোর্টফোলিও",
+        navCV: "সিভি", navBlog: "ব্লগ", navContact: "যোগাযোগ",
+        heroGreeting: "আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার",
+        heroSubtitle: "কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।",
+        titles: ["ওয়েব ডেভেলপার", "ডিজিটাল মার্কেটার", "ফ্রিল্যান্সার", "দ্বীনের গবেষক"],
+        btnPortfolio: "আমার কাজ দেখুন", btnContact: "যোগাযোগ করুন",
+        servicesTitle: "আমার সেবাসমূহ",
+        services: [
+            { icon: "🌐", title: "ওয়েবসাইট ডেভেলপমেন্ট", desc: "এইচটিএমএল, সিএসএস, জাভাস্ক্রিপ্ট অথবা রিয়্যাক্ট ব্যবহার করে আধুনিক, দ্রুতগতির এবং মোবাইল-রেসপনসিভ ওয়েবসাইট তৈরি করে থাকি।", charge: "সার্ভিস চার্জ: ল্যান্ডিং পেজ $২০ | ফুল-স্ট্যাক ওয়েবসাইট $৩৫" },
+            { icon: "📈", title: "ডিজিটাল মার্কেটিং", desc: "অনলাইন ব্যবসার প্রচার, সোশ্যাল মিডিয়া মার্কেটিং এবং টার্গেটেড কাস্টমারের কাছে পৌঁছানোর জন্য প্রফেশনাল স্ট্র্যাটেজি তৈরি করি।", charge: "সার্ভিস চার্জ: $১০+ থেকে শুরু" },
+            { icon: "🛠️", title: "পেজ ম্যানেজমেন্ট ও দেখাশোনা", desc: "আপনার ব্যবসায়িক ফেসবুক বা ইনস্টাগ্রাম পেজের কন্টেন্ট প্ল্যানিং, কাস্টমার মেসেজ রিপ্লাই এবং দৈনন্দিন পোস্ট ডিজাইন ও মডারেশন করি।", charge: "সার্ভিস চার্জ: $১৫ / মাস" },
+            { icon: "📝", title: "স্মার্ট অনলাইন অ্যাপ্লিকেশন ও আইটি সেবা", desc: "পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট, ভিসা এবং যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন নিখুঁতভাবে সম্পন্নকরণ।", charge: "সার্ভিস চার্জ: প্রতিটি আবেদন $১+ থেকে শুরু" },
+            { icon: "💳", title: "অনলাইন ও পেমেন্ট সলিউশন", desc: "ফ্রিল্যান্সিং বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।", charge: "সার্ভিস চার্জ: আলোচনা সাপেক্ষে ফ্রি কনসালটেশন" }
+        ],
+        portfolioTitle: "আমার সাম্প্রতিক কাজ",
+        portfolioSub: "আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো",
+        demoTitle: "ই-কমার্স ওয়েবসাইট ডিজাইন",
+        demoDesc: "Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।",
+        demoLink: "লাইভ প্রজেক্ট দেখুন →",
+        cvRole: "ওয়েব ডেভেলপার • ডিজিটাল মার্কেটার • অনলাইন সলিউশন এক্সপার্ট",
+        cvWhyTitle: "🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?",
+        cvWhyItems: [
+            "<strong>শতভাগ নির্ভুলতা:</strong> অনলাইন অ্যাপ্লিকেশনের প্রতিটি কাজ অত্যন্ত সতর্কতার সাথে নিখুঁতভাবে সম্পন্ন করি।",
+            "<strong>কাস্টমাইজড সলিউশন:</strong> আপনার প্রয়োজন ও বাজেট বুঝে একদম সঠিক এবং লাভজনক প্ল্যান তৈরি করি।",
+            "<strong>লাইফ-টাইম সাপোর্ট:</strong> কাজ শেষ হওয়ার পরেও যেকোনো প্রয়োজনে প্রফেশনাল গাইডলাইন ও সাপোর্ট প্রদান করি।"
+        ],
+        cvProcessTitle: "⚙️ আমার কাজের প্রক্রিয়া:",
+        cvProcessItems: [
+            "<strong>প্রয়োজনীয়তা বোঝা:</strong> প্রথমে আপনার রিকোয়ারমেন্ট এবং প্রয়োজনীয় ডকুমেন্টস ভালোভাবে যাচাই করি।",
+            "<strong>সহজ বাস্তবায়ন:</strong> আধুনিক ডিজাইন, মার্কেটিং স্ট্র্যাটেজি বা নির্ভুল অ্যাপ্লিকেশনের মাধ্যমে কাজটি সম্পন্ন করি।",
+            "<strong>ফাইনাল ডেলিভারি:</strong> সম্পূর্ণ নিখুঁতভাবে কাজটি বুঝিয়ে দিয়ে আপনার অনলাইন যাত্রা সহজ করি।"
+        ],
+        cvPhilosophyTitle: "🎯 কাজের দর্শন (My Work Philosophy):",
+        cvPhilosophyText: "আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।",
+        blogTitle: "ব্লগ", blogSub: "দ্বীন সম্পর্কিত লেখাগুলো নিচে দেওয়া হলো",
+        blogList: ["কুরআনের আলো", "হাদিস", "ইসলামিক জীবন বিধান", "ইসলামি রাষ্ট্রব্যবস্থা (খিলাফত)", "মুসলিম রাষ্ট্রের ইতিহাস", "মুসলিম সমর নেতাদের তালিকা", "আঞ্চলিক সাম্রাজ্য", "সুন্নি রাজবংশের তালিকা", "খিলাফতসমূহ", "সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন", "নফসের ফিতনা", "মাসনুন দোয়া"],
+        blog1: "কুরআনের আলো", blog2: "হাদিস", blog3: "ইসলামিক জীবন বিধান", blog4: "ইসলামি রাষ্ট্রব্যবস্থা (খিলাফত)",
+        blog5: "মুসলিম রাষ্ট্রের ইতিহাস", blog6: "মুসলিম সমর নেতাদের তালিকা", blog7: "আঞ্চলিক সাম্রাজ্য",
+        blog8: "সুন্নি রাজবংশের তালিকা", blog9: "খিলাফতসমূহ", blog10: "সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন",
+        blog11: "নফসের ফিতনা", blog12: "মাসনুন দোয়া",
+        aboutName: "মো: ওমর হাওলাদার",
+        aboutHeadline: "আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার",
+        aboutBio1: "আমি একজন প্রফেশনাল ওয়েব ডেভেলপার, ডিজিটাল মার্কেটার এবং মাল্টিপারপাস অনলাইন সলিউশন এক্সপার্ট। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফল করার পাশাপাশি সাধারণ মানুষকে জটিল সব অনলাইন ও আইটি সেবা খুব সহজে প্রদান করে আসছি।",
+        aboutBio2: "একটি সাধারণ আইডিয়াকে ডিজিটাল ব্র্যান্ডে রূপান্তর করা থেকে শুরু করে যেকোনো জরুরি অনলাইন অ্যাপ্লিকেশন — প্রতিটি ধাপে আমি আপনাকে শতভাগ নির্ভুল ও প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।",
+        aboutGreeting: "হ্যালো, আমি মো: ওমর হাওলাদার 👋",
+        aboutHelpTitle: "💡 আমি আপনাকে যেভাবে সাহায্য করতে পারি:",
+        aboutHelpItems: [
+            "<strong>আধুনিক ওয়েব ডেভেলপমেন্ট:</strong> ব্যবসার ধরন অনুযায়ী দৃষ্টিনন্দন, দ্রুতগতির এবং শতভাগ মোবাইল-ফ্রেন্ডলি ওয়েবসাইট তৈরি।",
+            "<strong>স্মার্ট ডিজিটাল মার্কেটিং:</strong> ফেসবুক ও সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট এবং সঠিক কাস্টমার টার্গেটিংয়ের মাধ্যমে পেজ বুস্টিং।",
+            "<strong>স্মার্ট অনলাইন অ্যাপ্লিকেশন ও আইটি সেবা:</strong> পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট, ভিসা এবং যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন নিখুঁতভাবে সম্পন্নকরণ।",
+            "<strong>অনলাইন ও পেমেন্ট সলিউশন:</strong> ফ্রিল্যান্সিং বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।"
+        ],
+        aboutWhyTitle: "🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?",
+        aboutWhyItems: [
+            "<strong>শতভাগ নির্ভুলতা:</strong> অনলাইন অ্যাপ্লিকেশনের প্রতিটি কাজ অত্যন্ত সতর্কতার সাথে নিখুঁতভাবে সম্পন্ন করি।",
+            "<strong>কাস্টমাইজড সলিউশন:</strong> আপনার প্রয়োজন ও বাজেট বুঝে একদম সঠিক এবং লাভজনক প্ল্যান তৈরি করি।",
+            "<strong>লাইফ-টাইম সাপোর্ট:</strong> কাজ শেষ হওয়ার পরেও যেকোনো প্রয়োজনে প্রফেশনাল গাইডলাইন ও সাপোর্ট প্রদান করি।"
+        ],
+        aboutProcessTitle: "⚙️ আমার কাজের প্রক্রিয়া:",
+        aboutProcessItems: [
+            "<strong>প্রয়োজনীয়তা বোঝা:</strong> প্রথমে আপনার রিকোয়ারমেন্ট এবং প্রয়োজনীয় ডকুমেন্টস ভালোভাবে যাচাই করি।",
+            "<strong>সহজ বাস্তবায়ন:</strong> আধুনিক ডিজাইন, মার্কেটিং স্ট্র্যাটেজি বা নির্ভুল অ্যাপ্লিকেশনের মাধ্যমে কাজটি সম্পন্ন করি।",
+            "<strong>ফাইনাল ডেলিভারি:</strong> সম্পূর্ণ নিখুঁতভাবে কাজটি বুঝিয়ে দিয়ে আপনার অনলাইন যাত্রা সহজ করি।"
+        ],
+        aboutPhilosophyTitle: "🎯 কাজের দর্শন (My Work Philosophy):",
+        aboutPhilosophyText: "আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।",
+        aboutCTA: "💬 চলুন আপনার প্রজেক্ট নিয়ে আলোচনা করি",
+        footerTagline: "আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার",
+        footerCopy: "© ২০২৬ Omar 52Hub — সর্বস্বত্ব সংরক্ষিত।",
+        contactSub: "যেকোনো প্রজেক্ট বা আলোচনার জন্য বার্তা পাঠান",
+        contactNameLabel: "আপনার নাম", contactNamePh: "নাম লিখুন",
+        contactEmailLabel: "ইমেইল এড্রেস",
+        contactMsgLabel: "আপনার বার্তা", contactMsgPh: "এখানে আপনার মেসেজটি লিখুন . . .",
+        contactSend: "বার্তা পাঠান", contactDirectEmail: "সরাসরি ইমেইল করুন", contactSocial: "সোশ্যাল মিডিয়া প্রোফাইল"
+    },
+    en: {
+        navHome: "Home", navAbout: "About Me", navServices: "Services", navPortfolio: "Portfolio",
+        navCV: "CV", navBlog: "Blog", navContact: "Contact",
+        heroGreeting: "Assalamu Alaikum,<br>I'm Md. Omar Howlader",
+        heroSubtitle: "Computer Science & Engineering (CSE) student, Full-Stack Website Developer, Freelancer, and Islamic researcher.",
+        titles: ["Web Developer", "Digital Marketer", "Freelancer", "Islamic Researcher"],
+        btnPortfolio: "See My Work", btnContact: "Contact Me",
+        servicesTitle: "My Services",
+        services: [
+            { icon: "🌐", title: "Web Development", desc: "Building modern, high-speed, and mobile-responsive websites using HTML, CSS, JavaScript, or React.", charge: "Service Charge: Landing Page $20 | Full-Stack Website $35" },
+            { icon: "📈", title: "Digital Marketing", desc: "Creating professional strategies for online business promotion, social media marketing, and reaching targeted customers.", charge: "Service Charge: Starts from $10+" },
+            { icon: "🛠️", title: "Page Management & Maintenance", desc: "Content planning, customer message replies, and daily post design & moderation for your business Facebook or Instagram pages.", charge: "Service Charge: $15 / Month" },
+            { icon: "📝", title: "Smart Online App & IT Services", desc: "Flawlessly completing passports, driving licenses, TIN certificates, visas, and any government or private online applications.", charge: "Service Charge: Starts from $1+ per application" },
+            { icon: "💳", title: "Online & Payment Solutions", desc: "Easy solutions for international currency conversion complexities for freelancing or global businesses.", charge: "Service Charge: Free Consultation / Discussion based" }
+        ],
+        portfolioTitle: "Recent Work",
+        portfolioSub: "A few samples of projects I've built",
+        demoTitle: "E-commerce Website Design",
+        demoDesc: "A professional online shop built with Next.js and Tailwind CSS.",
+        demoLink: "View Live Project →",
+        cvRole: "Web Developer • Digital Marketer • Online Solutions Expert",
+        cvWhyTitle: "🎯 Why Choose Me For Your Project?",
+        cvWhyItems: [
+            "<strong>100% Accuracy:</strong> I complete every online application task with the utmost care and precision.",
+            "<strong>Customized Solutions:</strong> I create the right, profitable plan based on your needs and budget.",
+            "<strong>Lifetime Support:</strong> I provide professional guidance and support whenever needed, even after the work is done."
+        ],
+        cvProcessTitle: "⚙️ My Work Process:",
+        cvProcessItems: [
+            "<strong>Understanding Requirements:</strong> First, I carefully review your requirements and necessary documents.",
+            "<strong>Easy Implementation:</strong> I complete the task through modern design, marketing strategy, or precise application work.",
+            "<strong>Final Delivery:</strong> I hand over the finished work with full clarity, making your online journey easier."
+        ],
+        cvPhilosophyTitle: "🎯 My Work Philosophy:",
+        cvPhilosophyText: "I don't just believe in delivering work; I believe in giving clients honest, long-term improvement and the right solutions.",
+        blogTitle: "Blog", blogSub: "Islamic writings and reflections are listed below",
+        blogList: ["Light of the Quran", "Hadith", "Islamic Way of Life", "Islamic Governance (Khilafah)", "History of Muslim States", "List of Muslim Military Leaders", "Regional Empires", "List of Sunni Dynasties", "Caliphates", "The Faith-Filled Lives of the Companions", "The Fitnah of the Nafs", "Masnoon Du'a"],
+        blog1: "Light of the Quran", blog2: "Hadith", blog3: "Islamic Way of Life", blog4: "Islamic Governance (Khilafah)",
+        blog5: "History of Muslim States", blog6: "List of Muslim Military Leaders", blog7: "Regional Empires",
+        blog8: "List of Sunni Dynasties", blog9: "Caliphates", blog10: "The Faith-Filled Lives of the Companions",
+        blog11: "The Fitnah of the Nafs", blog12: "Masnoon Du'a",
+        aboutName: "Md. Omar Howlader",
+        aboutHeadline: "Your Digital Growth & All-in-One Online Partner",
+        aboutBio1: "I am a professional Web Developer, Digital Marketer, and Multipurpose Online Solutions Expert. For the past few years, I have been helping businesses scale their online presence while providing seamless IT and essential online application services to individuals.",
+        aboutBio2: "From turning a simple idea into a digital brand to handling any urgent online application — I'm ready to give you fully accurate, professional support at every step.",
+        aboutGreeting: "Hello, I am Md. Omar Howlader 👋",
+        aboutHelpTitle: "💡 How I Can Help You:",
+        aboutHelpItems: [
+            "<strong>Modern Web Development:</strong> Building attractive, high-speed, and 100% mobile-friendly websites tailored to your business type.",
+            "<strong>Smart Digital Marketing:</strong> Facebook and social media page management, plus page boosting through precise customer targeting.",
+            "<strong>Smart Online App & IT Services:</strong> Flawlessly completing passports, driving licenses, TIN certificates, visas, and any government or private online applications.",
+            "<strong>Online & Payment Solutions:</strong> Easy solutions for international currency conversion complexities for freelancing or global business."
+        ],
+        aboutWhyTitle: "🎯 Why Choose Me For Your Project?",
+        aboutWhyItems: [
+            "<strong>100% Accuracy:</strong> I complete every online application task with the utmost care and precision.",
+            "<strong>Customized Solutions:</strong> I create the right, profitable plan based on your needs and budget.",
+            "<strong>Lifetime Support:</strong> I provide professional guidance and support whenever needed, even after the work is done."
+        ],
+        aboutProcessTitle: "⚙️ My Work Process:",
+        aboutProcessItems: [
+            "<strong>Understanding Requirements:</strong> First, I carefully review your requirements and necessary documents.",
+            "<strong>Easy Implementation:</strong> I complete the task through modern design, marketing strategy, or precise application work.",
+            "<strong>Final Delivery:</strong> I hand over the finished work with full clarity, making your online journey easier."
+        ],
+        aboutPhilosophyTitle: "🎯 My Work Philosophy:",
+        aboutPhilosophyText: "I don't just believe in delivering work; I believe in giving clients honest, long-term improvement and the right solutions.",
+        aboutCTA: "💬 Let's Discuss Your Project",
+        footerTagline: "Your Digital Growth & All-in-One Online Partner",
+        footerCopy: "© 2026 Omar 52Hub — All rights reserved.",
+        contactSub: "Send a message for any project or discussion",
+        contactNameLabel: "Your Name", contactNamePh: "Enter your name",
+        contactEmailLabel: "Email Address",
+        contactMsgLabel: "Your Message", contactMsgPh: "Write your message here . . .",
+        contactSend: "Send Message", contactDirectEmail: "Email Directly", contactSocial: "Social Media Profiles"
+    }
+};
+
+let currentLang = localStorage.getItem('site-lang') || 'bn';
+let currentTheme = localStorage.getItem('site-theme') || 'light';
+let currentTab = 'home';
+let typewriterTimer = null;
+
+/* ============ ভাষা পরিবর্তন ============ */
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('site-lang', lang);
+    document.documentElement.lang = lang;
+    document.documentElement.setAttribute('data-lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (LANG[lang][key] !== undefined) el.innerHTML = LANG[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (LANG[lang][key] !== undefined) el.setAttribute('placeholder', LANG[lang][key]);
+    });
+
+    renderServices(lang);
+    renderCVLists(lang);
+    renderBlogGrid(lang);
+    renderAboutModal(lang);
+    startTypewriter(lang);
 }
-// ইমেইল কপি করার ফাংশন
-function copyEmailText() {
-  const emailText = document.getElementById('userEmail').innerText;
-  navigator.clipboard.writeText(emailText).then(() => {
-    alert('ইমেইল অ্যাড্রেসটি কপি করা হয়েছে!');
-  }).catch(err => {
-    console.error('কপি করা যায়নি: ', err);
-  });
+
+function renderServices(lang) {
+    const grid = document.getElementById('servicesGrid');
+    grid.innerHTML = LANG[lang].services.map(s => `
+        <div class="service-card">
+            <div class="service-icon">${s.icon}</div>
+            <div class="service-title">${s.title}</div>
+            <div class="service-desc">${s.desc}</div>
+            <span class="service-charge">${s.charge}</span>
+        </div>
+    `).join('');
 }
-// কন্টাক্ট মোডাল বন্ধ করার ফাংশন
-function closeContactModal() {
-  const modal = document.getElementById('contactModal');
-  modal.style.display = 'none';
+
+function renderCVLists(lang) {
+    document.getElementById('cvWhyList').innerHTML = LANG[lang].cvWhyItems.map(i => `<li>${i}</li>`).join('');
+    document.getElementById('cvProcessList').innerHTML = LANG[lang].cvProcessItems.map(i => `<li>${i}</li>`).join('');
 }
-// ১. মোবাইল মেনু এবং ড্রপডাউন কন্ট্রোল করার ফাংশন
+
+function renderBlogGrid(lang) {
+    const grid = document.getElementById('blogGrid');
+    grid.innerHTML = LANG[lang].blogList.map(title => `
+        <div class="blog-item">${title} <span>›</span></div>
+    `).join('');
+}
+
+function renderAboutModal(lang) {
+    document.getElementById('aboutHelpList').innerHTML = LANG[lang].aboutHelpItems.map(i => `<li class="text-sm leading-relaxed">${i}</li>`).join('');
+    document.getElementById('aboutWhyList').innerHTML = LANG[lang].aboutWhyItems.map(i => `<li class="text-sm leading-relaxed">${i}</li>`).join('');
+    document.getElementById('aboutProcessList').innerHTML = LANG[lang].aboutProcessItems.map(i => `<li class="text-sm leading-relaxed">${i}</li>`).join('');
+}
+
+/* ============ টাইপরাইটার ============ */
+function startTypewriter(lang) {
+    clearTimeout(typewriterTimer);
+    const el = document.getElementById('typewriter');
+    const titles = LANG[lang].titles;
+    let titleIndex = 0, charIndex = 0, deleting = false;
+
+    function tick() {
+        const full = titles[titleIndex];
+        if (!deleting) {
+            charIndex++;
+            el.textContent = full.slice(0, charIndex);
+            if (charIndex === full.length) {
+                deleting = true;
+                typewriterTimer = setTimeout(tick, 1400);
+                return;
+            }
+            typewriterTimer = setTimeout(tick, 90);
+        } else {
+            charIndex--;
+            el.textContent = full.slice(0, charIndex);
+            if (charIndex === 0) {
+                deleting = false;
+                titleIndex = (titleIndex + 1) % titles.length;
+            }
+            typewriterTimer = setTimeout(tick, 45);
+        }
+    }
+    charIndex = 0; deleting = false;
+    tick();
+}
+
+/* ============ থিম ============ */
+function toggleTheme() {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme();
+}
+function applyTheme() {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('site-theme', currentTheme);
+    document.getElementById('themeBtn').textContent = currentTheme === 'light' ? '🌙' : '☀️';
+}
+
+/* ============ ট্যাব সুইচ ============ */
+function switchTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+    document.getElementById('tabBtn' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function scrollToServices() {
+    setTimeout(() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' }), 150);
+}
+function scrollToPortfolio() {
+    setTimeout(() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }), 150);
+}
+
+/* ============ হ্যামবার্গার মেনু ============ */
 function toggleMenu(action) {
     const sidebarMenu = document.getElementById('sidebarMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     if (!sidebarMenu || !menuOverlay) return;
-
     if (action === 'open') {
         sidebarMenu.classList.add('active');
         menuOverlay.classList.add('active');
@@ -489,64 +908,61 @@ function toggleMenu(action) {
         menuOverlay.classList.remove('active');
     }
 }
-
-function toggleDropdown(e) {
+function toggleBlogDropdown(e) {
     e.preventDefault();
-    const dropdownContainer = document.querySelector('.dropdown-container');
-    const arrow = document.querySelector('.arrow');
-    if (!dropdownContainer || !arrow) return;
-
-    if (dropdownContainer.style.display === "none" || dropdownContainer.style.display === "") {
-        dropdownContainer.style.display = "block";
-        arrow.style.transform = "rotate(180deg)";
-        arrow.style.color = "#34d399";
-    } else {
-        dropdownContainer.style.display = "none";
-        arrow.style.transform = "rotate(0deg)";
-        arrow.style.color = "#9ca3af";
-    }
+    const container = document.getElementById('blogDropdownContainer');
+    const arrow = document.getElementById('blogArrow');
+    const isOpen = container.style.display === 'block';
+    container.style.display = isOpen ? 'none' : 'block';
+    arrow.classList.toggle('rotate', !isOpen);
 }
- // ২. হোয়াটসঅ্যাপে মেসেজ পাঠানোর ফাংশন
+
+/* ============ অ্যাবাউট মোডাল ============ */
+function openAboutModal() {
+    document.getElementById('aboutModal').classList.add('active');
+}
+function closeAboutModal() {
+    document.getElementById('aboutModal').classList.remove('active');
+}
+
+/* ============ কন্টাক্ট মোডাল ============ */
+function openContactModal() {
+    document.getElementById('contactModal').classList.add('active');
+}
+function closeContactModal() {
+    document.getElementById('contactModal').classList.remove('active');
+}
+function copyEmailText() {
+    const emailText = document.getElementById('userEmail').innerText;
+    navigator.clipboard.writeText(emailText).then(() => {
+        alert(currentLang === 'bn' ? 'ইমেইল অ্যাড্রেসটি কপি করা হয়েছে!' : 'Email address copied!');
+    }).catch(err => console.error('Copy failed: ', err));
+}
 function sendToWhatsApp(event) {
     event.preventDefault();
-
-    let name = document.getElementById('waName').value;
-    let email = document.getElementById('waEmail').value;
-    let message = document.getElementById('waMessage').value;
-
-    let phoneNumber = "8801604639318";
-
-    let text = `*নতুন মেসেজ পোর্টফোলিও থেকে:*\n\n` +
-               `*নাম:* ${name}\n` +
-               `*ইমেইল:* ${email}\n` +
-               `*মেসেজ:* ${message}`;
-
-    let whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text);
-        window.location.href = whatsappURL;
+    const name = document.getElementById('waName').value;
+    const email = document.getElementById('waEmail').value;
+    const message = document.getElementById('waMessage').value;
+    const phoneNumber = "8801604639318";
+    const text = `*নতুন মেসেজ পোর্টফোলিও থেকে:*\n\n*নাম:* ${name}\n*ইমেইল:* ${email}\n*মেসেজ:* ${message}`;
+    window.location.href = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text);
 }
 
-// ৩. পেজ লোড হওয়ার পর বাটনগুলোর সাথে ফাংশন কানেক্ট করা
-document.addEventListener("DOMContentLoaded", function () {
-    const menuOpenBtn = document.getElementById('menuOpenBtn');
-    const menuCloseBtn = document.getElementById('menuCloseBtn');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const dropdownBtn = document.querySelector('.dropdown-btn');
-    const allLinks = document.querySelectorAll('.sidebar-menu a');
-    const form = document.querySelector("form");
+/* ============ ইনিশিয়ালাইজেশন ============ */
+document.addEventListener('DOMContentLoaded', function () {
+    applyTheme();
+    setLanguage(currentLang);
+    switchTab('home');
 
-    if (menuOpenBtn) menuOpenBtn.addEventListener('click', () => toggleMenu('open'));
-    if (menuCloseBtn) menuCloseBtn.addEventListener('click', () => toggleMenu('close'));
-    if (menuOverlay) menuOverlay.addEventListener('click', () => toggleMenu('close'));
-    if (dropdownBtn) dropdownBtn.addEventListener('click', toggleDropdown);
-    if (form) form.addEventListener("submit", sendToWhatsApp);
-    allLinks.forEach(link => {
-    if(!link.classList.contains('dropdown-btn') && !link.closest('.dropdown-container')) {
-        link.addEventListener('click', () => toggleMenu('close'));
-    }
-});
+    document.getElementById('menuOpenBtn').addEventListener('click', () => toggleMenu('open'));
+    document.getElementById('menuCloseBtn').addEventListener('click', () => toggleMenu('close'));
+    document.getElementById('menuOverlay').addEventListener('click', () => toggleMenu('close'));
+    document.getElementById('blogDropdownBtn').addEventListener('click', toggleBlogDropdown);
+    document.querySelector('.contact-form').addEventListener('submit', sendToWhatsApp);
+
+    // যদি URL এ #about থাকে, সরাসরি অ্যাবাউট মোডাল খুলবে (about.html থেকে রিডাইরেক্ট হয়ে এলে)
+    if (window.location.hash === '#about') openAboutModal();
 });
 </script>
-    <!-- নতুন আইটেমগুলোর জন্য ছোট একটু কাস্টম স্টাইল (CSS) -->
-<script src="profile-component.js"></script>
 </body>
 </html>
