@@ -995,7 +995,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // যদি URL এ #about থাকে, সরাসরি অ্যাবাউট মোডাল খুলবে (about.html থেকে রিডাইরেক্ট হয়ে এলে)
     if (window.location.hash === '#about') openAboutModal();
+// CV অপশনে ক্লিক করলে সিভি দেখানোর লজিক
+const originalSwitchTab = window.switchTab;
+window.switchTab = function(tabName) {
+    if (tabName === 'cv') {
+        document.getElementById('cv-tab-content').style.display = 'block';
+    } else {
+        document.getElementById('cv-tab-content').style.display = 'none';
+    }
+    if (typeof originalSwitchTab === 'function') originalSwitchTab(tabName);
+};
 });
 </script>
+<div id="cv-tab-content" style="display: none;">
+    <iframe src="cvsection.html" style="width: 100%; height: 100vh; border: none; background: #020617;"></iframe>
+</div>
 </body>
 </html>
