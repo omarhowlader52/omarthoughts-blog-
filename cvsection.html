@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Md. Omar Howlader | CV</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Poppins', 'Hind Siliguri', sans-serif; }
+  .bn { font-family: 'Hind Siliguri', sans-serif; }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+
+<section class="relative w-full py-16 sm:py-24 px-5 overflow-hidden">
+  <!-- ambient glow accents -->
+  <div class="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px]"></div>
+  <div class="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-[100px]"></div>
+  <div class="pointer-events-none absolute top-1/3 right-1/4 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
+
+  <div class="relative max-w-4xl mx-auto">
+
+    <!-- top bar: badge + language toggle -->
+    <div class="flex items-center justify-between mb-10 gap-3">
+      <span id="badgeText" class="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-indigo-300"></span>
+      <button id="langToggle" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-200 hover:bg-white/10 hover:border-white/20 transition-colors flex-shrink-0">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m5.5 14L21 9m0 0l-3.5-6M21 9h-9M3 19c3-1 6-1 9 0s6 1 9 0M3 12c3 1 6 1 9 0"/></svg>
+        <span id="langToggleText"></span>
+      </button>
+    </div>
+
+    <!-- header: name + roles -->
+    <div class="mb-10">
+      <h1 id="nameText" class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent"></h1>
+      <div id="rolesWrap" class="flex flex-wrap gap-2 mt-4"></div>
+    </div>
+
+    <!-- action buttons -->
+    <div class="flex flex-wrap gap-3 mb-14">
+      <a id="githubBtn" href="#" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 font-semibold px-5 py-3 text-sm hover:bg-slate-200 transition-colors shadow-lg shadow-black/20">
+        <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="currentColor"><path d="M12 .5C5.73.5.75 5.48.75 11.75c0 5.02 3.25 9.27 7.77 10.77.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.16.69-3.83-1.34-3.83-1.34-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16.91-.25 1.89-.38 2.86-.39.97.01 1.95.14 2.86.39 2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.23 2.73.11 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.18 5.59.41.36.77 1.06.77 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.26 11.26 0 0 0 23.25 11.75C23.25 5.48 18.27.5 12 .5Z"/></svg>
+        <span id="githubBtnText"></span>
+      </a>
+      <a id="portfolioBtn" href="#" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white font-semibold px-5 py-3 text-sm hover:opacity-90 transition-opacity shadow-lg shadow-indigo-900/30">
+        <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5m0 0v5m0-5L10 14M13 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-6"/></svg>
+        <span id="portfolioBtnText"></span>
+      </a>
+    </div>
+
+    <!-- about -->
+    <div class="mb-14">
+      <h2 id="aboutTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-3"></h2>
+      <p id="aboutText" class="text-slate-300 leading-relaxed text-[15px] sm:text-base max-w-2xl"></p>
+    </div>
+
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-14"></div>
+
+    <!-- core expertise grid -->
+    <div class="mb-14">
+      <h2 id="expertiseTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <div id="expertiseGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+    </div>
+
+    <!-- work experience -->
+    <div class="mb-14">
+      <h2 id="experienceTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <div id="experienceWrap" class="space-y-4"></div>
+    </div>
+
+    <!-- education -->
+    <div class="mb-14">
+      <h2 id="educationTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <div id="educationWrap" class="space-y-4"></div>
+    </div>
+
+    <!-- languages -->
+    <div>
+      <h2 id="languagesTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <div id="languagesWrap" class="flex flex-wrap gap-3"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* ============================================================
+   1. EDIT THESE LINKS
+============================================================ */
+const LINKS = {
+  github: "https://github.com/omarhowlader52",
+  portfolio: "https://omarthoughts-blog-fdzi.vercel.app",
+};
+
+/* ============================================================
+   2. LOCALIZATION — edit any text here, layout never breaks
+============================================================ */
+const I18N = {
+  en: {
+    toggleLabel: "বাংলা",
+    badge: "Curriculum Vitae",
+    name: "Md. Omar Howlader",
+    roles: ["Full-Stack Web Developer", "Data Entry Specialist", "Virtual Assistant"],
+    ctaGithub: "View GitHub Profile",
+    ctaPortfolio: "View Live Portfolio",
+    aboutTitle: "About",
+    about: "A CSE student with hands-on experience as a Cashier, Barista, and Serviceman. Skilled in MS Office (Excel, Word, PowerPoint), programming, and customer handling — I bring strong interpersonal skills, analytical thinking, and adaptability to every project.",
+    expertiseTitle: "Core Expertise",
+    expertise: [
+      { title: "Web Development", desc: "HTML, CSS, JavaScript, React" },
+      { title: "Data Entry", desc: "Fast, accurate, deadline-driven" },
+      { title: "Virtual Assistance", desc: "Admin support, scheduling, research" },
+      { title: "MS Office Suite", desc: "Advanced Excel, Word, PowerPoint" },
+      { title: "Client Communication", desc: "Clear, responsive, professional" },
+      { title: "Customer Handling", desc: "Front-desk & service experience" },
+    ],
+    experienceTitle: "Work Experience",
+    experience: [
+      { role: "Head Cashier", company: "PizzaBurg Restaurant, Dhanmondi, Dhaka", period: "July 2022 — June 2025" },
+      { role: "Barista", company: "PizzaBurg Restaurant, Mirpur, Dhaka", period: "September 2021 — May 2022" },
+    ],
+    educationTitle: "Education",
+    education: [
+      { degree: "B.Sc. in Computer Science & Engineering", institute: "Bangladesh Information Technical College (BITC), National University"},
+      { degree: "Higher Secondary Certificate (H.S.C) — Science", institute: "Karnakathi G.R. School & College, Barishal Board"},
+      { degree: "Secondary School Certificate (S.S.C) — Science", institute: "Indurkani M.U. Secondary School, Barishal Board"},
+    ],
+    languagesTitle: "Languages",
+    languages: [
+      { name: "Bengali", level: "Fluent — writing & speaking" },
+      { name: "English", level: "Fluent — written & oral" },
+    ],
+  },
+  bn: {
+    toggleLabel: "English",
+    badge: "কারিকুলাম ভিটা",
+    name: "মো: ওমর হাওলাদার",
+    roles: ["ফুল-স্ট্যাক ওয়েব ডেভেলপার", "ডেটা এন্ট্রি স্পেশালিস্ট", "ভার্চুয়াল অ্যাসিস্ট্যান্ট"],
+    ctaGithub: "গিটহাব প্রোফাইল দেখুন",
+    ctaPortfolio: "লাইভ পোর্টফোলিও দেখুন",
+    aboutTitle: "সংক্ষিপ্ত পরিচিতি",
+    about: "একজন CSE শিক্ষার্থী, যার ক্যাশিয়ার, বারিস্তা এবং সার্ভিসম্যান হিসেবে হাতে-কলমে অভিজ্ঞতা রয়েছে। MS Office (Excel, Word, PowerPoint), প্রোগ্রামিং এবং কাস্টমার হ্যান্ডলিং-এ দক্ষ — প্রতিটি কাজে শক্তিশালী ইন্টারপার্সোনাল স্কিল, বিশ্লেষণী চিন্তা ও অভিযোজনক্ষমতা নিয়ে আসি।",
+    expertiseTitle: "মূল দক্ষতা",
+    expertise: [
+      { title: "ওয়েব ডেভেলপমেন্ট", desc: "HTML, CSS, JavaScript, React" },
+      { title: "ডেটা এন্ট্রি", desc: "দ্রুত, নির্ভুল, সময়মতো" },
+      { title: "ভার্চুয়াল অ্যাসিস্ট্যান্স", desc: "অ্যাডমিন সাপোর্ট, শিডিউলিং, রিসার্চ" },
+      { title: "MS Office স্যুট", desc: "অ্যাডভান্সড Excel, Word, PowerPoint" },
+      { title: "ক্লায়েন্ট কমিউনিকেশন", desc: "স্পষ্ট, দ্রুত সাড়াদানকারী, পেশাদার" },
+      { title: "কাস্টমার হ্যান্ডলিং", desc: "ফ্রন্ট-ডেস্ক ও সার্ভিস অভিজ্ঞতা" },
+    ],
+    experienceTitle: "কর্ম অভিজ্ঞতা",
+    experience: [
+      { role: "হেড ক্যাশিয়ার", company: "পিৎজাবার্গ রেস্টুরেন্ট, ধানমন্ডি, ঢাকা", period: "জুলাই ২০২২ — জুন ২০২৫" },
+      { role: "বারিস্তা", company: "পিৎজাবার্গ রেস্টুরেন্ট, মিরপুর, ঢাকা", period: "সেপ্টেম্বর ২০২১ — মে ২০২২" },
+    ],
+    educationTitle: "শিক্ষাগত যোগ্যতা",
+    education: [
+      { degree: "বি.এসসি ইন কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং", institute: "বাংলাদেশ ইনফরমেশন টেকনিক্যাল কলেজ (BITC), ন্যাশনাল ইউনিভার্সিটি"},
+      { degree: "উচ্চ মাধ্যমিক সার্টিফিকেট (H.S.C) — বিজ্ঞান", institute: "কর্নকাঠি জি.আর. স্কুল অ্যান্ড কলেজ, বরিশাল বোর্ড"},
+      { degree: "মাধ্যমিক স্কুল সার্টিফিকেট (S.S.C) — বিজ্ঞান", institute: "ইন্দুরকানী এম.ইউ. সেকেন্ডারি স্কুল, বরিশাল বোর্ড"},
+    ],
+    languagesTitle: "ভাষাগত দক্ষতা",
+    languages: [
+      { name: "বাংলা", level: "সাবলীল — লেখা ও বলা" },
+      { name: "ইংরেজি", level: "সাবলীল — লেখা ও মৌখিক" },
+    ],
+  },
+};
+
+/* ============================================================
+   3. RENDER LOGIC
+============================================================ */
+let lang = "en";
+
+function render() {
+  const t = I18N[lang];
+
+  document.getElementById('badgeText').textContent = t.badge;
+  document.getElementById('langToggleText').textContent = t.toggleLabel;
+  document.getElementById('nameText').textContent = t.name;
+  document.getElementById('githubBtnText').textContent = t.ctaGithub;
+  document.getElementById('portfolioBtnText').textContent = t.ctaPortfolio;
+  document.getElementById('aboutTitle').textContent = t.aboutTitle;
+  document.getElementById('aboutText').textContent = t.about;
+  document.getElementById('expertiseTitle').textContent = t.expertiseTitle;
+  document.getElementById('experienceTitle').textContent = t.experienceTitle;
+  document.getElementById('educationTitle').textContent = t.educationTitle;
+  document.getElementById('languagesTitle').textContent = t.languagesTitle;
+
+  document.getElementById('githubBtn').href = LINKS.github;
+  document.getElementById('portfolioBtn').href = LINKS.portfolio;
+
+  // roles
+  const rolesWrap = document.getElementById('rolesWrap');
+  rolesWrap.innerHTML = "";
+  t.roles.forEach(role => {
+    const span = document.createElement('span');
+    span.className = "text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/15 to-fuchsia-500/15 border border-white/10 text-slate-200";
+    span.textContent = role;
+    rolesWrap.appendChild(span);
+  });
+
+  // expertise grid
+  const expertiseGrid = document.getElementById('expertiseGrid');
+  expertiseGrid.innerHTML = "";
+  t.expertise.forEach(item => {
+    const div = document.createElement('div');
+    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 hover:border-indigo-400/30 hover:bg-white/[0.05] transition-colors";
+    div.innerHTML = `<h3 class="font-bold text-sm sm:text-base text-white mb-1">${item.title}</h3><p class="text-slate-400 text-xs sm:text-sm">${item.desc}</p>`;
+    expertiseGrid.appendChild(div);
+  });
+
+  // experience
+  const experienceWrap = document.getElementById('experienceWrap');
+  experienceWrap.innerHTML = "";
+  t.experience.forEach(job => {
+    const div = document.createElement('div');
+    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6";
+    div.innerHTML = `
+      <div class="flex items-start justify-between flex-wrap gap-2 mb-2">
+        <h3 class="font-bold text-base sm:text-lg text-white">${job.role}</h3>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-500/10 text-slate-300 border border-white/10 whitespace-nowrap">${job.period}</span>
+      </div>
+      <p class="text-slate-300 text-sm sm:text-[15px]">${job.company}</p>
+    `;
+    experienceWrap.appendChild(div);
+  });
+
+  // education
+  const educationWrap = document.getElementById('educationWrap');
+  educationWrap.innerHTML = "";
+  t.education.forEach(edu => {
+    const div = document.createElement('div');
+    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6";
+    div.innerHTML = `
+      <div class="flex items-start justify-between flex-wrap gap-2 mb-2">
+        <h3 class="font-bold text-base sm:text-lg text-white">${edu.degree}</h3>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-400/20 whitespace-nowrap">${edu.status}</span>
+      </div>
+      <p class="text-slate-400 text-sm sm:text-[15px]">${edu.institute}</p>
+    `;
+    educationWrap.appendChild(div);
+  });
+
+  // languages
+  const languagesWrap = document.getElementById('languagesWrap');
+  languagesWrap.innerHTML = "";
+  t.languages.forEach(l => {
+    const div = document.createElement('div');
+    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5";
+    div.innerHTML = `<p class="font-bold text-sm text-white">${l.name}</p><p class="text-slate-400 text-xs mt-0.5">${l.level}</p>`;
+    languagesWrap.appendChild(div);
+  });
+}
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  lang = lang === "en" ? "bn" : "en";
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
