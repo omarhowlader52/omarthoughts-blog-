@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমার সেবাসমূহ | Our Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --radius-card: 18px;
+    --radius-pill: 999px;
+    --radius-icon: 14px;
+    --font-bn: 'Hind Siliguri', sans-serif;
+    --font-en: 'Manrope', sans-serif;
+    --accent: #f0a838;
+    --accent-soft: rgba(240, 168, 56, 0.14);
+    --accent-ink: #4a2f06;
+    --new-badge: #45c2a8;
+    --new-badge-soft: rgba(69, 194, 168, 0.16);
+    --shadow-lift: 0 24px 48px -20px rgba(0, 0, 0, 0.45);
+  }
+
+  html[data-theme="dark"] {
+    --bg: #0f172a;
+    --bg-image:
+      radial-gradient(circle at 12% 8%, rgba(240, 168, 56, 0.10), transparent 40%),
+      radial-gradient(circle at 88% 82%, rgba(69, 194, 168, 0.08), transparent 45%);
+    --surface: rgba(255, 255, 255, 0.045);
+    --surface-solid: #16213a;
+    --surface-border: rgba(255, 255, 255, 0.09);
+    --surface-border-hover: rgba(240, 168, 56, 0.45);
+    --text-primary: #f1f5f9;
+    --text-secondary: #a7b3c8;
+    --text-muted: #71809b;
+    --divider: rgba(255, 255, 255, 0.08);
+    --header-surface: rgba(15, 23, 42, 0.72);
+    --price-surface: rgba(240, 168, 56, 0.09);
+    --blur: blur(18px);
+  }
+
+  html[data-theme="light"] {
+    --bg: #f7f5f0;
+    --bg-image:
+      radial-gradient(circle at 12% 8%, rgba(240, 168, 56, 0.10), transparent 40%),
+      radial-gradient(circle at 88% 82%, rgba(69, 194, 168, 0.10), transparent 45%);
+    --surface: #ffffff;
+    --surface-solid: #ffffff;
+    --surface-border: rgba(20, 25, 40, 0.08);
+    --surface-border-hover: rgba(240, 168, 56, 0.55);
+    --text-primary: #1c2333;
+    --text-secondary: #565f76;
+    --text-muted: #8a91a3;
+    --divider: rgba(20, 25, 40, 0.08);
+    --header-surface: rgba(247, 245, 240, 0.82);
+    --price-surface: rgba(240, 168, 56, 0.10);
+    --blur: blur(12px);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image: var(--bg-image);
+    color: var(--text-primary);
+    font-family: var(--font-bn);
+    transition: background-color 0.35s ease, color 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.lang-bn .en { display: none; }
+  body.lang-en .bn { display: none; }
+  body.lang-en { font-family: var(--font-en); }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  header.top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    background: var(--header-surface);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .top-bar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #f6c37a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #23150a;
+    font-size: 0.95rem;
+  }
+
+  .toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--surface-border);
+    background: var(--surface-solid);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .toggle-btn:hover { border-color: var(--surface-border-hover); }
+  .toggle-btn:active { transform: scale(0.96); }
+  .toggle-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .toggle-btn i { font-size: 0.85rem; color: var(--accent); }
+
+  section.hero {
+    padding: 64px 0 40px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0 0 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 2.9rem);
+    line-height: 1.25;
+    margin: 0 0 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .hero p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 26px;
+    margin-top: 20px;
+  }
+
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-card);
+    padding: 30px 28px 26px;
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--surface-border-hover);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .icon-badge {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: var(--radius-icon);
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+  }
+
+  .new-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--new-badge-soft);
+    color: var(--new-badge);
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+    height: fit-content;
+  }
+
+  .card h3 {
+    margin: 0;
+    font-size: 1.18rem;
+    line-height: 1.45;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .card p.desc {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.96rem;
+    line-height: 1.75;
+  }
+
+  .feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .feature-list i {
+    color: var(--accent);
+    font-size: 0.82rem;
+    margin-top: 5px;
+  }
+
+  .bonus-box {
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--divider);
+    color: var(--text-secondary);
+    font-size: 0.87rem;
+    line-height: 1.65;
+  }
+
+  .bonus-box i {
+    color: var(--new-badge);
+    margin-top: 3px;
+    font-size: 0.85rem;
+  }
+
+  .card-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--divider);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .price-tag {
+    background: var(--price-surface);
+    color: var(--accent);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  footer.cta-section {
+    margin-top: 56px;
+    text-align: center;
+    padding: 46px 28px;
+    border-radius: 22px;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+  }
+
+  footer.cta-section p {
+    margin: 0 0 22px;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.75;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--accent), #f6c37a);
+    color: #23150a;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -12px rgba(240, 168, 56, 0.55);
+  }
+
+  .cta-btn:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .cta-btn, .toggle-btn { transition: none; }
+    .card:hover, .cta-btn:hover { transform: none; }
+  }
+
+  @media (max-width: 640px) {
+    .top-bar-inner { padding: 14px 18px; }
+    section.hero { padding: 44px 0 30px; }
+    .card { padding: 24px 20px 22px; }
+    .card-footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body class="lang-bn">
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="brand">
+      <span class="brand-mark"><i class="fa-solid fa-layer-group"></i></span>
+      <span class="bn">সেবাসমূহ</span>
+      <span class="en">Services</span>
+    </div>
+    <div class="toggle-group">
+      <button class="toggle-btn" id="langToggle" type="button" aria-label="Toggle language">
+        <i class="fa-solid fa-language"></i>
+        <span class="bn">English</span>
+        <span class="en">বাংলা</span>
+      </button>
+      <button class="toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+        <span class="bn" id="themeLabelBn">লাইট মোড</span>
+        <span class="en" id="themeLabelEn">Light Mode</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="hero-eyebrow">
+      <span class="bn">যা কিছু নিয়ে কাজ করি</span>
+      <span class="en">What I offer</span>
+    </p>
+    <h1>
+      <span class="bn">আমার সেবাসমূহ</span>
+      <span class="en">Our Services</span>
+    </h1>
+    <p>
+      <span class="bn">ওয়েবসাইট ডেভেলপমেন্ট থেকে শুরু করে ডিজিটাল মার্কেটিং, ডিজাইন এবং আইটি সাপোর্ট — আপনার ব্যবসার প্রয়োজনীয় সব সেবা এক জায়গায়।</span>
+      <span class="en">From website development to digital marketing, design, and IT support — everything your business needs, in one place.</span>
+    </p>
+  </section>
+
+  <section class="grid">
+
+    <!-- Service 1 -->
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-badge"><i class="fa-solid fa-laptop-code"></i></div>
+      </div>
+      <h3>
+        <span class="bn">১. প্রফেশনাল ওয়েবসাইট ডেভেলপমেন্ট</span>
+        <span class="en">1. Professional Website Development</span>
+      </h3>
+      <p class="desc">
+        <span class="bn">আপনার ব্যবসার জন্য আধুনিক, সুপার-ফাস্ট এবং ১০০% মোবাইল-রেসপনসিভ ওয়েবসাইট বা ল্যান্ডিং পেজ তৈরি।</span>
+        <span class="en">Modern, super-fast, and 100% mobile-responsive website or landing page creation for your business.</span>
+      </p>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">কাস্টম ডিজাইন, ডার্ক/লাইট মোড অপশন</span>
+          <span class="en">Custom design, dark/light mode options</span>
+        </li>
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">সুপার ফাস্ট স্পিড এবং সম্পূর্ণ এসইও (SEO) ফ্রেন্ডলি কোডিং</span>
+          <span class="en">Super-fast speed and fully SEO friendly coding</span>
+        </li>
+      </ul>
+      <div class="bonus-box">
+        <i class="fa-solid fa-gift"></i>
+        <span class="bn">কাজ শেষ হওয়ার পর ১ মাস পর্যন্ত সম্পূর্ণ ফ্রি টেকনিক্যাল সাপোর্ট ও মেইনটেইন্যান্স।</span>
+        <span class="en">1-month free technical support &amp; maintenance after project completion.</span>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">
+          <span class="bn">ল্যান্ডিং পেজ ২০$ থেকে | ফুল-স্ট্যাক ৩৫$+</span>
+          <span class="en">Landing Page from $20 | Full-Stack $35+</span>
+        </span>
+      </div>
+    </article>
+
+    <!-- Service 2 -->
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-badge"><i class="fa-solid fa-bullseye"></i></div>
+      </div>
+      <h3>
+        <span class="bn">২. টার্গেটেড ডিজিটাল মার্কেটিং ও অ্যাডস</span>
+        <span class="en">2. Targeted Digital Marketing &amp; Ads</span>
+      </h3>
+      <p class="desc">
+        <span class="bn">সঠিক কাস্টমারের কাছে আপনার পণ্যের প্রচার পৌঁছে দিয়ে সেলস বা বিক্রি বহুগুণ বৃদ্ধি করা।</span>
+        <span class="en">Reach the right target audience to grow your sales and business conversions exponentially.</span>
+      </p>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">প্রফেশনাল ফেসবুক অ্যাডস ও গুগল অ্যাডস ক্যাম্পেইন রান</span>
+          <span class="en">Professional Facebook &amp; Google Ads campaign setups</span>
+        </li>
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">সঠিক অডিয়েন্স রিসার্চ এবং রিটার্গেটিং সেটআপ</span>
+          <span class="en">In-depth audience research &amp; pixel retargeting setup</span>
+        </li>
+      </ul>
+      <div class="bonus-box">
+        <i class="fa-solid fa-gift"></i>
+        <span class="bn">প্রতি সপ্তাহে বিজ্ঞাপনের খরচ ও ফলাফলের লাইভ প্রোগ্রেস অডিট রিপোর্ট প্রদান।</span>
+        <span class="en">Weekly live progress audit reports of ad budget and results.</span>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">
+          <span class="bn">$১০+ থেকে শুরু (আলোচনা সাপেক্ষে)</span>
+          <span class="en">Starts from $10+ (Negotiable)</span>
+        </span>
+      </div>
+    </article>
+
+    <!-- Service 3 -->
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-badge"><i class="fa-solid fa-share-nodes"></i></div>
+      </div>
+      <h3>
+        <span class="bn">৩. সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট</span>
+        <span class="en">3. Social Media Page Management</span>
+      </h3>
+      <p class="desc">
+        <span class="bn">আপনার ফেসবুক, ইনস্টাগ্রাম বা লিঙ্কডইন পেজকে প্রফেশনালি মেইনটেইন এবং অর্গানিক উপায়ে গ্রো করা।</span>
+        <span class="en">Professionally maintain and organically grow your Facebook, Instagram, or LinkedIn pages.</span>
+      </p>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">আকর্ষণীয় পোস্ট কন্টেন্ট প্ল্যানিং, মডারেশন, রেগুলার পোস্ট শিডিউলিং</span>
+          <span class="en">Engaging content planning, moderation, and scheduling</span>
+        </li>
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">কভার/ব্যানার ডিজাইন সাপোর্ট</span>
+          <span class="en">Premium cover and banner design updates</span>
+        </li>
+      </ul>
+      <div class="bonus-box">
+        <i class="fa-solid fa-gift"></i>
+        <span class="bn">কাস্টমারদের ইনবক্সের মেসেজ বা কমেন্টের দ্রুত প্রফেশনাল রিপ্লাই দিয়ে পেজের রেসপন্স রেট বাড়ানো।</span>
+        <span class="en">Fast and professional replies to inbox messages to increase response rates.</span>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">
+          <span class="bn">$১৫ / প্রতি মাস</span>
+          <span class="en">$15 / Per Month</span>
+        </span>
+      </div>
+    </article>
+
+    <!-- Service 4 -->
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-badge"><i class="fa-solid fa-pen-ruler"></i></div>
+      </div>
+      <h3>
+        <span class="bn">৪. ইউআই/ইউএক্স ও গ্রাফিক্স ডিজাইন</span>
+        <span class="en">4. UI/UX &amp; Graphics Design</span>
+      </h3>
+      <p class="desc">
+        <span class="bn">আপনার ওয়েবসাইট বা সোশ্যাল মিডিয়ার জন্য আধুনিক, দৃষ্টিনন্দন এবং ইউজার-ফ্রেন্ডলি ভিজ্যুয়াল ডিজাইন তৈরি।</span>
+        <span class="en">Modern, attractive, and user-friendly visual layouts designed for your brand.</span>
+      </p>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">ওয়েবসাইটের চমৎকার লেআউট (Figma/Adobe XD)</span>
+          <span class="en">Beautiful UI Layouts in Figma / Adobe XD</span>
+        </li>
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">ফেসবুক পোস্ট ব্যানার ডিজাইন এবং ব্র্যান্ড লোগো মেকিং</span>
+          <span class="en">Creative post banners and unique brand logo creation</span>
+        </li>
+      </ul>
+      <div class="bonus-box">
+        <i class="fa-solid fa-gift"></i>
+        <span class="bn">ক্লায়েন্টের পছন্দ না হওয়া পর্যন্ত আনলিমিটেড রিভিশন ও সোর্স ফাইল প্রদান।</span>
+        <span class="en">Unlimited revisions until complete satisfaction &amp; full source file handover.</span>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">
+          <span class="bn">কাজ ও ডিজাইন অনুযায়ী আলোচনা সাপেক্ষে</span>
+          <span class="en">Discussable based on project scope</span>
+        </span>
+      </div>
+    </article>
+
+    <!-- Service 5 -->
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-badge"><i class="fa-solid fa-file-signature"></i></div>
+      </div>
+      <h3>
+        <span class="bn">৫. ফুল-স্ট্যাক আইটি ও অনলাইন অ্যাপ্লিকেশন সেবা</span>
+        <span class="en">5. IT Services &amp; Online Applications</span>
+      </h3>
+      <p class="desc">
+        <span class="bn">পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট বা যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন ও আইটি সমস্যার সমাধান।</span>
+        <span class="en">Passport, Driving license, TIN certificate, or any government/private online form fill-ups &amp; IT support.</span>
+      </p>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">১০০% নির্ভুল ডাটা এন্ট্রি ও দ্রুত অনলাইন সাবমিশন</span>
+          <span class="en">100% error-free data entry and instant online submissions</span>
+        </li>
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">যেকোনো সরকারি পোর্টালের টেকনিক্যাল জটিলতার সঠিক সমাধান</span>
+          <span class="en">Technical support for errors on government portal systems</span>
+        </li>
+      </ul>
+      <div class="bonus-box">
+        <i class="fa-solid fa-gift"></i>
+        <span class="bn">সম্পূর্ণ নিরাপদ ও গোপনীয়তার সাথে আপনার তথ্য প্রসেস করা হবে।</span>
+        <span class="en">High security and complete data confidentiality for your personal info.</span>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">
+          <span class="bn">প্রতিটি নির্ভুল আবেদনের জন্য $১+ থেকে শুরু</span>
+          <span class="en">Starts from $1+ per clean application</span>
+        </span>
+      </div>
+    </article>
+
+    <!-- Service 6 -->
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-badge"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+      </div>
+      <h3>
+        <span class="bn">৬. ফ্রিল্যান্সিং গাইডলাইন ও পেমেন্ট সলিউশন</span>
+        <span class="en">6. Payment &amp; Freelancing Solution</span>
+      </h3>
+      <p class="desc">
+        <span class="bn">নতুন ফ্রিল্যান্সার বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল পেমেন্ট রিসিভ ও অ্যাকাউন্ট ভেরিফিকেশনের সঠিক সমাধান।</span>
+        <span class="en">International payment setups and account verification help for new freelancers &amp; global businesses.</span>
+      </p>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">পেওনিয়ার, পেপাল বা গ্লোবাল ব্যাংক অ্যাকাউন্ট গেটওয়ে সেটআপের সঠিক গাইডলাইন</span>
+          <span class="en">Complete setup guidelines for Payoneer, PayPal, or Global Banks</span>
+        </li>
+        <li><i class="fa-solid fa-check"></i>
+          <span class="bn">কারেন্সি কনভার্শন সংক্রান্ত জরুরি সাহায্য</span>
+          <span class="en">Instant support for currency conversion and exchange issues</span>
+        </li>
+      </ul>
+      <div class="bonus-box">
+        <i class="fa-solid fa-gift"></i>
+        <span class="bn">নতুনদের ফ্রিল্যান্সিং ক্যারিয়ার শুরু করার জন্য ফ্রি কনসালটেশন ও সঠিক পরামর্শ।</span>
+        <span class="en">Free strategic consultation &amp; solid advice to kickstart your freelance career.</span>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">
+          <span class="bn">আলোচনা সাপেক্ষে সম্পূর্ণ ফ্রি পরামর্শ</span>
+          <span class="en">Completely Free Initial Consultation</span>
+        </span>
+      </div>
+    </article>
+
+  </section>
+
+  <footer class="cta-section">
+    <p>
+      <span class="bn">যেকোনো প্রয়োজনে সরাসরি আমার সাথে কাজের আলোচনা করতে মেসেঞ্জারে কানেক্ট হোন।</span>
+      <span class="en">To discuss projects directly with me, connect via Messenger.</span>
+    </p>
+    <a class="cta-btn" href="https://m.me" target="_blank" rel="noopener">
+      <i class="fa-brands fa-facebook-messenger"></i>
+      <span class="bn">এখানে চাপ দিন</span>
+      <span class="en">Click Here</span>
+    </a>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var body = document.body;
+    var html = document.documentElement;
+    var langBtn = document.getElementById('langToggle');
+    var themeBtn = document.getElementById('themeToggle');
+    var themeIcon = document.getElementById('themeIcon');
+
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    }
+
+    function setLang(lang) {
+      body.classList.remove('lang-bn', 'lang-en');
+      body.classList.add('lang-' + lang);
+      html.setAttribute('lang', lang);
+    }
+
+    langBtn.addEventListener('click', function () {
+      var current = body.classList.contains('lang-bn') ? 'bn' : 'en';
+      setLang(current === 'bn' ? 'en' : 'bn');
+    });
+
+    themeBtn.addEventListener('click', function () {
+      var current = html.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    setTheme('dark');
+    setLang('bn');
+  })();
+</script>
+
+</body>
+</html>
