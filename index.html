@@ -562,42 +562,7 @@
     </div>
 </section>
 
-<!-- ============ অ্যাবাউট মোডাল (গ্লাসমরফিজম + Tailwind) ============ -->
-<div class="about-modal-overlay" id="aboutModal" style="top: 150px;">
-    <button class="about-modal-close" onclick="closeAboutModal()">&times;</button>
-    <div class="glass-card w-full max-w-lg mx-auto overflow-y-auto max-h-[88vh] rounded-3xl p-6 sm:p-8">
-        <img src="omar52hub-profile.jpg" alt="মো: ওমর হাওলাদার" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 mx-auto mb-4" style="border-color: rgba(52,211,153,0.6);">
-        <h2 class="text-xl sm:text-2xl font-bold text-center mb-1" style="color:#ffffff;" data-i18n="aboutGreeting">হ্যালো, আমি মো: ওমর হাওলাদার 👋</h2>
-        <p class="text-sm text-center mb-6" style="color:#9ecfba;" data-i18n="aboutHeadline">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার</p>
 
-        <div class="space-y-4 mb-6">
-            <p class="text-sm leading-relaxed" style="color:#e2e8e5;" data-i18n="aboutBio1">আমি একজন প্রফেশনাল ওয়েব ডেভেলপার, ডিজিটাল মার্কেটার এবং মাল্টিপারপাস অনলাইন সলিউশন এক্সপার্ট। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফল করার পাশাপাশি সাধারণ মানুষকে জটিল সব অনলাইন ও আইটি সেবা খুব সহজে প্রদান করে আসছি।</p>
-            <p class="text-sm leading-relaxed" style="color:#e2e8e5;" data-i18n="aboutBio2">একটি সাধারণ আইডিয়াকে ডিজিটাল ব্র্যান্ডে রূপান্তর করা থেকে শুরু করে যেকোনো জরুরি অনলাইন অ্যাপ্লিকেশন — প্রতিটি ধাপে আমি আপনাকে শতভাগ নির্ভুল ও প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।</p>
-        </div>
-
-        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
-            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutHelpTitle">💡 আমি আপনাকে যেভাবে সাহায্য করতে পারি:</h3>
-            <ul class="space-y-2.5 list-disc pl-4" id="aboutHelpList" style="color:#dcece4;"></ul>
-        </div>
-
-        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
-            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutWhyTitle">🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</h3>
-            <ul class="space-y-2.5 list-disc pl-4" id="aboutWhyList" style="color:#dcece4;"></ul>
-        </div>
-
-        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
-            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutProcessTitle">⚙️ আমার কাজের প্রক্রিয়া:</h3>
-            <ol class="space-y-2.5 list-decimal pl-4" id="aboutProcessList" style="color:#dcece4;"></ol>
-        </div>
-
-        <div class="rounded-2xl p-5 mb-6" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
-            <h3 class="text-base font-bold mb-2" style="color:#ffffff;" data-i18n="aboutPhilosophyTitle">🎯 কাজের দর্শন (My Work Philosophy):</h3>
-            <p class="text-sm leading-relaxed" style="color:#dcece4;" data-i18n="aboutPhilosophyText">আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
-        </div>
-
-        <button onclick="closeAboutModal(); openContactModal();" class="w-full rounded-xl py-3 text-sm font-bold text-white transition" style="background: linear-gradient(to right, #059669, #0f766e);" data-i18n="aboutCTA">💬 চলুন আপনার প্রজেক্ট নিয়ে আলোচনা করি</button>
-    </div>
-</div>
 
 <!-- ============ কন্টাক্ট মোডাল ============ -->
 <div class="contact-modal-overlay" id="contactModal">
@@ -639,7 +604,42 @@
         </div>
     </div>
 </div>
+<!-- ============ অ্যাবাউট মোডাল (গ্লাসমরফিজম + Tailwind) ============ -->
+<div class="about-modal-overlay" id="aboutModal">
+    <button class="about-modal-close" onclick="closeAboutModal()">&times;</button>
+    <div class="glass-card w-full max-w-lg mx-auto overflow-y-auto max-h-[88vh] rounded-3xl p-6 sm:p-8">
+        <img src="omar52hub-profile.jpg" alt="মো: ওমর হাওলাদার" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 mx-auto mb-4" style="border-color: rgba(52,211,153,0.6);">
+        <h2 class="text-xl sm:text-2xl font-bold text-center mb-1" style="color:#ffffff;" data-i18n="aboutGreeting">হ্যালো, আমি মো: ওমর হাওলাদার 👋</h2>
+        <p class="text-sm text-center mb-6" style="color:#9ecfba;" data-i18n="aboutHeadline">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার</p>
 
+        <div class="space-y-4 mb-6">
+            <p class="text-sm leading-relaxed" style="color:#e2e8e5;" data-i18n="aboutBio1">আমি একজন প্রফেশনাল ওয়েব ডেভেলপার, ডিজিটাল মার্কেটার এবং মাল্টিপারপাস অনলাইন সলিউশন এক্সপার্ট। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফল করার পাশাপাশি সাধারণ মানুষকে জটিল সব অনলাইন ও আইটি সেবা খুব সহজে প্রদান করে আসছি।</p>
+            <p class="text-sm leading-relaxed" style="color:#e2e8e5;" data-i18n="aboutBio2">একটি সাধারণ আইডিয়াকে ডিজিটাল ব্র্যান্ডে রূপান্তর করা থেকে শুরু করে যেকোনো জরুরি অনলাইন অ্যাপ্লিকেশন — প্রতিটি ধাপে আমি আপনাকে শতভাগ নির্ভুল ও প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।</p>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutHelpTitle">💡 আমি আপনাকে যেভাবে সাহায্য করতে পারি:</h3>
+            <ul class="space-y-2.5 list-disc pl-4" id="aboutHelpList" style="color:#dcece4;"></ul>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutWhyTitle">🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</h3>
+            <ul class="space-y-2.5 list-disc pl-4" id="aboutWhyList" style="color:#dcece4;"></ul>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-4" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-3" style="color:#ffffff;" data-i18n="aboutProcessTitle">⚙️ আমার কাজের প্রক্রিয়া:</h3>
+            <ol class="space-y-2.5 list-decimal pl-4" id="aboutProcessList" style="color:#dcece4;"></ol>
+        </div>
+
+        <div class="rounded-2xl p-5 mb-6" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);">
+            <h3 class="text-base font-bold mb-2" style="color:#ffffff;" data-i18n="aboutPhilosophyTitle">🎯 কাজের দর্শন (My Work Philosophy):</h3>
+            <p class="text-sm leading-relaxed" style="color:#dcece4;" data-i18n="aboutPhilosophyText">আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
+        </div>
+
+        <button onclick="closeAboutModal(); openContactModal();" class="w-full rounded-xl py-3 text-sm font-bold text-white transition" style="background: linear-gradient(to right, #059669, #0f766e);" data-i18n="aboutCTA">💬 চলুন আপনার প্রজেক্ট নিয়ে আলোচনা করি</button>
+    </div>
+</div>
 <!-- ============ ফুটার ============ -->
 <footer class="site-footer">
     <div class="footer-inner">
