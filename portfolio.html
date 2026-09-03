@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Omar 52Hub — Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background-color: #020617; }
+  .dot-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgb(52 211 153) 1px, transparent 0);
+    background-size: 36px 36px;
+  }
+</style>
+</head>
+
+<body class="bg-slate-950 text-white">
+
+<section class="relative overflow-hidden">
+  <!-- ambient background -->
+  <div class="dot-grid pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
+
+    <!-- header row -->
+    <div class="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between mb-20">
+      <div class="max-w-2xl">
+        <p id="eyebrow" class="text-sm font-medium tracking-wide text-emerald-400 mb-4"></p>
+        <h2 id="heading" class="text-4xl font-semibold leading-tight text-white sm:text-5xl mb-6"></h2>
+        <p id="intro" class="text-base leading-relaxed text-gray-400"></p>
+      </div>
+
+      <!-- language toggle: exactly two buttons, nothing else -->
+      <div class="flex shrink-0 items-center gap-1 rounded-full border border-gray-800 bg-white/[0.03] p-1">
+        <button type="button" data-lang="en" onclick="setLang('en')" class="lang-btn rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200">EN</button>
+        <button type="button" data-lang="bn" onclick="setLang('bn')" class="lang-btn rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200">বাংলা</button>
+      </div>
+    </div>
+
+    <!-- portfolio cards -->
+    <div id="cards" class="grid gap-8 lg:grid-cols-2 mb-28"></div>
+
+    <!-- contact form -->
+    <div class="rounded-3xl border border-gray-800 bg-white/[0.02] p-8 backdrop-blur-sm sm:p-14">
+      <div class="mx-auto max-w-2xl text-center mb-12">
+        <h3 id="contactHeading" class="text-2xl font-semibold leading-relaxed text-white sm:text-3xl mb-4"></h3>
+        <p id="contactSub" class="text-base leading-relaxed text-gray-400"></p>
+      </div>
+
+      <form id="contactForm" class="mx-auto max-w-2xl space-y-6">
+        <div class="grid gap-6 sm:grid-cols-2">
+          <!-- name -->
+          <div class="relative">
+            <svg class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <input id="fieldName" type="text" required
+              class="w-full rounded-xl border border-gray-800 bg-white/[0.04] py-3.5 pl-11 pr-4 text-sm text-white placeholder:text-gray-500 outline-none transition-colors focus:border-emerald-400/60" />
+          </div>
+          <!-- email -->
+          <div class="relative">
+            <svg class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <input id="fieldEmail" type="email" required
+              class="w-full rounded-xl border border-gray-800 bg-white/[0.04] py-3.5 pl-11 pr-4 text-sm text-white placeholder:text-gray-500 outline-none transition-colors focus:border-emerald-400/60" />
+          </div>
+        </div>
+
+        <!-- service dropdown -->
+        <div class="relative">
+          <select id="fieldService" required
+            class="w-full appearance-none rounded-xl border border-gray-800 bg-white/[0.04] py-3.5 pl-4 pr-10 text-sm text-white outline-none transition-colors focus:border-emerald-400/60">
+          </select>
+          <svg class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+
+        <!-- message -->
+        <div class="relative">
+          <svg class="pointer-events-none absolute left-4 top-4 h-4 w-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l1.3-3.9A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+          <textarea id="fieldMessage" required rows="5"
+            class="w-full resize-none rounded-xl border border-gray-800 bg-white/[0.04] py-3.5 pl-11 pr-4 text-sm leading-relaxed text-white placeholder:text-gray-500 outline-none transition-colors focus:border-emerald-400/60"></textarea>
+        </div>
+
+        <!-- submit -->
+        <button type="submit"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 py-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-300">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.005c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.95-.31-1.63-.6-2.87-1.24-4.74-4.14-4.89-4.33-.15-.2-1.17-1.55-1.17-2.96 0-1.4.74-2.09 1-2.37.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.13.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.29.29-.12.57.17.28.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.2.71-.82.9-1.11.19-.28.38-.23.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/>
+          </svg>
+          <span id="submitLabel"></span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const WHATSAPP_NUMBER = "8801604639318";
+
+const WEB_ICON =
+  '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path stroke-linecap="round" d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg>';
+
+const DESIGN_ICON =
+  '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l1.8 4.4L18 8l-4.2 1.6L12 14l-1.8-4.4L6 8l4.2-1.6L12 2z"/><circle cx="18" cy="18" r="3"/></svg>';
+
+const COPY = {
+  en: {
+    dir: "ltr",
+    eyebrow: "Selected Work",
+    heading: "Portfolio",
+    intro: "Two disciplines, one standard: work that loads fast, reads clean, and does its job without noise.",
+    categories: [
+      {
+        key: "web",
+        icon: WEB_ICON,
+        label: "Web Development",
+        subtitle: "Modern, fast, and user-friendly web solutions crafted with code and creativity.",
+        project: "Multi-Vendor E-commerce Platform",
+        rows: [
+          { value: "Challenge: Client required a platform loading under 1 second with seamless bKash, Rocket, Nogod, and card payment processing." },
+          { value: "Solution: Developed a super-fast UI using Next.js clean architecture and advanced image optimization. Integrated dynamic category filtering and a responsive cart system." }
+        ],
+        tools: ["Next.js", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Redux Toolkit", "SSLCommerz", "Stripe Gateway"],
+        cta: "View Live Project",
+        href: "https://vercel.app",
+        variant: "solid"
+      },
+      {
+        key: "design",
+        icon: DESIGN_ICON,
+        label: "Graphic Design",
+        subtitle: "Bringing brand stories to life through visual art and minimalist design.",
+        project: "Omar 52Hub — Corporate Branding & Logo",
+        rows: [
+          { value: "Concept: Utilized minimalist geometric shapes and a clean, executive color palette to reflect a highly modern brand identity." },
+          { value: "Deliverables: Complete logo guidelines, premium business cards, and matching social media kit banners." }
+        ],
+        tools: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe InDesign", "Vector Asset Optimization"],
+        cta: "View Full Case Study",
+        href: "#",
+        variant: "outline"
+      }
+    ],
+    contact: {
+      heading: "Want to discuss your next big project? Let's build something amazing together.",
+      subheading: "Share your idea, and I will get back to you within 24 hours.",
+      name: "Name",
+      email: "Email",
+      service: "Service",
+      serviceOptions: ["Web Development", "Graphic Design", "Full Branding"],
+      messagePlaceholder: "Tell me a little about what you're building...",
+      submit: "👉 Send Message"
+    }
+  },
+  bn: {
+    dir: "ltr",
+    eyebrow: "নির্বাচিত কাজ",
+    heading: "পোর্টফোলিও",
+    intro: "দুটি ক্ষেত্র, একটাই মানদণ্ড — দ্রুত লোড হয়, পরিষ্কারভাবে বোঝা যায়, আর কোনো বাড়তি শব্দ ছাড়াই নিজের কাজ করে।",
+    categories: [
+      {
+        key: "web",
+        icon: WEB_ICON,
+        label: "ওয়েব ডেভেলপমেন্ট",
+        subtitle: "কোড এবং ক্রিয়েটিভিটির সমন্বয়ে তৈরি আধুনিক, দ্রুত এবং ইউজার-ফ্রেন্ডলি ওয়েব সলিউশন।",
+        project: "মাল্টি-ভেন্ডার ই-কমার্স প্ল্যাটফর্ম",
+        rows: [
+          { value: "চ্যালেঞ্জ: ক্লায়েন্টের এমন একটি সাইট প্রয়োজন ছিল যা ১ সেকেন্ডের কম সময়ে লোড হবে এবং বিকাশ, রকেট, নগদসহ সব ধরণের পেমেন্ট প্রসেস সহজ হবে।" },
+          { value: "সমাধান: আমি Next.js দিয়ে ক্লিন কোড এবং ইমেজ অপ্টিমাইজেশন ব্যবহার করে একটি সুপার-ফাস্ট ইউজার ইন্টারফেস তৈরি করেছি। এতে ডাইনামিক ক্যাটাগরি ফিল্টার এবং রেসপনসিভ কার্ট যুক্ত করা হয়েছে।" }
+        ],
+        tools: ["Next.js", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Redux Toolkit", "SSLCommerz", "Stripe Gateway"],
+        cta: "লাইভ প্রজেক্ট দেখুন",
+        href: "https://vercel.app",
+        variant: "solid"
+      },
+      {
+        key: "design",
+        icon: DESIGN_ICON,
+        label: "গ্রাফিক ডিজাইন",
+        subtitle: "ভিজ্যুয়াল আর্ট এবং মিনিমালিস্ট ডিজাইনের মাধ্যমে ব্র্যান্ডের গল্প ফুটিয়ে তোলা।",
+        project: "Omar 52Hub — কর্পোরেট ব্র্যান্ডিং ও লোগো",
+        rows: [
+          { value: "কনসেপ্ট: ব্র্যান্ডের আধুনিক মানসিকতা প্রকাশ করতে আমি মিনিমালিস্ট জ্যামিতিক শেপ এবং একটি পরিচ্ছন্ন কালার প্যালেট ব্যবহার করেছি।" },
+          { value: "ডেলিভারেবলস: লোগো গাইডলাইন, বিজনেস কার্ড এবং সোশ্যাল মিডিয়া ব্যানার।" }
+        ],
+        tools: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe InDesign", "Vector Asset Optimization"],
+        cta: "সম্পূর্ণ কেস স্টাডি দেখুন",
+        href: "#",
+        variant: "outline"
+      }
+    ],
+    contact: {
+      heading: "আপনার পরবর্তী বড় প্রজেক্ট নিয়ে আলোচনা করতে চান? চলুন একসাথে নতুন কিছু তৈরি করি।",
+      subheading: "আপনার আইডিয়া শেয়ার করুন, আমি ২৪ ঘণ্টার মধ্যে আপনার সাথে যোগাযোগ করব।",
+      name: "নাম",
+      email: "ইমেইল",
+      service: "সার্ভিস",
+      serviceOptions: ["ওয়েব ডেভেলপমেন্ট", "গ্রাফিক ডিজাইন", "ফুল ব্র্যান্ডিং"],
+      messagePlaceholder: "আপনার প্রজেক্ট সম্পর্কে সংক্ষেপে লিখুন...",
+      submit: "👉 বার্তা পাঠান"
+    }
+  }
+};
+
+function el(tag, className, text) {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+// splits "Label: rest of sentence" into a bold emerald label + normal body text
+function renderLabeledRow(value) {
+  const wrap = el("div", "mb-5 last:mb-0");
+  const idx = value.indexOf(":");
+  if (idx > -1 && idx < 40) {
+    const label = value.slice(0, idx + 1);
+    const rest = value.slice(idx + 1).trim();
+    const p = el("p", "text-sm leading-relaxed text-gray-300");
+    const strong = el("span", "font-semibold text-emerald-400", label + " ");
+    p.appendChild(strong);
+    p.appendChild(document.createTextNode(rest));
+    wrap.appendChild(p);
+  } else {
+    wrap.appendChild(el("p", "text-sm leading-relaxed text-gray-300", value));
+  }
+  return wrap;
+}
+
+function renderCard(cat) {
+  const isSolid = cat.variant === "solid";
+  const card = el(
+    "article",
+    "group flex flex-col rounded-2xl border p-8 sm:p-10 transition-colors duration-300 " +
+      (isSolid
+        ? "border-gray-800 bg-white/[0.03] hover:border-emerald-500/40"
+        : "border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.08] to-transparent shadow-[0_0_50px_-18px_rgba(52,211,153,0.4)] hover:border-emerald-400/60")
+  );
+
+  const iconWrap = el("div", "mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-400/10 text-emerald-400");
+  iconWrap.innerHTML = cat.icon;
+  card.appendChild(iconWrap);
+
+  card.appendChild(el("span", "mb-3 block text-xs font-semibold uppercase tracking-wider text-emerald-400", cat.label));
+  card.appendChild(el("p", "mb-8 text-sm leading-relaxed text-gray-400", cat.subtitle));
+  card.appendChild(el("h3", "mb-8 text-2xl font-semibold leading-snug text-white sm:text-[1.65rem]", cat.project));
+
+  const dl = el("div", "mb-8 space-y-5 border-t border-gray-800 pt-8");
+  cat.rows.forEach((row) => dl.appendChild(renderLabeledRow(row.value)));
+  card.appendChild(dl);
+
+  const toolWrap = el("div", "mb-10 flex flex-wrap gap-2");
+  cat.tools.forEach((tool) => {
+    toolWrap.appendChild(el("span", "rounded-full border border-gray-800 bg-white/[0.02] px-3.5 py-1.5 text-xs font-medium text-gray-400", tool));
+  });
+  card.appendChild(toolWrap);
+
+  const link = document.createElement("a");
+  link.href = cat.href;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.className =
+    "mt-auto inline-flex w-fit items-center gap-1.5 rounded-full px-6 py-3 text-sm font-medium transition-transform duration-200 group-hover:translate-x-0.5 " +
+    (isSolid
+      ? "bg-emerald-400 text-slate-950 hover:bg-emerald-300"
+      : "border border-emerald-400/60 text-emerald-300 hover:bg-emerald-400/10");
+  link.innerHTML =
+    cat.cta +
+    ' <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg>';
+  card.appendChild(link);
+
+  return card;
+}
+
+function setLang(lang) {
+  const t = COPY[lang];
+  document.querySelector("section").setAttribute("dir", t.dir);
+
+  document.getElementById("eyebrow").textContent = t.eyebrow;
+  document.getElementById("heading").textContent = t.heading;
+  document.getElementById("intro").textContent = t.intro;
+
+  const cardsWrap = document.getElementById("cards");
+  cardsWrap.innerHTML = "";
+  t.categories.forEach((cat) => cardsWrap.appendChild(renderCard(cat)));
+
+  document.getElementById("contactHeading").textContent = t.contact.heading;
+  document.getElementById("contactSub").textContent = t.contact.subheading;
+
+  document.getElementById("fieldName").placeholder = t.contact.name;
+  document.getElementById("fieldEmail").placeholder = t.contact.email;
+  document.getElementById("fieldMessage").placeholder = t.contact.messagePlaceholder;
+  document.getElementById("submitLabel").textContent = t.contact.submit;
+
+  const select = document.getElementById("fieldService");
+  select.innerHTML = "";
+  const placeholderOpt = el("option", "bg-slate-950 text-gray-500", t.contact.service);
+  placeholderOpt.value = "";
+  placeholderOpt.disabled = true;
+  placeholderOpt.selected = true;
+  select.appendChild(placeholderOpt);
+  t.contact.serviceOptions.forEach((opt) => {
+    const o = el("option", "bg-slate-950 text-white", opt);
+    o.value = opt;
+    select.appendChild(o);
+  });
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    const active = btn.dataset.lang === lang;
+    btn.className =
+      "lang-btn rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 " +
+      (active ? "bg-emerald-400 text-slate-950" : "text-gray-400 hover:text-white");
+  });
+}
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const name = document.getElementById("fieldName").value;
+  const email = document.getElementById("fieldEmail").value;
+  const service = document.getElementById("fieldService").value;
+  const message = document.getElementById("fieldMessage").value;
+  const serviceLine = service ? "\nService: " + service : "";
+  const text = "Hi, I'm " + (name || "—") + " (" + (email || "—") + ")." + serviceLine + "\n\n" + (message || "");
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
+});
+
+setLang("en");
+</script>
+
+</body>
+</html>
