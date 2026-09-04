@@ -672,7 +672,75 @@
 </style>
 </head>
 <body>
+<!-- পোর্টফোলিও পপ-আপ উইন্ডো (Modal) কন্টেইনার -->
+<style>
+  .portfolio-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; top: 0; 
+    width: 100%; height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+  }
+  .portfolio-modal-content {
+    background-color: var(--surface, #1e1e1e);
+    margin: 5% auto; 
+    padding: 25px; 
+    border: 1px solid var(--border, #333); 
+    width: 90%; max-width: 800px;
+    border-radius: 12px;
+    position: relative;
+    color: var(--text-main, #fff);
+  }
+  .close-portfolio {
+    position: absolute;
+    right: 20px; top: 15px;
+    color: var(--text-sub, #aaa); font-size: 30px; font-weight: bold;
+    cursor: pointer;
+  }
+  .close-portfolio:hover { color: #fff; }
+</style>
 
+<div id="portfolioModal" class="portfolio-modal">
+  <div class="portfolio-modal-content">
+    <span class="close-portfolio" onclick="closePortfolioModal()">&times;</span>
+    <!-- এখানে portfolio.html ফাইলের সব কোড লোড হবে -->
+    <div id="portfolio-load-area"></div>
+  </div>
+</div>
+
+<script>
+  function openPortfolioModal() {
+    // পপ-আপ উইন্ডোটি স্ক্রিনে দৃশ্যমান করা
+    document.getElementById('portfolioModal').style.display = "block";
+    
+    // portfolio.html ফাইলটি টেনে এনে ভেতরে বসানো
+    fetch('portfolio.html')
+      .then(response => {
+        if (!response.ok) throw new Error('ফাইলটি পাওয়া যায়নি');
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('portfolio-load-area').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading portfolio:', error));
+  }
+
+  function closePortfolioModal() {
+    // পপ-আপ উইন্ডোটি বন্ধ করা
+    document.getElementById('portfolioModal').style.display = "none";
+  }
+  
+  // পপ-আপের বাইরের কালো অংশে ক্লিক করলে যেন এটি বন্ধ হয়ে যায়
+  window.addEventListener('click', function(event) {
+    var modal = document.getElementById('portfolioModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
 <!-- হেডার -->
 <header class="main-header">
     <div class="logo-badge">
@@ -694,7 +762,7 @@
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
         <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
         <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
-        <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close'); scrollToPortfolio()" data-i18n="navPortfolio">পোর্টফোলিও</a>
+        <a href="javascript:void(0)" onclick="openPortfolioModal(); toggleMenu('close'); scrollToPortfolio()" data-i18n="navPortfolio">পোর্টফোলিও</a>
         <a href="javascript:void(0)" onclick="switchTab('cv'); toggleMenu('close')" data-i18n="navCV">সিভি</a>
         <div class="dropdown">
             <button class="dropdown-btn" id="blogDropdownBtn">
