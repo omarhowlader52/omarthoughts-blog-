@@ -717,7 +717,7 @@
     document.getElementById('portfolioModal').style.display = "block";
     
     // portfolio.html ফাইলটি টেনে এনে ভেতরে বসানো
-    fetch('portfolio.html')
+    fetch('./portfolio.html')
       .then(response => {
         if (!response.ok) throw new Error('ফাইলটি পাওয়া যায়নি');
         return response.text();
@@ -762,7 +762,7 @@
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
         <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
         <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
-        <a href="javascript:void(0)" onclick="openPortfolioModal(); toggleMenu('close'); scrollToPortfolio()" data-i18n="navPortfolio">পোর্টফোলিও</a>
+       <a href="javascript:void(0)" onclick="openPortfolioModal();" data-i18n="navPortfolio">পোর্টফোলিও</a>
         <a href="javascript:void(0)" onclick="switchTab('cv'); toggleMenu('close')" data-i18n="navCV">সিভি</a>
         <div class="dropdown">
             <button class="dropdown-btn" id="blogDropdownBtn">
