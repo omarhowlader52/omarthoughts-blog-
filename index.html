@@ -797,8 +797,8 @@
 <div class="tab-switcher">
     <div class="tab-track">
         <button class="tab-btn active" id="tabBtnHome" onclick="switchTab('home')">Home</button>
-        <button class="tab-btn" id="tabBtnCV" onclick="switchTab('cv')">CV</button>
         <a href="cvsection.html" class="tab-btn" id="tabBtnCv" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">CV</a>
+          <button class="tab-btn" id="tabBtnBlog" onclick="switchTab('blog')">Blog</button>
     </div>
 </div>
 
@@ -907,28 +907,10 @@
     </section>
 </div>
 <!-- ============ CV ট্যাব ============ -->
-<section class="tab-panel" id="tabCV">
-    <div class="cv-wrap">
-        <div class="cv-name">মোঃ ওমর হাওলাদার</div>
-        <div class="cv-role" data-i18n="cvRole">ওয়েব ডেভেলপার • ডিজিটাল মার্কেটার • অনলাইন সলিউশন এক্সপার্ট</div>
-
-        <div class="cv-box">
-            <div class="cv-box-title" data-i18n="cvWhyTitle">🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</div>
-            <ul id="cvWhyList"></ul>
-        </div>
-
-        <div class="cv-box">
-            <div class="cv-box-title" data-i18n="cvProcessTitle">⚙️ আমার কাজের প্রক্রিয়া:</div>
-            <ol id="cvProcessList"></ol>
-        </div>
-
-        <div class="cv-box">
-            <div class="cv-box-title" data-i18n="cvPhilosophyTitle">🎯 কাজের দর্শন (My Work Philosophy):</div>
-            <p data-i18n="cvPhilosophyText">আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
-        </div>
-    </div>
+<!-- মেইন পেজের ভেতরে আলাদা থাকা cvsection.html ফাইলটি লোড করার জন্য iframe -->
+<section class="tab-panel" id="tabCv" style="width: 100%; min-height: 800px; border: none; overflow: hidden;">
+    <iframe src="cvsection.html" style="width: 100%; height: 1000px; border: none; scrolling: no;"></iframe>
 </section>
-
 <!-- ============ ব্লগ ট্যাব ============ -->
 <section class="tab-panel" id="tabBlog">
     <div class="blog-wrap">
