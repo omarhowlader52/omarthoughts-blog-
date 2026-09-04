@@ -712,8 +712,13 @@
 </div>
 
 <script>
-  function openPortfolioModal() {
-    // পপ-আপ উইন্ডোটি স্ক্রিনে দৃশ্যমান করা
+    function openPortfolioModal() {
+    // আগের খোলা মেনু বা কন্টাক্ট মডাল থাকলে তা বন্ধ করার চেষ্টা
+    if(typeof toggleMenu === "function") toggleMenu('close');
+    var contactModal = document.getElementById('contactModal'); // আপনার কন্টাক্ট মডালের আইডি যদি এটি হয়
+    if(contactModal) contactModal.style.display = "none";
+    
+    // পোর্টফোলিও পপ-আপ উইন্ডোটি স্ক্রিনে দৃশ্যমান করা
     document.getElementById('portfolioModal').style.display = "block";
     
     // portfolio.html ফাইলটি টেনে এনে ভেতরে বসানো
@@ -726,8 +731,7 @@
         document.getElementById('portfolio-load-area').innerHTML = data;
       })
       .catch(error => console.error('Error loading portfolio:', error));
-  }
-
+    }
   function closePortfolioModal() {
     // পপ-আপ উইন্ডোটি বন্ধ করা
     document.getElementById('portfolioModal').style.display = "none";
