@@ -12,6 +12,7 @@
 <style>
     /* ===== রিসেট ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     /* ===== থিম ভেরিয়েবল ===== */
     :root {
@@ -52,6 +53,10 @@
     [data-lang="en"] body { font-family: 'Inter', sans-serif; }
 
     a { color: inherit; }
+    button, a, input, textarea { outline-offset: 2px; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid var(--accent);
+    }
 
     /* ===== হেডার ===== */
     .main-header {
@@ -110,10 +115,11 @@
         font-size: 13px;
         font-weight: 600;
         color: var(--text-body);
-        transition: border-color 0.2s ease, color 0.2s ease;
+        transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
-    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .menu-toggle { background: none; border: none; cursor: pointer; padding: 8px; }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .menu-toggle { background: none; border: none; cursor: pointer; padding: 8px; transition: transform 0.2s ease; }
+    .menu-toggle:hover { transform: scale(1.08); }
     .menu-toggle svg { width: 24px; height: 24px; fill: var(--text-body); }
 
     /* ===== ট্যাব সুইচার ===== */
@@ -212,21 +218,25 @@
     .info-bar {
         background-color: var(--accent-dark); color: #ffffff; padding: 12px 16px;
         font-size: 15px; font-weight: 500; border-radius: 8px; line-height: 1.6;
+        box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent-dark) 60%, transparent);
     }
     .btn-row { margin-top: 22px; display: flex; gap: 12px; padding: 0 20px; max-width: 620px; margin-left: auto; margin-right: auto; }
     .btn-primary, .btn-secondary {
         flex: 1; text-align: center; padding: 12px 20px; border-radius: 8px;
         font-weight: 600; text-decoration: none; font-size: 14.5px; cursor: pointer; border: none; font-family: inherit;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
     .btn-primary {
-        background: var(--accent); color: white;
+        background: linear-gradient(to right, var(--accent), var(--accent-dark)); color: white;
         box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);
     }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 18px -4px rgba(5,150,105,0.35); filter: brightness(1.03); }
     .btn-secondary {
         background: var(--surface); color: var(--text-body); border: 1px solid var(--border);
         position: relative;
         animation: pulseGlow 2.4s ease-in-out infinite;
     }
+    .btn-secondary:hover { transform: translateY(-2px); color: var(--accent-dark); border-color: var(--accent); }
     @keyframes pulseGlow {
         0%, 100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.35); }
         50% { box-shadow: 0 0 0 8px rgba(5,150,105,0); }
@@ -239,6 +249,12 @@
     .service-card {
         background: var(--surface); padding: 22px; border-radius: 12px;
         box-shadow: var(--shadow); border: 1px solid var(--border);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 30px -10px rgba(0,0,0,0.15);
+        border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
     }
     .service-icon { color: var(--accent); font-size: 22px; margin-bottom: 8px; }
     .service-title { font-size: 17px; color: var(--text-main); margin-bottom: 6px; font-weight: 600; }
@@ -259,6 +275,8 @@
     padding: 24px;
     box-shadow: var(--shadow) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 620px;
+    margin: 0 auto;
 }
 
 .demo-card:hover {
@@ -320,6 +338,8 @@
 
 .demo-product:hover {
     border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -10px rgba(0,0,0,0.18);
 }
 
 .demo-badge {
@@ -430,6 +450,72 @@
     border-top: 1px solid var(--border);
     text-align: left;
 }
+
+/* ===== "লাইভ প্রজেক্ট দেখুন" — প্রিমিয়াম অ্যানিমেটেড টোকেন CTA ===== */
+.live-project-token {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--accent-dark);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, transparent), color-mix(in srgb, var(--accent-dark) 10%, transparent));
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px -6px color-mix(in srgb, var(--accent) 45%, transparent);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    cursor: pointer;
+}
+[data-theme="dark"] .live-project-token {
+    color: #7ce8bb;
+    background: linear-gradient(135deg, rgba(52,211,153,0.16), rgba(16,185,129,0.08));
+    border: 1px solid rgba(52,211,153,0.35);
+}
+.live-project-token:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -6px color-mix(in srgb, var(--accent) 55%, transparent);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 26%, transparent), color-mix(in srgb, var(--accent-dark) 18%, transparent));
+}
+.live-project-token::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    opacity: 0;
+    animation: tokenRing 2.2s ease-out infinite;
+    pointer-events: none;
+}
+@keyframes tokenRing {
+    0%   { opacity: 0.55; transform: scale(1); }
+    100% { opacity: 0;    transform: scale(1.14); }
+}
+.token-label { white-space: nowrap; }
+.token-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #ffffff;
+    flex-shrink: 0;
+    animation: tokenArrowMove 1.6s ease-in-out infinite;
+}
+.token-arrow svg { width: 15px; height: 15px; display: block; }
+@keyframes tokenArrowMove {
+    0%, 100% { transform: translateX(0) scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+    50%      { transform: translateX(3px) scale(1.08); box-shadow: 0 0 0 6px transparent; }
+}
+
     /* ===== CV ট্যাব ===== */
     .cv-wrap { max-width: 620px; margin: 40px auto; padding: 0 20px 40px; }
     .cv-name { font-size: 24px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
@@ -437,7 +523,9 @@
     .cv-box {
         background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
         padding: 20px; margin-bottom: 18px; box-shadow: var(--shadow);
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
     }
+    .cv-box:hover { box-shadow: 0 14px 28px -12px rgba(0,0,0,0.15); transform: translateY(-2px); }
     .cv-box-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
     .cv-box ul, .cv-box ol { padding-left: 18px; margin: 0; }
     .cv-box li { font-size: 13.5px; line-height: 1.7; color: var(--text-body); margin-bottom: 10px; }
@@ -453,9 +541,9 @@
         background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
         padding: 15px 18px; font-size: 14.5px; font-weight: 600; color: var(--text-main);
         cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-        transition: border-color 0.2s ease;
+        transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .blog-item:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .blog-item:hover { border-color: var(--accent); color: var(--accent-dark); transform: translateX(3px); }
 
     /* ===== অ্যাবাউট মোডাল (গ্লাসমরফিজম) ===== */
     .about-modal-overlay {
@@ -506,17 +594,23 @@
     .contact-form input, .contact-form textarea {
         width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 10px;
         font-size: 13px; box-sizing: border-box; outline: none; background: var(--surface-alt);
-        color: var(--text-main); font-family: inherit;
+        color: var(--text-main); font-family: inherit; transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-    .contact-submit { width: 100%; background: var(--accent); color: white; padding: 10px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .contact-form input:focus, .contact-form textarea:focus {
+        border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+    .contact-submit { width: 100%; background: linear-gradient(to right, var(--accent), var(--accent-dark)); color: white; padding: 10px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: transform 0.2s ease, filter 0.2s ease; }
+    .contact-submit:hover { transform: translateY(-1px); filter: brightness(1.05); }
     .email-row { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; text-align: center; }
     .email-label { font-size: 10px; font-weight: bold; color: var(--text-sub); display: block; margin-bottom: 8px; text-transform: uppercase; }
     .email-box { display: flex; align-items: center; justify-content: space-between; background: var(--surface-alt); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); gap: 8px; }
     .email-box span { font-size: 12px; color: var(--text-body); word-break: break-all; font-family: monospace; }
-    .copy-btn { font-size: 11px; background: var(--surface); color: var(--accent-dark); border: 1px solid var(--accent); padding: 4px 8px; border-radius: 6px; cursor: pointer; font-weight: 500; }
+    .copy-btn { font-size: 11px; background: var(--surface); color: var(--accent-dark); border: 1px solid var(--accent); padding: 4px 8px; border-radius: 6px; cursor: pointer; font-weight: 500; transition: background 0.2s ease; }
+    .copy-btn:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
     .social-title { font-size: 14px; color: var(--text-body); margin-top: 16px; margin-bottom: 12px; font-weight: 600; text-align: center; }
     .social-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
-    .social-grid a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; text-decoration: none; }
+    .social-grid a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; text-decoration: none; transition: transform 0.2s ease; }
+    .social-grid a:hover { transform: translateY(-3px) scale(1.06); }
 
     /* ===== ফুটার ===== */
     .site-footer { background: var(--header-bg); border-top: 1px solid var(--border); padding: 32px 5% 24px; margin-top: 40px; }
@@ -524,11 +618,11 @@
     .footer-logo { height: 34px; width: auto; margin: 0 auto 10px auto; display: block; }
     .footer-tagline { font-size: 13px; color: var(--text-sub); margin-bottom: 16px; }
     .footer-social { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; }
-    .footer-social a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; text-decoration: none; }
+    .footer-social a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; text-decoration: none; transition: transform 0.2s ease; }
+    .footer-social a:hover { transform: translateY(-3px) scale(1.06); }
     .footer-copy { font-size: 12px; color: var(--text-sub); }
 
     /* ===== রেসপন্সিভ ব্রেকপয়েন্ট (sm / md / lg) ===== */
-    html { -webkit-text-size-adjust: 100%; }
     p, li, h1, h2, h3, h4 { overflow-wrap: break-word; }
 
     @media (min-width: 640px) {
@@ -571,6 +665,10 @@
         .logo-badge { left: 10px; padding: 5px; }
         .logo-img { height: 52px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
 </style>
 </head>
 <body>
@@ -595,7 +693,7 @@
     <nav class="nav-links">
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
         <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
- <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
+        <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close'); scrollToPortfolio()" data-i18n="navPortfolio">পোর্টফোলিও</a>
         <a href="javascript:void(0)" onclick="switchTab('cv'); toggleMenu('close')" data-i18n="navCV">সিভি</a>
         <div class="dropdown">
@@ -665,27 +763,27 @@
                 <span style="font-size:11px; color: var(--text-sub); font-weight:500;">omar-52hub.vercel.app</span>
                 <span style="font-size:10px; color:#22c55e; font-weight:bold;">● LIVE</span>
             </div>
-            <!-- নতুন প্রিমিয়াম কার্ড বডি ও আপনার আসল প্রজেক্টের ডিটেইলস -->
+            <!-- প্রিমিয়াম কার্ড বডি ও প্রজেক্টের ডিটেইলস -->
               <div class="demo-card-body">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
                       <h4 style="font-weight: 700; color: var(--text-main); font-size:16px; margin:0;">Omar 52Hub Shop</h4>
                       <span style="background: var(--surface-alt); border: 1px solid var(--border); padding:3px 10px; border-radius:20px; font-size:11px; color:var(--text-main); font-weight:600;">🛒 Cart: 0</span>
                   </div>
-                  
+
                   <!-- ক্যাটাগরি ট্যাব -->
                   <div class="demo-tabs">
                       <span class="demo-tab">Watches</span>
                       <span class="demo-tab active">Audio & Earbuds</span>
                       <span class="demo-tab">Sunglasses</span>
                   </div>
-                  
-                  <!-- প্রোডাক্ট গ্রিড (কার্টুন ইমেজের জায়গায় রিয়েল প্রোডাক্ট ছবি) -->
+
+                  <!-- প্রোডাক্ট গ্রিড (কাজ করা, উচ্চমানের রিয়েল প্রোডাক্ট ছবি) -->
                   <div class="demo-products">
                       <!-- প্রোডাক্ট ১: ওয়্যারলেস হেডফোন -->
                       <div class="demo-product">
                           <span class="demo-badge">-36%</span>
                           <div class="demo-product-img-box">
-                              <img src="https://unsplash.com" alt="Wireless Headphone" />
+                              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Wireless Headphone" loading="lazy" />
                           </div>
                           <div class="product-info-wrap">
                               <h5 class="product-title">Wireless Studio Noise Cancelling Headphone</h5>
@@ -699,12 +797,12 @@
                               </div>
                           </div>
                       </div>
-                      
+
                       <!-- প্রোডাক্ট ২: প্রিমিয়াম ওয়াচ -->
                       <div class="demo-product">
                           <span class="demo-badge">-43%</span>
                           <div class="demo-product-img-box">
-                              <img src="https://unsplash.com" alt="Premium Smart Watch" />
+                              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Premium Smart Watch" loading="lazy" />
                           </div>
                           <div class="product-info-wrap">
                               <h5 class="product-title">Minimalist Premium Quartz Smart Watch</h5>
@@ -721,11 +819,17 @@
                   </div>
               </div>
 
-              <!-- 🎨 আপনার ৫২৪ থেকে ৫২৯ লাইনের অরিজিনাল ডাটা যা পুরোপুরি অক্ষুণ্ণ ও সেফ রাখা হয়েছে -->
               <div class="demo-card-footer">
-                  <h3 data-i18n="demoTitle">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
-                  <p data-i18n="demoDesc">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
-  <a href="https://omar-52hub-shop.vercel.app" target="_blank" rel="noopener" class="demo-link" data-i18n="demoLink">লাইভ প্রজেক্ট দেখুন -></a>
+                  <h3 data-i18n="demoTitle">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
+                  <p data-i18n="demoDesc">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
+                  <a href="https://omar-52hub-shop.vercel.app" target="_blank" rel="noopener" class="live-project-token">
+                      <span class="token-label" data-i18n="demoLink">লাইভ প্রজেক্ট দেখুন</span>
+                      <span class="token-arrow" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                      </span>
+                  </a>
             </div>
         </div>
     </section>
@@ -883,7 +987,7 @@ const LANG = {
         portfolioSub: "আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো",
         demoTitle: "ই-কমার্স ওয়েবসাইট ডিজাইন",
         demoDesc: "Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।",
-        demoLink: "লাইভ প্রজেক্ট দেখুন →",
+        demoLink: "লাইভ প্রজেক্ট দেখুন",
         cvRole: "ওয়েব ডেভেলপার • ডিজিটাল মার্কেটার • অনলাইন সলিউশন এক্সপার্ট",
         cvWhyTitle: "🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?",
         cvWhyItems: [
@@ -959,7 +1063,7 @@ const LANG = {
         portfolioSub: "A few samples of projects I've built",
         demoTitle: "E-commerce Website Design",
         demoDesc: "A professional online shop built with Next.js and Tailwind CSS.",
-        demoLink: "View Live Project →",
+        demoLink: "View Live Project",
         cvRole: "Web Developer • Digital Marketer • Online Solutions Expert",
         cvWhyTitle: "🎯 Why Choose Me For Your Project?",
         cvWhyItems: [
@@ -1034,7 +1138,6 @@ function setLanguage(lang) {
         const key = el.getAttribute('data-i18n');
         if (LANG[lang][key] !== undefined) el.innerHTML = LANG[lang][key];
     });
-    renderServices(lang);
 
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
@@ -1046,7 +1149,6 @@ function setLanguage(lang) {
     renderBlogGrid(lang);
     renderAboutModal(lang);
     startTypewriter(lang);
-    renderServices(lang);
 }
 
 function renderServices(lang) {
@@ -1173,7 +1275,6 @@ function closeServicesModal() {
     document.getElementById("servicesModal").style.display = "none";
 }
 
-
 function closeAboutModal() {
     document.getElementById('aboutModal').classList.remove('active');
 }
@@ -1215,20 +1316,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // যদি URL এ #about থাকে, সরাসরি অ্যাবাউট মোডাল খুলবে (about.html থেকে রিডাইরেক্ট হয়ে এলে)
     if (window.location.hash === '#about') openAboutModal();
-// CV অপশনে ক্লিক করলে সিভি দেখানোর লজিক
-const originalSwitchTab = window.switchTab;
-window.switchTab = function(tabName) {
-    if (tabName === 'cv') {
-        document.getElementById('cv-tab-content').style.display = 'block';
-    } else {
-        document.getElementById('cv-tab-content').style.display = 'none';
-    }
-    if (typeof originalSwitchTab === 'function') originalSwitchTab(tabName);
-};
 });
 </script>
-<div id="cv-tab-content" style="display: none;">
-    <iframe src="cvsection.html" style="width: 100%; height: 100vh; border: none; background: #020617;"></iframe>
-</div>
 </body>
 </html>
