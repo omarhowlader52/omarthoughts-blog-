@@ -152,6 +152,8 @@
         box-shadow: var(--shadow);
         gap: 4px;
         max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .tab-btn {
         border: none;
@@ -646,6 +648,104 @@
     }
     .blog-item:hover { border-color: var(--accent); color: var(--accent-dark); transform: translateX(3px); }
 
+    /* ===== কুরআনের আলো পোর্টাল (দুই-কলাম রিডিং ভিউ) ===== */
+    .qa-portal { margin: 20px auto 0; }
+    .qa-layout { display: flex; flex-direction: column; gap: 20px; max-width: 620px; margin: 0 auto; padding: 0 20px 40px; }
+    .qa-sidebar {
+        background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+        padding: 14px; box-shadow: var(--shadow); flex-shrink: 0;
+    }
+    .qa-cat-group { border-bottom: 1px solid var(--border); }
+    .qa-cat-group:last-child { border-bottom: none; }
+    .qa-cat-header {
+        width: 100%; display: flex; justify-content: space-between; align-items: center;
+        background: none; border: none; padding: 12px 4px; font-size: 14px; font-weight: 700;
+        color: var(--text-main); cursor: pointer; font-family: inherit; text-align: left;
+    }
+    .qa-cat-arrow { font-size: 11px; color: var(--text-sub); transition: transform 0.25s ease; }
+    .qa-cat-arrow.rotate { transform: rotate(180deg); color: var(--accent); }
+    .qa-cat-list { display: none; flex-direction: column; padding-bottom: 8px; }
+    .qa-sub-item {
+        display: block; width: 100%; text-align: left; background: none; border: none;
+        padding: 8px 10px 8px 14px; font-size: 12.5px; color: var(--text-body); cursor: pointer;
+        border-radius: 8px; font-family: inherit; transition: background 0.2s ease, color 0.2s ease;
+    }
+    .qa-sub-item:hover { background: var(--surface-alt); color: var(--accent-dark); }
+    .qa-sub-item.active { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent-dark); font-weight: 700; }
+
+    .qa-article-area {
+        flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 20px; box-shadow: var(--shadow);
+        position: relative;
+    }
+    .qa-breadcrumb { font-size: 11.5px; color: var(--text-sub); margin-bottom: 10px; }
+    .qa-breadcrumb span { color: var(--accent-dark); }
+    .qa-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .qa-tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--surface-alt); border: 1px solid var(--border); color: var(--text-body); }
+    .qa-article-title { font-size: 20px; font-weight: 700; color: var(--text-main); line-height: 1.4; margin-bottom: 8px; }
+    .qa-meta-row { font-size: 12px; color: var(--text-sub); margin-bottom: 14px; }
+    .qa-share-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .qa-share-icon {
+        width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center;
+        justify-content: center; cursor: pointer; border: none; transition: transform 0.2s ease;
+    }
+    .qa-share-icon:hover { transform: translateY(-2px); }
+    .qa-share-icon svg { width: 15px; height: 15px; }
+
+    .qa-hero-banner {
+        position: relative; width: 100%; aspect-ratio: 16 / 7; border-radius: 14px; overflow: hidden;
+        margin-bottom: 20px; background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    }
+    .qa-hero-banner::before {
+        content: ""; position: absolute; inset: 0;
+        background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0 12px, transparent 12px 24px);
+    }
+    .qa-hero-shape { position: absolute; border-radius: 50%; border: 2px solid rgba(255,255,255,0.35); }
+    .qa-hero-shape.s1 { width: 160px; height: 160px; top: -50px; right: -40px; }
+    .qa-hero-shape.s2 { width: 90px; height: 90px; bottom: -25px; left: 20px; border-color: rgba(255,255,255,0.22); }
+    .qa-hero-motif { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; letter-spacing: 2px; color: rgba(255,255,255,0.9); font-weight: 700; }
+    .qa-hero-caption { position: absolute; left: 18px; bottom: 14px; color: #ffffff; font-size: 19px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+
+    .qa-article-body h2 { font-size: 16px; font-weight: 700; color: var(--accent-dark); margin: 22px 0 10px; }
+    .qa-article-body p { font-size: 14px; line-height: 1.85; color: var(--text-body); margin-bottom: 14px; }
+
+    .qa-coming-soon { text-align: center; padding: 50px 10px; }
+    .qa-coming-soon-icon { font-size: 34px; margin-bottom: 10px; }
+    .qa-coming-soon h3 { font-size: 16px; color: var(--text-main); margin-bottom: 6px; }
+    .qa-coming-soon p { font-size: 13px; color: var(--text-sub); }
+
+    /* ===== কুরআনের আলো — ৩-ডট ড্রপডাউন মেনু (নতুন) ===== */
+    .qa-dropdown-wrap { display: flex; justify-content: flex-end; position: relative; margin-bottom: 14px; }
+    .qa-dots-btn {
+        width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border);
+        background: var(--surface-alt); display: flex; align-items: center; justify-content: center;
+        cursor: pointer; padding: 0; flex-shrink: 0;
+        transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .qa-dots-btn svg circle { fill: var(--text-body); transition: fill 0.2s ease; }
+    .qa-dots-btn:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); border-color: var(--accent); transform: translateY(-1px); }
+    .qa-dots-btn:hover svg circle { fill: var(--accent-dark); }
+    .qa-dropdown-panel {
+        display: none; position: absolute; top: 46px; right: 0; width: 290px; max-height: 60vh;
+        overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--surface);
+        border: 1px solid var(--border); border-radius: 14px;
+        box-shadow: 0 18px 40px -12px rgba(0,0,0,0.28); padding: 10px; z-index: 500;
+    }
+    .qa-dropdown-panel.active { display: block; animation: qaDropdownIn 0.2s ease; }
+    @keyframes qaDropdownIn {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 480px) {
+        .qa-dropdown-panel { width: min(290px, 80vw); }
+    }
+
+    /* ===== Sanity CMS কনটেন্ট — গ্লোবাল ডার্ক/লাইট থিম ভেরিয়েবল স্বয়ংক্রিয়ভাবে অনুসরণ করে ===== */
+    .sanity-content { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .sanity-content img { width: 100%; height: auto; border-radius: 14px; margin-bottom: 16px; display: block; }
+    .sanity-content .sanity-text { color: var(--text-body); font-size: 14px; line-height: 1.85; }
+    .sanity-content .sanity-text p { margin-bottom: 12px; }
+
     /* ===== অ্যাবাউট মোডাল (গ্লাসমরফিজম) ===== */
     .about-modal-overlay {
         position: fixed; inset: 0; z-index: 1100; display: none;
@@ -870,45 +970,26 @@
     </div>
 </header>
 
-<!-- সাইডবার মেনু -->
+<!-- সাইডবার মেনু (মোবাইল হ্যামবার্গার) — "সিভি" ও "কুরআনের আলো" এই মেনু থেকে সরানো হয়েছে, তবে মূল পেজের সেকশন দুইটি অক্ষত আছে -->
 <div class="sidebar-menu" id="sidebarMenu">
     <button class="close-btn" id="menuCloseBtn">&times;</button>
     <nav class="nav-links">
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
         <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
         <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
-        <a href="cvsection.html" data-i18n="navCV">সিভি</a>
-        <div class="dropdown">
-            <button class="dropdown-btn" id="blogDropdownBtn">
-                <span data-i18n="navBlog">ব্লগ</span>
-                <span class="arrow" id="blogArrow">▼</span>
-            </button>
-            <div class="dropdown-container" id="blogDropdownContainer">
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog1">কুরআনের আলো</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog2">হাদিস</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog3">ইসলামিক জীবন বিধান</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog4">ইসলামি রাষ্ট্রব্যবস্থা (খিলাফত)</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog5">মুসলিম রাষ্ট্রের ইতিহাস</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog6">মুসলিম সমর নেতাদের তালিকা</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog7">আঞ্চলিক সাম্রাজ্য</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog8">সুন্নি রাজবংশের তালিকা</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog9">খিলাফতসমূহ</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog10">সাহাবায়ে কেরামের ঈমানদ্বীপ্ত জীবন</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog11">নফসের ফিতনা</a>
-                <a href="javascript:void(0)" onclick="switchTab('blog'); toggleMenu('close')" data-i18n="blog12">মাসনুন দোয়া</a>
-            </div>
-        </div>
+        <a href="portfolio.html" data-i18n="navPortfolio">পোর্টফোলিও</a>
         <a href="javascript:void(0)" onclick="openContactModal(); toggleMenu('close')" data-i18n="navContact">যোগাযোগ</a>
     </nav>
 </div>
 <div class="menu-overlay" id="menuOverlay"></div>
 
-<!-- ট্যাব সুইচার -->
+<!-- ট্যাব সুইচার (ডেস্কটপ নেভবার) — "পোর্টফোলিও" পুনরায় যুক্ত করা হয়েছে -->
 <div class="tab-switcher">
     <div class="tab-track">
         <button class="tab-btn active" id="tabBtnHome" onclick="switchTab('home')">Home</button>
+        <a class="tab-btn" id="tabBtnPortfolio" href="portfolio.html" data-i18n="navPortfolio">পোর্টফোলিও</a>
         <a class="tab-btn" id="tabBtnCv" href="cvsection.html">CV</a>
-        <button class="tab-btn" id="tabBtnBlog" onclick="switchTab('blog')">Blog</button>
+        <button class="tab-btn" id="tabBtnBlog" onclick="switchTab('blog')" data-i18n="navBlog">কুরআনের আলো</button>
     </div>
 </div>
 
@@ -1066,7 +1147,7 @@
     </section>
 </div>
 
-<!-- ============ CV ট্যাব (এখন মূল পেজের ভিতরেই এমবেড করা — কোনো আলাদা পেজ/আইফ্রেম নেই) ============ -->
+<!-- ============ CV ট্যাব (মূল পেজের ভিতরেই এমবেড করা আছে — শুধু মোবাইল হ্যামবার্গার মেনু থেকে লিংক সরানো হয়েছে, সেকশন অক্ষত) ============ -->
 <section class="tab-panel" id="tabCv">
     <div class="cv-wrap">
         <h2 class="cv-name" data-i18n="aboutName">মো: ওমর হাওলাদার</h2>
@@ -1089,12 +1170,26 @@
     </div>
 </section>
 
-<!-- ============ ব্লগ ট্যাব ============ -->
+<!-- ============ কুরআনের আলো পোর্টাল (এখন ৩-ডট ড্রপডাউন মেনু সহ — সব ক্যাটাগরি/সাব-ক্যাটাগরি অক্ষত আছে) ============ -->
 <section class="tab-panel" id="tabBlog">
-    <div class="blog-wrap">
-        <h2 class="blog-heading" data-i18n="blogTitle">ব্লগ</h2>
-        <p class="blog-sub" data-i18n="blogSub">দ্বীন সম্পর্কিত লেখাগুলো নিচে দেওয়া হলো</p>
-        <div class="blog-grid" id="blogGrid"></div>
+    <div class="qa-portal">
+        <div class="qa-layout">
+            <main class="qa-article-area" id="qaArticleArea">
+                <div class="qa-dropdown-wrap">
+                    <button type="button" class="qa-dots-btn" id="qaDotsBtn" onclick="toggleQaDropdown(event)" aria-label="বিষয়ভিত্তিক ক্যাটাগরি" aria-haspopup="true" aria-expanded="false">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="12" cy="19" r="2"></circle>
+                        </svg>
+                    </button>
+                    <div class="qa-dropdown-panel" id="qaDropdownPanel" role="menu" aria-label="বিষয়ভিত্তিক ক্যাটাগরি"></div>
+                </div>
+                <div id="qaArticleContent"></div>
+                <!-- Sanity CMS থেকে ডায়নামিকভাবে আসা কনটেন্ট এখানে বসবে (EN/BN ও ডার্ক/লাইট মোড অনুসরণ করে) -->
+                <div id="sanityContent" class="sanity-content"></div>
+            </main>
+        </div>
     </div>
 </section>
 
@@ -1199,12 +1294,15 @@
     </div>
 </footer>
 
+<!-- Sanity Client CDN (হেডলেস CMS ইন্টিগ্রেশন — createClient গ্লোবাল "SanityClient" হিসেবে পাওয়া যাবে) -->
+<script src="https://unpkg.com/@sanity/client"></script>
+
 <script>
 /* ============ ভাষা ডেটা (BN/EN) ============ */
 const LANG = {
     bn: {
         navHome: "হোম", navAbout: "আমার সম্পর্কে", navServices: "সেবাসমূহ", navPortfolio: "পোর্টফোলিও",
-        navCV: "সিভি", navBlog: "ব্লগ", navContact: "যোগাযোগ",
+        navCV: "সিভি", navBlog: "কুরআনের আলো", navContact: "যোগাযোগ",
         heroGreeting: "আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার",
         heroSubtitle: "কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।",
         titles: ["ওয়েব ডেভেলপার", "ডিজিটাল মার্কেটার", "ফ্রিল্যান্সার", "দ্বীনের গবেষক"],
@@ -1286,7 +1384,7 @@ const LANG = {
     },
     en: {
         navHome: "Home", navAbout: "About Me", navServices: "Services", navPortfolio: "Portfolio",
-        navCV: "CV", navBlog: "Blog", navContact: "Contact",
+        navCV: "CV", navBlog: "Quraner Alo", navContact: "Contact",
         heroGreeting: "Assalamu Alaikum,<br>I'm Md. Omar Howlader",
         heroSubtitle: "Computer Science & Engineering (CSE) student, Full-Stack Website Developer, Freelancer, and Islamic researcher.",
         titles: ["Web Developer", "Digital Marketer", "Freelancer", "Islamic Researcher"],
@@ -1373,7 +1471,7 @@ let currentTheme = localStorage.getItem('site-theme') || 'light';
 let currentTab = 'home';
 let typewriterTimer = null;
 
-/* ============ ভাষা পরিবর্তন (গ্লোবাল — হোম, সিভি, ব্লগ, সব মোডাল একসাথে আপডেট হয়) ============ */
+/* ============ ভাষা পরিবর্তন (গ্লোবাল — হোম, সিভি, ব্লগ, সব মোডাল, Sanity কনটেন্ট একসাথে আপডেট হয়) ============ */
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('site-lang', lang);
@@ -1392,10 +1490,10 @@ function setLanguage(lang) {
 
     renderServices(lang);
     renderCVLists(lang);
-    renderBlogGrid(lang);
     renderAboutModal(lang);
     startTypewriter(lang);
     renderPrayerWidgetLabels();
+    renderSanityContent(); // Sanity থেকে আসা কনটেন্টও ভাষা অনুযায়ী সাথে সাথে বদলে যাবে (একই ছবি বজায় থাকবে)
 }
 
 function renderServices(lang) {
@@ -1413,13 +1511,6 @@ function renderServices(lang) {
 function renderCVLists(lang) {
     document.getElementById('cvWhyList').innerHTML = LANG[lang].cvWhyItems.map(i => `<li>${i}</li>`).join('');
     document.getElementById('cvProcessList').innerHTML = LANG[lang].cvProcessItems.map(i => `<li>${i}</li>`).join('');
-}
-
-function renderBlogGrid(lang) {
-    const grid = document.getElementById('blogGrid');
-    grid.innerHTML = LANG[lang].blogList.map(title => `
-        <div class="blog-item">${title} <span>›</span></div>
-    `).join('');
 }
 
 function renderAboutModal(lang) {
@@ -1460,7 +1551,7 @@ function startTypewriter(lang) {
     tick();
 }
 
-/* ============ থিম (গ্লোবাল — পুরো ওয়েবসাইটে একই থিম প্রযোজ্য) ============ */
+/* ============ থিম (গ্লোবাল — পুরো ওয়েবসাইটে একই থিম প্রযোজ্য, Sanity কনটেন্টসহ) ============ */
 function toggleTheme() {
     currentTheme = currentTheme === 'light' ? 'dark' : 'light';
     applyTheme();
@@ -1502,17 +1593,6 @@ function toggleMenu(action) {
         menuOverlay.classList.remove('active');
     }
 }
-function toggleBlogDropdown(e) {
-    e.preventDefault();
-    // মোবাইল হ্যামবার্গার মেনু থেকে "ব্লগ" এ ক্লিক করলে ডেস্কটপ Blog বাটনের মতোই একই ব্লগ ট্যাব খুলে যাবে, পাশাপাশি সাব-মেনুও দেখাবে
-    switchTab('blog');
-    const container = document.getElementById('blogDropdownContainer');
-    const arrow = document.getElementById('blogArrow');
-    const isOpen = container.style.display === 'block';
-    container.style.display = isOpen ? 'none' : 'block';
-    arrow.classList.toggle('rotate', !isOpen);
-}
-
 /* ============ অ্যাবাউট মোডাল ============ */
 function openAboutModal() {
     document.getElementById('aboutModal').classList.add('active');
@@ -1638,7 +1718,7 @@ function parseTimeToMinutes(timeStr) {
 async function fetchPrayerTimes(lat, lon) {
     try {
         const ts = Math.floor(Date.now() / 1000);
-        const url = `https://api.aladhan.com/v1/timings/${ts}?latitude=${lat}&longitude=${lon}&method=1`;
+        const url = `https://api.aladhan.com/v1/timings/${ts}?latitude=${lat}&longitude=${lon}&method=1&school=1`;
         const res = await fetch(url);
         if (!res.ok) throw new Error('Aladhan API error');
         const json = await res.json();
@@ -1794,17 +1874,233 @@ function renderPrayerWidgetLabels() {
     if (prayerTimesData) renderPrayerWidget();
 }
 
+/* ============================================================ */
+/* ============ কুরআনের আলো পোর্টাল (৩-ডট ড্রপডাউন মেনু ভিউ) ============ */
+/* ============================================================ */
+const QA_CATEGORIES = [
+    { title: "ঈমান", subs: ["ঈমান ও আকীদা", "আল্লাহ্‌ সম্পর্কে", "তাওহীদ", "শির্ক ও বিদআত", "পরকাল", "তাওবা", "ইলম (জ্ঞান)"] },
+    { title: "কুরআন-হাদীস", subs: ["কুরআন-হাদীস", "কুর'আন ও তাফসীর", "হাদীস", "হাদীসে কুদসী", "হাদিসের গল্প"] },
+    { title: "ইবাদত", subs: ["ইবাদত", "সালাত", "যাকাত", "সিয়াম (রোজা) ও রামাদান", "হজ্জ ও উমরাহ", "জুম'আ"] },
+    { title: "রাসূল ﷺ", subs: ["রাসূলুল্লাহ -সাল্লাল্লাহু 'আলাইহি ওয়া সাল্লাম", "সাহাবা", "সালাফদের জীবনী", "সাহাবীগণ ও সত্যনিষ্ঠ অনুসারীগণের উদ্ধৃতি", "ইতিহাস"] },
+    { title: "ইসলাম ও সমাজ", subs: ["ইসলাম ও সমাজ", "পরিবার ও সমাজ", "দাম্পত্য টিপস", "বোনদের জন্য", "ভাইদের জন্য", "শিশুদের জন্য", "দাওআত", "নও মুসলিমের কাহিনী", "ইসলাম সম্পর্কে ভুল ধারণা", "ইসলাম ও আধুনিক বিজ্ঞান", "সাম্প্রতিক বিষয়াদি", "খবর", "ইসলামী অর্থনীতি", "ধর্মীয় দল ও গোষ্ঠী", "শয়তান", "Islamic Idea", "প্রশ্ন ও উত্তর", "মুক্তমনাদের প্রশ্নের উত্তর"] },
+    { title: "আত্মউন্নয়ন", subs: ["আত্মউন্নয়ন", "আখলাক ও ব্যক্তিত্ব", "উৎসাহ মূলক আলোচনা", "উৎসাহ উদ্দীপনা মূলক গল্প", "Productivity"] },
+    { title: "মিডিয়া", subs: ["মিডিয়া", "ইসলামিক বই", "ইসলামী বই (পর্যালোচনা/review)", "মাল্টিমিডিয়া", "তথ্যচিত্র", "ভিডিও লেকচার", "অডিও লেকচার", "ইসলামিক সফটওয়্যার", "নাশীদ"] }
+];
+const QA_DEFAULT_CATEGORY = "ইবাদত";
+const QA_DEFAULT_SUB = "সালাত";
+
+/* মূল প্রবন্ধ — কিভাবে নামাজের মধুরতা আস্বাদন করা যায়? (মৌলিক রচনা, একই বিষয়ে অনুপ্রাণিত হয়ে নতুন করে লেখা) */
+const QA_ARTICLE_REAL_HTML = `
+    <nav class="qa-breadcrumb">Home <span>›</span> ইবাদত <span>›</span> সালাত <span>›</span> কিভাবে নামাজের মধুরতা আস্বাদন করা যায়? পর্ব ১</nav>
+    <div class="qa-tags"><span class="qa-tag">ইবাদত</span><span class="qa-tag">সালাত</span></div>
+    <h1 class="qa-article-title">কিভাবে নামাজের মধুরতা আস্বাদন করা যায়? পর্ব ১</h1>
+    <div class="qa-meta-row">💬 14 Comments</div>
+    <div class="qa-share-row">
+        <button type="button" class="qa-share-icon" style="background:#1877f2;" title="Facebook" onclick="qaShare('facebook')"><svg viewBox="0 0 24 24" fill="white"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></button>
+        <button type="button" class="qa-share-icon" style="background:#000;" title="X" onclick="qaShare('x')"><svg viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+        <button type="button" class="qa-share-icon" style="background:#25D366;" title="WhatsApp" onclick="qaShare('whatsapp')"><svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.23 8.23 0 0 1-1.26-4.39c0-4.55 3.71-8.26 8.26-8.26 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.24-8.28 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01s-.44.06-.67.31c-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.07-.1-.23-.16-.48-.28z"/></svg></button>
+        <button type="button" class="qa-share-icon" style="background:#0077b5;" title="LinkedIn" onclick="qaShare('linkedin')"><svg viewBox="0 0 24 24" fill="white"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></button>
+        <button type="button" class="qa-share-icon" style="background:#111827;" title="Email" onclick="qaShare('email')"><svg viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
+        <button type="button" class="qa-share-icon" style="background:#6b7280;" title="Print" onclick="qaShare('print')"><svg viewBox="0 0 24 24" fill="white"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg></button>
+        <button type="button" class="qa-share-icon" style="background:#29a9eb;" title="Telegram" onclick="qaShare('telegram')"><svg viewBox="0 0 24 24" fill="white"><path d="M21.9 4.1c-.3-.25-.75-.32-1.1-.17L2.4 11.1c-.42.17-.68.6-.65 1.05.03.45.35.82.79.93l4.77 1.22 2.02 6.28c.13.4.48.68.9.72h.09c.37 0 .72-.19.92-.51l2.4-3.83 4.6 3.4c.2.15.44.23.68.23.13 0 .27-.02.4-.07.36-.14.62-.45.68-.83L22.5 5.1c.07-.4-.09-.79-.6-1z"/></svg></button>
+    </div>
+    <div class="qa-hero-banner">
+        <span class="qa-hero-shape s1"></span>
+        <span class="qa-hero-shape s2"></span>
+        <span class="qa-hero-motif">صلاة</span>
+        <span class="qa-hero-caption">সালাত</span>
+    </div>
+    <article class="qa-article-body">
+        <p>সালাত হলো একজন মুমিনের সবচেয়ে ঘনিষ্ঠ মুহূর্ত, যেখানে সে সরাসরি তার রবের সামনে দাঁড়ায়। তবু বাস্তবতা হলো, প্রতিদিনের এই সাক্ষাৎ অনেক সময় নিছক অভ্যাসে পরিণত হয়ে যায় — শরীর দাঁড়ায়, কিন্তু হৃদয় থাকে অন্য কোথাও। ইনশাআল্লাহ, এই ধারাবাহিক আলোচনায় আমরা ধাপে ধাপে খুঁজে দেখব কীভাবে নামাজে প্রকৃত প্রশান্তি ও মধুরতা অর্জন করা যায়।</p>
+
+        <h2>এক সাহাবীর অবিচল নামাজ</h2>
+        <p>হাদীসের কিতাবে এক অসাধারণ ঘটনা বর্ণিত আছে — এক যুদ্ধ-অভিযানে দুইজন সাহাবীকে পাহারার দায়িত্ব দেওয়া হয়েছিল। একজন তখন নামাজে দাঁড়ালেন, অন্যজন বিশ্রাম নিচ্ছিলেন। শত্রুপক্ষের একজন সুযোগ বুঝে তীর ছোঁড়ে, আর তা গিয়ে বিঁধে যায় নামাজরত সাহাবীর গায়ে। তিনি তীরটি সরিয়ে নেন, কিন্তু নামাজ ভাঙেননি। এভাবে পরপর কয়েকবার আঘাত পাওয়ার পরও তিনি রুকু-সিজদা শেষ করেই সালাম ফেরান। সঙ্গীকে না জাগানোর কারণ জিজ্ঞেস করা হলে তিনি বলেন, তিনি এমন একটি সূরা তিলাওয়াত করছিলেন যা তিনি ভালোবাসেন, আর তা মাঝপথে থামাতে চাননি। এই ঘটনা আমাদের সামনে তুলে ধরে, নামাজে হৃদয় কতটা নিমগ্ন থাকতে পারে।</p>
+
+        <h2>নামাজের প্রকৃত স্বাদ</h2>
+        <p>যে নামাজ হৃদয় দিয়ে আদায় করা হয়, তার শেষে সালাম ফেরানোটা যেন এক প্রকার বিদায়ের মতো অনুভূত হয় — মনে হয় যেন এক প্রশান্ত জগত থেকে আবার দুনিয়ায় ফিরে আসা হলো। যারা এই অনুভূতি একবার স্পর্শ করতে পারে, তাদের কাছে নামাজ আর শুধু একটি বাধ্যবাধকতা থাকে না; তা হয়ে ওঠে দিনের সবচেয়ে প্রতীক্ষিত মুহূর্ত।</p>
+
+        <h2>খুশু অর্জনের প্রথম ধাপ</h2>
+        <p>নামাজে মনোযোগ ধরে রাখাকে অনেকেই প্রায় অসম্ভব একটি কাজ মনে করেন। অথচ একটু হিসেব করলেই দেখা যায়, দৈনিক পাঁচ ওয়াক্ত নামাজে আমাদের মোট সময় ব্যয় হয় হয়তো এক ঘণ্টারও কম। বাকি তেইশ ঘণ্টা থাকে আমাদের নিজস্ব দুনিয়াবি কাজের জন্য। এই সামান্য সময়টুকু সম্পূর্ণভাবে আল্লাহর জন্য উৎসর্গ করা কি সত্যিই এত কঠিন? নামাজে দাঁড়ানোর আগে যদি মনে মনে এই উপলব্ধি জাগিয়ে তোলা যায় যে, এই কয়েক মিনিট শুধুই আল্লাহর জন্য — তাহলে মনোযোগ ধরে রাখা অনেকটাই সহজ হয়ে যায়।</p>
+
+        <h2>সৃষ্টিজগতের নীরব ইবাদত</h2>
+        <p>পবিত্র কুরআনে আল্লাহ তায়ালা জানিয়েছেন যে, আসমান-জমিন ও তার মধ্যে যা কিছু আছে, সবকিছুই তাঁর পবিত্রতা ও প্রশংসা ঘোষণা করে চলেছে — যদিও আমরা তাদের সেই তাসবীহ বুঝতে পারি না (সূরা বনী ইসরাঈল, আয়াত ৪৪-এর ভাবার্থ)। অন্য এক আয়াতে বলা হয়েছে, আকাশ-পৃথিবীর সবকিছু — সূর্য, চন্দ্র, তারকা, পাহাড়, বৃক্ষ, জীবজন্তু — সবই আল্লাহর সামনে সিজদাবনত (সূরা হাজ্জ, আয়াত ১৮-এর ভাবার্থ)। যদি সৃষ্টিজগতের নির্বাক অংশও আল্লাহর প্রতি এতটা নিবেদিত থাকে, তবে বিবেক ও উপলব্ধিসম্পন্ন মানুষ হিসেবে আমাদের নামাজে সেই নিবেদন কতটা গভীর হওয়া উচিত — এই প্রশ্নটি নিজেকে বারবার করা প্রয়োজন।</p>
+
+        <h2>শেষ কথা</h2>
+        <p>খুশু অর্জনকে অসম্ভব ভাবার কোনো কারণ নেই। আল্লাহ তায়ালা নিজেই প্রতিশ্রুতি দিয়েছেন, যারা তাঁর সন্তুষ্টির পথে চেষ্টা করে, তিনি তাদের সঠিক পথের দিকে পরিচালিত করেন (সূরা আনকাবুত, আয়াত ৬৯-এর ভাবার্থ)। তাই বিসমিল্লাহ বলে শুরু করা যাক এই যাত্রা — ধীরে ধীরে, ধৈর্য সহকারে, নামাজের প্রতিটি অংশের অর্থ ও তাৎপর্য বুঝে বুঝে। ইনশাআল্লাহ, পরবর্তী পর্বগুলোতে আমরা নামাজের প্রতিটি বিষয় নিয়ে আরও বিস্তারিত আলোচনা করব।</p>
+        <p><em>চলবে... ইনশাআল্লাহ।</em></p>
+    </article>
+`;
+
+function renderQaDropdown() {
+    const container = document.getElementById('qaDropdownPanel');
+    if (!container) return;
+    container.innerHTML = QA_CATEGORIES.map(cat => `
+        <div class="qa-cat-group">
+            <button type="button" class="qa-cat-header" onclick="toggleQaCategory(this)">
+                <span>${cat.title}</span>
+                <span class="qa-cat-arrow ${cat.title === QA_DEFAULT_CATEGORY ? 'rotate' : ''}">▾</span>
+            </button>
+            <div class="qa-cat-list" style="display:${cat.title === QA_DEFAULT_CATEGORY ? 'block' : 'none'};">
+                ${cat.subs.map(sub => `<button type="button" class="qa-sub-item ${sub === QA_DEFAULT_SUB ? 'active' : ''}" onclick="handleQaNav(this, '${sub.replace(/'/g, "\\'")}')">${sub}</button>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function toggleQaCategory(btn) {
+    const list = btn.nextElementSibling;
+    const arrow = btn.querySelector('.qa-cat-arrow');
+    const isOpen = list.style.display === 'block';
+    list.style.display = isOpen ? 'none' : 'block';
+    arrow.classList.toggle('rotate', !isOpen);
+}
+
+/* ৩-ডট ড্রপডাউন প্যানেল খোলা/বন্ধ করার ফাংশন */
+function toggleQaDropdown(e) {
+    if (e) e.stopPropagation();
+    const panel = document.getElementById('qaDropdownPanel');
+    const btn = document.getElementById('qaDotsBtn');
+    if (!panel) return;
+    const isActive = panel.classList.toggle('active');
+    if (btn) btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+}
+
+/* প্যানেলের বাইরে ক্লিক করলে ড্রপডাউন বন্ধ হয়ে যাবে */
+document.addEventListener('click', function (e) {
+    const panel = document.getElementById('qaDropdownPanel');
+    const wrap = document.querySelector('.qa-dropdown-wrap');
+    if (panel && panel.classList.contains('active') && wrap && !wrap.contains(e.target)) {
+        panel.classList.remove('active');
+        const btn = document.getElementById('qaDotsBtn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+});
+
+function handleQaNav(el, subLabel) {
+    document.querySelectorAll('.qa-sub-item').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    if (subLabel === QA_DEFAULT_SUB) {
+        renderQaArticleReal();
+    } else {
+        renderQaComingSoon(subLabel);
+    }
+    // সাবমেনু থেকে বাছাই করার পর ড্রপডাউন প্যানেলটি বন্ধ হয়ে যাবে
+    const panel = document.getElementById('qaDropdownPanel');
+    if (panel) panel.classList.remove('active');
+    const btn = document.getElementById('qaDotsBtn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+
+    const area = document.getElementById('qaArticleArea');
+    if (area && window.innerWidth < 768) area.scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderQaArticleReal() {
+    const area = document.getElementById('qaArticleContent');
+    if (area) area.innerHTML = QA_ARTICLE_REAL_HTML;
+}
+
+function renderQaComingSoon(label) {
+    const area = document.getElementById('qaArticleContent');
+    if (!area) return;
+    area.innerHTML = `
+        <div class="qa-coming-soon">
+            <div class="qa-coming-soon-icon">📝</div>
+            <h3>${label}</h3>
+            <p>এই বিভাগের লেখাগুলো শীঘ্রই যুক্ত করা হবে। ইনশাআল্লাহ।</p>
+        </div>
+    `;
+}
+
+function qaShare(platform) {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent('কিভাবে নামাজের মধুরতা আস্বাদন করা যায়? পর্ব ১');
+    const routes = {
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+        x: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
+        whatsapp: `https://wa.me/?text=${title}%20${url}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+        telegram: `https://t.me/share/url?url=${url}&text=${title}`
+    };
+    if (platform === 'print') { window.print(); return; }
+    if (platform === 'email') { window.location.href = `mailto:?subject=${title}&body=${url}`; return; }
+    if (routes[platform]) window.open(routes[platform], '_blank', 'noopener');
+}
+
+/* ============================================================ */
+/* ============ Sanity CMS ইন্টিগ্রেশন (কনটেন্ট সিঙ্ক: EN/BN + ডার্ক/লাইট মোড) ============ */
+/* ============================================================ */
+/* নিচের projectId এবং dataset আপনার নিজের Sanity প্রজেক্ট অনুযায়ী পরিবর্তন করুন।
+   projectId পাওয়া যাবে sanity.io/manage থেকে। */
+const SANITY_CONFIG = {
+    projectId: 'YOUR_SANITY_PROJECT_ID', // <-- এখানে আপনার আসল Sanity প্রজেক্ট আইডি বসান
+    dataset: 'production',
+    apiVersion: '2024-01-01',
+    useCdn: true
+};
+
+let sanityClientInstance = null;
+let sanityDocData = null;
+
+function initSanityClient() {
+    try {
+        if (typeof SanityClient !== 'undefined' && SanityClient.createClient && SANITY_CONFIG.projectId && SANITY_CONFIG.projectId !== 'YOUR_SANITY_PROJECT_ID') {
+            sanityClientInstance = SanityClient.createClient(SANITY_CONFIG);
+        } else {
+            console.warn('Sanity প্রজেক্ট আইডি সেট করা হয়নি অথবা Sanity Client লাইব্রেরি লোড হয়নি — SANITY_CONFIG.projectId আপডেট করুন।');
+        }
+    } catch (err) {
+        console.error('Sanity ক্লায়েন্ট চালু করতে সমস্যা হয়েছে:', err);
+    }
+}
+
+/* Sanity থেকে content_en, content_bn এবং mainImage নিয়ে আসা হয়।
+   ইমেজের URL সরাসরি GROQ প্রজেকশনের মাধ্যমে (mainImage.asset->url) আনা হয়েছে,
+   যাতে ভাষা পরিবর্তনের সময় একই ছবি বজায় থাকে এবং শুধু টেক্সট পাল্টায়। */
+async function loadSanityContent() {
+    if (!sanityClientInstance) return;
+    try {
+        const query = `*[_type == "post"] | order(_createdAt desc)[0]{
+            content_en,
+            content_bn,
+            "imageUrl": mainImage.asset->url
+        }`;
+        const result = await sanityClientInstance.fetch(query);
+        if (result) {
+            sanityDocData = result;
+            renderSanityContent();
+        }
+    } catch (err) {
+        console.error('Sanity থেকে কনটেন্ট আনতে সমস্যা হয়েছে:', err);
+    }
+}
+
+/* গ্লোবাল EN/BN টগলের সাথে সিঙ্ক করে টেক্সট রেন্ডার করা হয়; ছবি অপরিবর্তিত থাকে।
+   এখানে কোনো হার্ডকোডেড রঙ ব্যবহার করা হয়নি — .sanity-content CSS ক্লাস
+   var(--text-body) ব্যবহার করে, যা গ্লোবাল ডার্ক/লাইট মোড অনুযায়ী স্বয়ংক্রিয়ভাবে বদলে যায়। */
+function renderSanityContent() {
+    const container = document.getElementById('sanityContent');
+    if (!container || !sanityDocData) return;
+    const textContent = currentLang === 'bn' ? sanityDocData.content_bn : sanityDocData.content_en;
+    const imageHtml = sanityDocData.imageUrl
+        ? `<img src="${sanityDocData.imageUrl}" alt="Sanity content" loading="lazy">`
+        : '';
+    container.innerHTML = `${imageHtml}<div class="sanity-text">${textContent || ''}</div>`;
+}
+
 /* ============ ইনিশিয়ালাইজেশন ============ */
 document.addEventListener('DOMContentLoaded', function () {
     applyTheme();
     setLanguage(currentLang);
     switchTab('home');
     initPrayerLocation();
+    renderQaDropdown();
+    renderQaArticleReal();
+    initSanityClient();
+    loadSanityContent();
 
     document.getElementById('menuOpenBtn').addEventListener('click', () => toggleMenu('open'));
     document.getElementById('menuCloseBtn').addEventListener('click', () => toggleMenu('close'));
     document.getElementById('menuOverlay').addEventListener('click', () => toggleMenu('close'));
-    document.getElementById('blogDropdownBtn').addEventListener('click', toggleBlogDropdown);
     document.querySelector('.contact-form').addEventListener('submit', sendToWhatsApp);
 
     // যদি URL এ #about থাকে, সরাসরি অ্যাবাউট মোডাল খুলবে (about.html থেকে রিডাইরেক্ট হয়ে এলে)
