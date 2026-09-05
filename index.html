@@ -2,7 +2,7 @@
 <html lang="bn" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>মোঃ ওমর হাওলাদার | পোর্টফোলিও</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
 <style>
     /* ===== রিসেট ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; height: 100%; }
 
     /* ===== থিম ভেরিয়েবল ===== */
     :root {
@@ -42,6 +42,8 @@
         --shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
+    html, body { overflow-x: hidden; width: 100%; }
+
     body {
         font-family: 'Hind Siliguri', 'Inter', sans-serif;
         background-color: var(--bg);
@@ -49,8 +51,15 @@
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         transition: background-color 0.3s ease, color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
     [data-lang="en"] body { font-family: 'Inter', sans-serif; }
+
+    /* এই wrapper হোম/সিভি/ব্লগ কন্টেন্ট ধরে রাখে যাতে ফুটার সবসময় পেজের একদম নিচে স্থির থাকে */
+    .content-wrap { flex: 1 0 auto; width: 100%; display: flex; flex-direction: column; }
 
     a { color: inherit; }
     button, a, input, textarea { outline-offset: 2px; }
@@ -69,6 +78,7 @@
         position: sticky;
         top: 0;
         z-index: 900;
+        flex-shrink: 0;
     }
     /* লোগো এখন হেডারের ভেতরে আবদ্ধ না থেকে একটি ফ্লোটিং ব্যাজ হিসেবে হিরো সেকশনের ওপর ভেসে থাকে */
     .logo-badge {
@@ -131,6 +141,7 @@
         position: sticky;
         top: 57px;
         z-index: 800;
+        flex-shrink: 0;
     }
     .tab-track {
         display: flex;
@@ -140,6 +151,7 @@
         padding: 4px;
         box-shadow: var(--shadow);
         gap: 4px;
+        max-width: 100%;
     }
     .tab-btn {
         border: none;
@@ -152,6 +164,11 @@
         color: var(--text-sub);
         font-family: inherit;
         transition: background 0.25s ease, color 0.25s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
     }
     .tab-btn.active {
         background: linear-gradient(to right, var(--accent), var(--accent-dark));
@@ -169,6 +186,7 @@
         transition: right 0.4s cubic-bezier(0.1,0.8,0.25,1);
         padding: 24px;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .sidebar-menu.active { right: 0; }
     .close-btn {
@@ -291,12 +309,15 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 12px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .demo-tabs {
     display: flex;
     gap: 8px;
     margin: 16px 0;
+    flex-wrap: wrap;
 }
 
 .demo-tab {
@@ -409,6 +430,8 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .demo-price-box {
@@ -472,6 +495,8 @@
     box-shadow: 0 4px 16px -6px color-mix(in srgb, var(--accent) 45%, transparent);
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     cursor: pointer;
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 [data-theme="dark"] .live-project-token {
     color: #7ce8bb;
@@ -516,7 +541,7 @@
     50%      { transform: translateX(3px) scale(1.08); box-shadow: 0 0 0 6px transparent; }
 }
 
-    /* ===== CV ট্যাব ===== */
+    /* ===== CV ট্যাব (এখন মূল পেজে সরাসরি এমবেড করা, আলাদা পেজ/আইফ্রেম নেই) ===== */
     .cv-wrap { max-width: 620px; margin: 40px auto; padding: 0 20px 40px; }
     .cv-name { font-size: 24px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
     .cv-role { font-size: 14px; color: var(--text-sub); margin-bottom: 28px; }
@@ -612,18 +637,19 @@
     .social-grid a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; text-decoration: none; transition: transform 0.2s ease; }
     .social-grid a:hover { transform: translateY(-3px) scale(1.06); }
 
-    /* ===== ফুটার ===== */
-    .site-footer { background: var(--header-bg); border-top: 1px solid var(--border); padding: 32px 5% 24px; margin-top: 40px; }
+    /* ===== ফুটার (সবসময় পেজের সর্বনিম্নে স্থির থাকবে) ===== */
+    .site-footer { background: var(--header-bg); border-top: 1px solid var(--border); padding: 32px 5% 24px; margin-top: 40px; flex-shrink: 0; width: 100%; }
     .footer-inner { max-width: 700px; margin: 0 auto; text-align: center; }
     .footer-logo { height: 34px; width: auto; margin: 0 auto 10px auto; display: block; }
     .footer-tagline { font-size: 13px; color: var(--text-sub); margin-bottom: 16px; }
-    .footer-social { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; }
+    .footer-social { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
     .footer-social a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; text-decoration: none; transition: transform 0.2s ease; }
     .footer-social a:hover { transform: translateY(-3px) scale(1.06); }
     .footer-copy { font-size: 12px; color: var(--text-sub); }
 
-    /* ===== রেসপন্সিভ ব্রেকপয়েন্ট (sm / md / lg) ===== */
+    /* ===== রেসপন্সিভ ব্রেকপয়েন্ট (sm / md / lg / xl) ===== */
     p, li, h1, h2, h3, h4 { overflow-wrap: break-word; }
+    img { max-width: 100%; height: auto; }
 
     @media (min-width: 640px) {
         .hero-section h1 { font-size: clamp(28px, 4vw, 34px); }
@@ -656,6 +682,14 @@
     @media (max-width: 480px) {
         .logo-badge { left: 14px; padding: 6px; border-radius: 16px; }
         .logo-img { height: 60px; border-radius: 12px; }
+        .hero-section h1 { font-size: 24px; }
+        .info-bar { font-size: 14px; }
+        .btn-row { flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+        .demo-products { grid-template-columns: 1fr !important; }
+        .demo-product-img-box { height: 140px; }
     }
 
     @media (max-width: 380px) {
@@ -664,6 +698,7 @@
         .icon-btn { padding: 6px 8px; font-size: 12px; }
         .logo-badge { left: 10px; padding: 5px; }
         .logo-img { height: 52px; }
+        .tab-btn { padding: 8px 14px; font-size: 13px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -715,16 +750,16 @@
     function openPortfolioModal() {
     // আগের খোলা মেনু বা কন্টাক্ট মডাল থাকলে তা বন্ধ করার চেষ্টা
     if(typeof toggleMenu === "function") toggleMenu('close');
-    var contactModal = document.getElementById('contactModal'); // আপনার কন্টাক্ট মডালের আইডি যদি এটি হয়
+    var contactModal = document.getElementById('contactModal'); // আপনার কন্টাক্ট মডালের আইডি যদি এটি হয়
     if(contactModal) contactModal.style.display = "none";
-    
+
     // পোর্টফোলিও পপ-আপ উইন্ডোটি স্ক্রিনে দৃশ্যমান করা
     document.getElementById('portfolioModal').style.display = "block";
-    
+
     // portfolio.html ফাইলটি টেনে এনে ভেতরে বসানো
     fetch('./portfolio.html')
       .then(response => {
-        if (!response.ok) throw new Error('ফাইলটি পাওয়া যায়নি');
+        if (!response.ok) throw new Error('ফাইলটি পাওয়া যায়নি');
         return response.text();
       })
       .then(data => {
@@ -736,8 +771,8 @@
     // পপ-আপ উইন্ডোটি বন্ধ করা
     document.getElementById('portfolioModal').style.display = "none";
   }
-  
-  // পপ-আপের বাইরের কালো অংশে ক্লিক করলে যেন এটি বন্ধ হয়ে যায়
+
+  // পপ-আপের বাইরের কালো অংশে ক্লিক করলে যেন এটি বন্ধ হয়ে যায়
   window.addEventListener('click', function(event) {
     var modal = document.getElementById('portfolioModal');
     if (event.target == modal) {
@@ -766,8 +801,7 @@
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
         <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
         <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
-<a href="portfolio.html" data-i18n="navPortfolio">পোর্টফোলিও</a>
-      <a href="cvsection.html" data-i18n="navCV">সিভি</a>
+        <a href="javascript:void(0)" onclick="switchTab('cv'); toggleMenu('close')" data-i18n="navCV">সিভি</a>
         <div class="dropdown">
             <button class="dropdown-btn" id="blogDropdownBtn">
                 <span data-i18n="navBlog">ব্লগ</span>
@@ -797,10 +831,13 @@
 <div class="tab-switcher">
     <div class="tab-track">
         <button class="tab-btn active" id="tabBtnHome" onclick="switchTab('home')">Home</button>
-        <a href="cvsection.html" class="tab-btn" id="tabBtnCv" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">CV</a>
-          <button class="tab-btn" id="tabBtnBlog" onclick="switchTab('blog')">Blog</button>
+        <button class="tab-btn" id="tabBtnCv" onclick="switchTab('cv')">CV</button>
+        <button class="tab-btn" id="tabBtnBlog" onclick="switchTab('blog')">Blog</button>
     </div>
 </div>
+
+<!-- হোম / সিভি / ব্লগ — সব কন্টেন্ট একটি wrapper এ, যাতে ফুটার সবসময় পেজের নিচে স্থির থাকে -->
+<div class="content-wrap">
 
 <!-- ============ হোম ট্যাব ============ -->
 <div class="tab-panel active" id="tabHome">
@@ -837,7 +874,7 @@
             </div>
             <!-- প্রিমিয়াম কার্ড বডি ও প্রজেক্টের ডিটেইলস -->
               <div class="demo-card-body">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 8px;">
                       <h4 style="font-weight: 700; color: var(--text-main); font-size:16px; margin:0;">Omar 52Hub Shop</h4>
                       <span style="background: var(--surface-alt); border: 1px solid var(--border); padding:3px 10px; border-radius:20px; font-size:11px; color:var(--text-main); font-weight:600;">🛒 Cart: 0</span>
                   </div>
@@ -906,11 +943,30 @@
         </div>
     </section>
 </div>
-<!-- ============ CV ট্যাব ============ -->
-<!-- মেইন পেজের ভেতরে আলাদা থাকা cvsection.html ফাইলটি লোড করার জন্য iframe -->
-<section class="tab-panel" id="tabCv" style="width: 100%; min-height: 800px; border: none; overflow: hidden;">
-    <iframe src="cvsection.html" style="width: 100%; height: 1000px; border: none; scrolling: no;"></iframe>
+
+<!-- ============ CV ট্যাব (এখন মূল পেজের ভিতরেই এমবেড করা — কোনো আলাদা পেজ/আইফ্রেম নেই) ============ -->
+<section class="tab-panel" id="tabCv">
+    <div class="cv-wrap">
+        <h2 class="cv-name" data-i18n="aboutName">মো: ওমর হাওলাদার</h2>
+        <p class="cv-role" data-i18n="cvRole">ওয়েব ডেভেলপার • ডিজিটাল মার্কেটার • অনলাইন সলিউশন এক্সপার্ট</p>
+
+        <div class="cv-box">
+            <h3 class="cv-box-title" data-i18n="cvWhyTitle">🎯 কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</h3>
+            <ul id="cvWhyList"></ul>
+        </div>
+
+        <div class="cv-box">
+            <h3 class="cv-box-title" data-i18n="cvProcessTitle">⚙️ আমার কাজের প্রক্রিয়া:</h3>
+            <ol id="cvProcessList"></ol>
+        </div>
+
+        <div class="cv-box">
+            <h3 class="cv-box-title" data-i18n="cvPhilosophyTitle">🎯 কাজের দর্শন (My Work Philosophy):</h3>
+            <p data-i18n="cvPhilosophyText">আমি শুধু কাজ ডেলিভারি করায় বিশ্বাসী নই; আমি ক্লায়েন্টের দীর্ঘমেয়াদী উন্নতি এবং সততার সাথে সঠিক সমাধান দিতে পছন্দ করি।</p>
+        </div>
+    </div>
 </section>
+
 <!-- ============ ব্লগ ট্যাব ============ -->
 <section class="tab-panel" id="tabBlog">
     <div class="blog-wrap">
@@ -919,6 +975,8 @@
         <div class="blog-grid" id="blogGrid"></div>
     </div>
 </section>
+
+</div> <!-- /.content-wrap -->
 
 <!-- ============ কন্টাক্ট মোডাল ============ -->
 <div class="contact-modal-overlay" id="contactModal">
@@ -938,7 +996,7 @@
             </div>
             <div>
                 <label data-i18n="contactMsgLabel">আপনার বার্তা</label>
-                <textarea id="waMessage" name="message" rows="3" data-i18n-placeholder="contactMsgPh" placeholder="এখানে আপনার মেসেজটি লিখুন . . ." required></textarea>
+                <textarea id="waMessage" name="message" rows="3" data-i18n-placeholder="contactMsgPh" placeholder="এখানে আপনার মেসেজটি লিখুন . . ."></textarea>
             </div>
             <button type="submit" class="contact-submit" data-i18n="contactSend">বার্তা পাঠান</button>
         </form>
@@ -1005,7 +1063,7 @@
         <iframe src="services.html" width="100%" height="850px" style="border:none; border-radius: 16px; scrollbar-width: none;"></iframe>
     </div>
 </div>
-<!-- ============ ফুটার ============ -->
+<!-- ============ ফুটার (কন্টেন্ট-র‍্যাপ এর বাইরে, সবসময় পেজের একদম শেষে) ============ -->
 <footer class="site-footer">
     <div class="footer-inner">
         <img src="omar52hub.png" alt="Omar 52Hub" class="footer-logo">
@@ -1181,7 +1239,7 @@ let currentTheme = localStorage.getItem('site-theme') || 'light';
 let currentTab = 'home';
 let typewriterTimer = null;
 
-/* ============ ভাষা পরিবর্তন ============ */
+/* ============ ভাষা পরিবর্তন (গ্লোবাল — হোম, সিভি, ব্লগ, সব মোডাল একসাথে আপডেট হয়) ============ */
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('site-lang', lang);
@@ -1267,7 +1325,7 @@ function startTypewriter(lang) {
     tick();
 }
 
-/* ============ থিম ============ */
+/* ============ থিম (গ্লোবাল — পুরো ওয়েবসাইটে একই থিম প্রযোজ্য) ============ */
 function toggleTheme() {
     currentTheme = currentTheme === 'light' ? 'dark' : 'light';
     applyTheme();
@@ -1278,13 +1336,15 @@ function applyTheme() {
     document.getElementById('themeBtn').textContent = currentTheme === 'light' ? '🌙' : '☀️';
 }
 
-/* ============ ট্যাব সুইচ ============ */
+/* ============ ট্যাব সুইচ (Home / CV / Blog — তিনটিই একইভাবে কাজ করে, কোনো আলাদা পেজ লোড হয় না) ============ */
 function switchTab(tab) {
     currentTab = tab;
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
-    document.getElementById('tabBtn' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+    const panel = document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1));
+    const btn = document.getElementById('tabBtn' + tab.charAt(0).toUpperCase() + tab.slice(1));
+    if (panel) panel.classList.add('active');
+    if (btn) btn.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function scrollToServices() {
@@ -1309,6 +1369,8 @@ function toggleMenu(action) {
 }
 function toggleBlogDropdown(e) {
     e.preventDefault();
+    // মোবাইল হ্যামবার্গার মেনু থেকে "ব্লগ" এ ক্লিক করলে ডেস্কটপ Blog বাটনের মতোই একই ব্লগ ট্যাব খুলে যাবে, পাশাপাশি সাব-মেনুও দেখাবে
+    switchTab('blog');
     const container = document.getElementById('blogDropdownContainer');
     const arrow = document.getElementById('blogArrow');
     const isOpen = container.style.display === 'block';
@@ -1370,6 +1432,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // যদি URL এ #about থাকে, সরাসরি অ্যাবাউট মোডাল খুলবে (about.html থেকে রিডাইরেক্ট হয়ে এলে)
     if (window.location.hash === '#about') openAboutModal();
+    // যদি URL এ #cv থাকে, সরাসরি সিভি ট্যাবে চলে যাবে
+    if (window.location.hash === '#cv') switchTab('cv');
+    // যদি URL এ #blog থাকে, সরাসরি ব্লগ ট্যাবে চলে যাবে
+    if (window.location.hash === '#blog') switchTab('blog');
 });
 </script>
 </body>
