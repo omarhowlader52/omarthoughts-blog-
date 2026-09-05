@@ -1558,6 +1558,12 @@ function sendToWhatsApp(event) {
 /* ============================================================ */
 const PRAYER_ORDER = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 const PRAYER_ICONS = { Fajr: '🌅', Dhuhr: '☀️', Asr: '🌤️', Maghrib: '🌇', Isha: '🌙' };
+/* হিজরি মাসের নাম — আরবি হরফের বদলে বাংলা প্রতিবর্ণীকরণ (উচ্চারণ অনুযায়ী), ক্রম: মুহাররম থেকে জিলহজ */
+const HIJRI_MONTHS_BN = [
+    "মহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি",
+    "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান",
+    "রমজান", "শাওয়াল", "জিলক্বদ", "জিলহজ"
+];
 let prayerTimesData = null;
 let prayerCoords = { lat: 23.8103, lon: 90.4125 }; // ঢাকা, বাংলাদেশ — ডিফল্ট ফলব্যাক কো-অর্ডিনেট
 let prayerLocationLabel = null;
@@ -1713,7 +1719,8 @@ function renderPrayerWidget() {
     const hijriEl = document.getElementById('pwHijri');
     if (hijriEl && prayerTimesData.date && prayerTimesData.date.hijri) {
         const h = prayerTimesData.date.hijri;
-        const hijriMonthName = lang === 'bn' ? (h.month.ar || h.month.en) : h.month.en;
+        const hijriMonthNumber = parseInt(h.month.number, 10);
+        const hijriMonthName = lang === 'bn' ? (HIJRI_MONTHS_BN[hijriMonthNumber - 1] || h.month.en) : h.month.en;
         hijriEl.textContent = lang === 'bn'
             ? `${toBanglaDigits(h.day)} ${hijriMonthName}, ${toBanglaDigits(h.year)} হিজরি`
             : `${h.day} ${hijriMonthName} ${h.year} AH`;
