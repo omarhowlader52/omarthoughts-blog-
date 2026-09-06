@@ -1,692 +1,396 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>আমার সেবাসমূহ | Our Services</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Omar Howlader — Profile Modal</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-  :root {
-    --radius-card: 18px;
-    --radius-pill: 999px;
-    --radius-icon: 14px;
-    --font-bn: 'Hind Siliguri', sans-serif;
-    --font-en: 'Manrope', sans-serif;
-    --accent: #f0a838;
-    --accent-soft: rgba(240, 168, 56, 0.14);
-    --accent-ink: #4a2f06;
-    --new-badge: #45c2a8;
-    --new-badge-soft: rgba(69, 194, 168, 0.16);
-    --shadow-lift: 0 24px 48px -20px rgba(0, 0, 0, 0.45);
-  }
-
-  html[data-theme="dark"] {
-    --bg: #0f172a;
-    --bg-image:
-      radial-gradient(circle at 12% 8%, rgba(240, 168, 56, 0.10), transparent 40%),
-      radial-gradient(circle at 88% 82%, rgba(69, 194, 168, 0.08), transparent 45%);
-    --surface: rgba(255, 255, 255, 0.045);
-    --surface-solid: #16213a;
-    --surface-border: rgba(255, 255, 255, 0.09);
-    --surface-border-hover: rgba(240, 168, 56, 0.45);
-    --text-primary: #f1f5f9;
-    --text-secondary: #a7b3c8;
-    --text-muted: #71809b;
-    --divider: rgba(255, 255, 255, 0.08);
-    --header-surface: rgba(15, 23, 42, 0.72);
-    --price-surface: rgba(240, 168, 56, 0.09);
-    --blur: blur(18px);
-  }
-
-  html[data-theme="light"] {
-    --bg: #f7f5f0;
-    --bg-image:
-      radial-gradient(circle at 12% 8%, rgba(240, 168, 56, 0.10), transparent 40%),
-      radial-gradient(circle at 88% 82%, rgba(69, 194, 168, 0.10), transparent 45%);
-    --surface: #ffffff;
-    --surface-solid: #ffffff;
-    --surface-border: rgba(20, 25, 40, 0.08);
-    --surface-border-hover: rgba(240, 168, 56, 0.55);
-    --text-primary: #1c2333;
-    --text-secondary: #565f76;
-    --text-muted: #8a91a3;
-    --divider: rgba(20, 25, 40, 0.08);
-    --header-surface: rgba(247, 245, 240, 0.82);
-    --price-surface: rgba(240, 168, 56, 0.10);
-    --blur: blur(12px);
-  }
-
-  * { box-sizing: border-box; }
-
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
   body {
-    margin: 0;
-    background-color: var(--bg);
-    background-image: var(--bg-image);
-    color: var(--text-primary);
-    font-family: var(--font-bn);
-    transition: background-color 0.35s ease, color 0.35s ease;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Hind Siliguri', sans-serif;
   }
-
-  body.lang-bn .en { display: none; }
-  body.lang-en .bn { display: none; }
-  body.lang-en { font-family: var(--font-en); }
-
-  .wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
+  /* Custom slim scrollbar for the modal body, matching the dark theme */
+  .modal-scroll::-webkit-scrollbar {
+    width: 8px;
   }
-
-  header.top-bar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    background: var(--header-surface);
-    border-bottom: 1px solid var(--divider);
+  .modal-scroll::-webkit-scrollbar-track {
+    background: transparent;
   }
-
-  .top-bar-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--text-primary);
-  }
-
-  .brand-mark {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--accent), #f6c37a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #23150a;
-    font-size: 0.95rem;
-  }
-
-  .toggle-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .toggle-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--surface-border);
-    background: var(--surface-solid);
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: border-color 0.2s ease, transform 0.15s ease;
-  }
-
-  .toggle-btn:hover { border-color: var(--surface-border-hover); }
-  .toggle-btn:active { transform: scale(0.96); }
-  .toggle-btn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-
-  .toggle-btn i { font-size: 0.85rem; color: var(--accent); }
-
-  section.hero {
-    padding: 64px 0 40px;
-    text-align: center;
-  }
-
-  .hero-eyebrow {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin: 0 0 10px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 4.5vw, 2.9rem);
-    line-height: 1.25;
-    margin: 0 0 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  .hero p {
-    max-width: 620px;
-    margin: 0 auto;
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 26px;
-    margin-top: 20px;
-  }
-
-  .card {
-    position: relative;
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: var(--radius-card);
-    padding: 30px 28px 26px;
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    border-color: var(--surface-border-hover);
-    box-shadow: var(--shadow-lift);
-  }
-
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .icon-badge {
-    width: 52px;
-    height: 52px;
-    min-width: 52px;
-    border-radius: var(--radius-icon);
-    background: var(--accent-soft);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.35rem;
-  }
-
-  .new-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 12px;
-    border-radius: var(--radius-pill);
-    background: var(--new-badge-soft);
-    color: var(--new-badge);
-    font-size: 0.78rem;
-    font-weight: 700;
-    white-space: nowrap;
-    height: fit-content;
-  }
-
-  .card h3 {
-    margin: 0;
-    font-size: 1.18rem;
-    line-height: 1.45;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  .card p.desc {
-    margin: 0;
-    color: var(--text-secondary);
-    font-size: 0.96rem;
-    line-height: 1.75;
-  }
-
-  .feature-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
-
-  .feature-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.6;
-  }
-
-  .feature-list i {
-    color: var(--accent);
-    font-size: 0.82rem;
-    margin-top: 5px;
-  }
-
-  .bonus-box {
-    display: flex;
-    gap: 10px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: var(--divider);
-    color: var(--text-secondary);
-    font-size: 0.87rem;
-    line-height: 1.65;
-  }
-
-  .bonus-box i {
-    color: var(--new-badge);
-    margin-top: 3px;
-    font-size: 0.85rem;
-  }
-
-  .card-footer {
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid var(--divider);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .price-tag {
-    background: var(--price-surface);
-    color: var(--accent);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 0.88rem;
-    line-height: 1.5;
-  }
-
-  footer.cta-section {
-    margin-top: 56px;
-    text-align: center;
-    padding: 46px 28px;
-    border-radius: 22px;
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-  }
-
-  footer.cta-section p {
-    margin: 0 0 22px;
-    color: var(--text-secondary);
-    font-size: 1.02rem;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.75;
-  }
-
-  .cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 30px;
-    border-radius: var(--radius-pill);
-    background: linear-gradient(135deg, var(--accent), #f6c37a);
-    color: #23150a;
-    font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 28px -12px rgba(240, 168, 56, 0.55);
-  }
-
-  .cta-btn:focus-visible {
-    outline: 2px solid var(--text-primary);
-    outline-offset: 3px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .card, .cta-btn, .toggle-btn { transition: none; }
-    .card:hover, .cta-btn:hover { transform: none; }
-  }
-
-  @media (max-width: 640px) {
-    .top-bar-inner { padding: 14px 18px; }
-    section.hero { padding: 44px 0 30px; }
-    .card { padding: 24px 20px 22px; }
-    .card-footer { flex-direction: column; align-items: flex-start; }
+  .modal-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 85, 99, 0.6);
+    border-radius: 9999px;
   }
 </style>
 </head>
-<body class="lang-bn">
+<body class="bg-gray-950 min-h-screen flex items-center justify-center p-6">
 
-<header class="top-bar">
-  <div class="top-bar-inner">
-    <div class="brand">
-      <span class="brand-mark"><i class="fa-solid fa-layer-group"></i></span>
-      <span class="bn">সেবাসমূহ</span>
-      <span class="en">Services</span>
+  <!-- Trigger: Project / Portfolio Card -->
+  <button
+    id="openProfileCardBtn"
+    onclick="openProfileModal()"
+    class="max-w-sm w-full bg-[#111a2e] border border-gray-800 rounded-2xl p-6 text-left hover:border-emerald-500/40 transition-colors duration-200 shadow-xl"
+  >
+    <div class="flex items-center gap-4">
+      <img
+        src="omar52hub-profile.jpg"
+        alt="ওমর হাওলাদার"
+        style="width:64px;height:64px;min-width:64px"
+        class="w-16 h-16 rounded-full border-4 border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] object-cover shrink-0"
+        onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22128%22 height=%22128%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%230a1120%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2244%22 fill=%22%2310b981%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 font-family=%22sans-serif%22%3EOH%3C/text%3E%3C/svg%3E'"
+      />
+      <div>
+        <h2 class="text-white font-semibold text-lg">মো: ওমর হাওলাদার</h2>
+        <p class="text-emerald-400 text-sm">ডিজিটাল গ্রোথ পার্টনার</p>
+      </div>
     </div>
-    <div class="toggle-group">
-      <button class="toggle-btn" id="langToggle" type="button" aria-label="Toggle language">
-        <i class="fa-solid fa-language"></i>
-        <span class="bn">English</span>
-        <span class="en">বাংলা</span>
+    <p class="text-gray-400 text-sm mt-4">
+      প্রোফাইল ও সেবাসমূহ সম্পর্কে বিস্তারিত জানতে এখানে ক্লিক করুন
+    </p>
+  </button>
+
+  <!-- Modal Backdrop -->
+  <div
+    id="profileModalBackdrop"
+    class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    onclick="closeModalOnBackdrop(event)"
+  >
+    <!-- Central Card Box -->
+    <div
+      id="profileModalCard"
+      class="modal-scroll max-w-2xl w-full mx-auto bg-[#0a1120] rounded-2xl border border-gray-800 overflow-y-auto max-h-[90vh] shadow-2xl relative"
+    >
+
+      <!-- Close Button -->
+      <button
+        onclick="closeProfileModal()"
+        aria-label="বন্ধ করুন"
+        class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors duration-150"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
-      <button class="toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme">
-        <i class="fa-solid fa-moon" id="themeIcon"></i>
-        <span class="bn" id="themeLabelBn">লাইট মোড</span>
-        <span class="en" id="themeLabelEn">Light Mode</span>
-      </button>
+
+      <div class="px-6 pt-10 pb-8 sm:px-10">
+
+        <!-- Profile Avatar -->
+        <div class="flex justify-center mb-6">
+          <img
+            src="omar52hub-profile.jpg"
+            alt="মো: ওমর হাওলাদার"
+            style="width:112px;height:112px;min-width:112px"
+            class="w-28 h-28 rounded-full border-4 border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] object-cover shrink-0"
+            onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22224%22 height=%22224%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%230a1120%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2280%22 fill=%22%2310b981%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 font-family=%22sans-serif%22%3EOH%3C/text%3E%3C/svg%3E'"
+          />
+        </div>
+
+        <!-- Name & Tagline -->
+        <div class="text-center mb-6">
+          <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+            হ্যালো, আমি মো: ওমর হাওলাদার 👋
+          </h1>
+          <p class="text-emerald-400 text-base sm:text-lg">
+            আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার
+          </p>
+        </div>
+
+        <!-- Intro Paragraphs -->
+        <div class="space-y-4 mb-6">
+          <p class="text-gray-300 leading-relaxed">
+            আমি একজন প্রফেশনাল ওয়েব ডেভেলপার, ডিজিটাল মার্কেটার এবং মাল্টিপারপাস অনলাইন সলিউশন এক্সপার্ট। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফল করার পাশাপাশি সাধারণ মানুষকে জটিল সব অনলাইন ও আইটি সেবা খুব সহজে প্রদান করে আসছি।
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            একটি সাধারণ আইডিয়াকে ডিজিটাল ব্র্যান্ডে রূপান্তর করা থেকে শুরু করে যেকোনো জরুরি অনলাইন অ্যাপ্লিকেশন — প্রতিটি ধাপে আমি আপনাকে শতভাগ নির্ভুল ও প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।
+          </p>
+        </div>
+
+        <!-- Card: How I Can Help -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4">
+          <h3 class="text-white font-semibold text-lg mb-4 flex items-center gap-2">
+            <span>💡</span>
+            <span>আমি আপনাকে যেভাবে সাহায্য করতে পারি:</span>
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">আধুনিক ওয়েব ডেভেলপমেন্ট:</span>
+                ব্যবসার ধরন অনুযায়ী দৃষ্টিনন্দন, দ্রুতগতির এবং শতভাগ মোবাইল-ফ্রেন্ডলি ওয়েবসাইট তৈরি।
+              </span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">স্মার্ট ডিজিটাল মার্কেটিং:</span>
+                ফেসবুক ও সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট এবং সঠিক কাস্টমার টার্গেটিংয়ের মাধ্যমে পেজ বুস্টিং।
+              </span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">স্মার্ট অনলাইন অ্যাপ্লিকেশন ও আইটি সেবা:</span>
+                পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট, ভিসা এবং যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন নিখুঁতভাবে সম্পন্নকরণ।
+              </span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">অনলাইন ও পেমেন্ট সলিউশন:</span>
+                ফ্রিল্যান্সিং বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card: Why Choose Me -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4">
+          <h3 class="text-white font-semibold text-lg mb-4 flex items-center gap-2">
+            <span>🎯</span>
+            <span>কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</span>
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">শতভাগ নির্ভুলতা:</span>
+                অনলাইন অ্যাপ্লিকেশনের প্রতিটি কাজ অত্যন্ত সতর্কতার সাথে নিখুঁতভাবে সম্পন্ন করি।
+              </span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">কাস্টমাইজড সলিউশন:</span>
+                আপনার প্রয়োজন ও বাজেট বুঝে একদম উপযোগী এবং সাশ্রয়ী সেবা প্রদান করি।
+              </span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">দ্রুত ডেলিভারি:</span>
+                নির্ধারিত সময়ের মধ্যে কাজ সম্পন্ন করে আপনার ব্যবসার গতি ধরে রাখি।
+              </span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-emerald-400 mt-1">•</span>
+              <span>
+                <span class="font-semibold text-white">দীর্ঘমেয়াদি সাপোর্ট:</span>
+                কাজ শেষ হওয়ার পরও প্রয়োজনীয় সময় পর্যন্ত টেকনিক্যাল সহায়তা প্রদান করি।
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD 1: ওয়েবসাইট ডেভেলপমেন্ট -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">💻</div>
+          <h4 class="text-white font-bold text-lg">১. প্রফেশনাল ওয়েবসাইট ডেভেলপমেন্ট</h4>
+          <p class="text-gray-300 leading-relaxed">
+            আপনার ব্যবসার জন্য আধুনিক, সুপার-ফাস্ট এবং ১০০% মোবাইল-রেসপনসিভ ওয়েবসাইট বা ল্যান্ডিং পেজ তৈরি।
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>কাস্টম ডিজাইন, ডার্ক/লাইট মোড অপশন</span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>সুপার ফাস্ট স্পিড এবং সম্পূর্ণ এসইও (SEO) ফ্রেন্ডলি কোডিং</span>
+            </li>
+          </ul>
+          <div class="bg-black/20 rounded-lg p-3 flex items-start gap-2">
+            <span>🎁</span>
+            <span class="text-gray-300 text-sm">কাজ শেষ হওয়ার পর ৬ মাস পর্যন্ত সম্পূর্ণ ফ্রি টেকনিক্যাল সাপোর্ট ও মেইনটেইনেন্স।</span>
+          </div>
+          <div class="pt-2 border-t border-gray-800">
+            <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">ল্যান্ডিং পেজ ২০$ থেকে | ফুল-স্ট্যাক ৩৫$+</span>
+          </div>
+        </div>
+
+        <!-- CARD 2: ডিজিটাল মার্কেটিং ও অ্যাডস -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">🎯</div>
+          <h4 class="text-white font-bold text-lg">২. টার্গেটেড ডিজিটাল মার্কেটিং ও অ্যাডস</h4>
+          <p class="text-gray-300 leading-relaxed">
+            সঠিক কাস্টমারের কাছে আপনার পণ্যের প্রচার পৌঁছে দিয়ে সেলস বা বিক্রি বহুগুণ বৃদ্ধি করা।
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>প্রফেশনাল ফেসবুক অ্যাডস ও গুগল অ্যাডস ক্যাম্পেইন রান</span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>সঠিক অডিয়েন্স রিসার্চ এবং রিটার্গেটিং সেটআপ</span>
+            </li>
+          </ul>
+          <div class="bg-black/20 rounded-lg p-3 flex items-start gap-2">
+            <span>🎁</span>
+            <span class="text-gray-300 text-sm">প্রতি সপ্তাহে বিজ্ঞাপনের খরচ ও ফলাফলের লাইভ প্রোগ্রেস অডিট রিপোর্ট প্রদান।</span>
+          </div>
+          <div class="pt-2 border-t border-gray-800">
+            <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">$১০+ থেকে শুরু (আলোচনা সাপেক্ষে)</span>
+          </div>
+        </div>
+
+        <!-- CARD 3: সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">🔗</div>
+          <h4 class="text-white font-bold text-lg">৩. সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট</h4>
+          <p class="text-gray-300 leading-relaxed">
+            আপনার ফেসবুক, ইনস্টাগ্রাম বা লিঙ্কডইন পেজকে প্রফেশনালি মেইনটেইন এবং অর্গানিক উপায়ে গ্রো করা।
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>আকর্ষণীয় পোস্ট কন্টেন্ট প্ল্যানিং, মডারেশন, রেগুলার পোস্ট শিডিউলিং</span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>কভার/ব্যানার ডিজাইন সাপোর্ট</span>
+            </li>
+          </ul>
+          <div class="bg-black/20 rounded-lg p-3 flex items-start gap-2">
+            <span>🎁</span>
+            <span class="text-gray-300 text-sm">কাস্টমারদের ইনবক্সের মেসেজ বা কমেন্টের দ্রুত প্রফেশনাল রিপ্লাই দিয়ে পেজের রেসপন্স রেট বাড়ানো।</span>
+          </div>
+          <div class="pt-2 border-t border-gray-800">
+            <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">$১৫ / প্রতি মাস</span>
+          </div>
+        </div>
+
+        <!-- CARD 4: ইউআই/ইউএক্স ও গ্রাফিক্স ডিজাইন -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">✏️</div>
+          <h4 class="text-white font-bold text-lg">৪. ইউআই/ইউএক্স ও গ্রাফিক্স ডিজাইন</h4>
+          <p class="text-gray-300 leading-relaxed">
+            আপনার ওয়েবসাইট বা সোশ্যাল মিডিয়ার জন্য আধুনিক, দৃষ্টিনন্দন এবং ইউজার-ফ্রেন্ডলি ভিজ্যুয়াল ডিজাইন তৈরি।
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>ওয়েবসাইটের চমৎকার লেআউট (Figma/Adobe XD)</span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>ফেসবুক পোস্ট ব্যানার ডিজাইন এবং ব্র্যান্ড লোগো মেকিং</span>
+            </li>
+          </ul>
+          <div class="bg-black/20 rounded-lg p-3 flex items-start gap-2">
+            <span>🎁</span>
+            <span class="text-gray-300 text-sm">ক্লায়েন্টের পছন্দ না হওয়া পর্যন্ত আনলিমিটেড রিভিশন ও সোর্স ফাইল প্রদান।</span>
+          </div>
+          <div class="pt-2 border-t border-gray-800">
+            <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">কাজ ও ডিজাইন অনুযায়ী আলোচনা সাপেক্ষে</span>
+          </div>
+        </div>
+
+        <!-- CARD 5: ফুল-স্ট্যাক আইটি ও অনলাইন অ্যাপ্লিকেশন সেবা -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">📝</div>
+          <h4 class="text-white font-bold text-lg">৫. ফুল-স্ট্যাক আইটি ও অনলাইন অ্যাপ্লিকেশন সেবা</h4>
+          <p class="text-gray-300 leading-relaxed">
+            পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট বা যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন ও আইটি সমস্যার সমাধান।
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>১০০% নির্ভুল ডাটা এন্ট্রি ও দ্রুত অনলাইন সাবমিশন</span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>যেকোনো সরকারি পোর্টালের টেকনিক্যাল জটিলতার সঠিক সমাধান</span>
+            </li>
+          </ul>
+          <div class="bg-black/20 rounded-lg p-3 flex items-start gap-2">
+            <span>🎁</span>
+            <span class="text-gray-300 text-sm">সম্পূর্ণ নিরাপদ ও গোপনীয়তার সাথে আপনার তথ্য প্রসেস করা হবে।</span>
+          </div>
+          <div class="pt-2 border-t border-gray-800">
+            <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">প্রতিটি নির্ভুল আবেদনের জন্য $১+ থেকে শুরু</span>
+          </div>
+        </div>
+
+        <!-- CARD 6: ফ্রিল্যান্সিং গাইডলাইন ও পেমেন্ট সলিউশন -->
+        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">💰</div>
+          <h4 class="text-white font-bold text-lg">৬. ফ্রিল্যান্সিং গাইডলাইন ও পেমেন্ট সলিউশন</h4>
+          <p class="text-gray-300 leading-relaxed">
+            নতুন ফ্রিল্যান্সার বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল পেমেন্ট রিসিভ ও অ্যাকাউন্ট ভেরিফিকেশনের সঠিক সমাধান।
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>পেওনিয়ার, পেপাল বা গ্লোবাল ব্যাংক অ্যাকাউন্ট গেটওয়ে সেটআপের সঠিক গাইডলাইন</span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-300">
+              <span class="text-amber-400 mt-1">✓</span>
+              <span>কারেন্সি কনভার্শন সংক্রান্ত জরুরি সাহায্য</span>
+            </li>
+          </ul>
+          <div class="bg-black/20 rounded-lg p-3 flex items-start gap-2">
+            <span>🎁</span>
+            <span class="text-gray-300 text-sm">নতুনদের ফ্রিল্যান্সিং ক্যারিয়ার শুরু করার জন্য ফ্রি কনসালটেশন ও সঠিক পরামর্শ।</span>
+          </div>
+          <div class="pt-2 border-t border-gray-800">
+            <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">আলোচনা সাপেক্ষে সম্পূর্ণ ফ্রি পরামর্শ</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-8">
+          <h3 class="text-white font-semibold text-lg mb-2">যোগাযোগ করুন</h3>
+          <p class="text-gray-300 mb-4">
+            যেকোনো প্রয়োজনে সরাসরি আমার সাথে কাজের আলোচনা করতে মেসেঞ্জারে কানেক্ট হোন।
+          </p>
+          <a
+            href="https://wa.me/8801604639318"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-orange-500 text-[#0a1120] font-bold px-6 py-3 rounded-full hover:brightness-105 transition-all shadow-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-[#25D366]">
+              <path d="M16.04 3C9.37 3 3.98 8.4 3.98 15.07c0 2.23.6 4.32 1.65 6.12L3 29l8.02-2.58a12.9 12.9 0 0 0 5.02 1.01h.01c6.67 0 12.06-5.4 12.06-12.06C28.11 8.4 22.72 3 16.04 3zm0 21.99h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.76 1.21 1.23-3.65-.24-.38a9.87 9.87 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94 2.66 0 5.15 1.04 7.03 2.92a9.85 9.85 0 0 1 2.9 7.02c0 5.48-4.46 9.94-9.94 9.94l.05.02zm5.44-7.44c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/>
+            </svg>
+            <span>🟢 এখানে চাপ দিন</span>
+          </a>
+        </div>
+
+      </div>
     </div>
   </div>
-</header>
-
-<div class="wrap">
-
-  <section class="hero">
-    <p class="hero-eyebrow">
-      <span class="bn">যা কিছু নিয়ে কাজ করি</span>
-      <span class="en">What I offer</span>
-    </p>
-    <h1>
-      <span class="bn">আমার সেবাসমূহ</span>
-      <span class="en">Our Services</span>
-    </h1>
-    <p>
-      <span class="bn">ওয়েবসাইট ডেভেলপমেন্ট থেকে শুরু করে ডিজিটাল মার্কেটিং, ডিজাইন এবং আইটি সাপোর্ট — আপনার ব্যবসার প্রয়োজনীয় সব সেবা এক জায়গায়।</span>
-      <span class="en">From website development to digital marketing, design, and IT support — everything your business needs, in one place.</span>
-    </p>
-  </section>
-
-  <section class="grid">
-
-    <!-- Service 1 -->
-    <article class="card">
-      <div class="card-top">
-        <div class="icon-badge"><i class="fa-solid fa-laptop-code"></i></div>
-      </div>
-      <h3>
-        <span class="bn">১. প্রফেশনাল ওয়েবসাইট ডেভেলপমেন্ট</span>
-        <span class="en">1. Professional Website Development</span>
-      </h3>
-      <p class="desc">
-        <span class="bn">আপনার ব্যবসার জন্য আধুনিক, সুপার-ফাস্ট এবং ১০০% মোবাইল-রেসপনসিভ ওয়েবসাইট বা ল্যান্ডিং পেজ তৈরি।</span>
-        <span class="en">Modern, super-fast, and 100% mobile-responsive website or landing page creation for your business.</span>
-      </p>
-      <ul class="feature-list">
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">কাস্টম ডিজাইন, ডার্ক/লাইট মোড অপশন</span>
-          <span class="en">Custom design, dark/light mode options</span>
-        </li>
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">সুপার ফাস্ট স্পিড এবং সম্পূর্ণ এসইও (SEO) ফ্রেন্ডলি কোডিং</span>
-          <span class="en">Super-fast speed and fully SEO friendly coding</span>
-        </li>
-      </ul>
-      <div class="bonus-box">
-        <i class="fa-solid fa-gift"></i>
-        <span class="bn">কাজ শেষ হওয়ার পর ১ মাস পর্যন্ত সম্পূর্ণ ফ্রি টেকনিক্যাল সাপোর্ট ও মেইনটেইন্যান্স।</span>
-        <span class="en">1-month free technical support &amp; maintenance after project completion.</span>
-      </div>
-      <div class="card-footer">
-        <span class="price-tag">
-          <span class="bn">ল্যান্ডিং পেজ ২০$ থেকে | ফুল-স্ট্যাক ৩৫$+</span>
-          <span class="en">Landing Page from $20 | Full-Stack $35+</span>
-        </span>
-      </div>
-    </article>
-
-    <!-- Service 2 -->
-    <article class="card">
-      <div class="card-top">
-        <div class="icon-badge"><i class="fa-solid fa-bullseye"></i></div>
-      </div>
-      <h3>
-        <span class="bn">২. টার্গেটেড ডিজিটাল মার্কেটিং ও অ্যাডস</span>
-        <span class="en">2. Targeted Digital Marketing &amp; Ads</span>
-      </h3>
-      <p class="desc">
-        <span class="bn">সঠিক কাস্টমারের কাছে আপনার পণ্যের প্রচার পৌঁছে দিয়ে সেলস বা বিক্রি বহুগুণ বৃদ্ধি করা।</span>
-        <span class="en">Reach the right target audience to grow your sales and business conversions exponentially.</span>
-      </p>
-      <ul class="feature-list">
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">প্রফেশনাল ফেসবুক অ্যাডস ও গুগল অ্যাডস ক্যাম্পেইন রান</span>
-          <span class="en">Professional Facebook &amp; Google Ads campaign setups</span>
-        </li>
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">সঠিক অডিয়েন্স রিসার্চ এবং রিটার্গেটিং সেটআপ</span>
-          <span class="en">In-depth audience research &amp; pixel retargeting setup</span>
-        </li>
-      </ul>
-      <div class="bonus-box">
-        <i class="fa-solid fa-gift"></i>
-        <span class="bn">প্রতি সপ্তাহে বিজ্ঞাপনের খরচ ও ফলাফলের লাইভ প্রোগ্রেস অডিট রিপোর্ট প্রদান।</span>
-        <span class="en">Weekly live progress audit reports of ad budget and results.</span>
-      </div>
-      <div class="card-footer">
-        <span class="price-tag">
-          <span class="bn">$১০+ থেকে শুরু (আলোচনা সাপেক্ষে)</span>
-          <span class="en">Starts from $10+ (Negotiable)</span>
-        </span>
-      </div>
-    </article>
-
-    <!-- Service 3 -->
-    <article class="card">
-      <div class="card-top">
-        <div class="icon-badge"><i class="fa-solid fa-share-nodes"></i></div>
-      </div>
-      <h3>
-        <span class="bn">৩. সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট</span>
-        <span class="en">3. Social Media Page Management</span>
-      </h3>
-      <p class="desc">
-        <span class="bn">আপনার ফেসবুক, ইনস্টাগ্রাম বা লিঙ্কডইন পেজকে প্রফেশনালি মেইনটেইন এবং অর্গানিক উপায়ে গ্রো করা।</span>
-        <span class="en">Professionally maintain and organically grow your Facebook, Instagram, or LinkedIn pages.</span>
-      </p>
-      <ul class="feature-list">
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">আকর্ষণীয় পোস্ট কন্টেন্ট প্ল্যানিং, মডারেশন, রেগুলার পোস্ট শিডিউলিং</span>
-          <span class="en">Engaging content planning, moderation, and scheduling</span>
-        </li>
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">কভার/ব্যানার ডিজাইন সাপোর্ট</span>
-          <span class="en">Premium cover and banner design updates</span>
-        </li>
-      </ul>
-      <div class="bonus-box">
-        <i class="fa-solid fa-gift"></i>
-        <span class="bn">কাস্টমারদের ইনবক্সের মেসেজ বা কমেন্টের দ্রুত প্রফেশনাল রিপ্লাই দিয়ে পেজের রেসপন্স রেট বাড়ানো।</span>
-        <span class="en">Fast and professional replies to inbox messages to increase response rates.</span>
-      </div>
-      <div class="card-footer">
-        <span class="price-tag">
-          <span class="bn">$১৫ / প্রতি মাস</span>
-          <span class="en">$15 / Per Month</span>
-        </span>
-      </div>
-    </article>
-
-    <!-- Service 4 -->
-    <article class="card">
-      <div class="card-top">
-        <div class="icon-badge"><i class="fa-solid fa-pen-ruler"></i></div>
-      </div>
-      <h3>
-        <span class="bn">৪. ইউআই/ইউএক্স ও গ্রাফিক্স ডিজাইন</span>
-        <span class="en">4. UI/UX &amp; Graphics Design</span>
-      </h3>
-      <p class="desc">
-        <span class="bn">আপনার ওয়েবসাইট বা সোশ্যাল মিডিয়ার জন্য আধুনিক, দৃষ্টিনন্দন এবং ইউজার-ফ্রেন্ডলি ভিজ্যুয়াল ডিজাইন তৈরি।</span>
-        <span class="en">Modern, attractive, and user-friendly visual layouts designed for your brand.</span>
-      </p>
-      <ul class="feature-list">
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">ওয়েবসাইটের চমৎকার লেআউট (Figma/Adobe XD)</span>
-          <span class="en">Beautiful UI Layouts in Figma / Adobe XD</span>
-        </li>
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">ফেসবুক পোস্ট ব্যানার ডিজাইন এবং ব্র্যান্ড লোগো মেকিং</span>
-          <span class="en">Creative post banners and unique brand logo creation</span>
-        </li>
-      </ul>
-      <div class="bonus-box">
-        <i class="fa-solid fa-gift"></i>
-        <span class="bn">ক্লায়েন্টের পছন্দ না হওয়া পর্যন্ত আনলিমিটেড রিভিশন ও সোর্স ফাইল প্রদান।</span>
-        <span class="en">Unlimited revisions until complete satisfaction &amp; full source file handover.</span>
-      </div>
-      <div class="card-footer">
-        <span class="price-tag">
-          <span class="bn">কাজ ও ডিজাইন অনুযায়ী আলোচনা সাপেক্ষে</span>
-          <span class="en">Discussable based on project scope</span>
-        </span>
-      </div>
-    </article>
-
-    <!-- Service 5 -->
-    <article class="card">
-      <div class="card-top">
-        <div class="icon-badge"><i class="fa-solid fa-file-signature"></i></div>
-      </div>
-      <h3>
-        <span class="bn">৫. ফুল-স্ট্যাক আইটি ও অনলাইন অ্যাপ্লিকেশন সেবা</span>
-        <span class="en">5. IT Services &amp; Online Applications</span>
-      </h3>
-      <p class="desc">
-        <span class="bn">পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট বা যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন ও আইটি সমস্যার সমাধান।</span>
-        <span class="en">Passport, Driving license, TIN certificate, or any government/private online form fill-ups &amp; IT support.</span>
-      </p>
-      <ul class="feature-list">
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">১০০% নির্ভুল ডাটা এন্ট্রি ও দ্রুত অনলাইন সাবমিশন</span>
-          <span class="en">100% error-free data entry and instant online submissions</span>
-        </li>
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">যেকোনো সরকারি পোর্টালের টেকনিক্যাল জটিলতার সঠিক সমাধান</span>
-          <span class="en">Technical support for errors on government portal systems</span>
-        </li>
-      </ul>
-      <div class="bonus-box">
-        <i class="fa-solid fa-gift"></i>
-        <span class="bn">সম্পূর্ণ নিরাপদ ও গোপনীয়তার সাথে আপনার তথ্য প্রসেস করা হবে।</span>
-        <span class="en">High security and complete data confidentiality for your personal info.</span>
-      </div>
-      <div class="card-footer">
-        <span class="price-tag">
-          <span class="bn">প্রতিটি নির্ভুল আবেদনের জন্য $১+ থেকে শুরু</span>
-          <span class="en">Starts from $1+ per clean application</span>
-        </span>
-      </div>
-    </article>
-
-    <!-- Service 6 -->
-    <article class="card">
-      <div class="card-top">
-        <div class="icon-badge"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-      </div>
-      <h3>
-        <span class="bn">৬. ফ্রিল্যান্সিং গাইডলাইন ও পেমেন্ট সলিউশন</span>
-        <span class="en">6. Payment &amp; Freelancing Solution</span>
-      </h3>
-      <p class="desc">
-        <span class="bn">নতুন ফ্রিল্যান্সার বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল পেমেন্ট রিসিভ ও অ্যাকাউন্ট ভেরিফিকেশনের সঠিক সমাধান।</span>
-        <span class="en">International payment setups and account verification help for new freelancers &amp; global businesses.</span>
-      </p>
-      <ul class="feature-list">
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">পেওনিয়ার, পেপাল বা গ্লোবাল ব্যাংক অ্যাকাউন্ট গেটওয়ে সেটআপের সঠিক গাইডলাইন</span>
-          <span class="en">Complete setup guidelines for Payoneer, PayPal, or Global Banks</span>
-        </li>
-        <li><i class="fa-solid fa-check"></i>
-          <span class="bn">কারেন্সি কনভার্শন সংক্রান্ত জরুরি সাহায্য</span>
-          <span class="en">Instant support for currency conversion and exchange issues</span>
-        </li>
-      </ul>
-      <div class="bonus-box">
-        <i class="fa-solid fa-gift"></i>
-        <span class="bn">নতুনদের ফ্রিল্যান্সিং ক্যারিয়ার শুরু করার জন্য ফ্রি কনসালটেশন ও সঠিক পরামর্শ।</span>
-        <span class="en">Free strategic consultation &amp; solid advice to kickstart your freelance career.</span>
-      </div>
-      <div class="card-footer">
-        <span class="price-tag">
-          <span class="bn">আলোচনা সাপেক্ষে সম্পূর্ণ ফ্রি পরামর্শ</span>
-          <span class="en">Completely Free Initial Consultation</span>
-        </span>
-      </div>
-    </article>
-
-  </section>
-
-  <footer class="cta-section">
-    <p>
-      <span class="bn">যেকোনো প্রয়োজনে সরাসরি আমার সাথে কাজের আলোচনা করতে মেসেঞ্জারে কানেক্ট হোন।</span>
-      <span class="en">To discuss projects directly with me, connect via Messenger.</span>
-    </p>
-    <a class="cta-btn" href="https://m.me" target="_blank" rel="noopener">
-      <i class="fa-brands fa-facebook-messenger"></i>
-      <span class="bn">এখানে চাপ দিন</span>
-      <span class="en">Click Here</span>
-    </a>
-  </footer>
-
-</div>
 
 <script>
-  (function () {
-    var body = document.body;
-    var html = document.documentElement;
-    var langBtn = document.getElementById('langToggle');
-    var themeBtn = document.getElementById('themeToggle');
-    var themeIcon = document.getElementById('themeIcon');
+  // Vanilla JS state management (mirrors a React `isOpen` boolean)
+  let isProfileModalOpen = false;
 
-    function setTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      if (theme === 'dark') {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-      } else {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      }
+  const backdropEl = document.getElementById('profileModalBackdrop');
+
+  function openProfileModal() {
+    isProfileModalOpen = true;
+    backdropEl.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProfileModal() {
+    isProfileModalOpen = false;
+    backdropEl.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Close when clicking the backdrop itself, not the card
+  function closeModalOnBackdrop(event) {
+    if (event.target === backdropEl) {
+      closeProfileModal();
     }
+  }
 
-    function setLang(lang) {
-      body.classList.remove('lang-bn', 'lang-en');
-      body.classList.add('lang-' + lang);
-      html.setAttribute('lang', lang);
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isProfileModalOpen) {
+      closeProfileModal();
     }
-
-    langBtn.addEventListener('click', function () {
-      var current = body.classList.contains('lang-bn') ? 'bn' : 'en';
-      setLang(current === 'bn' ? 'en' : 'bn');
-    });
-
-    themeBtn.addEventListener('click', function () {
-      var current = html.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-
-    setTheme('dark');
-    setLang('bn');
-  })();
+  });
 </script>
 
 </body>
