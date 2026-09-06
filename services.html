@@ -9,6 +9,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
   body {
     font-family: 'Hind Siliguri', sans-serif;
+    background-color: #0f1e14;
   }
   /* Custom slim scrollbar for the modal body, matching the dark theme */
   .modal-scroll::-webkit-scrollbar {
@@ -23,13 +24,13 @@
   }
 </style>
 </head>
-<body class="bg-gray-950 min-h-screen flex items-center justify-center p-6">
+<body class="bg-[#0f1e14] min-h-screen flex items-center justify-center p-6">
 
   <!-- Trigger: Project / Portfolio Card -->
   <button
     id="openProfileCardBtn"
     onclick="openProfileModal()"
-    class="max-w-sm w-full bg-[#111a2e] border border-gray-800 rounded-2xl p-6 text-left hover:border-emerald-500/40 transition-colors duration-200 shadow-xl"
+    class="max-w-sm w-full bg-[#16281c] border border-emerald-900/40 rounded-2xl p-6 text-left hover:border-emerald-500/40 transition-colors duration-200 shadow-xl"
   >
     <div class="flex items-center gap-4">
       <img
@@ -49,30 +50,26 @@
     </p>
   </button>
 
-  <!-- Modal Backdrop -->
+  <!-- Modal / Full-page overlay -->
   <div
     id="profileModalBackdrop"
-    class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-    onclick="closeModalOnBackdrop(event)"
+    class="hidden fixed inset-0 bg-[#0f1e14] z-50 overflow-y-auto modal-scroll"
   >
-    <!-- Central Card Box -->
-    <div
-      id="profileModalCard"
-      class="modal-scroll max-w-2xl w-full mx-auto bg-[#0a1120] rounded-2xl border border-gray-800 overflow-y-auto max-h-[90vh] shadow-2xl relative"
-    >
+    <!-- Content fills the whole page, no rounded card / border / dim backdrop -->
+    <div id="profileModalCard" class="w-full min-h-screen relative">
 
-      <!-- Close Button -->
+      <!-- Close Button (stays fixed to the viewport while the page scrolls) -->
       <button
         onclick="closeProfileModal()"
         aria-label="বন্ধ করুন"
-        class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors duration-150"
+        class="fixed top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors duration-150"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
-      <div class="px-6 pt-10 pb-8 sm:px-10">
+      <div class="max-w-2xl mx-auto px-6 pt-14 pb-10 sm:px-10">
 
         <!-- Profile Avatar -->
         <div class="flex justify-center mb-6">
@@ -106,7 +103,7 @@
         </div>
 
         <!-- Card: How I Can Help -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4">
           <h3 class="text-white font-semibold text-lg mb-4 flex items-center gap-2">
             <span>💡</span>
             <span>আমি আপনাকে যেভাবে সাহায্য করতে পারি:</span>
@@ -144,7 +141,7 @@
         </div>
 
         <!-- Card: Why Choose Me -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4">
           <h3 class="text-white font-semibold text-lg mb-4 flex items-center gap-2">
             <span>🎯</span>
             <span>কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?</span>
@@ -182,7 +179,7 @@
         </div>
 
         <!-- CARD 1: ওয়েবসাইট ডেভেলপমেন্ট -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4 space-y-3">
           <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">💻</div>
           <h4 class="text-white font-bold text-lg">১. প্রফেশনাল ওয়েবসাইট ডেভেলপমেন্ট</h4>
           <p class="text-gray-300 leading-relaxed">
@@ -202,13 +199,13 @@
             <span>🎁</span>
             <span class="text-gray-300 text-sm">কাজ শেষ হওয়ার পর ৬ মাস পর্যন্ত সম্পূর্ণ ফ্রি টেকনিক্যাল সাপোর্ট ও মেইনটেইনেন্স।</span>
           </div>
-          <div class="pt-2 border-t border-gray-800">
+          <div class="pt-2 border-t border-emerald-900/40">
             <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">ল্যান্ডিং পেজ ২০$ থেকে | ফুল-স্ট্যাক ৩৫$+</span>
           </div>
         </div>
 
         <!-- CARD 2: ডিজিটাল মার্কেটিং ও অ্যাডস -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4 space-y-3">
           <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">🎯</div>
           <h4 class="text-white font-bold text-lg">২. টার্গেটেড ডিজিটাল মার্কেটিং ও অ্যাডস</h4>
           <p class="text-gray-300 leading-relaxed">
@@ -228,13 +225,13 @@
             <span>🎁</span>
             <span class="text-gray-300 text-sm">প্রতি সপ্তাহে বিজ্ঞাপনের খরচ ও ফলাফলের লাইভ প্রোগ্রেস অডিট রিপোর্ট প্রদান।</span>
           </div>
-          <div class="pt-2 border-t border-gray-800">
+          <div class="pt-2 border-t border-emerald-900/40">
             <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">$১০+ থেকে শুরু (আলোচনা সাপেক্ষে)</span>
           </div>
         </div>
 
         <!-- CARD 3: সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4 space-y-3">
           <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">🔗</div>
           <h4 class="text-white font-bold text-lg">৩. সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট</h4>
           <p class="text-gray-300 leading-relaxed">
@@ -254,13 +251,13 @@
             <span>🎁</span>
             <span class="text-gray-300 text-sm">কাস্টমারদের ইনবক্সের মেসেজ বা কমেন্টের দ্রুত প্রফেশনাল রিপ্লাই দিয়ে পেজের রেসপন্স রেট বাড়ানো।</span>
           </div>
-          <div class="pt-2 border-t border-gray-800">
+          <div class="pt-2 border-t border-emerald-900/40">
             <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">$১৫ / প্রতি মাস</span>
           </div>
         </div>
 
         <!-- CARD 4: ইউআই/ইউএক্স ও গ্রাফিক্স ডিজাইন -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4 space-y-3">
           <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">✏️</div>
           <h4 class="text-white font-bold text-lg">৪. ইউআই/ইউএক্স ও গ্রাফিক্স ডিজাইন</h4>
           <p class="text-gray-300 leading-relaxed">
@@ -280,13 +277,13 @@
             <span>🎁</span>
             <span class="text-gray-300 text-sm">ক্লায়েন্টের পছন্দ না হওয়া পর্যন্ত আনলিমিটেড রিভিশন ও সোর্স ফাইল প্রদান।</span>
           </div>
-          <div class="pt-2 border-t border-gray-800">
+          <div class="pt-2 border-t border-emerald-900/40">
             <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">কাজ ও ডিজাইন অনুযায়ী আলোচনা সাপেক্ষে</span>
           </div>
         </div>
 
         <!-- CARD 5: ফুল-স্ট্যাক আইটি ও অনলাইন অ্যাপ্লিকেশন সেবা -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4 space-y-3">
           <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">📝</div>
           <h4 class="text-white font-bold text-lg">৫. ফুল-স্ট্যাক আইটি ও অনলাইন অ্যাপ্লিকেশন সেবা</h4>
           <p class="text-gray-300 leading-relaxed">
@@ -306,13 +303,13 @@
             <span>🎁</span>
             <span class="text-gray-300 text-sm">সম্পূর্ণ নিরাপদ ও গোপনীয়তার সাথে আপনার তথ্য প্রসেস করা হবে।</span>
           </div>
-          <div class="pt-2 border-t border-gray-800">
+          <div class="pt-2 border-t border-emerald-900/40">
             <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">প্রতিটি নির্ভুল আবেদনের জন্য $১+ থেকে শুরু</span>
           </div>
         </div>
 
         <!-- CARD 6: ফ্রিল্যান্সিং গাইডলাইন ও পেমেন্ট সলিউশন -->
-        <div class="bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4 space-y-3">
+        <div class="bg-[#16281c] p-5 rounded-xl border border-emerald-900/40 mb-4 space-y-3">
           <div class="w-12 h-12 rounded-xl bg-amber-900/30 flex items-center justify-center text-2xl">💰</div>
           <h4 class="text-white font-bold text-lg">৬. ফ্রিল্যান্সিং গাইডলাইন ও পেমেন্ট সলিউশন</h4>
           <p class="text-gray-300 leading-relaxed">
@@ -332,7 +329,7 @@
             <span>🎁</span>
             <span class="text-gray-300 text-sm">নতুনদের ফ্রিল্যান্সিং ক্যারিয়ার শুরু করার জন্য ফ্রি কনসালটেশন ও সঠিক পরামর্শ।</span>
           </div>
-          <div class="pt-2 border-t border-gray-800">
+          <div class="pt-2 border-t border-emerald-900/40">
             <span class="inline-block mt-2 bg-amber-900/30 text-amber-400 font-semibold text-sm px-4 py-2 rounded-lg">আলোচনা সাপেক্ষে সম্পূর্ণ ফ্রি পরামর্শ</span>
           </div>
         </div>
@@ -347,7 +344,7 @@
             href="https://wa.me/8801604639318"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-orange-500 text-[#0a1120] font-bold px-6 py-3 rounded-full hover:brightness-105 transition-all shadow-lg"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-orange-500 text-[#0f1e14] font-bold px-6 py-3 rounded-full hover:brightness-105 transition-all shadow-lg"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-[#25D366]">
               <path d="M16.04 3C9.37 3 3.98 8.4 3.98 15.07c0 2.23.6 4.32 1.65 6.12L3 29l8.02-2.58a12.9 12.9 0 0 0 5.02 1.01h.01c6.67 0 12.06-5.4 12.06-12.06C28.11 8.4 22.72 3 16.04 3zm0 21.99h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.76 1.21 1.23-3.65-.24-.38a9.87 9.87 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94 2.66 0 5.15 1.04 7.03 2.92a9.85 9.85 0 0 1 2.9 7.02c0 5.48-4.46 9.94-9.94 9.94l.05.02zm5.44-7.44c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/>
