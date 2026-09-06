@@ -8,43 +8,124 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Poppins', 'Hind Siliguri', sans-serif; }
+  :root {
+    --bg-page-1: #042f2e;
+    --bg-page-2: #020617;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-strong: rgba(255,255,255,0.05);
+    --bg-nav: rgba(2,10,12,0.75);
+    --bg-modal: #0a1120;
+    --bg-modal-panel: #111a2e;
+    --border-color: rgba(255,255,255,0.1);
+    --border-strong: rgba(16,185,129,0.3);
+    --accent: #34d399;
+    --accent-soft: rgba(52,211,153,0.15);
+    --accent-contrast: #04120f;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+  }
+  html.light {
+    --bg-page-1: #ecfdf5;
+    --bg-page-2: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-strong: #ffffff;
+    --bg-nav: rgba(248,250,252,0.85);
+    --border-color: #e2e8f0;
+    --border-strong: rgba(5,150,105,0.3);
+    --accent: #059669;
+    --accent-soft: rgba(5,150,105,0.1);
+    --accent-contrast: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+  }
+  body {
+    font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+    background: linear-gradient(180deg, var(--bg-page-1) 0%, var(--bg-page-2) 45%);
+    color: var(--text-primary);
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
   .bn { font-family: 'Hind Siliguri', sans-serif; }
+  * { transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+
+  #langHighlight { transition: transform 0.28s cubic-bezier(0.16,1,0.3,1); }
+  #langHighlight.is-bn { transform: translateX(44px); }
+
+  #modalOverlay { opacity: 0; pointer-events: none; transition: opacity 0.28s ease; }
+  #modalOverlay.is-open { opacity: 1; pointer-events: auto; }
+  #modalPanel { transform: translateY(18px) scale(0.97); opacity: 0; transition: transform 0.32s cubic-bezier(0.16,1,0.3,1), opacity 0.28s ease; }
+  #modalOverlay.is-open #modalPanel { transform: translateY(0) scale(1); opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #modalOverlay, #modalPanel, #langHighlight, .card-hover { transition: none !important; }
+  }
 </style>
 </head>
-<body class="bg-slate-950 text-slate-100 flex flex-col min-h-screen">
-<section class="relative w-full py-16 sm:py-24 px-5 overflow-hidden flex-1">
-  <!-- ambient glow accents -->
-  <div class="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px]"></div>
-  <div class="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-[100px]"></div>
-  <div class="pointer-events-none absolute top-1/3 right-1/4 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
+<body class="flex flex-col min-h-screen">
+
+<!-- ============ GLOBAL NAVBAR ============ -->
+<nav class="sticky top-0 z-40 border-b border-[var(--border-color)] bg-[var(--bg-nav)] backdrop-blur-md">
+  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-5 py-4">
+    <a href="#" class="flex items-center gap-2.5">
+      <span class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-strong)] bg-[var(--accent-soft)] text-[var(--accent)]">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l8 4.2v7.6L12 18l-8-4.2V6.2L12 2z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5l8-4.3M12 10.5v7.7M12 10.5L4 6.2"/>
+        </svg>
+      </span>
+      <span id="navBrand" class="text-sm font-semibold text-[var(--text-primary)]"></span>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <!-- SINGLE global language toggle -->
+      <button type="button" id="langSwitch" onclick="toggleLang()" aria-label="Switch language"
+        class="relative flex h-10 w-[92px] items-center rounded-full border border-[var(--border-color)] bg-[var(--bg-card)] p-1">
+        <span id="langHighlight" class="absolute top-1 left-1 h-8 w-[42px] rounded-full bg-[var(--accent)]"></span>
+        <span id="langLabelEN" class="relative z-10 flex-1 text-center text-xs font-semibold">EN</span>
+        <span id="langLabelBN" class="relative z-10 flex-1 text-center text-xs font-semibold">BN</span>
+      </button>
+
+      <!-- theme toggle -->
+      <button type="button" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark or light mode"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--accent)]">
+        <svg id="iconSun" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path stroke-linecap="round" d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.55 1.55M18.25 18.25l1.55 1.55M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.55-1.55M18.25 5.75l1.55-1.55"/>
+        </svg>
+        <svg id="iconMoon" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.5 14.4A8.4 8.4 0 119.6 3.5a6.6 6.6 0 1010.9 10.9z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="relative w-full py-14 sm:py-20 px-5 overflow-hidden flex-1">
+  <div class="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-emerald-500/15 rounded-full blur-[110px]"></div>
+  <div class="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 bg-teal-500/15 rounded-full blur-[110px]"></div>
+  <div class="pointer-events-none absolute top-1/3 right-1/4 w-72 h-72 bg-emerald-400/10 rounded-full blur-[100px]"></div>
 
   <div class="relative max-w-4xl mx-auto">
 
-    <!-- top bar: badge + language toggle -->
-    <div class="flex items-center justify-between mb-10 gap-3">
-      <span id="badgeText" class="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-indigo-300"></span>
-      <button id="langToggle" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-200 hover:bg-white/10 hover:border-white/20 transition-colors flex-shrink-0">
-        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m5.5 14L21 9m0 0l-3.5-6M21 9h-9M3 19c3-1 6-1 9 0s6 1 9 0M3 12c3 1 6 1 9 0"/></svg>
-        <span id="langToggleText"></span>
-      </button>
-    </div>
+    <!-- CV headline — centered, no pill, premium gradient typography -->
+    <p id="badgeText" class="text-center text-xs sm:text-sm font-semibold uppercase tracking-[0.4em] bg-gradient-to-r from-slate-300 via-emerald-300 to-slate-300 bg-clip-text text-transparent mb-12"></p>
 
     <!-- header: name + roles -->
-    <div class="mb-10">
+    <div class="mb-10 text-center sm:text-left">
       <h1 id="nameText" class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent"></h1>
-      <div id="rolesWrap" class="flex flex-wrap gap-2 mt-4"></div>
+      <div id="rolesWrap" class="flex flex-wrap justify-center sm:justify-start gap-2 mt-4"></div>
     </div>
 
     <!-- action buttons -->
-    <div class="flex flex-wrap gap-3 mb-14">
+    <div class="flex flex-wrap justify-center sm:justify-start gap-3 mb-14">
       <a id="githubBtn" href="#" target="_blank" rel="noopener noreferrer"
          class="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 font-semibold px-5 py-3 text-sm hover:bg-slate-200 transition-colors shadow-lg shadow-black/20">
         <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="currentColor"><path d="M12 .5C5.73.5.75 5.48.75 11.75c0 5.02 3.25 9.27 7.77 10.77.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.16.69-3.83-1.34-3.83-1.34-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16.91-.25 1.89-.38 2.86-.39.97.01 1.95.14 2.86.39 2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.23 2.73.11 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.18 5.59.41.36.77 1.06.77 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.26 11.26 0 0 0 23.25 11.75C23.25 5.48 18.27.5 12 .5Z"/></svg>
         <span id="githubBtnText"></span>
       </a>
       <a id="portfolioBtn" href="#" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white font-semibold px-5 py-3 text-sm hover:opacity-90 transition-opacity shadow-lg shadow-indigo-900/30">
+         class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-[#04120f] font-semibold px-5 py-3 text-sm hover:opacity-90 transition-opacity shadow-lg shadow-emerald-900/30">
         <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5m0 0v5m0-5L10 14M13 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-6"/></svg>
         <span id="portfolioBtnText"></span>
       </a>
@@ -52,54 +133,147 @@
 
     <!-- about -->
     <div class="mb-14">
-      <h2 id="aboutTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-3"></h2>
-      <p id="aboutText" class="text-slate-300 leading-relaxed text-[15px] sm:text-base max-w-2xl"></p>
+      <h2 id="aboutTitle" class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-3"></h2>
+      <p id="aboutText" class="text-[var(--text-secondary)] leading-relaxed text-[15px] sm:text-base max-w-2xl"></p>
     </div>
 
     <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-14"></div>
 
     <!-- core expertise grid -->
     <div class="mb-14">
-      <h2 id="expertiseTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <h2 id="expertiseTitle" class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-5"></h2>
       <div id="expertiseGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
     </div>
 
     <!-- work experience -->
     <div class="mb-14">
-      <h2 id="experienceTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <h2 id="experienceTitle" class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-5"></h2>
       <div id="experienceWrap" class="space-y-4"></div>
     </div>
 
     <!-- education -->
     <div class="mb-14">
-      <h2 id="educationTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+      <h2 id="educationTitle" class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-5"></h2>
       <div id="educationWrap" class="space-y-4"></div>
     </div>
 
     <!-- languages -->
-    <div>
-      <h2 id="languagesTitle" class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5"></h2>
+    <div class="mb-16">
+      <h2 id="languagesTitle" class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-5"></h2>
       <div id="languagesWrap" class="flex flex-wrap gap-3"></div>
+    </div>
+
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-14"></div>
+
+    <!-- ============ PROJECT / PORTFOLIO CARD ============ -->
+    <div class="mb-4">
+      <p id="projectLabel" class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-5"></p>
+      <article id="projectCard" class="card-hover cursor-pointer rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-7 sm:p-9 hover:border-emerald-400/40">
+        <span id="projectCatLabel" class="mb-3 block text-xs font-semibold uppercase tracking-wider text-[var(--accent)]"></span>
+        <h3 id="projectTitle" class="mb-3 text-2xl font-bold text-[var(--text-primary)]"></h3>
+        <p id="projectDesc" class="mb-6 text-sm leading-relaxed text-[var(--text-secondary)] max-w-xl"></p>
+        <div id="projectTools" class="mb-7 flex flex-wrap gap-2"></div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a id="projectLiveBtn" href="#" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent)] text-[var(--accent-contrast)] px-6 py-3 text-sm font-semibold hover:opacity-90">
+            <span id="projectLiveBtnText"></span>
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+          <button type="button" id="projectDetailsBtn" class="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-color)] px-6 py-3 text-sm font-medium text-[var(--text-secondary)] hover:border-emerald-400/40 hover:text-[var(--text-primary)]">
+            <span id="projectDetailsBtnText"></span>
+          </button>
+        </div>
+      </article>
     </div>
 
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
+<footer class="relative overflow-hidden border-t border-[var(--border-color)]">
+  <div class="relative mx-auto max-w-2xl px-6 py-14 text-center sm:px-10 sm:py-18">
+    <div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border-strong)] bg-[var(--accent-soft)] text-[var(--accent)]">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l8 4.2v7.6L12 18l-8-4.2V6.2L12 2z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5l8-4.3M12 10.5v7.7M12 10.5L4 6.2"/>
+      </svg>
+    </div>
+
+    <p id="footerBrand" class="mb-2 text-lg font-semibold text-[var(--text-primary)]"></p>
+    <p id="footerHeading" class="mx-auto mb-8 max-w-md text-sm leading-relaxed text-[var(--text-secondary)]"></p>
+
+    <div class="mb-8 flex items-center justify-center gap-4">
+      <a href="#" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:-translate-y-0.5">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.02 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.877h2.773l-.443 2.91h-2.33V22c4.78-.756 8.437-4.92 8.437-9.94z"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" class="flex h-11 w-11 items-center justify-center rounded-full bg-[#0A66C2] text-white transition-transform hover:-translate-y-0.5">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 11-4-.002 2 2 0 014 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.35V21h3.94v-6.57c0-3.66 4.77-3.96 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.68-2.91V8.48z"/></svg>
+      </a>
+      <a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-full bg-[#1e6fd9] text-white transition-transform hover:-translate-y-0.5">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.5v-7l6.25 3.5-6.25 3.5z"/></svg>
+      </a>
+    </div>
+
+    <p id="footerCopyright" class="text-xs text-[var(--text-muted)]"></p>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div id="modalOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalGreeting">
+  <div id="modalPanel" class="max-w-2xl w-full mx-auto bg-[#0a1120] rounded-2xl border border-gray-800 overflow-y-auto max-h-[90vh] shadow-2xl relative">
+    <div class="p-6 sm:p-9">
+
+      <button type="button" onclick="closeModal()" aria-label="Close"
+        class="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-gray-800 bg-white/5 text-gray-400 hover:border-emerald-500/60 hover:text-white">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+
+      <!-- profile avatar -->
+      <div class="flex flex-col items-center pt-2 text-center">
+        <div class="relative mb-5 h-24 w-24">
+          <img id="modalAvatarImg" src="omar52hub-profile.jpg" alt="Md. Omar Howlader"
+            class="h-24 w-24 rounded-full border-4 border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] object-cover"
+            onerror="this.classList.add('hidden'); document.getElementById('modalAvatarFallback').classList.remove('hidden');" />
+          <div id="modalAvatarFallback" class="hidden absolute inset-0 h-24 w-24 items-center justify-center rounded-full border-4 border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] bg-[#111a2e] text-2xl font-semibold text-emerald-400" style="display:none;">
+            O5
+          </div>
+        </div>
+        <p id="modalGreeting" class="text-xl sm:text-2xl font-bold text-white"></p>
+        <p id="modalTagline" class="mt-2 text-sm sm:text-base text-emerald-400"></p>
+
+        <p id="modalPara1" class="mx-auto mt-6 max-w-lg text-sm leading-relaxed text-gray-400 text-left"></p>
+        <p id="modalPara2" class="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-gray-400 text-left"></p>
+      </div>
+
+      <!-- multi-step info sections -->
+      <div id="modalSections" class="mt-8"></div>
+
+      <a id="modalCta" href="#" target="_blank" rel="noopener noreferrer"
+        class="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 py-3.5 text-sm font-semibold text-[#04120f] transition-colors hover:bg-emerald-300">
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============================================================
-   1. EDIT THESE LINKS
+   1. LINKS
 ============================================================ */
 const LINKS = {
   github: "https://github.com/omarhowlader52",
   portfolio: "https://omarthoughts-blog-fdzi.vercel.app",
+  project: "https://omar-52hub.vercel.app",
 };
+const WHATSAPP_NUMBER = "8801604639318";
 
 /* ============================================================
-   2. LOCALIZATION — edit any text here, layout never breaks
+   2. LOCALIZATION
 ============================================================ */
 const I18N = {
   en: {
-    toggleLabel: "বাংলা",
+    nav: { brand: "Omar 52Hub" },
     badge: "Curriculum Vitae",
     name: "Md. Omar Howlader",
     roles: ["Full-Stack Web Developer", "Data Entry Specialist", "Virtual Assistant"],
@@ -123,18 +297,61 @@ const I18N = {
     ],
     educationTitle: "Education",
     education: [
-      { degree: "B.Sc. in Computer Science & Engineering", institute: "Bangladesh Information Technical College (BITC), National University"},
-      { degree: "Higher Secondary Certificate (H.S.C) — Science", institute: "Karnakathi G.R. School & College, Barishal Board"},
-      { degree: "Secondary School Certificate (S.S.C) — Science", institute: "Indurkani M.U. Secondary School, Barishal Board"},
+      { degree: "B.Sc. in Computer Science & Engineering", institute: "Bangladesh Information Technical College (BITC), National University", status: "In Progress" },
+      { degree: "Higher Secondary Certificate (H.S.C) — Science", institute: "Karnakathi G.R. School & College, Barishal Board", status: "Completed" },
+      { degree: "Secondary School Certificate (S.S.C) — Science", institute: "Indurkani M.U. Secondary School, Barishal Board", status: "Completed" },
     ],
     languagesTitle: "Languages",
     languages: [
       { name: "Bengali", level: "Fluent — writing & speaking" },
       { name: "English", level: "Fluent — written & oral" },
     ],
+    projectLabel: "Selected Project",
+    project: {
+      catLabel: "Web Development",
+      title: "E-commerce Website Design",
+      desc: "A professional online shop built with Next.js and Tailwind CSS, featuring category browsing, product cards, and a live shopping cart.",
+      tools: ["Next.js", "Tailwind CSS"],
+      liveCta: "View Live Project",
+      detailsCta: "View Details",
+    },
+    footer: {
+      brand: "Omar 52Hub",
+      heading: "Your all-in-one online partner for digital growth and business success.",
+      copyright: "© 2023 Omar 52Hub — All rights reserved.",
+    },
+    modal: {
+      greeting: "Hello, I'm Md. Omar Howlader 👋",
+      tagline: "Your all-in-one online partner for digital growth and business success.",
+      para1: "I'm a professional web developer, digital marketer, and multi-purpose online solutions expert. Over the past few years I've helped businesses succeed online while making complex online and IT services simple for everyday people.",
+      para2: "From turning a simple idea into a digital brand to handling any urgent online application — at every step I'm ready to give you 100% accurate, professional support.",
+      sections: [
+        {
+          icon: "💡",
+          title: "How I Can Help You:",
+          items: [
+            "Modern Web Development: eye-catching, fast, and fully mobile-friendly websites built around your type of business.",
+            "Smart Digital Marketing: Facebook & social media page management and page growth through precise customer targeting.",
+            "Smart Online Applications & IT Services: flawless handling of passport, driving license, TIN certificate, visa, and any government or private online applications.",
+            "Online & Payment Solutions: simple fixes for international currency conversion issues for freelancing or global business."
+          ]
+        },
+        {
+          icon: "🎯",
+          title: "Why Choose Me For Your Project?",
+          items: [
+            "100% Accuracy: every online application is completed carefully and flawlessly.",
+            "Customized Solutions: I build exactly what fits your needs and budget.",
+            "Fast Delivery: quality work handed over within the agreed time.",
+            "Ongoing Support: help available even after the project is delivered."
+          ]
+        }
+      ],
+      cta: "👉 Contact on WhatsApp"
+    }
   },
   bn: {
-    toggleLabel: "English",
+    nav: { brand: "Omar 52Hub" },
     badge: "কারিকুলাম ভিটা",
     name: "মো: ওমর হাওলাদার",
     roles: ["ফুল-স্ট্যাক ওয়েব ডেভেলপার", "ডেটা এন্ট্রি স্পেশালিস্ট", "ভার্চুয়াল অ্যাসিস্ট্যান্ট"],
@@ -158,28 +375,99 @@ const I18N = {
     ],
     educationTitle: "শিক্ষাগত যোগ্যতা",
     education: [
-      { degree: "বি.এসসি ইন কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং", institute: "বাংলাদেশ ইনফরমেশন টেকনিক্যাল কলেজ (BITC), ন্যাশনাল ইউনিভার্সিটি"},
-      { degree: "উচ্চ মাধ্যমিক সার্টিফিকেট (H.S.C) — বিজ্ঞান", institute: "কর্নকাঠি জি.আর. স্কুল অ্যান্ড কলেজ, বরিশাল বোর্ড"},
-      { degree: "মাধ্যমিক স্কুল সার্টিফিকেট (S.S.C) — বিজ্ঞান", institute: "ইন্দুরকানী এম.ইউ. সেকেন্ডারি স্কুল, বরিশাল বোর্ড"},
+      { degree: "বি.এসসি ইন কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং", institute: "বাংলাদেশ ইনফরমেশন টেকনিক্যাল কলেজ (BITC), ন্যাশনাল ইউনিভার্সিটি", status: "চলমান" },
+      { degree: "উচ্চ মাধ্যমিক সার্টিফিকেট (H.S.C) — বিজ্ঞান", institute: "কর্নকাঠি জি.আর. স্কুল অ্যান্ড কলেজ, বরিশাল বোর্ড", status: "সম্পন্ন" },
+      { degree: "মাধ্যমিক স্কুল সার্টিফিকেট (S.S.C) — বিজ্ঞান", institute: "ইন্দুরকানী এম.ইউ. সেকেন্ডারি স্কুল, বরিশাল বোর্ড", status: "সম্পন্ন" },
     ],
     languagesTitle: "ভাষাগত দক্ষতা",
     languages: [
       { name: "বাংলা", level: "সাবলীল — লেখা ও বলা" },
       { name: "ইংরেজি", level: "সাবলীল — লেখা ও মৌখিক" },
     ],
+    projectLabel: "নির্বাচিত প্রজেক্ট",
+    project: {
+      catLabel: "ওয়েব ডেভেলপমেন্ট",
+      title: "ই-কমার্স ওয়েবসাইট ডিজাইন",
+      desc: "Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ, যেখানে রয়েছে ক্যাটাগরি ব্রাউজিং, প্রোডাক্ট কার্ড এবং লাইভ শপিং কার্ট।",
+      tools: ["Next.js", "Tailwind CSS"],
+      liveCta: "লাইভ প্রজেক্ট দেখুন",
+      detailsCta: "বিস্তারিত দেখুন",
+    },
+    footer: {
+      brand: "Omar 52Hub",
+      heading: "আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার।",
+      copyright: "© ২০২৩ Omar 52Hub — সর্বস্বত্ব সংরক্ষিত।",
+    },
+    modal: {
+      greeting: "হ্যালো, আমি মো: ওমর হাওলাদার 👋",
+      tagline: "আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার",
+      para1: "আমি একজন প্রফেশনাল ওয়েব ডেভেলপার, ডিজিটাল মার্কেটার এবং মাল্টিপারপাস অনলাইন সলিউশন এক্সপার্ট। গত কয়েক বছর ধরে আমি বিভিন্ন ব্যবসাকে অনলাইনে সফল করার পাশাপাশি সাধারণ মানুষকে জটিল সব অনলাইন ও আইটি সেবা খুব সহজে প্রদান করে আসছি।",
+      para2: "একটি সাধারণ আইডিয়াকে ডিজিটাল ব্র্যান্ডে রূপান্তর করা থেকে শুরু করে যেকোনো জরুরি অনলাইন অ্যাপ্লিকেশন — প্রতিটি ধাপে আমি আপনাকে শতভাগ নির্ভুল ও প্রফেশনাল সাপোর্ট দিতে প্রস্তুত।",
+      sections: [
+        {
+          icon: "💡",
+          title: "আমি আপনাকে যেভাবে সাহায্য করতে পারি:",
+          items: [
+            "আধুনিক ওয়েব ডেভেলপমেন্ট: ব্যবসার ধরন অনুযায়ী দৃষ্টিনন্দন, দ্রুতগতির এবং শতভাগ মোবাইল-ফ্রেন্ডলি ওয়েবসাইট তৈরি।",
+            "স্মার্ট ডিজিটাল মার্কেটিং: ফেসবুক ও সোশ্যাল মিডিয়া পেজ ম্যানেজমেন্ট এবং সঠিক কাস্টমার টার্গেটিংয়ের মাধ্যমে পেজ বুস্টিং।",
+            "স্মার্ট অনলাইন অ্যাপ্লিকেশন ও আইটি সেবা: পাসপোর্ট, ড্রাইভিং লাইসেন্স, টিন (TIN) সার্টিফিকেট, ভিসা এবং যেকোনো সরকারি-বেসরকারি অনলাইন আবেদন নিখুঁতভাবে সম্পন্নকরণ।",
+            "অনলাইন ও পেমেন্ট সলিউশন: ফ্রিল্যান্সিং বা গ্লোবাল বিজনেসের জন্য ইন্টারন্যাশনাল কারেন্সি কনভার্সন সংক্রান্ত জটিলতার সহজ সমাধান।"
+          ]
+        },
+        {
+          icon: "🎯",
+          title: "কেন আমাকে আপনার প্রজেক্টের জন্য বেছে নেবেন?",
+          items: [
+            "শতভাগ নির্ভুলতা: অনলাইন অ্যাপ্লিকেশনের প্রতিটি কাজ অত্যন্ত সতর্কতার সাথে নিখুঁতভাবে সম্পন্ন করি।",
+            "কাস্টমাইজড সলিউশন: আপনার প্রয়োজন ও বাজেট বুঝে একদম উপযুক্ত সমাধান তৈরি করি।",
+            "দ্রুত ডেলিভারি: নির্ধারিত সময়ের মধ্যে মানসম্পন্ন কাজ বুঝিয়ে দিই।",
+            "সার্বক্ষণিক সাপোর্ট: প্রজেক্ট ডেলিভারির পরও প্রয়োজনে সহায়তা প্রদান করি।"
+          ]
+        }
+      ],
+      cta: "👉 হোয়াটসঅ্যাপে যোগাযোগ করুন"
+    }
   },
 };
 
 /* ============================================================
-   3. RENDER LOGIC
+   3. STATE
 ============================================================ */
-let lang = "en";
+let lang = (function(){ try { return localStorage.getItem("o52-lang") || "bn"; } catch(e){ return "bn"; } })();
+let theme = (function(){ try { return localStorage.getItem("o52-theme") || "dark"; } catch(e){ return "dark"; } })();
+
+function el(tag, className, text) {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function renderModalSection(section) {
+  const box = el("div", "bg-[#111a2e] p-5 rounded-xl border border-gray-800/50 mb-4");
+  box.appendChild(el("p", "mb-4 text-base font-bold text-white", section.icon + " " + section.title));
+  const list = el("ul", "space-y-3");
+  section.items.forEach((item) => {
+    const idx = item.indexOf(":");
+    const li = el("li", "text-sm leading-relaxed text-gray-400");
+    if (idx > -1 && idx < 60) {
+      const strong = el("span", "font-semibold text-emerald-400", item.slice(0, idx + 1) + " ");
+      li.appendChild(strong);
+      li.appendChild(document.createTextNode(item.slice(idx + 1).trim()));
+    } else {
+      li.textContent = item;
+    }
+    list.appendChild(li);
+  });
+  box.appendChild(list);
+  return box;
+}
 
 function render() {
   const t = I18N[lang];
 
+  document.getElementById('navBrand').textContent = t.nav.brand;
   document.getElementById('badgeText').textContent = t.badge;
-  document.getElementById('langToggleText').textContent = t.toggleLabel;
   document.getElementById('nameText').textContent = t.name;
   document.getElementById('githubBtnText').textContent = t.ctaGithub;
   document.getElementById('portfolioBtnText').textContent = t.ctaPortfolio;
@@ -197,19 +485,16 @@ function render() {
   const rolesWrap = document.getElementById('rolesWrap');
   rolesWrap.innerHTML = "";
   t.roles.forEach(role => {
-    const span = document.createElement('span');
-    span.className = "text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/15 to-fuchsia-500/15 border border-white/10 text-slate-200";
-    span.textContent = role;
-    rolesWrap.appendChild(span);
+    rolesWrap.appendChild(el("span", "text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 to-teal-500/15 border border-white/10 text-slate-200", role));
   });
 
-  // expertise grid
+  // expertise
   const expertiseGrid = document.getElementById('expertiseGrid');
   expertiseGrid.innerHTML = "";
   t.expertise.forEach(item => {
-    const div = document.createElement('div');
-    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 hover:border-indigo-400/30 hover:bg-white/[0.05] transition-colors";
-    div.innerHTML = `<h3 class="font-bold text-sm sm:text-base text-white mb-1">${item.title}</h3><p class="text-slate-400 text-xs sm:text-sm">${item.desc}</p>`;
+    const div = el("div", "rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-5 hover:border-emerald-400/30 hover:bg-[var(--bg-card-strong)] transition-colors");
+    div.appendChild(el("h3", "font-bold text-sm sm:text-base text-[var(--text-primary)] mb-1", item.title));
+    div.appendChild(el("p", "text-[var(--text-secondary)] text-xs sm:text-sm", item.desc));
     expertiseGrid.appendChild(div);
   });
 
@@ -217,15 +502,12 @@ function render() {
   const experienceWrap = document.getElementById('experienceWrap');
   experienceWrap.innerHTML = "";
   t.experience.forEach(job => {
-    const div = document.createElement('div');
-    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6";
-    div.innerHTML = `
-      <div class="flex items-start justify-between flex-wrap gap-2 mb-2">
-        <h3 class="font-bold text-base sm:text-lg text-white">${job.role}</h3>
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-500/10 text-slate-300 border border-white/10 whitespace-nowrap">${job.period}</span>
-      </div>
-      <p class="text-slate-300 text-sm sm:text-[15px]">${job.company}</p>
-    `;
+    const div = el("div", "rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-5 sm:p-6");
+    const row = el("div", "flex items-start justify-between flex-wrap gap-2 mb-2");
+    row.appendChild(el("h3", "font-bold text-base sm:text-lg text-[var(--text-primary)]", job.role));
+    row.appendChild(el("span", "text-xs font-semibold px-3 py-1 rounded-full bg-white/5 text-[var(--text-secondary)] border border-[var(--border-color)] whitespace-nowrap", job.period));
+    div.appendChild(row);
+    div.appendChild(el("p", "text-[var(--text-secondary)] text-sm sm:text-[15px]", job.company));
     experienceWrap.appendChild(div);
   });
 
@@ -233,15 +515,12 @@ function render() {
   const educationWrap = document.getElementById('educationWrap');
   educationWrap.innerHTML = "";
   t.education.forEach(edu => {
-    const div = document.createElement('div');
-    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6";
-    div.innerHTML = `
-      <div class="flex items-start justify-between flex-wrap gap-2 mb-2">
-        <h3 class="font-bold text-base sm:text-lg text-white">${edu.degree}</h3>
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-400/20 whitespace-nowrap">${edu.status}</span>
-      </div>
-      <p class="text-slate-400 text-sm sm:text-[15px]">${edu.institute}</p>
-    `;
+    const div = el("div", "rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-5 sm:p-6");
+    const row = el("div", "flex items-start justify-between flex-wrap gap-2 mb-2");
+    row.appendChild(el("h3", "font-bold text-base sm:text-lg text-[var(--text-primary)]", edu.degree));
+    row.appendChild(el("span", "text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-400/20 whitespace-nowrap", edu.status));
+    div.appendChild(row);
+    div.appendChild(el("p", "text-[var(--text-secondary)] text-sm sm:text-[15px]", edu.institute));
     educationWrap.appendChild(div);
   });
 
@@ -249,19 +528,127 @@ function render() {
   const languagesWrap = document.getElementById('languagesWrap');
   languagesWrap.innerHTML = "";
   t.languages.forEach(l => {
-    const div = document.createElement('div');
-    div.className = "rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5";
-    div.innerHTML = `<p class="font-bold text-sm text-white">${l.name}</p><p class="text-slate-400 text-xs mt-0.5">${l.level}</p>`;
+    const div = el("div", "rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] px-5 py-3.5");
+    div.appendChild(el("p", "font-bold text-sm text-[var(--text-primary)]", l.name));
+    div.appendChild(el("p", "text-[var(--text-secondary)] text-xs mt-0.5", l.level));
     languagesWrap.appendChild(div);
   });
+
+  // project card
+  document.getElementById('projectLabel').textContent = t.projectLabel;
+  document.getElementById('projectCatLabel').textContent = t.project.catLabel;
+  document.getElementById('projectTitle').textContent = t.project.title;
+  document.getElementById('projectDesc').textContent = t.project.desc;
+  document.getElementById('projectLiveBtnText').textContent = t.project.liveCta;
+  document.getElementById('projectDetailsBtnText').textContent = t.project.detailsCta;
+  document.getElementById('projectLiveBtn').href = LINKS.project;
+
+  const toolsWrap = document.getElementById('projectTools');
+  toolsWrap.innerHTML = "";
+  t.project.tools.forEach(tool => {
+    toolsWrap.appendChild(el("span", "rounded-full border border-[var(--border-color)] bg-[var(--bg-card)] px-3.5 py-1.5 text-xs font-medium text-[var(--text-secondary)]", tool));
+  });
+
+  // footer
+  document.getElementById('footerBrand').textContent = t.footer.brand;
+  document.getElementById('footerHeading').textContent = t.footer.heading;
+  document.getElementById('footerCopyright').textContent = t.footer.copyright;
+
+  // modal (kept in sync even while closed)
+  document.getElementById('modalGreeting').textContent = t.modal.greeting;
+  document.getElementById('modalTagline').textContent = t.modal.tagline;
+  document.getElementById('modalPara1').textContent = t.modal.para1;
+  document.getElementById('modalPara2').textContent = t.modal.para2;
+
+  const sectionsWrap = document.getElementById('modalSections');
+  sectionsWrap.innerHTML = "";
+  t.modal.sections.forEach(section => sectionsWrap.appendChild(renderModalSection(section)));
+
+  const modalCta = document.getElementById('modalCta');
+  modalCta.textContent = t.modal.cta;
+  modalCta.href = "https://wa.me/" + WHATSAPP_NUMBER;
+
+  // language switch visual state
+  const highlight = document.getElementById('langHighlight');
+  const labelEN = document.getElementById('langLabelEN');
+  const labelBN = document.getElementById('langLabelBN');
+  if (lang === "bn") {
+    highlight.classList.add("is-bn");
+    labelEN.style.color = "var(--text-muted)";
+    labelBN.style.color = "var(--accent-contrast)";
+  } else {
+    highlight.classList.remove("is-bn");
+    labelEN.style.color = "var(--accent-contrast)";
+    labelBN.style.color = "var(--text-muted)";
+  }
 }
 
-document.getElementById('langToggle').addEventListener('click', () => {
+function toggleLang() {
   lang = lang === "en" ? "bn" : "en";
+  try { localStorage.setItem("o52-lang", lang); } catch (e) {}
   render();
+}
+
+function applyTheme() {
+  const root = document.documentElement;
+  if (theme === "light") {
+    root.classList.add("light");
+    document.getElementById('iconSun').classList.add("hidden");
+    document.getElementById('iconMoon').classList.remove("hidden");
+  } else {
+    root.classList.remove("light");
+    document.getElementById('iconSun').classList.remove("hidden");
+    document.getElementById('iconMoon').classList.add("hidden");
+  }
+  render();
+}
+
+function toggleTheme() {
+  theme = theme === "dark" ? "light" : "dark";
+  try { localStorage.setItem("o52-theme", theme); } catch (e) {}
+  applyTheme();
+}
+
+/* ============================================================
+   4. MODAL CONTROL
+============================================================ */
+let lastFocusedEl = null;
+
+function openModal() {
+  lastFocusedEl = document.activeElement;
+  document.getElementById('modalOverlay').classList.add("is-open");
+  document.body.style.overflow = "hidden";
+  document.addEventListener("keydown", handleModalKeydown);
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove("is-open");
+  document.body.style.overflow = "";
+  document.removeEventListener("keydown", handleModalKeydown);
+  if (lastFocusedEl && typeof lastFocusedEl.focus === "function") lastFocusedEl.focus();
+}
+
+function handleModalKeydown(e) {
+  if (e.key === "Escape") closeModal();
+}
+
+document.getElementById('modalOverlay').addEventListener("click", function (e) {
+  if (e.target === this) closeModal();
 });
 
-render();
+document.getElementById('projectCard').addEventListener("click", openModal);
+document.getElementById('projectDetailsBtn').addEventListener("click", function (e) {
+  e.stopPropagation();
+  openModal();
+});
+document.getElementById('projectLiveBtn').addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+/* ============================================================
+   5. INIT
+============================================================ */
+applyTheme();
 </script>
 </body>
 </html>
