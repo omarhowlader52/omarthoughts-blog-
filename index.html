@@ -3,7 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>মোঃ ওমর হাওলাদার | পোর্টফোলিও</title>
+<title>Omar's Thoughts | মো: ওমর হাওলাদার (omar52hub)</title>
+
+<!-- ===== প্রাইমারি ও SEO মেটা ট্যাগ ===== -->
+<meta name="description" content="আসসালামু আলাইকুম, মো: ওমর হাওলাদার এর ব্যক্তিগত প্ল্যাটফর্ম। ওয়েব ডেভেলপমেন্ট, প্রজেক্ট, ফ্রিল্যান্সিং সেবা এবং ইসলামিক চিন্তাভাবনা নিয়ে লেখা আমার সাম্প্রতিক ব্লগগুলো পড়ুন।">
+<meta name="keywords" content="Omar Thoughts, ওমর হাওলাদার, Omar Howlader, omarhowlader52, omar52hub, bangla blog, web developer, freelancing, freelancer, কুরআনের আলো, ঈমান ও ইমান, কুরআন হাদিস, রাসুল, ইসলাম ও সমাজ, আত্মউন্নয়ন, নামাজে খুশু, নিজেকে পরিবর্তন, ইবাদত, Islamic blog bangla, self development tips, omar blog">
+<meta name="author" content="মো: ওমর হাওলাদার">
+<meta name="robots" content="index, follow">
+
+<!-- ===== সোশ্যাল মিডিয়া মেটা ট্যাগ (Open Graph) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vercel.app">
+<meta property="og:title" content="Omar's Thoughts - মো: ওমর হাওলাদার">
+<meta property="og:description" content="টেকনোলজি, ওয়েব ডেভেলপমেন্ট এবং দ্বীনের গবেষণা নিয়ে ওমরের ব্লগ ও পোর্টফোলিও ওয়েবসাইট।">
+<meta property="og:image" content="https://vercel.app">
+
+<!-- ===== টুইটার কার্ড মেটা ট্যাগ ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://vercel.app">
+<meta name="twitter:title" content="Omar's Thoughts - মো: ওমর হাওলাদার">
+<meta name="twitter:description" content="টেকনোলজি, ওয়েব ডেভেলপমেন্ট এবং দ্বীনের গবেষণা নিয়ে ওমরের ব্লগ ও পোর্টফোলিও ওয়েবসাইট।">
+<meta name="twitter:image" content="https://vercel.app">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -746,6 +767,34 @@
     .sanity-content .sanity-text { color: var(--text-body); font-size: 14px; line-height: 1.85; }
     .sanity-content .sanity-text p { margin-bottom: 12px; }
 
+    /* ===== CMS ডাইনামিক কার্ড (ব্লগ/প্রজেক্ট) — লোডিং/এরর স্টেট সহ ===== */
+    .cms-grid { display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin: 0 auto; }
+    .cms-card {
+        background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+        overflow: hidden; box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .cms-card:hover { transform: translateY(-3px); box-shadow: 0 14px 26px -10px rgba(0,0,0,0.16); }
+    .cms-card img { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--surface-alt); }
+    .cms-card-body { padding: 16px; }
+    .cms-card-date { font-size: 11.5px; color: var(--text-sub); margin-bottom: 6px; }
+    .cms-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; line-height: 1.4; }
+    .cms-card-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; }
+    .cms-state { text-align: center; padding: 30px 10px; color: var(--text-sub); font-size: 13.5px; }
+    .cms-state.cms-error { color: #dc2626; }
+    .cms-spinner {
+        width: 22px; height: 22px; border-radius: 50%;
+        border: 3px solid var(--border); border-top-color: var(--accent);
+        margin: 0 auto 10px; animation: cmsSpin 0.8s linear infinite;
+    }
+    @keyframes cmsSpin { to { transform: rotate(360deg); } }
+    @media (min-width: 768px) {
+        .cms-grid { max-width: 700px; display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+        .cms-grid { max-width: 880px; grid-template-columns: repeat(3, 1fr); }
+    }
+
     /* ===== অ্যাবাউট মোডাল (গ্লাসমরফিজম) ===== */
     .about-modal-overlay {
         position: fixed; inset: 0; z-index: 1100; display: none;
@@ -973,7 +1022,7 @@
 <!-- সাইডবার মেনু (মোবাইল হ্যামবার্গার) — "সিভি" ও "কুরআনের আলো" এই মেনু থেকে সরানো হয়েছে, তবে মূল পেজের সেকশন দুইটি অক্ষত আছে -->
 <div class="sidebar-menu" id="sidebarMenu">
     <button class="close-btn" id="menuCloseBtn">&times;</button>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navbar-container">
         <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu('close')" data-i18n="navHome">হোম</a>
         <a href="javascript:void(0)" onclick="openAboutModal(); toggleMenu('close')" data-i18n="navAbout">আমার সম্পর্কে</a>
         <a href="javascript:void(0)" onclick="openServicesModal(); toggleMenu('close');">সেবাসমূহ</a>
@@ -985,7 +1034,7 @@
 
 <!-- ট্যাব সুইচার (ডেস্কটপ নেভবার) — "পোর্টফোলিও" পুনরায় যুক্ত করা হয়েছে -->
 <div class="tab-switcher">
-    <div class="tab-track">
+    <div class="tab-track" id="navbar-desktop-container">
         <button class="tab-btn active" id="tabBtnHome" onclick="switchTab('home')">Home</button>
         <a class="tab-btn" id="tabBtnPortfolio" href="portfolio.html" data-i18n="navPortfolio">পোর্টফোলিও</a>
         <a class="tab-btn" id="tabBtnCv" href="cvsection.html">CV</a>
@@ -1045,9 +1094,9 @@
     </section>
 
     <main class="hero-section">
-        <h1 data-i18n="heroGreeting">আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার</h1>
+        <h1 id="heroHeadingText" data-i18n="heroGreeting">আসসালামু আলাইকুম,<br>আমি মো: ওমর হাওলাদার</h1>
         <div class="typewriter-wrap"><span class="typewriter-text" id="typewriter"></span></div>
-        <div class="info-bar" data-i18n="heroSubtitle">কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।</div>
+        <div class="info-bar" id="heroSubtitleText" data-i18n="heroSubtitle">কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (সিএসই) শিক্ষার্থী, ফুল-স্ট্যাক ওয়েবসাইট ডেভেলপার, ফ্রিল্যান্সার এবং দ্বীনের গবেষক।</div>
     </main>
 
     <div class="btn-row">
@@ -1056,14 +1105,14 @@
     </div>
 
     <section class="services-section" id="services">
-        <h2 class="section-heading" data-i18n="servicesTitle">আমার সেবাসমূহ</h2>
+        <h2 class="section-heading" id="servicesHeadingText" data-i18n="servicesTitle">আমার সেবাসমূহ</h2>
         <div class="services-grid" id="servicesGrid"></div>
     </section>
 
     <section class="portfolio-section" id="portfolio">
         <div style="text-align:center; margin-bottom: 6px;">
-            <h2 class="section-heading" style="margin-bottom:5px;" data-i18n="portfolioTitle">আমার সাম্প্রতিক কাজ</h2>
-            <p class="portfolio-sub" data-i18n="portfolioSub">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
+            <h2 class="section-heading" id="portfolioHeadingText" style="margin-bottom:5px;" data-i18n="portfolioTitle">আমার সাম্প্রতিক কাজ</h2>
+            <p class="portfolio-sub" id="portfolioSubText" data-i18n="portfolioSub">আমার তৈরি করা কিছু প্রজেক্টের নমুনা নিচে দেওয়া হলো</p>
         </div>
         <div class="demo-card">
             <div class="demo-card-header">
@@ -1078,20 +1127,20 @@
             <!-- প্রিমিয়াম কার্ড বডি ও প্রজেক্টের ডিটেইলস -->
               <div class="demo-card-body">
                   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 8px;">
-                      <h4 style="font-weight: 700; color: var(--text-main); font-size:16px; margin:0;">Omar 52Hub Shop</h4>
+                      <h4 style="font-weight: 700; color: var(--text-main); font-size:16px; margin:0;" id="demoShopNameText">Omar 52Hub Shop</h4>
                       <span style="background: var(--surface-alt); border: 1px solid var(--border); padding:3px 10px; border-radius:20px; font-size:11px; color:var(--text-main); font-weight:600;">🛒 Cart: 0</span>
                   </div>
 
-                  <!-- ক্যাটাগরি ট্যাব -->
-                  <div class="demo-tabs">
-                      <span class="demo-tab">Watches</span>
-                      <span class="demo-tab active">Audio & Earbuds</span>
-                      <span class="demo-tab">Sunglasses</span>
+                  <!-- ক্যাটাগরি ট্যাব — CMS API থেকে ডায়নামিকভাবে লোড হয় (id="demo-tabs-container") -->
+                  <div class="demo-tabs" id="demo-tabs-container">
+                      <span class="demo-tab" data-category="watches">Watches</span>
+                      <span class="demo-tab active" data-category="audio">Audio & Earbuds</span>
+                      <span class="demo-tab" data-category="sunglasses">Sunglasses</span>
                   </div>
 
-                  <!-- প্রোডাক্ট গ্রিড (কাজ করা, উচ্চমানের রিয়েল প্রোডাক্ট ছবি) -->
-                  <div class="demo-products">
-                      <!-- প্রোডাক্ট ১: ওয়্যারলেস হেডফোন -->
+                  <!-- প্রোডাক্ট গ্রিড — CMS API থেকে ডায়নামিকভাবে লোড হয় (id="demo-products-container") -->
+                  <div class="demo-products" id="demo-products-container">
+                      <!-- প্রোডাক্ট ১: ওয়্যারলেস হেডফোন (fallback ডিফল্ট — CMS লোড না হলে এটি দেখা যাবে) -->
                       <div class="demo-product">
                           <span class="demo-badge">-36%</span>
                           <div class="demo-product-img-box">
@@ -1110,7 +1159,7 @@
                           </div>
                       </div>
 
-                      <!-- প্রোডাক্ট ২: প্রিমিয়াম ওয়াচ -->
+                      <!-- প্রোডাক্ট ২: প্রিমিয়াম ওয়াচ (fallback ডিফল্ট) -->
                       <div class="demo-product">
                           <span class="demo-badge">-43%</span>
                           <div class="demo-product-img-box">
@@ -1132,16 +1181,27 @@
               </div>
 
               <div class="demo-card-footer">
-                  <h3 data-i18n="demoTitle">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
-                  <p data-i18n="demoDesc">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
-                  <a href="https://omar-52hub-shop.vercel.app" target="_blank" rel="noopener" class="live-project-token">
-                      <span class="token-label" data-i18n="demoLink">লাইভ প্রজেক্ট দেখুন</span>
+                  <h3 id="demoTitleText" data-i18n="demoTitle">ই-কমার্স ওয়েবসাইট ডিজাইন</h3>
+                  <p id="demoDescText" data-i18n="demoDesc">Next.js এবং Tailwind CSS দিয়ে তৈরি একটি প্রফেশনাল অনলাইন শপ।</p>
+                  <a href="https://omar-52hub-shop.vercel.app" target="_blank" rel="noopener" class="live-project-token" id="demoLinkAnchor">
+                      <span class="token-label" id="demoLinkText" data-i18n="demoLink">লাইভ প্রজেক্ট দেখুন</span>
                       <span class="token-arrow" aria-hidden="true">
                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
                       </span>
                   </a>
+            </div>
+        </div>
+
+        <!-- ============ CMS-চালিত প্রজেক্ট গ্রিড (Headless CMS থেকে ডায়নামিকভাবে লোড হয়) ============ -->
+        <div style="margin-top: 32px;">
+            <h3 class="section-heading" style="font-size:17px;" data-i18n="cmsProjectsTitle">আরও প্রজেক্টসমূহ</h3>
+            <div class="cms-grid" id="projects-container">
+                <div class="cms-state" id="projectsLoadingState">
+                    <div class="cms-spinner"></div>
+                    Loading projects...
+                </div>
             </div>
         </div>
     </section>
@@ -1189,6 +1249,19 @@
                 <!-- Sanity CMS থেকে ডায়নামিকভাবে আসা কনটেন্ট এখানে বসবে (EN/BN ও ডার্ক/লাইট মোড অনুসরণ করে) -->
                 <div id="sanityContent" class="sanity-content"></div>
             </main>
+        </div>
+
+        <!-- ============ CMS-চালিত ব্লগ গ্রিড (Headless CMS থেকে ডায়নামিকভাবে লোড হয়) ============ -->
+        <div class="qa-layout" style="margin-top: 8px;">
+            <div style="flex:1; min-width:0;">
+                <h3 class="section-heading" style="font-size:17px;" data-i18n="cmsBlogTitle">সাম্প্রতিক ব্লগ</h3>
+                <div class="cms-grid" id="blog-container">
+                    <div class="cms-state" id="blogLoadingState">
+                        <div class="cms-spinner"></div>
+                        Loading posts...
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1284,13 +1357,13 @@
 <footer class="site-footer">
     <div class="footer-inner">
         <img src="omar52hub.png" alt="Omar 52Hub" class="footer-logo">
-        <p class="footer-tagline" data-i18n="footerTagline">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার</p>
-        <div class="footer-social">
+        <p class="footer-tagline" id="footerTaglineText" data-i18n="footerTagline">আপনার ব্যবসার ডিজিটাল গ্রোথ এবং অল-ইন-ওয়ান অনলাইন পার্টনার</p>
+        <div class="footer-social" id="footer-social-container">
             <a href="https://facebook.com" target="_blank" rel="noopener" style="background:#1877f2;" title="Facebook"><svg style="width:17px;height:17px;fill:white;" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
             <a href="https://linkedin.com" target="_blank" rel="noopener" style="background:#0077b5;" title="LinkedIn"><svg style="width:15px;height:15px;fill:white;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
             <a href="https://youtube.com" target="_blank" rel="noopener" style="background:#ff0000;" title="YouTube"><svg style="width:17px;height:17px;fill:white;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         </div>
-        <p class="footer-copy" data-i18n="footerCopy">© ২০২৬ Omar 52Hub — সর্বস্বত্ব সংরক্ষিত।</p>
+        <p class="footer-copy" id="footerCopyText" data-i18n="footerCopy">© ২০২৬ Omar 52Hub — সর্বস্বত্ব সংরক্ষিত।</p>
     </div>
 </footer>
 
@@ -1308,6 +1381,10 @@ const LANG = {
         titles: ["ওয়েব ডেভেলপার", "ডিজিটাল মার্কেটার", "ফ্রিল্যান্সার", "দ্বীনের গবেষক"],
         btnPortfolio: "আমার কাজ দেখুন", btnContact: "যোগাযোগ করুন",
         servicesTitle: "আমার সেবাসমূহ",
+        cmsProjectsTitle: "আরও প্রজেক্টসমূহ",
+        cmsBlogTitle: "সাম্প্রতিক ব্লগ",
+        cmsProjectsEmpty: "এই মুহূর্তে কোনো প্রজেক্ট খুঁজে পাওয়া যায়নি।",
+        cmsBlogEmpty: "এই মুহূর্তে কোনো ব্লগ পোস্ট খুঁজে পাওয়া যায়নি।",
         services: [
             { icon: "🌐", title: "ওয়েবসাইট ডেভেলপমেন্ট", desc: "এইচটিএমএল, সিএসএস, জাভাস্ক্রিপ্ট অথবা রিয়্যাক্ট ব্যবহার করে আধুনিক, দ্রুতগতির এবং মোবাইল-রেসপনসিভ ওয়েবসাইট তৈরি করে থাকি।", charge: "সার্ভিস চার্জ: ল্যান্ডিং পেজ $২০ | ফুল-স্ট্যাক ওয়েবসাইট $৩৫" },
             { icon: "📈", title: "ডিজিটাল মার্কেটিং", desc: "অনলাইন ব্যবসার প্রচার, সোশ্যাল মিডিয়া মার্কেটিং এবং টার্গেটেড কাস্টমারের কাছে পৌঁছানোর জন্য প্রফেশনাল স্ট্র্যাটেজি তৈরি করি।", charge: "সার্ভিস চার্জ: $১০+ থেকে শুরু" },
@@ -1390,6 +1467,10 @@ const LANG = {
         titles: ["Web Developer", "Digital Marketer", "Freelancer", "Islamic Researcher"],
         btnPortfolio: "See My Work", btnContact: "Contact Me",
         servicesTitle: "My Services",
+        cmsProjectsTitle: "More Projects",
+        cmsBlogTitle: "Recent Blog Posts",
+        cmsProjectsEmpty: "No projects available right now.",
+        cmsBlogEmpty: "No blog posts available right now.",
         services: [
             { icon: "🌐", title: "Web Development", desc: "Building modern, high-speed, and mobile-responsive websites using HTML, CSS, JavaScript, or React.", charge: "Service Charge: Landing Page $20 | Full-Stack Website $35" },
             { icon: "📈", title: "Digital Marketing", desc: "Creating professional strategies for online business promotion, social media marketing, and reaching targeted customers.", charge: "Service Charge: Starts from $10+" },
@@ -1494,16 +1575,19 @@ function setLanguage(lang) {
     startTypewriter(lang);
     renderPrayerWidgetLabels();
     renderSanityContent(); // Sanity থেকে আসা কনটেন্টও ভাষা অনুযায়ী সাথে সাথে বদলে যাবে (একই ছবি বজায় থাকবে)
+    if (navDataCache) renderNavigation(navDataCache); // নেভবারের লেবেলও ভাষা অনুযায়ী বদলে যাবে
 }
 
 function renderServices(lang) {
     const grid = document.getElementById('servicesGrid');
-    grid.innerHTML = LANG[lang].services.map(s => `
+    // CMS থেকে সেবাসমূহের ডেটা এসে থাকলে সেটিই অগ্রাধিকার পাবে, নাহলে ডিফল্ট i18n ডেটা ব্যবহার হবে
+    const services = (window.cmsServicesData && window.cmsServicesData.length) ? window.cmsServicesData : LANG[lang].services;
+    grid.innerHTML = services.map(s => `
         <div class="service-card">
-            <div class="service-icon">${s.icon}</div>
-            <div class="service-title">${s.title}</div>
-            <div class="service-desc">${s.desc}</div>
-            <span class="service-charge">${s.charge}</span>
+            <div class="service-icon">${s.icon || ''}</div>
+            <div class="service-title">${s.title || ''}</div>
+            <div class="service-desc">${s.desc || ''}</div>
+            <span class="service-charge">${s.charge || ''}</span>
         </div>
     `).join('');
 }
@@ -2087,6 +2171,422 @@ function renderSanityContent() {
     container.innerHTML = `${imageHtml}<div class="sanity-text">${textContent || ''}</div>`;
 }
 
+/* ============================================================ */
+/* ============ হেডলেস CMS থেকে ব্লগ ও প্রজেক্ট ডেটা ডায়নামিকভাবে লোড ============ */
+/* ============ (Contentful / Strapi / Sanity বা যেকোনো REST/GraphQL এন্ডপয়েন্ট বসানো যাবে) ============ */
+/* ============================================================ */
+
+/* এখানে আপনার আসল Headless CMS এন্ডপয়েন্ট বসান।
+   উদাহরণ:
+   - Strapi:     "https://your-strapi-domain.com/api/blog-posts?populate=*"
+   - Contentful: `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?access_token=${ACCESS_TOKEN}&content_type=blogPost`
+   - কাস্টম API: "https://your-api.com/api/posts"
+   যতক্ষণ না আসল এন্ডপয়েন্ট বসানো হচ্ছে, ততক্ষণ এটি প্লেসহোল্ডার হিসেবে থাকবে এবং
+   fetch ব্যর্থ হলে নিচের catch ব্লক ব্যবহারকারীকে বন্ধুত্বপূর্ণভাবে জানিয়ে দেবে। */
+const CMS_CONFIG = {
+    blogEndpoint: 'https://your-cms-domain.com/api/blog-posts', // <-- আপনার ব্লগ API endpoint দিয়ে প্রতিস্থাপন করুন
+    projectsEndpoint: 'https://your-cms-domain.com/api/projects', // <-- আপনার প্রজেক্ট API endpoint দিয়ে প্রতিস্থাপন করুন
+    navigationEndpoint: 'https://your-cms-domain.com/api/navigation', // <-- নেভবার/সাব-মেনু API endpoint (মোবাইল সাইডবার + ডেস্কটপ ট্যাব উভয়ের ডেটা এখান থেকে আসবে)
+    siteContentEndpoint: 'https://your-cms-domain.com/api/site-content', // <-- হিরো, সেবাসমূহ, পোর্টফোলিও হেডিং, ফুটার — সাধারণ সাইট কনটেন্ট এখান থেকে আসবে
+    demoEndpoint: 'https://your-cms-domain.com/api/demo-showcase', // <-- পোর্টফোলিওর ভেতরের ডেমো ই-কমার্স কার্ডের ক্যাটাগরি/প্রোডাক্ট ডেটা এখান থেকে আসবে
+    requestTimeoutMs: 8000
+};
+
+/* ============================================================ */
+/* CMS ব্যর্থ হলে বা এখনো কনফিগার করা না থাকলে ব্যবহারের জন্য ডিফল্ট (fallback) ডেটা।
+   এগুলো পেজে আগে থেকেই হার্ডকোড করা কনটেন্টের সাথে হুবহু মিলিয়ে রাখা হয়েছে,
+   যাতে API সেট-আপ না হওয়া পর্যন্ত সাইট স্বাভাবিকভাবেই কাজ করে এবং ভিজিটর কোনো
+   ভাঙা/খালি অংশ দেখতে না পায়। */
+/* ============================================================ */
+const CMS_FALLBACK = {
+    navigation: {
+        mobile: [
+            { label: "হোম", label_en: "Home", type: "tab", target: "home" },
+            { label: "আমার সম্পর্কে", label_en: "About Me", type: "modal", target: "about" },
+            { label: "সেবাসমূহ", label_en: "Services", type: "modal", target: "services" },
+            { label: "পোর্টফোলিও", label_en: "Portfolio", type: "href", target: "portfolio.html" },
+            { label: "যোগাযোগ", label_en: "Contact", type: "modal", target: "contact" }
+        ],
+        desktop: [
+            { label: "Home", label_en: "Home", type: "tab", target: "home" },
+            { label: "পোর্টফোলিও", label_en: "Portfolio", type: "href", target: "portfolio.html" },
+            { label: "CV", label_en: "CV", type: "href", target: "cvsection.html" },
+            { label: "কুরআনের আলো", label_en: "Blog", type: "tab", target: "blog" }
+        ]
+    },
+    demoCategories: [
+        {
+            id: "watches", label: "Watches", active: false,
+            products: [
+                { title: "Minimalist Premium Quartz Smart Watch", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80", badge: "-43%", price: "$12.99", oldPrice: "$22.99", rating: "4.7", reviews: "1204" }
+            ]
+        },
+        {
+            id: "audio", label: "Audio & Earbuds", active: true,
+            products: [
+                { title: "Wireless Studio Noise Cancelling Headphone", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80", badge: "-36%", price: "$15.99", oldPrice: "$24.99", rating: "4.8", reviews: "145" },
+                { title: "Minimalist Premium Quartz Smart Watch", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80", badge: "-43%", price: "$12.99", oldPrice: "$22.99", rating: "4.7", reviews: "1204" }
+            ]
+        },
+        {
+            id: "sunglasses", label: "Sunglasses", active: false,
+            products: []
+        }
+    ]
+};
+
+/* একটি ছোট হেল্পার — নির্দিষ্ট সময়ের মধ্যে সাড়া না পেলে fetch বাতিল করে দেয়,
+   যাতে ভাঙা বা ধীরগতির API-এর কারণে পেজ আটকে না থাকে। */
+function fetchWithTimeout(url, timeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
+}
+
+/* ============================================================ */
+/* ============ ডায়নামিক নেভিগেশন (নেভবার + সাব-মেনু) — CMS_CONFIG.navigationEndpoint ============ */
+/* ============================================================ */
+
+/* একটি নেভ আইটেমকে ক্লিক-এ্যাকশনে রূপান্তর করে — CMS থেকে আসা "type"/"target" ফিল্ড অনুযায়ী
+   সঠিক জাভাস্ক্রিপ্ট ফাংশন কল করা হয় (কোনো raw কোড eval করা হয় না, নিরাপত্তার জন্য)। */
+function navItemAction(item) {
+    switch (item.type) {
+        case 'tab': return `switchTab('${item.target}'); toggleMenu('close')`;
+        case 'modal':
+            if (item.target === 'about') return "openAboutModal(); toggleMenu('close')";
+            if (item.target === 'services') return "openServicesModal(); toggleMenu('close')";
+            if (item.target === 'contact') return "openContactModal(); toggleMenu('close')";
+            return "toggleMenu('close')";
+        case 'href':
+        default:
+            return null; // href টাইপ হলে <a href="..."> ব্যবহার হবে, onclick নয়
+    }
+}
+
+/* একটি সাব-মেনু (dropdown) সহ বা ছাড়া নেভ আইটেমের HTML তৈরি করে — মোবাইল সাইডবারের জন্য। */
+function buildMobileNavItemHtml(item, index) {
+    const label = currentLang === 'bn' ? item.label : (item.label_en || item.label);
+    const hasSubmenu = Array.isArray(item.submenu) && item.submenu.length > 0;
+    const dropdownId = `navDropdown${index}`;
+
+    if (hasSubmenu) {
+        const subLinks = item.submenu.map(sub => {
+            const subLabel = currentLang === 'bn' ? sub.label : (sub.label_en || sub.label);
+            if (sub.type === 'href') {
+                return `<a href="${sub.target}">${subLabel}</a>`;
+            }
+            const action = navItemAction(sub);
+            return `<a href="javascript:void(0)" onclick="${action}">${subLabel}</a>`;
+        }).join('');
+        return `
+            <button type="button" class="dropdown-btn" onclick="toggleDropdown('${dropdownId}')">
+                <span>${label}</span>
+                <span class="arrow" id="${dropdownId}-arrow">▾</span>
+            </button>
+            <div class="dropdown-container" id="${dropdownId}">${subLinks}</div>
+        `;
+    }
+
+    if (item.type === 'href') {
+        return `<a href="${item.target}">${label}</a>`;
+    }
+    const action = navItemAction(item);
+    return `<a href="javascript:void(0)" onclick="${action}">${label}</a>`;
+}
+
+/* ডেস্কটপ ট্যাব-বার এর জন্য নেভ আইটেমের HTML (সাব-মেনু ছাড়া, একই ধারণাগত গঠন)। */
+function buildDesktopNavItemHtml(item, index) {
+    const label = currentLang === 'bn' ? item.label : (item.label_en || item.label);
+    const btnId = `navbarDesktopBtn${index}`;
+    if (item.type === 'href') {
+        return `<a class="tab-btn" id="${btnId}" href="${item.target}">${label}</a>`;
+    }
+    const action = item.type === 'tab' ? `switchTab('${item.target}')` : navItemAction(item);
+    return `<button class="tab-btn" id="${btnId}" onclick="${action}">${label}</button>`;
+}
+
+/* সাব-মেনু (dropdown) খোলা/বন্ধ করার হেল্পার — নতুন ডায়নামিক নেভিগেশনের জন্য প্রয়োজন। */
+function toggleDropdown(id) {
+    const panel = document.getElementById(id);
+    const arrow = document.getElementById(id + '-arrow');
+    if (!panel) return;
+    const isOpen = panel.style.display === 'block';
+    panel.style.display = isOpen ? 'none' : 'block';
+    if (arrow) arrow.classList.toggle('rotate', !isOpen);
+}
+
+/* মোবাইল সাইডবার (#navbar-container) ও ডেস্কটপ ট্যাব-বার (#navbar-desktop-container) — দুটোই
+   একই নেভিগেশন ডেটা থেকে রেন্ডার হয়, যাতে CMS ড্যাশবোর্ডে একবার মেনু/সাব-মেনু যোগ বা
+   রিনেম করলে HTML ফাইল সম্পাদনা ছাড়াই স্বয়ংক্রিয়ভাবে আপডেট হয়ে যায়। */
+let navDataCache = null;
+function renderNavigation(navData) {
+    navDataCache = navData;
+    const mobileContainer = document.getElementById('navbar-container');
+    const desktopContainer = document.getElementById('navbar-desktop-container');
+
+    if (mobileContainer && Array.isArray(navData.mobile) && navData.mobile.length) {
+        mobileContainer.innerHTML = navData.mobile.map((item, i) => buildMobileNavItemHtml(item, i)).join('');
+    }
+    if (desktopContainer && Array.isArray(navData.desktop) && navData.desktop.length) {
+        desktopContainer.innerHTML = navData.desktop.map((item, i) => buildDesktopNavItemHtml(item, i)).join('');
+        // বর্তমানে সক্রিয় ট্যাবের বাটনে "active" ক্লাস পুনরায় বসিয়ে দেওয়া হয়
+        const activeBtn = desktopContainer.querySelector(`[onclick*="switchTab('${currentTab}')"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+}
+
+/* নেভিগেশন ডেটা CMS থেকে fetch করে; ব্যর্থ হলে টেকনিক্যাল ত্রুটি শুধু কনসোলে লগ হয় এবং
+   বিদ্যমান ডিফল্ট মেনু নীরবে (কোনো লাল এরর ছাড়াই) দেখানো অব্যাহত থাকে। */
+async function loadNavigationFromCms() {
+    try {
+        const res = await fetchWithTimeout(CMS_CONFIG.navigationEndpoint, CMS_CONFIG.requestTimeoutMs);
+        if (!res.ok) throw new Error(`Navigation CMS API responded with status ${res.status}`);
+        const json = await res.json();
+        const navData = json.data || json;
+        if (navData && (navData.mobile || navData.desktop)) {
+            renderNavigation(navData);
+        } else {
+            throw new Error('Navigation CMS API returned an unexpected shape');
+        }
+    } catch (err) {
+        console.error('নেভিগেশন CMS থেকে লোড করতে সমস্যা হয়েছে, ডিফল্ট মেনু ব্যবহার করা হচ্ছে:', err);
+        renderNavigation(CMS_FALLBACK.navigation);
+    }
+}
+
+/* ============================================================ */
+/* ============ ডায়নামিক সাইট কনটেন্ট (হিরো, সেবাসমূহ, পোর্টফোলিও হেডিং, ফুটার) ============ */
+/* ============ CMS_CONFIG.siteContentEndpoint ============ */
+/* ============================================================ */
+
+/* CMS থেকে আসা সাইট কনটেন্ট পেজে বসিয়ে দেয়। যেকোনো ফিল্ড অনুপস্থিত থাকলে সেটি
+   স্পর্শ করা হয় না — অর্থাৎ পেজে আগে থেকে থাকা ডিফল্ট/i18n টেক্সটই দেখা যাবে। */
+function renderSiteContent(content) {
+    const lang = currentLang;
+    const pick = (bnVal, enVal, fallback) => (lang === 'bn' ? bnVal : enVal) || bnVal || fallback;
+
+    if (content.heroHeading) {
+        document.getElementById('heroHeadingText').innerHTML = pick(content.heroHeading, content.heroHeading_en);
+    }
+    if (content.heroSubtitle) {
+        document.getElementById('heroSubtitleText').innerHTML = pick(content.heroSubtitle, content.heroSubtitle_en);
+    }
+    if (content.servicesTitle) {
+        document.getElementById('servicesHeadingText').textContent = pick(content.servicesTitle, content.servicesTitle_en);
+    }
+    if (Array.isArray(content.services) && content.services.length) {
+        window.cmsServicesData = content.services; // renderServices() এটি অগ্রাধিকার দিয়ে ব্যবহার করবে
+        renderServices(currentLang);
+    }
+    if (content.portfolioTitle) {
+        document.getElementById('portfolioHeadingText').textContent = pick(content.portfolioTitle, content.portfolioTitle_en);
+    }
+    if (content.portfolioSub) {
+        document.getElementById('portfolioSubText').textContent = pick(content.portfolioSub, content.portfolioSub_en);
+    }
+    if (content.footerTagline) {
+        document.getElementById('footerTaglineText').textContent = pick(content.footerTagline, content.footerTagline_en);
+    }
+    if (content.footerCopyright) {
+        document.getElementById('footerCopyText').textContent = pick(content.footerCopyright, content.footerCopyright_en);
+    }
+}
+
+/* সাইট কনটেন্ট CMS থেকে fetch করে। ব্যর্থ হলে টেকনিক্যাল ত্রুটি কনসোলে লগ হয় এবং
+   পেজের বিদ্যমান ডিফল্ট/i18n টেক্সট অপরিবর্তিত থেকে যায় — ভিজিটর কোনো এরর দেখবে না। */
+async function loadSiteContentFromCms() {
+    try {
+        const res = await fetchWithTimeout(CMS_CONFIG.siteContentEndpoint, CMS_CONFIG.requestTimeoutMs);
+        if (!res.ok) throw new Error(`Site-content CMS API responded with status ${res.status}`);
+        const json = await res.json();
+        const content = json.data || json.fields || json;
+        renderSiteContent(content || {});
+    } catch (err) {
+        console.error('সাইট কনটেন্ট CMS থেকে লোড করতে সমস্যা হয়েছে, ডিফল্ট কনটেন্ট দেখানো হচ্ছে:', err);
+    }
+}
+
+/* ============================================================ */
+/* ============ পোর্টফোলিও ডেমো-কার্ড: ক্যাটাগরি ট্যাব + প্রোডাক্ট গ্রিড ============ */
+/* ============ CMS_CONFIG.demoEndpoint ============ */
+/* ============================================================ */
+
+let demoCategoriesData = [];
+
+function buildDemoProductHtml(p) {
+    const safeImage = p.image
+        ? `<img src="${p.image}" alt="${p.title || ''}" loading="lazy" onerror="this.parentElement.style.display='none'">`
+        : '';
+    return `
+        <div class="demo-product">
+            ${p.badge ? `<span class="demo-badge">${p.badge}</span>` : ''}
+            <div class="demo-product-img-box">${safeImage}</div>
+            <div class="product-info-wrap">
+                <h5 class="product-title">${p.title || ''}</h5>
+                ${p.rating ? `<div class="product-rating">★ ${p.rating} <span>(${p.reviews || 0})</span></div>` : ''}
+                <div class="price-action-row">
+                    <div class="demo-price-box">
+                        ${p.price ? `<span class="demo-price">${p.price}</span>` : ''}
+                        ${p.oldPrice ? `<span class="demo-old-price">${p.oldPrice}</span>` : ''}
+                    </div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderDemoProducts(categoryId) {
+    const container = document.getElementById('demo-products-container');
+    if (!container) return;
+    const category = demoCategoriesData.find(c => c.id === categoryId);
+    const products = (category && category.products) || [];
+    container.innerHTML = products.length
+        ? products.map(buildDemoProductHtml).join('')
+        : `<div class="cms-state">${currentLang === 'bn' ? 'এই ক্যাটাগরিতে এখনো কোনো প্রোডাক্ট নেই।' : 'No products in this category yet.'}</div>`;
+}
+
+function renderDemoTabs(categories) {
+    const container = document.getElementById('demo-tabs-container');
+    if (!container) return;
+    container.innerHTML = categories.map(c =>
+        `<span class="demo-tab${c.active ? ' active' : ''}" data-category="${c.id}" onclick="switchDemoCategory('${c.id}')">${c.label}</span>`
+    ).join('');
+}
+
+function switchDemoCategory(categoryId) {
+    document.querySelectorAll('#demo-tabs-container .demo-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-category') === categoryId);
+    });
+    renderDemoProducts(categoryId);
+}
+
+function renderDemoShowcase(categories) {
+    if (!Array.isArray(categories) || !categories.length) return;
+    demoCategoriesData = categories;
+    renderDemoTabs(categories);
+    const active = categories.find(c => c.active) || categories[0];
+    renderDemoProducts(active.id);
+}
+
+/* ডেমো ই-কমার্স শোকেসের ক্যাটাগরি/প্রোডাক্ট ডেটা CMS থেকে fetch করে।
+   ব্যর্থ হলে টেকনিক্যাল ত্রুটি কনসোলে লগ হয় এবং ডিফল্ট ফলব্যাক ডেটা নীরবে দেখানো হয়। */
+async function loadDemoShowcaseFromCms() {
+    try {
+        const res = await fetchWithTimeout(CMS_CONFIG.demoEndpoint, CMS_CONFIG.requestTimeoutMs);
+        if (!res.ok) throw new Error(`Demo-showcase CMS API responded with status ${res.status}`);
+        const json = await res.json();
+        const categories = json.data || json.categories || (Array.isArray(json) ? json : []);
+        if (categories && categories.length) {
+            renderDemoShowcase(categories);
+        } else {
+            throw new Error('Demo-showcase CMS API returned no categories');
+        }
+    } catch (err) {
+        console.error('ডেমো শোকেস CMS থেকে লোড করতে সমস্যা হয়েছে, ডিফল্ট ডেটা ব্যবহার করা হচ্ছে:', err);
+        renderDemoShowcase(CMS_FALLBACK.demoCategories);
+    }
+}
+
+/* কন্টেন্ট আইটেমগুলোকে একটি অভিন্ন (normalized) আকারে রূপান্তর করা হয়,
+   যাতে বিভিন্ন CMS (Contentful, Strapi, Sanity ইত্যাদি) থেকে আসা ভিন্ন
+   গঠনের ডেটা নিয়েও একই রেন্ডারিং ফাংশন কাজ করতে পারে। প্রয়োজনে
+   আপনার নিজের CMS-এর ফিল্ড নাম অনুযায়ী এই ম্যাপিং পরিবর্তন করুন। */
+function normalizeCmsItem(item) {
+    const fields = item.fields || item.attributes || item; // Contentful / Strapi / Plain JSON — সব ধরনের গঠন সাপোর্ট করার চেষ্টা
+    return {
+        title: fields.title || fields.name || 'শিরোনামহীন',
+        description: fields.description || fields.summary || fields.excerpt || '',
+        image: fields.image?.fields?.file?.url || fields.image?.data?.attributes?.url || fields.imageUrl || fields.thumbnail || '',
+        date: fields.date || fields.publishedDate || fields.createdAt || fields.publishedAt || ''
+    };
+}
+
+/* তারিখকে বর্তমান ভাষা (BN/EN) অনুযায়ী সুন্দরভাবে ফরম্যাট করা হয়। */
+function formatCmsDate(dateStr) {
+    if (!dateStr) return '';
+    try {
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime())) return dateStr;
+        return d.toLocaleDateString(currentLang === 'bn' ? 'bn-BD' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (err) {
+        return dateStr;
+    }
+}
+
+/* একটি একক কন্টেন্ট কার্ডের HTML টেমপ্লেট তৈরি করে (টাইটেল, বিবরণ, ছবি, তারিখ)। */
+function buildCmsCardHtml(entry) {
+    const safeImage = entry.image
+        ? `<img src="${entry.image}" alt="${entry.title}" loading="lazy" onerror="this.style.display='none'">`
+        : '';
+    return `
+        <div class="cms-card">
+            ${safeImage}
+            <div class="cms-card-body">
+                ${entry.date ? `<div class="cms-card-date">${formatCmsDate(entry.date)}</div>` : ''}
+                <div class="cms-card-title">${entry.title}</div>
+                <div class="cms-card-desc">${entry.description}</div>
+            </div>
+        </div>
+    `;
+}
+
+/* সাধারণ রেন্ডারার — .map() ব্যবহার করে প্রতিটি নরমালাইজড আইটেমকে কার্ডে রূপান্তর করে
+   এবং টার্গেট কন্টেইনারে (blog-container / projects-container) বসিয়ে দেয়। */
+function renderCmsEntries(containerId, entries, emptyMessageKey) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    if (!entries || entries.length === 0) {
+        const msg = (emptyMessageKey && LANG[currentLang][emptyMessageKey]) || (currentLang === 'bn' ? 'এখনো কোনো কনটেন্ট যুক্ত করা হয়নি।' : 'No content available yet.');
+        container.innerHTML = `<div class="cms-state">${msg}</div>`;
+        return;
+    }
+    container.innerHTML = entries.map(entry => buildCmsCardHtml(entry)).join('');
+}
+
+/* ব্লগ পোস্টগুলো Headless CMS থেকে fetch করে আনে এবং #blog-container এ রেন্ডার করে। */
+async function loadBlogPostsFromCms() {
+    const container = document.getElementById('blog-container');
+    try {
+        const res = await fetchWithTimeout(CMS_CONFIG.blogEndpoint, CMS_CONFIG.requestTimeoutMs);
+        if (!res.ok) throw new Error(`CMS API responded with status ${res.status}`);
+        const json = await res.json();
+
+        // বিভিন্ন CMS ভিন্ন গঠনে ডেটা রিটার্ন করে (Contentful: json.items, Strapi: json.data, কাস্টম API: সরাসরি array)
+        const rawItems = json.items || json.data || (Array.isArray(json) ? json : []);
+        const normalized = rawItems.map(normalizeCmsItem);
+
+        renderCmsEntries('blog-container', normalized, 'cmsBlogEmpty');
+    } catch (err) {
+        // টেকনিক্যাল বিস্তারিত শুধু ডেভেলপার কনসোলে লগ হয় — ভিজিটরকে কোনো লাল/টেকনিক্যাল এরর দেখানো হয় না
+        console.error('ব্লগ পোস্ট লোড করতে সমস্যা হয়েছে (developer detail):', err);
+        if (container) {
+            container.innerHTML = `<div class="cms-state">${LANG[currentLang].cmsBlogEmpty}</div>`;
+        }
+    }
+}
+
+/* প্রজেক্ট ডেটা Headless CMS থেকে fetch করে আনে এবং #projects-container এ রেন্ডার করে। */
+async function loadProjectsFromCms() {
+    const container = document.getElementById('projects-container');
+    try {
+        const res = await fetchWithTimeout(CMS_CONFIG.projectsEndpoint, CMS_CONFIG.requestTimeoutMs);
+        if (!res.ok) throw new Error(`CMS API responded with status ${res.status}`);
+        const json = await res.json();
+
+        const rawItems = json.items || json.data || (Array.isArray(json) ? json : []);
+        const normalized = rawItems.map(normalizeCmsItem);
+
+        renderCmsEntries('projects-container', normalized, 'cmsProjectsEmpty');
+    } catch (err) {
+        // টেকনিক্যাল বিস্তারিত শুধু ডেভেলপার কনসোলে লগ হয় — ভিজিটরকে কোনো লাল/টেকনিক্যাল এরর দেখানো হয় না
+        console.error('প্রজেক্ট লোড করতে সমস্যা হয়েছে (developer detail):', err);
+        if (container) {
+            container.innerHTML = `<div class="cms-state">${LANG[currentLang].cmsProjectsEmpty}</div>`;
+        }
+    }
+}
+
 /* ============ ইনিশিয়ালাইজেশন ============ */
 document.addEventListener('DOMContentLoaded', function () {
     applyTheme();
@@ -2097,6 +2597,11 @@ document.addEventListener('DOMContentLoaded', function () {
     renderQaArticleReal();
     initSanityClient();
     loadSanityContent();
+    loadNavigationFromCms();
+    loadSiteContentFromCms();
+    loadDemoShowcaseFromCms();
+    loadBlogPostsFromCms();
+    loadProjectsFromCms();
 
     document.getElementById('menuOpenBtn').addEventListener('click', () => toggleMenu('open'));
     document.getElementById('menuCloseBtn').addEventListener('click', () => toggleMenu('close'));
